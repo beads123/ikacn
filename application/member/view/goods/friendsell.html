@@ -1,0 +1,656 @@
+{include file="header"}
+    <!--右边内容start-->
+    <div class="content-right" ng-controller="ctrlArea">
+      <div class="bg-white pd20">
+        <div class="member-index clearfix">
+          <div class="head-type">
+            <ul>
+              <!--<li><a href="javascript:void(0)" ng-click="goodsUpDown(1,'all')" class="curr">所有</a><span class="glyphicon">|</span></li>
+              <li><a href="javascript:void(0)" ng-click="goodsUpDown(2,'up')" class="">上架</a><span class="glyphicon">|</span></li>
+              <li><a href="javascript:void(0)" ng-click="goodsUpDown(3,'down')" class="">下架</a><span class="glyphicon">|</span></li>-->
+              <li><a href="/goods/friendgoods" class="curr">出售友链</a></li>
+              <li><a href="/package/index" class="">友链套餐</a></li>
+            </ul>
+            <div class="pull-right search">
+              <input type="text" ng-change="seachWeb()" ng-model="webString" placeholder="请输入网站名称/域名"/>
+              <!--<span></span>-->
+            </div>
+          </div>
+        </div>
+        <div class="member-index-center clearfix">
+          <div class="searchbar " style="position: relative;">
+            <ul class="list-inline  pr0 ">
+              <li class="head-nav">
+                <div class="type-name pull-left " >状态：</div>
+                <div class="dropdown pull-left select_isdel" style="width: 70px;">
+                  <button class="btn btn-default goodstype" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="dropdown-selected" >所有</span>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type">
+                    <li><a href="javascript:void(0)" ng-click="goodsUpDown('')" class="curr">所有</a></li>
+                    <li><a href="javascript:void(0)" ng-click="goodsUpDown('上架')" class="">上架</a></li>
+                    <li><a href="javascript:void(0)" ng-click="goodsUpDown('下架')" class="">下架</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <!--引导-->
+            <img src="/static/images/guide/guide_four.png" class="show_guide guideimg guide_csyl"/>
+            <div class="member-guide-mask show_guide guide_csyl"></div>
+            <!--引导-->
+          </div>
+          <div class="new-change clearfix">
+            <a href="javascript:void(0)" ng-click = "sellUrl()">出售友链</a>
+          </div>
+          <div class="clearboth"></div>
+          
+            <div class=" friend-table"  infinite-scroll="loadMore()" infinite-scroll-distance='0' infinite-scroll-disabled="{{scrollDisabled}}">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th width="12.5%">网站</th>
+                    <th width="12.5%">上链方式</th>
+                    <th width="12.5%">显示风格</th>
+                    <th width="12.5%">自动接单</th>
+                    <th width="12.5%">位置/价格</th>
+                    <th width="12.5%">关联订单</th>
+                    <th width="12.5%">状态</th>
+                    <th width="12.5%">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-show="list.length == 0">
+                    <td colspan="9" class="bbnone"><img src="/static/images/nodata/friendlink.png" class="mt60"/></td>
+                  </tr>
+                  <tr ng-repeat = "item in list " >
+                    <td>
+                      <p ng-bind="item.webname">锤子科技锤子科技</p>
+                      <p><a href="http://{{item.weburl}}" target="_blank" ng-bind="item.weburl">www.weilaiweldf.com</a></p>
+                    </td>
+                    <td>
+                      <span ng-show="item.autochain==2">自动上链</span>
+                      <span ng-show="item.autochain!=2">手动上链</span>
+                    </td>
+                    <td ng-bind="status_show(item.show_style)"></td>
+                    <td ng-show="item.auto_accept == 1">续费订单，自动接单</td>
+                    <td ng-show="item.auto_accept != 1">不使用</td>
+                    <td>
+                      <span ng-show="item.price > 0 && item.price_qz == 0">首页 &nbsp;¥ <span ng-bind="item.price"></span> 元/月</span>       <!--判断显示-->
+                      <span ng-show="item.price == 0 && item.price_qz > 0">全站&nbsp; ¥ <span ng-bind="item.price_qz"></span> 元/月</span>       <!--判断显示-->
+                      <div class="pl10 pr0" style="padding-left: 0px;" ng-show="item.price > 0 && item.price_qz > 0">
+                                  <div class="dropdown">
+                                      <button class="btn form-control dropdown-toggle lv1cate" data-toggle="dropdown" style="border-color:#c7d5de;height: 30px;">
+                                          <span class="dropdown-selected"  value="all" ><span>首页&nbsp;¥</span> <span ng-bind="item.price"></span> /月</span>
+                                          <span class="caret" style="top: 10px;"></span>
+                                      </button>
+                                      <ul class="dropdown-menu lv1cateMenu" style="width:100%;height: auto;">
+                                          <li><a>首页 &nbsp; ¥ <span  ng-bind="item.price"></span> /月</a></li>
+                                  <li><a>全站 &nbsp; ¥ <span  ng-bind="item.price_qz"></span> /月</a></li>
+                                      </ul>
+                                  </div>
+                              </div>
+                    </td>
+                    <td style="position: relative;">
+                      <span ng-show="item.connectOrder.length <= 0" class="Tosee"> 暂无</span>
+                      <a href="javascript:void(0)"  ng-show="item.connectOrder.length > 0" class="see" ng-bind="item.countO+'笔'">
+                        查看
+                      </a>
+                      <div class="order-info table-responsive none" style="width:900px" >
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th width="10%">订单号</th>
+                              <th width="20%">订单信息</th>
+                              <th width="12%">位置/价格</th>
+                              <th width="8%">数量(月)</th>
+                              <th width="10%">总价(元)</th>
+                              <th width="10%">交易状态</th>
+                              <th width="30%">时间</th>
+                            </tr>
+                          </thead>
+                          <tbody class="lp">
+                            <tr ng-repeat="i in item.connectOrder"  >
+                              <td ng-bind="i.no"></td>
+                              <td>
+                                <span ng-bind="i.webname"></span>
+                                <p><a target="_blank" href="http://{{i.weburl}}" ng-bind="i.weburl">www.meituanfd.com</a></p>
+                              </td>
+                              <td ng-show="i.is_qz==2">首页 ￥{{i.unitPrice}}/月</td>
+                              <td ng-show="i.is_qz==1">全站 ￥{{i.unitPrice}}/月</td>
+                              <td ng-bind="i.num"></td>
+                              <td ng-bind="i.price"></td>
+                              <td class="font-red" ng-bind="orderSta(i)"></td>
+                              <td ng-switch on="i.orderstatus"> 
+                                <any ng-switch-when = "2">
+                                  <p><span class="time_span">下单：</span>{{i.atime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                </any>
+                                <any ng-switch-when = "3">
+                                  <p><span class="time_span">下单：</span>{{i.atime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                </any>                      
+                                <any ng-switch-when = "4"> 
+                                  <p><span class="time_span">开始：</span>{{i.onchaintime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                  <p><span class="time_span">结束：</span>{{i.endtime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                </any>  
+                                <any ng-switch-when = "5"> 
+                                  <p><span class="time_span">故障：</span>{{i.stoptime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                  <p><span class="time_span">结束：</span>{{i.endtime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                </any>
+                                <any ng-switch-when = "6"> 
+                                  <p><span class="time_span">开始：</span>{{i.onchaintime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                  <p><span class="time_span">结束：</span>{{i.endtime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                </any>
+                                <any ng-switch-when = "7"> 
+                                  <p><span class="time_span">开始：</span>{{i.onchaintime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                  <p><span class="time_span">结束：</span>{{i.endtime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                </any>
+                                <any ng-switch-when = "8"> 
+                                  <p><span class="time_span">开始：</span>{{i.onchaintime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                  <p><span class="time_span">结束：</span>{{i.endtime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                </any>
+                                <any ng-switch-when = "9">
+                                  <p><span class="time_span">下单：</span>{{i.atime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                  <p><span class="time_span">拒单：</span>{{i.endtime_fmt * 1000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+                                </any>
+                                                                
+                                
+                              </td>
+                            </tr>                         
+                          </tbody>
+                        </table>
+                      </div>
+                    </td>
+                    
+                    <td ng-bind="item.sellstatus">下架</td>
+                    <td>
+                      <a href="javascript:void(0)" ng-click="upGoods(item.gid,item.sellstatus,$index,item)" ng-bind="sellStatus(item.sellstatus)" class="up-shelf">上架</a>                     
+                      <a href="javascript:void(0)" ng-show = "item.sellstatus == '下架'" ng-click = "editGoods(item)">修改</a>
+                      <a href="javascript:void(0)" ng-show = "item.sellstatus == '下架'" ng-click = "delete(item.gid,$index)">删除</a>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+      
+       <!--下架弹窗start-->
+      <div class="modal fade grounding dowmGoods" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:383px;height:auto">
+        <div class="modal-content acc-con" >
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center sure-text" ng-bind="dowmGoods_text">
+              确认下架该友链？
+            </div>
+            
+          </div>
+          <div class="modal-footer footer-btn">
+            <button class="btns cancel" data-dismiss="modal">取消</button>
+            <button class="btns save" data-dismiss="modal"  ng-click="sureDown()">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--下架弹窗弹窗end-->
+
+  <!--下架弹窗start-->
+  <div class="modal fade grounding dowmGoods2" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:383px;height:auto">
+        <div class="modal-content acc-con" >
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center sure-text" ng-bind = "downMsg">
+              确认下架该友链？
+            </div>
+            
+          </div>
+          <div class="modal-footer footer-btn">
+            <button class="btns cancel" data-dismiss="modal">取消</button>
+            <button class="btns save" data-dismiss="modal"  ng-click="sureDown2()">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--下架弹窗弹窗end-->
+  
+  <!--上架成功弹窗start-->
+      <div class="modal fade success-up" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:383px;height:auto">
+        <div class="modal-content acc-con" >
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div ng-bind="suMsg" class="text-center sure-text">
+              上架成功！
+            </div>
+            
+          </div>
+          <div class="modal-footer footer-btn">
+            <button class="btns save" data-dismiss="modal">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--下架弹窗弹窗end-->
+  <!--删除商品弹窗start-->
+  <div class="modal fade del_mfgoods" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:383px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>提示</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center sure-text">
+            确认删除该友链吗？
+          </div>
+
+        </div>
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal">取消</button>
+          <button class="btns save" data-dismiss="modal" ng-click = "sure_delete()">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--删除商品弹窗弹窗end-->
+
+  <!--网站认证弹窗start-->
+  <div class="modal fade checkwebsite" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content acc-con" style="width:660px;height:auto">
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn cancel-authen" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>网站认证</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal form-info pd0">
+            <div class="authentication">
+              <p class="warning">为了您出售的网站友链、广告可以及时上架出售，请您先进行网站认证！</p>
+              <div class="mt50">
+                <ul class="nav nav-pills h26">
+                  <li ng-class="{true:'active'}[approve.codeIndex==2]" ng-click="approve.codeIndex=2" mark="code"><a class="pt5 pb5 mr10" href="javascript:void(0)">代码验证</a><span class="glyphicon glyphicon-triangle-bottom yz-bot"></span></li>
+                  <li ng-class="{true:'active'}[approve.codeIndex==1]" ng-click="approve.codeIndex=1" mark="file"><a class="pt5 pb5" href="javascript:void(0)">文件验证</a><span class="glyphicon glyphicon-triangle-bottom yz-bot"></span></li>
+                </ul>
+              </div>
+              <div class="style code" ng-class="{true:'none'}[approve.codeIndex==1]">
+                <form class="">
+                  <div class="form-group clearfix mt20 pd010">
+                    <label for="" class="col-999 mb15"></label>
+                    <textarea id="textCode" class="form-control code-box get-code" ng-model="approve.appCode" placeholder="<script src='http://nnfa.fjat.com/s.php?id=1100'></script>"></textarea>
+                    <a href="javascript:void(0)" class="pull-right mt10 copy-btn" id="btn" ng-click="approve.copyCode()">复制代码</a>
+                  </div>
+                </form>
+              </div>
+              <div class="style file" ng-class="{true:'none'}[approve.codeIndex==2]">
+                <form class="form-inline col-md-12 bgg mt20">
+                  <div class="form-group">
+                    <label for="" class="col-999 rz-text"><ss ng-bind="approve.appData.name"></ss>.txt</label>
+                    <a class="dl-btn" href="/member/Account/download.htm?name={{approve.appData.filename}}" target="_blank">下载</a>
+                    <!--<a href="/runtime/calog/.txt" class="dl-btn"  download >下载</a>-->
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-12 mb70">
+                <h3 class="fs14 way-head">验证说明</h3>
+                <ol class="pl15">
+                  <li>请选择以上任意一种验证方式进行网站验证</li>
+                  <li>代码验证：将网站验证代码添加到您的网站首页HTML的标签和标签之间，并点击网站验证按钮</br>文件验证：将网站验证文件添加到您的网站根目录下，并点击网站验证按钮</li>
+                  <li>站长资源平台保证文件代码只用于网站验证功能，验证通过后您可以立即删除文件代码</li>
+                </ol>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <!-- back="selectsource" -->
+        <div class="modal-footer footer-btn">
+          <button class="btns save" data-dismiss="modal" ng-click="approve.webApprove()">网站认证</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--网站认证弹窗end-->
+
+
+<!--认证成功弹窗start-->
+    <div class="modal fade authen_success" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:500px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>提示</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center">
+            <div class="success-blue"></div>
+            <p class="wish">认证成功</p>
+            <h5 class="cueh5">请在列表页点击【上架】将友链上架出售</h5>
+          </div>  
+        </div>
+        <!-- back="selectsource" -->
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal">关闭</button>
+          <a  href="/member/goods/friendsell.htm" class="btns save">继续出售</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--认证成功弹窗end-->
+
+
+<!--认证失败弹窗start-->
+<div class="modal fade authen_lose" id="myModal-5" data-backdrop="static">
+  <div class="modal-dialog" style="width:500px;height:auto">
+    <div class="modal-content acc-con">
+      <div class="modal-header headerbar">
+        <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+        <h4>提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="lose"></div>
+          <p class="wish"></p>
+          <h5 class="loseh5" ng-click="approve.reAuth ()">认证失败，请确认已插入代码或在根目录已放置文件后重新认证！</h5>
+        </div>
+
+      </div>
+      <!-- back="selectsource" -->
+      <div class="modal-footer footer-btn">
+        <button class="btns cancel" data-dismiss="modal">取消</button>
+        <button class="btns save" data-dismiss="modal" ng-click="approve.reAuth()">重新认证</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--认证失败弹窗end-->
+<!--取消认证-->
+<div class="modal fade cancel_modal" id="myModal-5" data-backdrop="static">
+  <div class="modal-dialog" style="width:500px;height:auto">
+    <div class="modal-content acc-con">
+      <div class="modal-header headerbar">
+        <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+        <h4>提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center sure-text c80">
+          网站未认证，无法上架该网站的商品，请及时认证网站！
+        </div>
+
+      </div>
+      <!-- back="selectsource" -->
+      <div class="modal-footer footer-btn">
+        <!-- <button class="btns cancel" data-dismiss="modal" ng-click = "cancal_re()">取消</button>     -->
+        <!-- <a  data-dismiss="modal"  class="btns cancel">取消</a> -->
+        <button class="btns save" data-dismiss="modal" ng-click="approve.reAuth()">继续认证</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--取消认证-->
+
+  <!--上链设置-->
+      <div class="modal fade chain-set" id="myModal-5" data-backdrop="static">
+        <div class="modal-dialog" style="width:860px;height:auto">
+          <div class="modal-content acc-con" >
+            <div class="modal-header headerbar">
+              <button type="button" class="close close-btn cancel-chain" data-dismiss="modal" ng-click="c_chain()"><span aria-hidden="true"></span></button>
+              <h4>上链设置</h4>
+            </div>
+            <div class="modal-body" style="padding: 25px 0px;">
+              <form class="form-horizontal form-info pd0">
+                <div class="authentication">
+                  <div class="list-group">
+                    <label>网站名称：</label>
+                    <span ng-bind="chainame" kid="{{kid}}" class="kname">站长资源平台</span>
+                  </div>
+                  <div class="list-group weblanguage">
+                    <label>网站语言：</label>
+                    <a href="javascript:void(0)" ng-click="language(1)" ng-class="{true:'active',false:'other'}[curr==1]">PHP</a>
+                    <a href="javascript:void(0)" ng-click="language(2)" ng-class="{true:'active',false:'other'}[curr==2]">ASP</a>
+                    <i><cite>*</cite>网站代码指您网站使用的编程语言</i>
+                  </div>
+                  <div class="list-group return_format">
+                    <label>返回格式：</label>
+                    <a href="javascript:void(0)" ng-click="show(1)" ng-class="{true:'active',false:'other'}[active==1]">JSON</a>
+                    <a href="javascript:void(0)" ng-click="show(2)" ng-class="{true:'active',false:'other'}[active==2]">XML</a>
+                    <a href="javascript:void(0)" ng-click="show(3)" ng-class="{true:'active',false:'other'}[active==3]">HTML</a>
+                    <i>生成的代码格式，需要根据您要插代码的格式一致才能生效</i>
+                  </div>
+                  <div class="list-group testcode">
+                    <label>网站代码：</label>
+                    <a href="javascript:void(0)" ng-click="code(1)" ng-class="{true:'active',false:'other'}[act==1]">调试代码</a>
+                    <a href="javascript:void(0)" ng-click="code(2)" ng-class="{true:'active',false:'other'}[act==2]">正式代码</a>
+                    <span>调试代码会在您网站显示“站长资源平台”，测试通过使用正式代码不占友链位置！</span>
+                  </div>
+                  <div class="list-group" style="margin-bottom: 7px;">
+                    <div class="codebox">
+                      <textarea ng-show="curr==1" readonly>
+  &lt?php
+  //注意自己网站编码，如果前面已经定义，下面这行可以删除
+      header('Content-Type:text/html; charset=utf-8');
+    $testurl = "{{codes}}";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $testurl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HEADER,0);
+    $output = curl_exec($ch);
+    curl_close($ch);
+    if($output){
+        $json = json_decode($output,true);
+        if($json){
+          //json格式，请按自己要求输出
+        }else{
+          echo $output;
+        }
+    }
+  ?&gt
+                      </textarea>
+                      <textarea ng-show="curr==2" readonly>
+  <%
+    Dim Http,HttpUrl
+    Dim Objstream
+    HttpUrl = "{{codes}}"
+    Set Http=server.createobject("MSXML2.XMLHTTP")
+    Http.open "GET",HttpUrl,False
+    Http.Send()
+    If Http.Readystate<>4 then
+    Response.Write "获取数据失败"
+    End if
+    Set Objstream = Server.CreateObject("adodb.stream")
+    objstream.Type = 1
+    objstream.Mode =3
+    objstream.Open
+    objstream.Write Http.responseBody
+    objstream.Position = 0
+    objstream.Type = 2
+    objstream.Charset = "GB2312"
+    BytesToBstr = objstream.ReadText
+    Response.Write BytesToBstr
+  %>
+                      </textarea>
+                    </div>
+                  </div>
+                  
+                  <!--<div class="list-group codetest">
+                    <a href="javascript:void(0)" ng-click="codetest()">代码测试</a>
+                    <b>如果插入的代码生效，会在您的网站显示“站长资源平台”，如果没显示则表示代码没生效，调试完成可以关闭！</b>
+                    <span class="text-red" ng-bind="returndata">模拟请求，接收到返回数据！</span>
+                  </div>-->
+                  <div class="list-group text-red">
+                    <p>注：1、这是后端程序的代码（如：php、asp）把代码放在要显示友情链接的位置，该代码不占用友链位置；</p>
+                    <p style="padding-left: 28px;">2、开启自动上链功能后，订单接单后状态为”已上链“，如果没插代码或者代码失效，则会转为故障订单；</p>
+                    <p style="padding-left: 28px;"> 3、为了保证能正常使用自动上链功能，请先测试下代码是否有生效；</p>
+                  </div>
+                </div>
+  
+              </form>
+            </div>
+            <!-- back="selectsource" -->
+            <div class="modal-footer footer-btn">
+              <button class="btns save" data-dismiss="modal" ng-click="reflash()">完成</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!--上链设置-->
+
+
+  <!-- 小型模态框 -->
+  <div class="modal modal-auth" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+      <div class="modal-content acc-con">
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>提示</h4>
+        </div>
+        <div class="modal-body new-body">
+          <div class="text-center">
+            <p class="text-info fs18 c-blue text-cue" >您的网站未通过网站认证，需要认证通过的网站才能上架商品</p>
+          </div>
+        </div>
+        <div class="modal-footer footer-btn new-footer">
+          <!-- <button class="btns cancel return-btn" data-dismiss="modal">取消</button> -->
+          <button class="btns save save-btn" data-dismiss="modal" ng-click = "go_auth()">去认证</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--完善个人资料start-->
+<div class="modal fade person modal-blue" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:600px;height:auto">
+        <div class="modal-content acc-con" >
+            <div class="modal-header ">
+                <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true" style = "font-size:24px;color:#cccccc;">x</span></button>
+                <h4 class = "modal-title">完善个人资料</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-info pd0">
+                    <!--有手机号的情况      其他显示隐藏的加上none类名              -->
+                    <div class="form-group "  ng-show = "complete_info.userInfo.phone != ''">
+                        <label for="" class="col-sm-2 control-label">手机号：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <span class="phone" ng-bind="complete_info.userInfo.phone">185*****1635</span>
+                        </div>
+                    </div>
+                    <!--没有手机号的情况-->
+                    <div class="form-group "  ng-show = "complete_info.userInfo.phone == ''">
+                        <label for="" class="col-sm-2 control-label">手机号：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input ng-model="complete_info.phone" ng-blur = "complete_info.check_str('phone',complete_info.phone)"   type="text"  class="form-control" />
+                        </div><span class="must-sign"></span>
+                    </div>
+                    <div  class="form-group text-center text-red" ng-show = "complete_info.isphone" >请输入正确的手机号</div>
+                    <div class="form-group" ng-show = "complete_info.userInfo.phone == ''">
+                        <label for="" class="col-sm-2 control-label">验证码：</label>
+                        <div class="col-sm-3 pl0 pr8">
+                            <!--<span class="phone">185*****1635</span>-->
+                            <input ng-model="complete_info.verify" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-5"  >
+                            <!--<a href="javascript:void(0)" class="code">获取验证码</a>-->
+                            <div id="getCode" class="verifyCodeImg  send-code-btn"   ng-click = "complete_info.authCode()">
+                                <a href="javascript:void(0)" class="btn code">获取验证码</a>
+                            </div>
+                            <div id="timeCount" class="verifyCodeImg  resend-btn hidden " >
+                                <a href="javascript:void(0)" class="btn btn-lg "><i id="d-sec"  >60</i> &nbsp;秒后重新获取</a>
+                            </div>                  
+                        </div>
+                    
+                        
+                    </div>
+                        <div class="form-group text-center text-red" ></div>
+                    <div class="form-group" ng-show = "complete_info.userInfo.qq == ''">
+                        <label for="" class="col-sm-2 control-label">QQ：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input ng-model="complete_info.qq" ng-blur = "complete_info.check_str('qq',complete_info.qq)" type="text" class="form-control name">
+                        </div><span class="must-sign"></span>
+                    </div>
+                    <div  class="form-group text-center text-red" ng-show = "complete_info.isqq" >请输入正确的QQ号</div>
+                    <div class="form-group" ng-show ="complete_info.userInfo.email == ''">
+                        <label for="" class="col-sm-2 control-label">邮箱：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input type="text" ng-model="complete_info.email" ng-blur = "complete_info.check_str('email',complete_info.email)"  class="form-control url">
+                        </div>
+                    </div>
+                    <div id="tipMsg" class="form-group text-center text-red" ng-show = "complete_info.isemail" >请输入正确的邮箱</div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer footer-btn">
+                <button id="save" class="btn btns save btn-info"   ng-click ="complete_info.siveEdit()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--完善个人资料弹窗end-->
+    </div>
+    <!--右边内容end-->
+  <script type="text/javascript">
+    var dataArr = {$list};
+  </script>
+  <script type="text/javascript" src="/static/js/factory/directive.js"></script>
+  <script type="text/javascript" src="/static/js/factory/approve.js"></script>
+  <script type="text/javascript" src="/static/js/factory/complete_info.js"></script>
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/goods_friendgoods.js?v=20180903"></script>
+{include file="footer"}
+</body>
+</html>
