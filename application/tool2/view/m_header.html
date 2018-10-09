@@ -1,0 +1,33 @@
+<div class="ui-cateandsearch js-category-search">
+    <!-- 栏目导航 -->
+    <menu class="ui-categorys js-category-panel js-hidden">
+        <div class="bd">
+            <div class="ui-section-block">
+                <div class="ui-catgory ui-catgory1">
+                    {volist name="nav" id="vo"}
+                        {lt name="key" value="4"}
+                        <a href="{:url('m_list/'.$vo['id'])}">{$vo['typename']}</a>
+                        {/lt}
+                    {/volist}
+                </div>
+            </div>
+            <ul>
+                <li>
+                {volist name="subnav" id="vo"}
+                    {eq name="key%5" value="4"}</li><li>{/eq}
+                    <a href="{:url('m_list/'.$vo['id'])}">{$vo['typename']}</a>
+                {/volist}
+                </li>
+            </ul>
+            <div class="search-box">
+                <div class="search-cont">
+                    <form action="/m/search/" method="get">
+                        <input type="text" class="txt" placeholder="请输入关键词" name="q" value="">
+                        <input type="submit" value="" class="search-btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </menu>
+    <!-- @end 栏目导航 -->
+</div> 

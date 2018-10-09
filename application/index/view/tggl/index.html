@@ -1,0 +1,383 @@
+{include file="account/header"}
+<div ng-controller="ctrlArea">
+    <!--右边内容start-->
+    <div class="content-right">
+        <div class="bg-white pd20" infinite-scroll="loadMore()" infinite-scroll-distance='0'
+             infinite-scroll-disabled="false">
+            <!--头部菜单栏-->
+            <div class="member-index clearfix">
+                <div class="head-type">
+                    <ul>
+                        <li><a href="javascript:void(0)" class="curr" ng-click="changeType(1)"
+                               ng-class="{true:'curr',false:'other'}[curr == 1]">推广的链接</a><span
+                                class="glyphicon">|</span></li>
+                        <li><a href="javascript:void(0)" ng-click="changeType(2)"
+                               ng-class="{true:'curr',false:'other'}[curr == 2]">推广的广告</a></li>
+                    </ul>
+                    <div class="head_right">
+                        <a href="javascript:void(0)" ng-show="curr == 1" class="add_btn" style="display: block;" ng-click="addlink()">添加链接</a>
+                        <a href="javascript:void(0)" ng-show="curr == 2" class="add_btn" style="display: none;" ng-click="addadvert()">添加广告</a>
+                    </div>
+                </div>
+            </div>
+            <!--推广链接列表内容-->
+            <div class="clearboth" ng-show="curr == 1">
+                <div class="table-responsive resource tab-list">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th width="33.3%">链接标题</th>
+                            <th width="33.3%">链接地址</th>
+                            <th width="33.3%">操作</th>
+                        </tr>
+                        </thead>
+                        <!--循环列表start-->
+                        <tbody>
+                        <tr ng-show="dataList.length == 0">
+                          <td colspan="3">
+                            <img src="/static/images/nodata/tggg.png" class="mt60"/>
+                          </td>
+                        </tr>
+                        <tr ng-repeat="item in dataList">
+                            <td>
+                                <span ng-bind="item.title"></span>
+                                <span class="morenlink" ng-show="item.default == 2">默认链接</span>
+                            </td>
+                            <td>
+                                <span ng-bind="item.url"></span>
+                            </td>
+                            <td>
+                                <a href="javascript:void(0)" ng-click="edit($index,item)" class="tb_btn">修改</a>
+                                <a href="javascript:void(0)" ng-click="deleteUrl($index,item.id,'链接')" class="tb_btn">删除</a>
+                                <any ng-switch on="item.default">
+                                    <any ng-switch-when="1">
+                                        <a href="javascript:void(0)" ng-click="setWin($index,item.id,'设置默认链接')"
+                                           class="tb_btn">设为默认</a>
+                                    </any>
+                                </any>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <!--循环列表end-->
+                    </table>
+                </div>
+            </div>
+
+            <!--推广广告列表内容-->
+            <div class="table-responsive resource tab-list" ng-show="curr== 2">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>链接标题</th>
+                        <th>链接地址</th>
+                        <th width="35%">图片</th>
+                        <th>尺寸</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--无广告提示图start-->
+                    <tr style="display: none" ng-show="dataList2.length == 0">
+                        <td colspan="5" class="bbnone"><img src="/static/images/nodata/tggg.png" class="mt60"/></td>
+                    </tr>
+                    <!--无广告提示图end-->
+                    <tr ng-repeat="item in dataList2">
+                        <td>
+                            <span class="ng-binding" ng-bind="item.title"></span>
+                        </td>
+                        <td>
+                            <span class="ng-binding" ng-bind="item.url"></span>
+                        </td>
+                        <td>
+                            <a href="{{{true: '/static/images/demo/demo.jpg', false: item.img_fmt}[!item.img_fmt]}}"
+                               target="_blank" class="table-img">
+                                <img ng-src="{{item.img_fmt}}" onerror="javascript:this.src='/static/images/40.jpg'"
+                                     class="smallimg">
+                            </a>
+                        </td>
+                        <td>{{item.width + "*" + item.height}}</td>
+                        <td>
+                            <a href="javascript:void(0)" ng-click="edit($index,item)"
+                               class="tb_btn editadvert_btn">修改</a>
+                            <a href="javascript:void(0)" ng-click="deleteUrl($index,item.id,'广告')" class="tb_btn">删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <!--添加链接弹框start-->
+    <div class="add_box addlink fade" style="display: none">
+        <div class="modal_box"></div>
+        <div class="modal_index">
+            <div class="modal-dialog" style="width:500px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal"><span
+                                aria-hidden="true"></span></button>
+                        <h4>添加链接</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal form-info pd0 ng-pristine ng-valid">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">链接标题：</label>
+                                <div class="col-sm-8 pl0 pr8">
+                                    <!--错误时文字以及边框加上‘cl_red’这个样式-->
+                                    <input type="text" class="form-control name ng-pristine ng-valid" ng-class = "{true:'cl_red'}[errmsgYz]"  ng-model = "addWebTitle" ng-blur="lengthYz(1)">
+                                    <p class="col_gray" style="display: none">最多十个汉字</p>
+                                    <p class="col_gray cl_red" ng-show="errmsgYz" style="display: block">超出最多字数，请填写10个汉字以内</p>
+                                </div>
+                                <span class="glyphicon glyphicon-exclamation-sign cl_red" ng-show = "errmsgYz"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">链接地址：</label>
+                                <div class="col-sm-8 pl0 pr8">
+                                    <input type="text" class="form-control url ng-pristine ng-valid" ng-class = "{true:'cl_red'}[errmsg]" placeholder="http://" ng-model = "addWebUrl" ng-blur="rete(1)">
+                                    <p class="text-red" style="display: block">请用http或者https开头，不要以“/”结尾，链接地址需填写正确，否则上链后无法打开</p>
+                                    <p class="col_gray cl_red" ng-show="errmsg" style="display: none">请输入正确链接地址</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer footer-btn">
+                        <button class="btns save"  ng-click="addUrl(1)">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--添加链接弹框end-->
+
+    <!--添加广告弹框start-->
+    <div class="add_box addadvert" style="display: none">
+        <div class="modal_box"></div>
+        <div class="modal_index fade in">
+            <div class="modal-dialog" style="width:500px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal"><span
+                                aria-hidden="true"></span></button>
+                        <h4>添加广告</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal form-info pd0 ng-pristine ng-valid">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">链接标题：</label>
+                                <div class="col-sm-8 pl0 pr8">
+                                    <!--错误时文字以及边框加上‘cl_red’这个样式-->
+                                    <input type="text" class="form-control name ng-pristine ng-valid" ng-class = "{true:'cl_red'}[errmsgYz]" ng-model="adTitle" ng-blur="lengthYz(2)">
+                                    <p class="col_gray" style="display: none">最多十个汉字</p>
+                                    <p class="col_gray cl_red" ng-show="errmsgYz"  style="display: block">超出最多字数，请填写10个汉字以内</p>
+                                </div>
+                                <span class="glyphicon glyphicon-exclamation-sign cl_red" ng-show="errmsgYz"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">链接地址：</label>
+                                <div class="col-sm-8 pl0 pr8">
+                                    <input type="text" class="form-control url ng-pristine ng-valid" ng-class = "{true:'cl_red'}[errmsg]" placeholder="http://" ng-model="adUrl" ng-blur="rete(2)">
+                                    <p class="text-red">请用http或者https开头，不要以“/”结尾，链接地址需填写正确，否则上链后无法打开</p>
+                                    <p class="col_gray cl_red " ng-show="errmsg" style="display: none">请输入正确连接地址</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">广告图片：</label>
+                                <div class="col-sm-8 pl0 advertimg">
+                                    <input type="file" class="img_upload" value="选择文件" unselectable="on" name="file"   ng-model = "imgModel"  accept="image/jpg,image/png,image/jpeg,image/gif" id="adUpImg" title="上传"/>
+                                    <img id="adImg" src="/static/images/default-img.png">
+                                    <p>支持格式：jpg、png、gif,大小2M以内</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer footer-btn">
+                        <button class="btns save"  ng-click="addAdvertisement()">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--添加广告弹框end-->
+    <!--修改链接弹窗start-->
+    <div class="modal fade editlink" id="myModal-5" data-backdrop="static">
+        <div class="modal-dialog" style="width:500px;height:auto">
+            <div class="modal-content acc-con">
+                <div class="modal-header headerbar">
+                    <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span>
+                    </button>
+                    <h4>修改链接</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal form-info pd0">
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">链接标题：</label>
+                            <div class="col-sm-8 pl0 pr8">
+                                <input type="text" ng-model="editWebTitle" class="form-control name ng-pristine ng-valid" ng-class = "{true:'cl_red'}[errmsgYz]" ng-blur="lengthYz(3)">
+                                <p class="col_gray" style="display: none">最多十个汉字</p>
+                                <p class="col_gray cl_red" ng-show="errmsgYz" style="display: block">超出最多字数，请填写10个汉字以内</p>
+                            </div>
+                            <span class="glyphicon glyphicon-exclamation-sign cl_red" ng-show = "errmsgYz"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">链接地址：</label>
+                            <div class="col-sm-8 pl0 pr8">
+                                <input type="text" ng-model="editWebUrl" ng-class = "{true:'cl_red'}[errmsg]" class="form-control url ng-pristine ng-valid" ng-blur="rete(3)" placeholder="http://">
+                                <p class="text-red" style="display: block">请用http或者https开头，不要以“/”结尾，链接地址需填写正确，否则上链后无法打开</p>
+                                <p class="col_gray cl_red" ng-show="errmsg" style="display: none">请输入正确链接地址</p>
+                            </div>
+                            <!--<span class="must-sign"></span>-->
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer footer-btn">
+                    <button class="btns save" ng-click="editUrl()" data-dismiss="modal">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改链接弹窗end-->
+    <!--修改广告弹窗start-->
+    <div class="modal fade edit-advert" id="myModal-5" data-backdrop="static">
+        <div class="modal-dialog" style="width:500px;height:auto">
+            <div class="modal-content acc-con">
+                <div class="modal-header headerbar">
+                    <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span>
+                    </button>
+                    <h4>修改广告</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal form-info pd0">
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">链接标题：</label>
+                            <div class="col-sm-8 pl0 pr8">
+                                <input type="text" ng-model="editADtitle" class="form-control name ng-pristine ng-valid" ng-class = "{true:'cl_red'}[errmsgYz]" ng-blur="lengthYz(4)">
+                                <p class="col_gray" style="display: none">最多十个汉字</p>
+                                <p class="col_gray cl_red" ng-show="errmsgYz"  style="display: block">超出最多字数，请填写10个汉字以内</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">链接地址：</label>
+                            <div class="col-sm-8 pl0 pr8">
+                                <input type="text" ng-model="editADurl" ng-class = "{true:'cl_red'}[errmsg]" class="form-control url ng-pristine ng-valid" placeholder="http://" ng-blur="rete(4)">
+                                <p class="text-red">请用http或者https开头，不要以“/”结尾，链接地址需填写正确，否则上链后无法打开</p>
+                                <p class="col_gray cl_red " ng-show="errmsg" style="display: none">请输入正确连接地址</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">广告图片：</label>
+                            <div class="col-sm-8 pl0 advertimg">
+                                <a href="javascript:void(0)" class="admingup">上传</a>
+                                <input type="file" unselectable="on" name="file" value="选择文件" class="upImg" id="editImg" title="上传"/>
+                                <img id="eimg" ng-src="{{editImgFmt}}"/>
+                                <p>支持格式：jpg、png、gif,大小2M以内</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer footer-btn">
+                    <button class="btns save disbtn" data-dismiss="modal" ng-click="editAdvertisement()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改广告弹窗end-->
+
+   
+
+    <!--设置默认弹窗start-->
+    <div class="add_box set-win" style="display: none">
+        <div class="modal_box"></div>
+        <div class="modal in" style="z-index: 1100; display: block; padding-right: 17px;" data-backdrop="static">
+            <div class="modal-dialog" style="width: 385px;">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true" ng-click="winUpdate()"></span>
+                        </button>
+                        <h4 ng-bind="setWinTitle"></h4>
+                    </div>
+                    <div class="modal-body new-body">
+                        <div class="text-center">
+                            <p class="text-info fs18 c-blue text-cue ng-binding" ng-bind="setWinCont"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer footer-btn new-footer">
+                        <any ng-switch on="setContUp">
+                            <any ng-switch-when="1">
+                                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                                <button class="btns save save-btn" data-dismiss="modal" ng-click="setExecute()">确定
+                                </button>
+                            </any>
+                            <any ng-switch-when="2">
+                                <button class="btns save save-btn" data-dismiss="modal" ng-click="winUpdate()">确定
+                                </button>
+                            </any>
+                        </any>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--设置默认弹窗end-->
+
+</div>
+
+<script type="text/javascript" src="/static/js/factory/approve.js"></script>
+<script type="text/javascript" src="/static/js/factory/directive.js"></script>
+<script type="text/javascript" src="/static/js/angular_wdate.js"></script>
+<script type="text/javascript" src="/static/js/factory/upimg.js"></script>
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/tggl_index.js?v=20180903"></script>
+{include file="account/footer"}
+</body>
+</html>

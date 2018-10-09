@@ -1,0 +1,277 @@
+{include file="header"}
+<link type="text/css" rel="stylesheet" href="/static/css/rank.css" />
+<div class="main-block"   style="margin-top: -12px;">
+    <div class="container"  ng-controller="articleControl" style="min-width: 1200px;">
+        <!--网站排行头部-->
+        <div class="clearfix newtop nav-middle text-center" style="margin-top: 8px">
+    <div class="container">
+        <a href="/webmain.htm" mark="webmain">排行首页</a>
+        <a href="/ranklist.htm" mark="ranklist">网站排行</a>
+        <a href="/rankclass.htm" mark="rankclass">分类目录</a>
+        <a href="/ranktag.htm" mark="ranktag">标签目录</a>
+        <a href="/ranknew.htm" mark="ranknew">最新收录</a>
+        <a href="/rankdata.htm" mark="rankdata">数据归档</a>
+        <a href="/apply_include.htm" target="_blank" class="applye_a">申请收录</a>
+    </div>
+</div>
+<!-- 数据统计 -->
+<div class="dataCount ">
+    <div class="left_side">
+        <p>数据统计：
+            <i>133</i>个主题分类，
+            <i>70359</i>个优秀站点，
+            <i>0</i>个站点正在等待审核。</p>
+    </div>
+    <div class="right_side sellercenter">
+        <input type="text" placeholder="请输入网站名称或网址" id="searchval" on/>
+        <span id="search_btn"></span>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', '#search_btn', function () {
+            var url = $('#searchval').val();    
+            window.location.href = 'selectWebList.htm?search=' + url;
+        })
+
+        $("#searchval").keyup(function (event) {
+            event = document.all ? window.event : event;
+            if ((event.keyCode || event.which) == 13) {
+                var url = $('#searchval').val();
+            window.location.href = 'selectWebList.htm?search=' + url;
+            }
+        });
+    })
+</script>
+
+         <div class="con  clearfix">
+            <div class="page-path">
+                <span class="icon-home"></span>
+                当前位置：<a href="/webmain.htm">排行首页 </a>  &gt;
+                                <a class="get_catalog" href="/ranklist.htm">网站排行 </a>
+                  &gt;  <a class="get_catalog" href="xxyl.htm">休闲娱乐 </a>            </div>
+            <div class="pull-left col-sm-6 col-md-9 data_detail" >
+                <div class="tab-blue catalog_con">
+                                        <div class="title">网站排行</div>
+                    <ul class="tab-items-sm row" id="classifylist">
+                                                <li class="col-sm-6 col-md-2" >
+                            <a class="get_catalog2" href="/webmain/lyxq.htm" >梨园戏曲</a>
+                            <span class="tip-info" >(6)</span>
+                        </li>
+                                                <li class="col-sm-6 col-md-2" >
+                            <a class="get_catalog2" href="/webmain/shsc.htm" >书画收藏</a>
+                            <span class="tip-info" >(69)</span>
+                        </li>
+                                                <li class="col-sm-6 col-md-2" >
+                            <a class="get_catalog2" href="/webmain/yywz.htm" >音乐网站</a>
+                            <span class="tip-info" >(106)</span>
+                        </li>
+                                                <li class="col-sm-6 col-md-2" >
+                            <a class="get_catalog2" href="/webmain/whys.htm" >文化艺术</a>
+                            <span class="tip-info" >(266)</span>
+                        </li>
+                                                <li class="col-sm-6 col-md-2" >
+                            <a class="get_catalog2" href="/webmain/ymxh.htm" >幽默笑话</a>
+                            <span class="tip-info" >(147)</span>
+                        </li>
+                                                <li class="col-sm-6 col-md-2" >
+                            <a class="get_catalog2" href="/webmain/mxyl.htm" >明星娱乐</a>
+                            <span class="tip-info" >(395)</span>
+                        </li>
+                                                <li class="col-sm-6 col-md-2" >
+                            <a class="get_catalog2" href="/webmain/spwz.htm" >视频网站</a>
+                            <span class="tip-info" >(76)</span>
+                        </li>
+                                            </ul>
+                                    </div>
+                
+                <div class="bigtab">
+                    <ul class="tab-wrap">
+                                            </ul>
+                </div>
+                <!--分页-->
+                <div class="tcdPageCode listpage"></div>
+            </div>
+            
+            <!--右边-->
+            <div class="pull-right " style="padding-right: 0;width: 285px;padding-left: 15px;">
+                <div class="smalltab">
+                    <div class="tab-header">最新收录</div>
+                    <div class="tab-con ">
+                        <ul class="tab-wrap">
+                                                        <li>
+                                <a href="/website_156265.htm" class="tab-img col-sm-6 col-md-4"><img ng-src="static/images/icon/no-img.png@w114_h80" alt="网站图片"></a>
+                                <div class="tab-msg col-sm-6 col-md-8">
+                                    <p class="m0"><a href="/website_156265.htm">造型红继木</a></p>
+                                    <p class="tab-msg-con"></p>
+                                    <span style="line-height: 1;width: 137px;display:inline-block;" class="text-ellipsis">www.gyhjm1.com</span>
+                                </div>
+                            </li>
+                                                        <li>
+                                <a href="/website_156264.htm" class="tab-img col-sm-6 col-md-4"><img ng-src="static/images/icon/no-img.png@w114_h80" alt="网站图片"></a>
+                                <div class="tab-msg col-sm-6 col-md-8">
+                                    <p class="m0"><a href="/website_156264.htm">佛山瑜伽教练培训</a></p>
+                                    <p class="tab-msg-con"></p>
+                                    <span style="line-height: 1;width: 137px;display:inline-block;" class="text-ellipsis">www.qlyoga.com</span>
+                                </div>
+                            </li>
+                                                        <li>
+                                <a href="/website_156263.htm" class="tab-img col-sm-6 col-md-4"><img ng-src="static/images/icon/no-img.png@w114_h80" alt="网站图片"></a>
+                                <div class="tab-msg col-sm-6 col-md-8">
+                                    <p class="m0"><a href="/website_156263.htm">佛山除甲醛</a></p>
+                                    <p class="tab-msg-con"></p>
+                                    <span style="line-height: 1;width: 137px;display:inline-block;" class="text-ellipsis">www.chuqujiaquan.com</span>
+                                </div>
+                            </li>
+                                                        <li>
+                                <a href="/website_156262.htm" class="tab-img col-sm-6 col-md-4"><img ng-src="static/images/icon/no-img.png@w114_h80" alt="网站图片"></a>
+                                <div class="tab-msg col-sm-6 col-md-8">
+                                    <p class="m0"><a href="/website_156262.htm">武汉搬家公司</a></p>
+                                    <p class="tab-msg-con"></p>
+                                    <span style="line-height: 1;width: 137px;display:inline-block;" class="text-ellipsis">www.fenglingbanjia.com</span>
+                                </div>
+                            </li>
+                                                        <li>
+                                <a href="/website_156261.htm" class="tab-img col-sm-6 col-md-4"><img ng-src="static/images/icon/no-img.png@w114_h80" alt="网站图片"></a>
+                                <div class="tab-msg col-sm-6 col-md-8">
+                                    <p class="m0"><a href="/website_156261.htm">泽企软件</a></p>
+                                    <p class="tab-msg-con"></p>
+                                    <span style="line-height: 1;width: 137px;display:inline-block;" class="text-ellipsis">www.zeqisoft.com</span>
+                                </div>
+                            </li>
+                                                    </ul>
+                    </div>
+                </div>
+                
+            </div>
+         </div>
+        
+<!-- 右侧打开加 open -->
+<div class="menu-right">
+  <div class="menu-right-goods">
+    <div class="menu-right-header">
+      <span class="icon-cart"></span>
+      <span class="header-text">购物车</span>
+      <span class="icon-close menu_right_close" ></span>
+    </div>
+    <div class="menu-right-con" >
+      <ul ng-repeat="(key,val) in common.itemDataList" >
+         <h1 ng-bind="val.title" ng-show="val.count>0"></h1>
+        <li ng-repeat="(key1,val1) in val.data">
+          <div class="web_title">
+            <span class="label-box" ng-bind="val1.catename"></span>
+            <h3  class="con-title" ng-bind="val1.webname" ng-show="val.title=='友情链接' || val.title=='图文广告'" title="{{val1.webname}}"></h3>
+            <h3 ng-show="val.title=='网站交易'" class="con-title" ng-bind="val1.point" title="{{val1.point}}"></h3>
+          </div>
+          <span class="con-text" >
+            网站地址：
+            <span class="web_url" ng-bind="val1.goodsurl" title="{{val1.goodsurl}}"></span>
+          </span>
+          <p class="web_weight">
+            权重：
+            <span class="tuwen bai_du" style="margin-right: 36px" ng-bind="val1.bdweight"></span>
+            PR值：
+            <span class="tuwen pr"  ng-bind="val1.pr"></span>
+          </p>
+          <p>
+            IP值：<xfan ng-bind="val1.ip"></xfan>
+            <xfan ng-show="val.title=='友情链接'" style="margin-left: 20%;">
+                位置：
+                <span ng-bind="{true:'全站',false:'首页'}[val1.is_qz == 1]">全站</span>             
+            </xfan>
+          </p>
+          <div class="clearfix">
+            <span class="con-price">￥<span ng-bind="val1.price"></span><ss ng-hide="val.title=='网站交易'">/月</ss></span>
+            <span class="con-btn" ng-click="common.delItem(val1.gid)">删除</span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- 购物车没有商品时显示 默认隐藏 -->
+      <div class="menu-right-empty " ng-class="{'hidden': common.itemNum*1>0}">
+        <img src="static/images/bg/shopping.png">
+        <p>购物车空空，快去选购一下哦！</p>
+      </div>
+    </div>
+    <div class="menu-right-footer">
+      <div class="clearfix ">
+        <span class="footer-left">已选 <span class="text-yellow" ng-bind="common.itemNum"></span> 个网站</span>
+        <span class="footer-right">共计： <span class="text-yellow" ng-bind="common.itemPrice"></span></span>
+      </div>
+      <a href="/index/goods/submit_order" ng-show="common.itemNum>0">
+        <span class="btn btn-info center-block">去购买</span>
+      </a>
+      <span class="btn center-block" style="background: gray;color: #fff;" ng-show="common.itemNum==0">去购买</span>
+    </div>
+  </div>
+  <ul class="menu-right-btns">
+    <li class="" onclick="window.open('/member/account/member.htm')">
+       <div>
+         <span class="title">会员中心</span>
+          <span class="icon icon-person"></span>
+       </div> 
+    </li>
+    <li  style="position: relative">
+      <div class="kefu">
+        <span class="title">客服</span>
+        <span class="icon icon-service"></span>
+      </div>
+      <b style=" position: absolute;top: 7px; left: 66px;opacity: 0;z-index: 999;"><script charset="utf-8" type="text/javascript" src="//wpa.b.qq.com/cgi/wpa.php?key=XzgwMDE4NTQ4OV80ODI2ODlfODAwMTg1NDg5Xw"></script></b>
+    </li>
+    <li class="menu_right_btn" >
+      <div>
+        <span class="title">购物车</span>
+        <span class="icon icon-shop" ng-click="common.CartLogin()"></span>
+        <span class="badge"  ng-bind="common.itemNum"></span>
+      </div>
+    </li>
+    <li class="hidden">
+      <div>
+        <span class="title">加盟</span>
+        <span class="icon icon-hands"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/user_feedback.htm')">
+      <div>
+        <span class="title">意见反馈</span>
+        <span class="icon icon-pen"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/appdown.htm')">
+      <div>
+        <span class="title">APP下载</span>
+        <span class="icon icon-code"></span>
+      </div>
+    </li>
+    <li class="go_top">
+      <div>
+        <span class="title">顶部</span>
+        <span class="icon icon-up"></span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+    </div>
+</div>
+
+<!-- <script type="text/javascript" src="/js/factory/directive.js"></script> -->
+<!-- <script type="text/javascript" src="/js/index/index/publichead.js?v="></script> -->
+<script>
+    curUrl = window.location.href;
+    if(curUrl.indexOf('ranklist') >= 0) {
+        curMenuName = 'ranklist';
+    }
+    if(curUrl.indexOf('rankdata') >= 0) {
+        curMenuName = 'rankdata';
+    }
+    $('.nav-middle a[mark="' + curMenuName + '"]').addClass('active').siblings().removeClass('active')
+  var res = null;
+  var list = {"status":1,"classify":[{"id":452,"name":"\u68a8\u56ed\u620f\u66f2","pid":1,"url":"lyxq","count":6},{"id":453,"name":"\u4e66\u753b\u6536\u85cf","pid":1,"url":"shsc","count":69},{"id":415,"name":"\u97f3\u4e50\u7f51\u7ad9","pid":1,"url":"yywz","count":106},{"id":451,"name":"\u6587\u5316\u827a\u672f","pid":1,"url":"whys","count":266},{"id":493,"name":"\u5e7d\u9ed8\u7b11\u8bdd","pid":1,"url":"ymxh","count":147},{"id":494,"name":"\u660e\u661f\u5a31\u4e50","pid":1,"url":"mxyl","count":395},{"id":490,"name":"\u89c6\u9891\u7f51\u7ad9","pid":1,"url":"spwz","count":76}],"web":null,"tips":[{"id":1,"name":"\u4f11\u95f2\u5a31\u4e50","pid":0,"url":"xxyl","count":1065}],"cat":[{"id":452,"name":"\u68a8\u56ed\u620f\u66f2","pid":1,"url":"lyxq","count":6},{"id":453,"name":"\u4e66\u753b\u6536\u85cf","pid":1,"url":"shsc","count":69},{"id":415,"name":"\u97f3\u4e50\u7f51\u7ad9","pid":1,"url":"yywz","count":106},{"id":451,"name":"\u6587\u5316\u827a\u672f","pid":1,"url":"whys","count":266},{"id":493,"name":"\u5e7d\u9ed8\u7b11\u8bdd","pid":1,"url":"ymxh","count":147},{"id":494,"name":"\u660e\u661f\u5a31\u4e50","pid":1,"url":"mxyl","count":395},{"id":490,"name":"\u89c6\u9891\u7f51\u7ad9","pid":1,"url":"spwz","count":76}],"curl":[false,[{"id":6,"name":"\u7f51\u7edc\u6e38\u620f","pid":0,"url":"wlyx","count":1466},{"id":5,"name":"\u65b0\u95fb\u5a92\u4f53","pid":0,"url":"xwmt","count":2305},{"id":4,"name":"\u6587\u5b66\u5c0f\u8bf4","pid":0,"url":"wxxs","count":933},{"id":8,"name":"\u4f53\u80b2\u7ade\u6280","pid":0,"url":"tyjj","count":1526},{"id":7,"name":"\u751f\u6d3b\u670d\u52a1","pid":0,"url":"shfw","count":4198},{"id":1,"name":"\u4f11\u95f2\u5a31\u4e50","pid":0,"url":"xxyl","count":1065},{"id":25,"name":"\u4fe1\u606f\u5206\u7c7b","pid":0,"url":"xxfl","count":2679},{"id":27,"name":"\u624b\u673a\u7f51\u7ad9","pid":0,"url":"sjwz","count":183},{"id":28,"name":"\u52a8\u7269\u5ba0\u7269","pid":0,"url":"dwcw","count":159},{"id":22,"name":"\u8bba\u575b\u535a\u5ba2","pid":0,"url":"ltbk","count":2004},{"id":23,"name":"\u6c7d\u8f66\u7f51\u7ad9","pid":0,"url":"qcwz","count":1399},{"id":18,"name":"\u65c5\u6e38\u9152\u5e97","pid":0,"url":"lyjd","count":500},{"id":16,"name":"\u6559\u80b2\u57f9\u8bad","pid":0,"url":"jypx","count":2379},{"id":12,"name":"\u533b\u7597\u5065\u5eb7","pid":0,"url":"yljk","count":3600},{"id":33,"name":"\u7efc\u5408\u7f51\u7ad9","pid":0,"url":"zhwz","count":2816},{"id":46,"name":"IT\u6280\u672f","pid":0,"url":"itjs","count":2650},{"id":49,"name":"\u7535\u5b50\u5546\u52a1","pid":0,"url":"syjj","count":3385},{"id":54,"name":"\u6821\u56ed\u9ad8\u6821","pid":0,"url":"xygx","count":267},{"id":59,"name":"\u653f\u5e9c\u673a\u6784","pid":0,"url":"zfjg","count":362},{"id":60,"name":"\u884c\u4e1a\u95e8\u6237","pid":0,"url":"hymh","count":9027},{"id":64,"name":"\u7f51\u5740\u5bfc\u822a","pid":0,"url":"wzdh","count":820},{"id":310,"name":"\u5f71\u89c6\u52a8\u6f2b","pid":0,"url":"ysdm","count":1547},{"id":367,"name":"\u5176\u4ed6\u5206\u7c7b","pid":0,"url":"qtfl","count":14569}]],"pager":null};
+  var newlist ="data"</script>
+{include file="footer"}
+<script type="text/javascript" src="/static/js/ranklist.js?v=20180903"></script>
+<script type = "text/javascript" src = "/static/js/index_message.js?v=20180903"></script>
+</body>
+</html>

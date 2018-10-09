@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="http://www.hahacn.com/static/css/sso_2018.css">
+<script type="text/javascript" src="http://www.hahacn.com/static/js/raphael.js"></script>
+<script type="text/javascript" src="http://www.hahacn.com/static/js/jquery.uled.js"></script>
+<script type="text/JavaScript" src="http://www.hahacn.com/static/js/aes.js"></script>
+<script type="text/javascript" src="http://www.hahacn.com/static/js/pad-zeropadding.js"></script>
+<div class="head16_bg">
+  <div class="head16_main">
+    <div id="led2" class="autosize" ></div>
+    <div class="head16_073 fl"><a href="http://www.hahacn.com">华乐网-新媒体综合平台</a></div>
+    <p><a href="http://www.hahacn.com/" target="_blank" class="a1"></a></p>
+    <p><a href="http://www.cq4a.com/" target="_blank" class="a2"></a></p>
+    <p><a href="http://mw.hahacn.com/" target="_blank" class="a3"></a></p>
+    <p><a href="http://mm.hahacn.com/" target="_blank" class="a9"></a></p>
+    <p class="p1"><a href="javascript:;" class="a4"></a></p>
+    <div class="head16_main_ul fl">
+      <div class="head16_main_ul_div"><ul></ul></div>
+            <div class="head16_main_ul_div_img" style="display:none;"></div>
+    </div>
+    <div class="fr unlogin">
+      <p class="p2"><a href="javascript:;" class="a7">登录</a></p>
+      <p class="p2"><a href="http://bbs.hahacn.com/reging.html" target="_blank" class="a5">注册</a></p>
+      <p class="p3"><a href="javascript:;" onclick="return AddFavorite(window.location,document.title);" class="a6"></a></p>
+    </div>
+        <div class="fr head16_vis logined" style="display:none;">
+            <div class="head16_usename lt"><div class="head16_usename_div">-</div><i></i>
+                <div class="head16_usenamelist ">
+                    <div class="head16_usenamelist1">
+                        <a href="http://bbs.hahacn.com/set.html" target="_blank"><span class="span1">上传头像</span></a>
+                        <a href="http://bbs.hahacn.com/set.html" target="_blank"><span class="span2">个人信息</span></a>
+                        <!--a href="http://me.07073.com/main/newtag/" target="_blank"><span class="span3">个人标签</span></a-->
+                        <a href="http://bbs.hahacn.com/set.html" target="_blank"><span class="span4">修改密码</span></a>
+                        <!--a href="http://me.07073.com/fahao/all/" target="_blank" class="box"><span class="span5">存号箱</span></a-->
+
+                        <!--a href="#" target="_blank">在线投稿</a-->
+                      <!--a href="#" target="_blank">我的稿件</a-->
+                    </div>
+                    <div class="head16_usenamelist2">
+                        <a href="javascript:;" id="home" target="_blank">进入会员中心</a>
+                        <a href="javascript:;" class="act_logout">退出</a>
+                    </div>
+                </div>
+            </div>
+            <p class="p3 ml_0"><a href="http://bbs.hahacn.com/messages.html" target="_blank" class="a8"><i id="msg_num"></i></a></p>
+            <p class="p3 ml_0"><a href="javascript:;" onclick="return AddFavorite(window.location,document.title);" class="a6"></a></p>
+        </div>
+  </div>
+  <div class="head16_nav">
+    <div class="head16_main">
+      <dl><dt><span class="span1"></span><b>新闻聚焦</b></dt><dd>
+      {volist name="nav" id="vo"}
+      <a href="{:url('mlist/'.$vo['id'])}" target="_blank" >{$vo['typename']}</a><br>
+      {/volist}
+      </dd></dl>
+      <dl><dt><span class="span2"></span><b>美文动态</b></dt><dd>
+      {volist name="mwnav" id="vo"}
+      <a href="{:url('mlist/'.$vo['id'],'',true,'mw')}" target="_blank" >{$vo['typename']}</a><br>
+      {/volist}
+      </dd></dl>
+      <dl><dt><span class="span3"></span><b>美女专题</b></dt><dd>
+      {volist name="mmnav" id="vo"}
+      <a href="{:url('mlist/'.$vo['id'],'',true,'mm')}" target="_blank" >{$vo['typename']}</a><br>
+      {/volist}
+      </dd></dl>
+      <dl><dt><span class="span4"></span><b>健康专区</b></dt><dd>
+      {volist name="jknav" id="vo"}
+      <a href="{:url('mlist/'.$vo['id'],'',true,'jk')}" target="_blank" >{$vo['typename']}</a><br>
+      {/volist}
+      </dd></dl>
+      <dl><dt><span class="span5"></span><b>找笑话</b></dt><dd>
+      {volist name="jokenav" id="vo"}
+      <a href="{:url('mlist/'.$vo['id'],'',true,'joke')}" target="_blank" >{$vo['typename']}</a><br>
+      {/volist}
+      </dd></dl>v,tao,,mall,demo
+      <dl><dt><span class="span6"></span><b>其他</b></dt><dd><a href="http://wpa.qq.com/msgrd?v=3&uin=737597453&site=qq&menu=yes" target="_blank" class=" red">投稿咨询</a><br><a href="{:url('ad')}" target="_blank" >广告服务</a><br><a href="http://yx.hahacn.com" target="_blank" >游戏资讯</a><br><a href="http://ch.hahacn.com" target="_blank" >吃货天下</a><br><a href="http://bbs.hahacn.com" target="_blank" >华乐论坛</a><br><a href="http://mall.hahacn.com/" target="_blank" >华乐商城</a></dd></dl>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="http://m1.073img.com/ued2016/index_073/js/jquery.SuperSlide.2.1.2.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://m1.073img.com/ued2016/index_073/js/new_slide.js?v=1.25" charset="utf-8"></script>
+<script type="text/javascript" src="http://www.hahacn.com/static/js/sso_utils.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://www.hahacn.com/static/js/sso.js?v=201602" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+    var flag;
+  function show_nav() {
+    clearTimeout(flag);
+        $(".head16_nav").stop().animate({height : '299px','overflow':'visible'}, "fast");
+      $('a.a4').css('background-position', '-124px -44px');
+  }
+  
+  function hide_nav() {
+    $('a.a4').css('background-position', '-124px 0');
+        flag = setTimeout(function(){
+        $(".head16_nav").stop().animate({height : '0px','overflow':'hidden'}, "fast");
+        },100);
+  }
+    $("a.a4,.head16_nav").hover(function(){
+        show_nav();
+    },function(){
+        hide_nav();
+    });
+  
+  $('a.nav_more').click(function(){
+    show_nav();
+  });
+  
+});
+
+//加入收藏
+function AddFavorite(sURL, sTitle){
+    try { window.external.addFavorite(sURL, sTitle);}
+    catch (e) 
+    { 
+        try { window.sidebar.addPanel(sTitle, sURL, ""); } 
+        catch (e) { alert("加入收藏失败，请使用Ctrl+D进行添加"); } 
+    } 
+    return false;
+}
+
+var l2 = new uLED({
+    id : "led2",
+    type : "time",
+    format : "hh:mm:ss",
+    hourformat : 24,
+    color : "#fa0",
+    bgcolor : "#222",
+    size : 3,
+    rounded : 0
+  });
+//new SSO({'callback' : function(flag){alert('asdfasdf:'+flag)}});
+</script><!--header -->

@@ -1,0 +1,354 @@
+{include file="account/header"}
+<!--右边内容start-->
+<div class="content-right" ng-controller="ctrlArea">
+  <div class="bg-white pd20">
+    <div class="member-index clearfix">
+      <div class="head-type">
+        <ul>
+          <li><a href="/member/goods/friendgoods" class="">出售友链</a></li>
+          <li><a href="/member/package/index" class="curr">友链套餐</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="member-index-center clearfix">
+      <div class="searchbar ">
+        <ul class="list-inline  pr0">
+          <li class="head-nav">
+            <div class="type-name pull-left " >状态：</div>
+            <div class="dropdown pull-left select_isdel" style="width: 100px;">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="dropdown-selected" >所有</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type">
+                <li><a href="javascript:void(0)" ng-click = "choice_state(0)" class="curr">所有</a></li>
+                <li><a href="javascript:void(0)" ng-click = "choice_state(2)" class="">上架</a></li>
+                <li><a href="javascript:void(0)" ng-click = "choice_state(3)" class="">下架</a></li>
+                <li><a href="javascript:void(0)" ng-click = "choice_state(1)" class="">待审核</a></li>
+                <li><a href="javascript:void(0)" ng-click = "choice_state(4)" class="">未通过</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="new-change clearfix">
+        <a  ng-click = "add_goods()">添加套餐</a>
+      </div>
+      <div class="clearboth"></div>
+  
+      <div class=" friend-table" infinite-scroll="loadMore()" infinite-scroll-distance='0' infinite-scroll-disabled="" >
+        <table class="table" >
+          <thead>
+          <tr>
+            <th width="16%">套餐标题</th>
+            <th width="16%">套餐描述</th>
+            <th width="8%">网站数</th>
+            <th width="12%">折扣</th>
+            <th width="12%">套餐价</th>
+            <th width="8%">销量</th>
+            <th width="8%">状态</th>
+            <th width="10%">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-show="package.length == 0">
+            <td colspan="9" class="bbnone"><img src="/static/images/nodata/package.png" class="mt60"/></td>
+          </tr>
+          <tr ng-repeat = "item in package" ng-show = "show_goods(item.status)">
+            <td ng-bind = "item.title">子科锤子科锤子科技锤子科锤子科锤子科技锤子科科科锤子科科科锤</td>
+            <td ng-bind = "item.des">述描述描述描述描述描述描述描述描述描述描述描述描描述描述描述...</td>
+            <td ng-bind = "item.webnum">5</td>
+            <td ng-bind = "item.discount">3折</td>
+            <td>¥<ss ng-bind = "item.price"></ss>/月</td>
+            <td ng-bind = "item.sales">5</td>
+            <td ng-bind = "state(item.status)">待审核</td>
+            <td> 
+              <any ng-switch = "item.status">
+                <any ng-switch-when = "2">
+                    <a  href="javascript:void(0)" ng-click = "downGoods(item.id,$index)">下架</a>
+                </any>
+                <any ng-switch-when = "3">
+                    <a  href="javascript:void(0)" ng-click = "upGoods(item.id,$index)">上架</a>
+                </any>
+              </any>
+              <a ng-show = "item.status != 2" href="/member/package/editpackage.htm?id={{item.id}}">修改</a> 
+              <a href="javascript:void(0)" class="see_btn" ng-click = "look_combo(item.id)">查看</a>
+              <a ng-show = "item.status != 2" href="javascript:void(0)" class="delpackage" ng-click = "del_goods(item.id,$index)">删除</a>
+            </td>
+          </tr>
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!--查看弹窗start-->
+<div class="modal fade see_modal" id="myModal-5" data-backdrop="static">
+  <div class="modal-dialog" style="width:660px;height:auto">
+    <div class="modal-content acc-con" >
+      <div class="modal-header headerbar">
+        <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+        <h4>查看</h4>
+      </div>
+      <div class="modal-body" style="padding-top: 30px;">
+        <div class="cue text-red mb20">注：加入套餐中的网站，出售的友链需要在上架状态下。</div>
+        <div class="table-responsive choosetab">
+          <table class="table">
+            <thead>
+            <tr>
+              <th width="20%">网站名称</th>
+              <th width="20%">网站地址</th>
+              <th width="20%">行业分类</th>
+              <th width="20%">百度权重</th>
+              <th width="20%">价格</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat = "item in combo_info">
+              <td ng-bind = "item.webname">站长资源平台</td>
+              <td ng-bind = "item.url">www.2898.com</td>
+              <td ng-bind = "item.cid1name">网站网站</td>
+              <td ng-bind = "item.bdweight">2</td>
+              <td ng-bind = "item.price">¥20.00/月</td>
+            </tr>
+            <!-- <tr>
+              <td>站长资源平台</td>
+              <td>www.2898.com</td>
+              <td>网站网站</td>
+              <td>2</td>
+              <td>¥20.00/月</td>
+            </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--查看窗弹窗end-->
+<!--删除弹窗start-->
+<div class="modal fade delpackage_modal" id="myModal-5" data-backdrop="static">
+  <div class="modal-dialog" style="width:383px;height:auto">
+    <div class="modal-content acc-con" >
+      <div class="modal-header headerbar">
+        <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+        <h4>提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center sure-text">
+          确认删除此套餐吗？
+        </div>
+
+      </div>
+      <div class="modal-footer footer-btn">
+        <button class="btns cancel" data-dismiss="modal">取消</button>
+        <button class="btns save" data-dismiss="modal" >确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--删除弹窗end-->
+
+<!--下架弹窗start-->
+<div class="modal fade package_xj" id="myModal-5" data-backdrop="static">
+  <div class="modal-dialog" style="width:500px;height:auto">
+    <div class="modal-content acc-con" >
+      <div class="modal-header headerbar">
+        <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+        <h4>提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="waring"></div>
+          <p class="text-red fs16">下架后如果套餐内容有修改，需要重新审核通过后才能上架出售，确认下架吗？</p>
+        </div>
+
+      </div>
+      <div class="modal-footer footer-btn">
+        <button class="btns cancel" data-dismiss="modal">取消</button>
+        <button class="btns save" data-dismiss="modal" ng-click = "sureDown()" >确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--下架弹窗弹窗end-->
+
+<!--下架弹窗start-->
+<div class="modal fade package_xj2" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:500px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>提示</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center">
+            <div class="waring"></div>
+            <p class="text-red fs16" ng-bind = "downMsg">下架后如果套餐内容有修改，需要重新审核通过后才能上架出售，确认下架吗？</p>
+          </div>
+  
+        </div>
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal">取消</button>
+          <button class="btns save" data-dismiss="modal" ng-click = "sureDown2()" >确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--下架弹窗弹窗end-->
+
+<!--上架成功弹窗start-->
+<div class="modal fade success-up" id="myModal-5" data-backdrop="static">
+  <div class="modal-dialog" style="width:500px;height:auto">
+    <div class="modal-content acc-con" >
+      <div class="modal-header headerbar">
+        <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+        <h4>提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center sure-text">
+          <div class="waring"></div>
+          <p class="text-red fs16">您的套餐内容有修改，需重新审核通过后才能上架！</p>
+        </div>
+
+      </div>
+      <div class="modal-footer footer-btn">
+        <button class="btns cancel" data-dismiss="modal">取消</button>
+        <button class="btns save" data-dismiss="modal">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--下架弹窗弹窗end-->
+
+
+
+<!--完善个人资料start-->
+<div class="modal fade person" id="myModal-5" data-backdrop="static">
+  <div class="modal-dialog" style="width:600px;height:auto">
+    <div class="modal-content acc-con" >
+      <div class="modal-header headerbar">
+        <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+        <h4>完善个人资料</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal form-info pd0">
+          <!--有手机号的情况      其他显示隐藏的加上none类名              -->
+          <div class="form-group " ng-class = "{true:'none'}[userInfo.phone == '']">
+            <label for="" class="col-sm-2 control-label">手机号：</label>
+            <div class="col-sm-9 pl0 pr8">
+              <span class="phone" ng-bind="userInfo.phone">185*****1635</span>
+            </div>
+          </div>
+          <!--没有手机号的情况-->
+          <div class="form-group " ng-class = "{true:'none'}[userInfo.phone != '']">
+            <label for="" class="col-sm-2 control-label">手机号：</label>
+            <div class="col-sm-9 pl0 pr8">
+              <input ng-model="phone"  phoneNum  type="text" phone-num class="form-control" />
+            </div><span class="must-sign"></span>
+          </div>
+          <div id="tipMsg" class="form-group text-center text-red" ng-bind="tipMsg">xxxxxxxxxx</div>
+          <div class="form-group" ng-show = "userInfo.phone == ''">
+            <label for="" class="col-sm-2 control-label">验证码：</label>
+            <div class="col-sm-3 pl0 pr8">
+              <!--<span class="phone">185*****1635</span>-->
+              <input ng-model="verify" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-5"  >
+              <!--<a href="javascript:void(0)" class="code">获取验证码</a>-->
+              <div id="getCode" class="verifyCodeImg  send-code-btn"   ng-click = "authCode()">
+                <a href="javascript:void(0)" class="btn code">获取验证码</a>
+              </div>
+              <div id="timeCount" class="verifyCodeImg  resend-btn hidden " >
+                <a href="javascript:void(0)" class="btn btn-lg "><i id="d-sec"  >60</i> &nbsp;秒后重新获取</a>
+              </div>                  
+            </div>
+          
+            
+          </div>
+            <div class="form-group text-center text-red" ng-bind="msg">xxxxxxxxxx</div>
+          <div class="form-group" ng-show = "userInfo.qq == ''">
+            <label for="" class="col-sm-2 control-label">QQ：</label>
+            <div class="col-sm-9 pl0 pr8">
+              <input ng-model="qq" type="text" class="form-control name">
+            </div><span class="must-sign"></span>
+          </div>
+          <div class="form-group" ng-show ="userInfo.email == ''">
+            <label for="" class="col-sm-2 control-label">邮箱：</label>
+            <div class="col-sm-9 pl0 pr8">
+              <input type="text" ng-model="email"  class="form-control url">
+            </div>
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer footer-btn">
+        <button id="save" class="btn btns save"   ng-click ="siveEdit()">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--完善个人资料弹窗end-->
+
+</div>
+</body>
+<!--右边内容end-->
+
+<script>
+  //modal_alert('上架成功!');
+  $('.member-nav .csyl').find('dt').eq(0).find('a').addClass('curr')
+</script>
+<script type="text/javascript" src="/static/js/factory/directive.js"></script>
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/package_index.js?v=20180903"></script>
+{include file="account/footer"}
+</body>
+</html>

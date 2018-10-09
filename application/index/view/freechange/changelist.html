@@ -1,0 +1,383 @@
+{include file="account/header"}
+<!--右边内容start-->
+<div class="content-right" ng-controller = "ctrlArea">
+  <div class="bg-white pd20">
+    
+    <div class="member-index clearfix">
+      <div class="head-type">
+        <ul>
+          <li><a href="javascript:void(0)" ng-class = "{true:'curr'}[apply.type == 1]" ng-click = "change_type(1)">我申请的</a><span class="glyphicon">|</span></li>
+          <li><a href="javascript:void(0)" ng-class = "{true:'curr'}[apply.type == 2]" ng-click = "change_type(2)" >被申请的</a></li>
+        </ul>
+        </ul>
+        <div class="pull-right search mr10">
+          <input type="text" placeholder="请输入网站名称/域名" ng-model="apply.search" ng-change="getSearchData()"/>
+        </div>
+      </div>
+    </div>
+    <div class="searchbar">
+      <ul class="list-inline  pr0 ">
+        <li class="head-nav">
+          <div class="type-name pull-left " >上链情况：</div>
+          <div class="dropdown pull-left select_isdel" style="width: 126px;">
+            <button class="btn btn-default goodstype" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 126px;">
+              <span class="dropdown-selected" >全部</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type">
+              <li ng-repeat="(key,value) in sl_status" ng-click="changetype(key)"><a href="javascript:void(0)"  ng-bind="value"></a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="member-index-center clearfix">
+      <div class="clearboth"></div>
+  
+      <div class="free-table"  >
+        <table class="table">
+          <thead>
+          <tr>
+            <th width="12%">自己网站信息</th>
+            <th width="12%">对方网站信息</th>
+            <th width="12%">上链信息</th>
+            <th width="12%" style="text-align:left;padding-left:37px;">联系信息</th>
+            <th width="12%" style="padding-left: 0px;">申请时间</th>
+            <th width="12%">上链情况</th>
+            <th width="12%" style="padding-left: 0px;">操作
+                            <span class="fa fa-question-circle htip" data-toggle="tooltip" data-placement="bottom"
+                  data-original-title="上链时的链接标题为对方的关键词，链接地址为对方的网站地址"></span>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr ng-show="data_list.length == 0">
+              <td colspan="7" class="bbnone"><img src="/static/images/nodata/changelist.png" class="mt60" /></td>
+            </tr>
+            <tr ng-repeat="item in data_list ">
+              <td>
+                <div class="website">             
+                  <div>
+                    <p ng-bind = "item.my_webname"></p>
+                    <p><a target="_blank" ng-href="http://{{item.my_url}}" ng-bind ="item.my_url"></a></p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="website">             
+                  <div >
+                    <p ng-bind = "item.op_webname"></p>
+                    <p><a target="_blank" ng-href="http://{{item.op_url}}" ng-bind ="item.op_url"></a></p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div><span  ng-bind = "item.op_keyword"></span></div>
+                <div><a target="_blank" ng-href="//{{item.op_url}}" ng-bind ="item.op_url"></a></div>
+              </td>
+              <td>
+                <p ng-repeat="connect in item.connect2" class="text-left toolong">
+                  <span  class="lsname" ng-bind="connect.type + ':'"></span>
+                  <span  class="cation" ng-bind = "connect.msg" ></span>
+                </p>
+              </td>
+              <td ng-bind= "formatDate(item.atime)">
+                2017-09-11 15：59
+              </td>
+              <td>
+                <p class="clearfix">
+                  <span class="lsname">对方：</span>
+                  <span class="cation " ng-bind = "free_status(item.op_look,item.op_status,apply.type)" ng-class = "{true:'text-red',false:'text-green'}[item.op_status != 2]"></span>
+                </p>
+                <p class="clearfix">
+                  <span class="lsname">自己：</span>
+                  <span class="cation " ng-bind ="free_status('',item.my_status,apply.type)" ng-class = "{true:'text-red',false:'text-green'}[item.my_status != 2]"></span>
+                </p>
+              </td>
+              <td>
+                <a ng-show = "show_handle(item,'上链接',apply.type)" ng-click = "upOrDown(item.oid,apply.type,$index,2)"  href="javascript:void(0)">上链接</a>   <!--成功状态直接modal_alert('上链成功！')-->
+                <a ng-show = "show_handle(item,'下链接',apply.type)" ng-click = "upOrDown(item.oid,apply.type,$index,3)"  href="javascript:void(0)">下链接</a>
+                <a ng-show = "show_handle(item,'拒绝',apply.type)"  href="javascript:void(0)" ng-click = "delete(item.oid,apply.type,$index,'拒绝')">拒绝</a>
+                <a ng-show = "show_handle(item,'详情',apply.type)"  ng-click = "getDetails(item.oid,apply.type)" href="javascript:void(0)" >详情</a>
+                <a ng-show = "show_handle(item,'取消',apply.type)" ng-click = "delete(item.oid,apply.type,$index,'取消')"  href="javascript:void(0)">取消</a>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="tcdPageCode listpage" ng-show = "data_list.length != 0"></div>
+    </div>
+    
+  </div>
+
+  <!--拒绝理由弹窗start-->
+  <div class="modal fade reasonbox" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:500px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4><ss ng-bind = "str"></ss>理由</h4>
+        </div>
+        <div class="modal-body">
+          <div class="reason">
+            <textarea ng-model="reject_str"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer footer-btn">
+          <button class="btns save" data-dismiss="modal" ng-click = "sure_dl()">提交</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--拒绝理由弹窗弹窗end-->
+<!--未检测到链接弹窗start-->
+  <div class="modal fade detection" id="myModal-15" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" style="width:380px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal" ng-click="backdrop()"><span aria-hidden="true"></span></button>
+          <h4>提示</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center sure-text" ng-bind = 'up_err'>
+            未检测到链接
+          </div>
+        </div>
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal" ng-click="backdrop()">取消</button>
+          <button class="btns save"  data-dismiss="modal" ng-click = "re_detection()" >重新检测</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--未检测到链接弹窗弹窗end-->
+  
+  <!--检测中-->
+  <div class="modal fade modal-blue modal_cue" id="myModal-55" data-backdrop="static">
+    <div class="modal-dialog modal-sm"  style="margin-top: 300px">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="panel-body text-blue text-center" >
+              <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">友链检测中...</h4>
+              <img src="/static/images/tool/loading.png"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--检测中-->
+  <!--详情弹窗start-->
+  <div class="modal fade changedetail" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:840px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>交换详情</h4>
+        </div>
+        <div class="modal-body">
+          <div class="infobox">
+            <div class="her">
+              <span class="titlename">对方网站信息</span>
+              <div class="info-data">
+                <div class="clearfix">
+                  <dl class="clearfix">
+                    <dt>网站名称：</dt>
+                    <dd ng-bind = "order_details.op.name"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>百度权重：</dt>
+                    <dd ng-bind = "order_details.op.bdweight"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>域名年龄：</dt>
+                    <dd ng-bind = "order_details.op.age +' 年'"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>网站地址：</dt>
+                    <dd ng-bind = "order_details.op.url"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>百度收录：</dt>
+                    <dd ng-bind = "order_details.op.bdincluded">1</dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>友链类型：</dt>
+                    <dd>首页</dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>行业分类：</dt>
+                    <dd ng-bind = "order_details.op.catename"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;链：</dt>
+                    <dd  ng-bind = "order_details.op.bdtrans"></dd>
+                  </dl>
+                  <!-- <dl class="clearfix">
+                    <dt>更新时间：</dt>
+                    <dd ng-bind = "order_details.op.end_time">2016-07-03</dd>
+                  </dl> -->
+                  <dl class="clearfix">
+                    <dt>关&nbsp;&nbsp;键&nbsp;&nbsp;词：</dt>
+                    <dd ng-bind = "order_details.op.keyword"></dd>
+                  </dl>
+                </div>
+                <!--交换条件-->
+                <div class="changetj">
+                  <span class="names">交换条件:</span>
+                  <ul class="clearfix">
+                    <li>
+                      <label>行业分类：</label>
+                      <span ng-bind = "order_details.limit.category_o"></span>
+                    </li>
+                    <li>
+                      <label>百度权重≥：</label>
+                      <span ng-bind = "order_details.limit.bdweight"></span>
+                    </li>
+                    <li>
+                      <label>百度收录≥：</label>
+                      <span ng-bind = "order_details.limit.bdincluded"></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!--自己网站信息-->
+            <div class="her mt20">
+              <span class="titlename">自己网站信息</span>
+              <div class="info-data">
+                <div class="clearfix">
+                  <dl class="clearfix">
+                    <dt>网站名称：</dt>
+                    <dd ng-bind = "order_details.my.name"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>百度权重：</dt>
+                    <dd ng-bind = "order_details.my.bdweight"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>域名年龄：</dt>
+                    <dd ng-bind = "order_details.my.age + ' 年'"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>网站地址：</dt>
+                    <dd ng-bind = "order_details.my.url"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>百度收录：</dt>
+                    <dd ng-bind = "order_details.my.bdincluded"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>友链类型：</dt>
+                    <dd>首页</dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>行业分类：</dt>
+                    <dd ng-bind = "order_details.my.catename"></dd>
+                  </dl>
+                  <dl class="clearfix">
+                    <dt>反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;链：</dt>
+                    <dd ng-bind = "order_details.my.bdtrans"></dd>
+                  </dl>
+                  <!-- <dl class="clearfix">
+                    <dt>更新时间：</dt>
+                    <dd ng-bind = "order_details.my.end_time">2016-07-03</dd>
+                  </dl> -->
+                  <dl class="clearfix">
+                    <dt>关&nbsp;&nbsp;键&nbsp;&nbsp;词：</dt>
+                    <dd ng-bind = "order_details.my.keyword"></dd>
+                  </dl>
+                </div>
+                
+              </div>
+            </div>
+            <!--交换日志-->
+            <div class="her mt20">
+              <span class="titlename">交换日志</span>
+              <div class="">
+                <table class="table change-log-table">
+                  <thead>
+                    <tr>
+                      <th width="20%">时间</th>
+                      <th width="80%">内容</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in order_details.log">
+                      <td ng-bind = "formatDate(item.atime)"></td>
+                      <td ng-bind = "item.act"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+      </div>
+    </div>
+  </div>
+  <!--详情弹窗end-->
+  
+  
+</div>
+<!--右边内容end-->
+<script type="text/javascript">
+  $('[data-toggle="tooltip"]').tooltip({   // 有宽高限制
+    'html': true,
+    'trigger': 'hover'  // 默认hover
+  })
+</script>
+  <script type="text/javascript" src="/static/js/factory/directive.js"></script>
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/freechange_changelist.js?v=20180903"></script>
+{include file="account/footer"}
+</body>
+</html>

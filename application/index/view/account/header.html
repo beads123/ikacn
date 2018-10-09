@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
+    <meta content="webkit" name="renderer">
+    <meta name="sogou_site_verification" content="VWPBtuptoZ"/>
+    <title>会员中心</title>
+    <link rel="shortcut icon" href="/images/zhan1.ico"/>
+
+    <link rel="stylesheet" type="text/css" href="/static/js/bootstrap/css/bootstrap.min.css?v=20180903"/>
+    <link type="text/css" rel="stylesheet" href="/static/js/bootstrap/css/bootstrap.css?v=20180903" />
+    <link type="text/css" rel="stylesheet" href="/static/js/fontAwesome/css/font-awesome.min.css?v=20180903">
+    <link type="text/css" rel="stylesheet" href="/static/css/member.css?v=20180903" />
+    <link type="text/css" rel="stylesheet" href="/static/css/jquery.page.css" />
+    <script type="text/javascript" src="/static/js/jquery.js?v=20180903"></script>
+    <script  type="text/javascript" src="/static/js/angular1.0.js?v=20180903"></script>
+    <script  type="text/javascript" src="/static/js/angular-cookies.js?v=20180903"></script>
+    <script type="text/javascript" src="/static/js/ng-infinite-scroll.js?v=20180903"></script>
+    <script type="text/javascript" src="/static/js/bootstrap/js/bootstrap.min.js?v=20180903"></script>
+    <script type="text/javascript" src="/static/js/zeroclipboard/ZeroClipboard.js?v=20180903"></script>
+    <script language="javascript" type="text/javascript" src="/static/js/My97DatePicker/WdatePicker.js?v=20180903"></script>
+    <script language="javascript" type="text/javascript" src="/static/js/jquery.page.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap/js/bootstrap.js?v=20180903"></script>
+    <script type="text/javascript" src="/static/js/comment.js?v=20180903"></script>
+    <script type="text/javascript">
+        var app = angular.module('application',['infinite-scroll','ngCookies'])
+        window.console = window.console || (function () {
+                    var c = {}; c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile
+                            = c.clear = c.exception = c.trace = c.assert = function () { };
+                    return c;
+                })();
+    </script>
+    <script type="text/javascript" src="/static/js/bootcommon.js"></script>
+    <script type="text/javascript" src="/static/js/config.js?v=20180903"></script>
+    <script type="text/javascript" src="/static/js/highcharts.js?v=20180903"></script>
+    <script type="text/javascript" src="/static/js/jquery-cookie.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/static/js/member.js?v=20180903"></script>
+    <script type="text/javascript">
+      var _hmt = _hmt || [];
+      (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?336b5eef96e9764e77af03e6ad4abc73";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+</head>
+
+
+<body ng-app="application" id="ng-app" class="'ng-app:application'">
+  <!--头部导航start-->
+  <!--头部导航start-->
+
+<div ng-controller = "msg" >
+    <nav class="nav-header clearfix">
+      <div class="nav-logo">
+        <a href="/"><img src="/static/images/2898logo.png" alt="" /></a>
+      </div>
+      <div class="webnav">
+        <span class="navname">网站导航</span>
+        <div class="dropdown-nav">
+          <ul>
+            <li><a href="javascript:void(0)">网站导航</a></li>
+            <li><a href="/">官网首页</a></li>
+            <li><a href="/fontlink.html">网站广告</a></li>
+            <li><a href="/friendlink.html">友链买卖</a></li>
+            <li><a href="/friendchange.html">免费换链</a></li>
+            <li><a href="/flowad.html">流量交换</a></li>
+            <li><a href="/web_exchange.html">网站交易</a></li>
+            <li><a href="/webmain.html">网站排行</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pull-right user-logo" >
+        
+        <div href="javascript:void(0)" class="logoa">
+          <a href="/member/account/member.html"><img src="/static/images/headimg.png" onerror="this.src='/static/images/headimg.png';"/></a>
+          <div class="dropdown-history">
+            <span class="san"></span>
+            <ul>
+              <li><i class="my"></i><a href="/member/account/index.html" >我的账户</a></li>
+              <li><i class="infop"></i><a href="/member/account/personal.html" >个人信息</a></li>
+              <li><i class="help"></i><a href="/question.html" >帮助中心</a></li>
+              <li><i class="exit"></i><a href="/member/account/login_out.html">退出</a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+      <div class="message pull-right">
+        <div  class="mess">
+          <span class="">0</span>
+          <div class="messagebox">
+            <i class="san"></i>
+            <h3>消息盒子</h3>
+            <ul>
+              <li ng-show = "noNews" class="text-center">暂无新消息</li>
+              <li  ng-class = "{true:'newmess',false:''}[item.type == 0]" ng-repeat = "item in threeMsg"><b>[<ss ng-bind = "item.type"></ss>]</b> <ss ng-bind = "item.info">您的“xxxxx”网站审核已通过，网站审核已及时查看！</ss></li>
+              <!-- <li><b>[系统]</b>您的“xxxxx”网站审核已通过，请及时查看！</li>
+              <li><b>[系统]</b>您的“xxxx”网站有新的友链买卖订单，请及时接单！</li> -->
+            </ul>
+            <div class="text-center allsee">
+              <a href="/member/account/message_list.html">查看全部</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pull-right shoppingcart">
+        <a href="/index/goods/submit_order.html">
+          <div class="bg-shop">
+            <span class="text-red" ng-bind="common.itemNum" class="text-red" ng-bind="common.itemNum"></span>
+          </div>
+        </a>
+      </div>
+      
+    </nav>
+<!--头部导航end-->
+<!--消息弹窗-->
+<div class="modal fade message_case" id="myModal-5" data-backdrop="static">
+  <div class="modal-dialog" style="width:760px;height:auto">
+    <div class="modal-content acc-con" >
+      <div class="modal-header headerbar">
+        <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+        <h4>消息盒</h4>
+      </div>
+      <div class="modal-body" style="padding-top: 20px;" >
+        <form class="form-horizontal form-info pd0" >
+          <div class="messagelist" id = "list" >
+            <ul>
+              <li  ng-class = "{true:'newmess',false:'graycolor'}[item.isread == 0]" ng-repeat = "item in allMsg">
+                <!--<label class="checkmsg  pull-left"><input type="checkbox"   class="none" mark="1"/><b style="margin: 0px;"></b></label>-->
+                <span class="icon-checkbox pull-left" ng-class="{checked:item.checked}" ng-click="checkItem($index)"></span>
+                <b class="pull-left" style="display: inline-block;width: 70px;">[<ss ng-bind = "msgType(item.type)"></ss>]</b>
+                <ss ng-bind = "item.info" class="ss">您的“xxxxx”网站审核已通过，请及时查看！ </ss>
+                <span ng-bind = "msgTime(item.atime)">2017.09.03</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pl5 clearfix">
+            <div class="pull-left">
+              <span class="icon-checkbox pull-left mt6" ng-class="{checked: checked}" ng-click="checkItem('all')"></span><span>全选</span>
+              <button class=" price_btn" ng-click="reads()">标为已读</button>
+              <button class=" price_btn" ng-click="delmsg()">删除</button>
+            </div>
+            <div class="page-mini pull-right">
+                  <span ng-click="getPage('prev')"   ng-class="{'disabled': data.px==1}" class="left fa fa-angle-left"></span>
+                  <span ng-click="getPage('next')"   ng-class="{'disabled': data.px==max_page}" class="right fa fa-angle-right"></span>
+              </div>
+            <div class="page-num pull-right ml10" style="margin-top: 4px">
+              <span class="search-count">共 <span class="text-yellow" ng-bind="max_page"></span>页</span>
+                  <span class="px" ng-bind="data.px"></span> /
+                  <span class="pz" ng-bind="max_page"></span>
+              </div>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    <script type="text/javascript">
+      var message = "";
+    </script>
+<!--消息弹窗-->
+
+</div>
+
+
+
+
+  <!--头部导航end-->
+
+  <!--左边菜单栏start-->
+  
+    <!--卖家左边菜单栏-->
+<div class="left-menu" >
+  <div class="member-nav">
+        <dl class="zhgs" style="position: relative;">
+      <dt><a class = "curr" href="/member/account/member.html">帐户概述</a>  
+            </dt>
+            
+    </dl>
+        <dl class="ddgl" style="position: relative;">
+      <dt><a href="javascript:void(0)" class="arrup">订单管理<i ></i></a> 
+            </dt>
+              <dd style=""><a class="" href="/member/order/index.htm">购买的订单</a></dd>
+                <dd style=""><a class="" href="/member/order/indexsell.htm">卖出的订单</a></dd>
+              
+    </dl>
+        <dl class="csyl" style="position: relative;">
+      <dt><a  href="/member/goods/friendgoods.htm">出售友链</a> 
+            </dt>
+            
+    </dl>
+        <dl class="csgg" style="position: relative;">
+      <dt><a  href="/member/twgoods/twgoods.htm">出售广告</a> 
+            </dt>
+            
+    </dl>
+        <dl class="csrw" style="position: relative;">
+      <dt><a class = "curr" href="/member/softtext/softtext.htm">出售软文</a> 
+            </dt>
+            
+    </dl>
+        <dl class="wzjy" style="position: relative;">
+      <dt><a href="javascript:void(0)" class="arrup">网站交易<i ></i></a> 
+            </dt>
+              <dd style=""><a class="" href="/member/websitetrade/sellwebsite.htm">出售的网站</a></dd>
+                <dd style=""><a class="" href="/member/websitetrade/buywebsite.htm">购买的网站</a></dd>
+              
+    </dl>
+        <dl class="mfhl" style="position: relative;">
+      <dt><a href="javascript:void(0)" class="arrup">免费换链<i ></i></a> 
+            </dt>
+              <dd style=""><a class="" href="/member/freechange/release.htm">我发布的</a></dd>
+                <dd style=""><a class="" href="/member/freechange/changelist.htm">交换列表</a></dd>
+              
+    </dl>
+        <dl class="lljh" style="position: relative;">
+      <dt><a href="javascript:void(0)" class="arrup">流量交换<i ></i></a> 
+       
+        <img src="/static/images/guide/new.png" class="traffic_guide_new">
+        <div class="guide-mask one_step"></div>
+        <img src="/static/images/guide/traffic_guide.png" alt="two" class="stepone one_step"/>
+        
+            </dt>
+              <dd style=""><a class="" href="/member/trafficexchange/index.htm">免费交换</a></dd>
+                <dd style=""><a class="" href="/member/trafficexchange/salesindex.htm">流量买卖</a></dd>
+                <dd style=""><a class="" href="/member/trafficexchange/adverwei_manage.htm">广告位管理</a></dd>
+                <dd style=""><a class="" href="/member/trafficexchange/adver_manage.htm">广告管理</a></dd>
+              
+    </dl>
+        <dl class="tggl" style="position: relative;">
+      <dt><a href="javascript:void(0)" class="arrup">推广管理<i ></i></a> 
+            </dt>
+              <dd style=""><a class="" href="/member/tggl/index.htm">广告链接管理</a></dd>
+                <dd style=""><a class="" href="/member/tggl/softmanage.htm">软文管理</a></dd>
+              
+    </dl>
+
+      </div>
+</div>
+
+    <!--左边菜单栏end-->

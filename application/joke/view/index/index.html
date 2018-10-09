@@ -1,0 +1,51 @@
+{include file="header"}
+<div class="main">
+    <div class="main-left">
+        <div class="tabs">
+              <ul>
+              <li class="hover_all"><strong>全部</strong></li>{volist name="nav" id="vo"}
+                  <li><a href="{:url('mlist/'.$vo['id'])}" ><span>{$vo['title']}</span></a></li>
+              {/volist}
+            </ul>
+        </div>
+        {volist name="list" id="vo"}
+            <div class="xiaohua"><div class="border-top"></div><div class="xiaohua-data" id="j_1"><h3 id="t_1"><a href="{:url('detail/'.$vo['id'])}" title="{$vo['title']}" target="_blank"><font color=#32B5F3>{$vo['title']}</font></a></h3><div class="content" id="c_1"><p>{eq name="vo['typeid']" value="1"}{$vo['text']}{else/}<img src="{$vo['text']}" alt="{$vo['title']}" />{/eq}</p></div>
+      <div class="link"><div class="tags" id="tag_1"><dl><dd class="t">
+      <!-- Baidu Button BEGIN -->
+          <div id="bdshare" class="bdshare_b" style="line-height: 12px;"><img src="http://bdimg.share.baidu.com/static/images/type-button-5.jpg" />
+        </div>
+      <script type="text/javascript" id="bdshare_js" data="type=button" ></script>
+      <script type="text/javascript" id="bdshell_js"></script>
+      <script type="text/javascript">
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+      </script>
+      <!-- Baidu Button END -->
+      </dd></dl></div><div class="tools"><ul>
+      <li><a href="javascript:window.external.AddFavorite('{:url('detail/'.$vo['id'])}','{$vo['title']}')" title="加入收藏">收藏</a></li>
+      </ul></div></div></div><div class="border-footer"></div></div>
+        {/volist}
+      <div class="pageinfo">
+      {$page}
+      </div>
+
+    </div>
+<div class="main-right">
+      <ul class="recom-pics">
+        {volist name="mmtuijian" id="vo"}
+            <LI><div class="Thumbnails"><a href="{:url('detail/'.$vo['id'],'','','mm')}" title="{$vo['title']}" target="_blank"><img src="{$vo['imgurl']}" alt="{$vo['title']}" /><p>{$vo['title']}</p></a></div></LI>
+        {/volist}
+        </ul>
+        <div id="rad_1"><script src='/plus/ad_js.php?aid=26' language='javascript'></script></div>
+        
+        <div class="recom"><div class="recom-title"><span class="title-left">推荐笑点</span><span class="title-right"></span></div><div class="recom-tags"><a href="{:url('search')}?q=家庭" target="_blank">家庭</a><a href="{:url('search')}?q=爆笑" target="_blank">爆笑</a><a href="{:url('search')}?q=夫妻" class="m2" target="_blank">夫妻</a><a href="{:url('search')}?q=体育" target="_blank">体育</a><a href="{:url('search')}?q=交通" target="_blank">交通</a><a href="{:url('search')}?q=名人" target="_blank">名人</a><a href="{:url('search')}?q=创意" class="m1" target="_blank">创意</a><a href="{:url('search')}?q=美女" target="_blank">美女</a><a href="{:url('search')}?q=牛人" target="_blank">牛人</a><a href="{:url('search')}?q=动漫" target="_blank">动漫</a><a href="{:url('search')}?q=儿童" class="m2" target="_blank">儿童</a><a href="{:url('search')}?q=校园" target="_blank">校园</a><a href="{:url('search')}?q=男女" target="_blank">男女</a><a href="{:url('search')}?q=糗事" target="_blank">糗事</a><a href="{:url('search')}?q=狗狗" target="_blank">狗狗</a><a href="{:url('search')}?q=冷笑话" target="_blank">冷笑话</a><a href="{:url('search')}?q=猫咪" target="_blank">猫咪</a><a href="{:url('search')}?q=动态图" target="_blank">动态图</a><a href="{:url('search')}?q=动物" target="_blank">动物</a><a href="{:url('search')}?q=雷人恶搞" target="_blank">雷人恶搞</a><a href="{:url('search')}?q=奇闻趣事" target="_blank">奇闻趣事</a><a href="{:url('search')}?q=趣事" target="_blank">趣事</a></div>
+
+<div class="recom-search"><form action="{:url('search')}" method="get" id="searchableForm" name="searchableForm"><input type="text" name="q" class="q" value="" placeholder="找笑话？在这里输入关键字" title="找笑话？在这里输入关键字" onFocus="this.value==this.title?this.value='':null" onBlur="this.value==''?this.value=this.title:null" /><input type="submit" value="搜索笑话" class="submit" /></form></div></div>
+
+
+<div class="recom"><div class="recom-title"><span class="title-left">友情链接</span><span class="title-right"></span></div><div class="friend-links"><ul>{volist name="flink" id="vo"}<li><a href="{$vo['url']}" target="_blank">{$vo['name']}</a></li>{/volist}</ul></div></div>
+</div>
+    </div>
+</div>
+{include file="footer"}
+</body>
+</html>

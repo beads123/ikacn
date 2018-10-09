@@ -1,0 +1,94 @@
+{include file="tool/header"}
+<div class="s_top clearfix">
+  <div class="whois-title">网站收录链接数量查询</div>
+  <div class="clearfix top_box">
+    <span class="pull-left http">http://</span>
+    <div class="search_whois pull-left">
+      <input type="text" id="domain" name="domain" value="{$url}" placeholder="请输入您要查询的网站"/>
+      <span class="search_btn">查询</span>
+    </div>
+    <div class="t-con buybox">
+      <label class="check mr30"><input name="no" value="Baidu" class="none" mark="1" type="checkbox" checked="checked"><b></b>Baidu</label>
+      <!--label class="check mr30"><input name="no" value="Google" class="none" mark="1" type="checkbox"><b></b>Google</label-->
+      <!--label class="check mr30"><input name="no" value="Yahoo" class="none" mark="1" type="checkbox"><b></b>Yahoo</label-->
+      <label class="check mr30"><input name="no" value="Soso" class="none" mark="1" type="checkbox"><b></b>Soso</label>
+      <label class="check mr30"><input name="no" value="Sogou" class="none" mark="1" type="checkbox"><b></b>Sogou</label>
+      <label class="check mr30"><input name="no" value="Youdao" class="none" mark="1" type="checkbox"><b></b>Youdao</label>
+      <label class="check mr30"><input  id="selectall" value="全选" class="none" mark="1" type="checkbox"><b></b>全选</label>
+    </div>
+  </div>
+  
+</div>
+{eq name="isget" value="1"}
+<div class="cl-show">
+  <div class="s_middle">
+    <div class="clearfix mtb912">
+      <h5 class="pull-left m0">网站 <span>{$url}</span> 收录</h5>
+    </div>
+    <div class="" style="margin-bottom: 20px;">
+    <table class="table beian-table whois_tab">
+        <colgroup>
+          <col width="25%" style="background: #f6f6f6;">
+          <col width="75%">
+        </colgroup>
+        <tbody>
+          {volist name="list" id="vo"}
+            <tr>
+            <td>{$key}查询收录数量</td>
+            <td><a href="{$vo['url']}" target="_blank">{$vo['num']}</a></td>
+          </tr>
+          {/volist}
+        </tbody>
+      </table>
+    </div>
+    <div class="call_code">
+      <span>近期查询历史[ 每小时刷新 ]</span>
+      <div>
+        {if condition="!empty($history)"}
+          {volist name="history" id="vo"}
+            <a href="?url={$vo['url']}" target="_blank" style="color: #338de6">{$vo['url']}</a>
+          {/volist}
+        {else/}
+          <p>暂无记录</p>
+        {/if}
+      </div>
+    </div>
+  </div>
+</div>
+{/eq}
+<!--初始空白页-->
+<div class="tool-jj">
+  <div class="ps_cues">
+    <h5>网站收录链接数量查询</h5>
+    <p>请输入你要查询域名，比如<font color="#FF0000">hahacn.com</font>，不能含有http://www形式；</p>
+    <p>各搜索引擎对网站的收录情况查询，更好的为网站的SEO优化等服务。</p> 
+  </div>
+</div>
+<script type="text/javascript">
+  $("#selectall").click(function() {
+      if(this.checked){
+          $('input[name="no"]').each(function(){this.checked=true;});
+      }else{
+          $('input[name="no"]').each(function(){this.checked=false;});
+      }
+    });
+  $('.search_btn').on('click',function(){
+    var url= $('#domain');
+    url = url.val().replace('/\s+/g',"");
+    if(url == ''){
+      alert('请输入您要查询的网站');
+    }else{
+      var aa="";
+      $('input[name="no"]').each(function(){
+        if(this.checked){
+          aa+=$(this).val()+" ";
+        }
+      })
+      window.location.href="{:url('site')}?url="+url+'&address='+aa;
+    }
+  })
+
+</script>
+{include file="tool/footer"}
+
+

@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>评论插件</title>
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+<script type="text/javascript" src="http://www.hahacn.com/static/js/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="http://www.hahacn.com/static/css/main.css">
+<link rel="stylesheet" type="text/css" href="http://www.hahacn.com/static/css/sinaFaceAndEffec.css">
+
+<style>
+	.container{
+		width: 1000px;
+	}
+	.commentbox{
+		width: 880px;
+	    margin: 20px auto;
+	    float: left;
+	}
+
+	.mytextarea {
+	    width: 100%;
+	    overflow: auto;
+	    word-break: break-all;
+	    height: 100px;
+	    color: #000;
+	    font-size: 1em;
+	    resize: none;
+	}
+	.comment-list{
+		width: 900px;
+		margin: 20px auto;
+		clear: both;
+		padding-top: 20px;
+	}
+	.comment-list .comment-info{
+		position: relative;
+		margin-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #ccc;
+	}
+	.comment-list .comment-info header{
+		width: 10%;
+		position: absolute;
+	}
+	.comment-list .comment-info header img{
+		width: 100%;
+		border-radius: 50%;
+		padding: 5px;
+	}
+	.comment-list .comment-info .comment-right{
+		padding:5px 0px 5px 11%; 
+	}
+	.comment-list .comment-info .comment-right h3{
+		margin: 5px 0px;
+	}
+	.comment-list .comment-info .comment-right .comment-content-header{
+		height: 25px;
+	}
+	.comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span{
+		padding-right: 2em;
+		color: #aaa;
+	}
+	.comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span.reply-btn,.send,.reply-list-btn{
+		cursor: pointer;
+	}
+	.comment-list .comment-info .comment-right .reply-list {
+		border-left: 3px solid #ccc;
+		padding-left: 7px;
+	}
+	.comment-list .comment-info .comment-right .reply-list .reply{
+		border-bottom: 1px dashed #ccc;
+	}
+	.comment-list .comment-info .comment-right .reply-list .reply div span{
+		padding-left: 10px;
+	}
+	.comment-list .comment-info .comment-right .reply-list .reply p span{
+		padding-right: 2em;
+		color: #aaa;
+	}
+</style>
+</head>
+<body>
+
+<div class="container">
+	<div class="c_com">
+		<div class="head-face">
+			<img src="https://www.erdangjiade.com/jquery/8/816/demo/Public/images/avatar.jpg" / >
+			<p>我是鸟</p>
+		</div>
+		<div class="commentbox">
+			<textarea cols="80" rows="50" placeholder="来 , 说说你在做什么 , 想什么 , 来说几句吧......" class="mytextarea" id="content"></textarea>
+			<div class="operator-box-btn"><span class="face-icon"  >☺</span><span class="img-icon">▧</span></div>
+			<div class="btn btn-info pull-right" id="comment">评论</div>
+			<!--span class="countTxt">还能输入</span><strong class="maxNum">140</strong><span>个字</span-->
+		</div>
+	</div>
+	<div class="comment-list"></div>
+	<div class="page"></div>
+</div>
+<script type="text/javascript" src="http://www.hahacn.com/static/js/main.js"></script>
+<script type="text/javascript" src="http://www.hahacn.com/static/js/sinaFaceAndEffec.js"></script>
+<script type="text/javascript">
+	// 绑定表情
+	$('.face-icon').SinaEmotion($('#content'));
+</script>
+<!--script type="text/javascript" src="js/jquery.min.js"></script-->
+<script type="text/javascript" src="http://www.hahacn.com/static/js/jquery.comment.js" ></script>
+<script type="text/javascript" src="http://www.hahacn.com/static/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	//初始化数据
+	/*var arr = [
+		{id:1,img:"./images/img.jpg",replyName:"帅大叔",beReplyName:"匿名",content:"同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",time:"2017-10-17 11:42:53",address:"深圳",osname:"",browse:"谷歌",replyBody:[]},
+		{id:2,img:"./images/img.jpg",replyName:"匿名",beReplyName:"",content:"到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？” 孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”",time:"2017-10-17 11:42:53",address:"深圳",osname:"",browse:"谷歌",replyBody:[{id:3,img:"",replyName:"帅大叔",beReplyName:"匿名",content:"来啊，我们一起吃鸡",time:"2017-10-17 11:42:53",address:"",osname:"",browse:"谷歌"}]},
+		{id:3,img:"./images/img.jpg",replyName:"帅大叔",beReplyName:"匿名",content:"同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",time:"2017-10-17 11:42:53",address:"深圳",osname:"win10",browse:"谷歌",replyBody:[]}
+	];*/
+	var page = 1;
+	var id=2525
+	var dynamicLoading = {
+	  css: function(path){
+	 if(!path || path.length === 0){
+	  throw new Error('argument "path" is required !');
+	 }
+	 var head = document.getElementsByTagName('head')[0];
+	    var link = document.createElement('link');
+	    link.href = path;
+	    link.rel = 'stylesheet';
+	    link.type = 'text/css';
+	    head.appendChild(link);
+	  },
+	  js: function(path){
+	 if(!path || path.length === 0){
+	  throw new Error('argument "path" is required !');
+	 }
+	 var head = document.getElementsByTagName('head')[0];
+	    var script = document.createElement('script');
+	    script.src = path;
+	    script.type = 'text/javascript';
+	    head.appendChild(script);
+	  }
+	}
+	$(function(){
+		if(typeof SSO != 'undefined' && SSO instanceof Function){}else{
+			//动态加载 CSS 文件
+			dynamicLoading.css("http://www.hahacn.com/static/css/sso_2018.css");
+			//动态加载 JS 文件
+			dynamicLoading.js("http://www.hahacn.com/static/js/sso_utils.min.js");
+			dynamicLoading.js("http://www.hahacn.com/static/js/sso.js?v=201602");
+		}
+		//$(".comment-list").addCommentList({data:arr,add:""});
+		$("#comment").click(function(){
+			var inputText = AnalyticEmotion($('#content').val());
+			sencomment({'id':id,'content':inputText});
+			/*$.jsonp({
+			      url: 'http://pl.hahacn.com/index/subcomment',
+			      callback: 'callback',
+			      data: {'id':2525,'content':inputText},
+			      complete: function() {
+			            hideLoadingMsg(); // 数据获取完成后，需要做的事，此为隐藏读取数据的滚动条。
+			        },
+			      success: function(data) {
+			          console.log(data);
+			    }
+			})*/
+			
+
+			/**/
+		});
+	})
+
+	function sencomment(data){
+		$.post('http://pl.hahacn.com/index/subcomment',data,function(res){
+			res = JSON.parse(res);
+			if(res.code == -1){
+				(new SSO).show_login_form();
+			}else if(res.code != 200){
+				alert(res.error)
+			}else{
+				getlist();
+				/*var obj = new Object();
+				obj.img="./images/img.jpg";
+				obj.replyName="匿名";
+				obj.content=inputText;
+				obj.browse="深圳";
+				obj.osname="win10";
+				obj.replyBody="";
+				$(".comment-list").addCommentList({data:[],add:obj});*/
+			}
+			
+		})
+	}
+
+	$('.comment-list').on('click','.date-dz-z',function(){
+        var zNum = $(this).find('.z-num').html();
+        if($(this).is('.date-dz-z-click')){
+            zNum--;
+            $(this).removeClass('date-dz-z-click red');
+            $(this).find('.z-num').html(zNum);
+            $(this).find('.date-dz-z-click-red').removeClass('red');
+        }else {
+            zNum++;
+            $(this).addClass('date-dz-z-click');
+            $(this).find('.z-num').html(zNum);
+            $(this).find('.date-dz-z-click-red').addClass('red');
+        }
+    })
+    function getlist(){
+    	//var id = $("#detail-page").attr("data-id"); 
+	    var mtype = $("#detail-page").attr("data-mtype"); 
+	    var totalnum = $("#detail-page").attr("data-totalnum"); 
+    	$.get('http://pl.hahacn.com/index/comments', { 
+            page: page, 
+            id: id, 
+            //totalnum: totalnum, 
+            //mtype: mtype 
+        }, 
+        function(data) {
+        	data = JSON.parse(data);
+        	console.log(data.comment);
+        	$(".comment-list").addCommentList({data:data.comment,add:""});
+        	$html = '<div class="pager" id="detail-page" data-id="'+id+'" data-mtype="" data-totalnum="'+data.total+'">';
+
+        	if(data.page>1){}
+        	for (var i = 1; i <= data.cpage; i++) {
+        		if(i == page){
+        			$html += '<a class="current" data-page="'+i+'">'+i+'</a>'
+        		}else{
+        			$html += '<a class="num" data-page="'+i+'">'+i+'</a>'
+        		}
+        		
+        	}
+        	if(page < data.cpage){
+        		$html += '<a class="next" data-page="'+(page+1)+'">下一页</a>'
+        	}
+        	$html += '</div>'
+            $(".page").html($html) 
+        }) 
+    }
+    $(".page").children("a").click(function() { 
+        var page = parseInt($(this).attr("data-page")); 
+        $("#detail-page").children("a").removeClass("current"); 
+        //$("#detail-page").children("a").eq(page - 1).addClass("current"); 
+        $("#comment-list").html("<div style='padding:20px 0;text-align:center;'><img src='" + site_url + "Public/images/loading.gif'></div>"); 
+        getlist(); 
+    })
+    getlist();
+</script>
+
+
+</body>
+</html>

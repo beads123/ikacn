@@ -1,0 +1,111 @@
+{include file="header"}
+<link type="text/css" rel="stylesheet" href="/static/css/index.css" />
+<!-- 登录模块 -->
+<div class="main-block" style="background: #fff">
+<div class="main-login" ng-controller="ctrlArea" style="height: 570px">
+    <div class="container">
+        <div class="login-box">
+          <!-- 登录标题 -->
+          <div class="login-title">
+            <h3>登录</h3>
+            <!-- 密码登录 默认显示 -->
+            <div class="login-type" ng-class="{true:'type-desk',false:'type-desk hidden'}[isLoginType=='qrcode']" ng-click="isLoginTypeFun('password')">
+              <div class="login-msg"></div>
+            </div>
+            <!--&lt;!&ndash; 扫码登录 默认隐藏 &ndash;&gt;-->
+             <div class="login-type" ng-class="{true:'type-phone',false:'type-phone hidden'}[isLoginType=='password']" ng-click="isLoginTypeFun('qrcode')">
+              <div class="login-msg"></div>
+            </div>
+          </div>
+
+          <!-- 登录内容 -->
+          <!-- 扫码登录 二维码 默认显示 -->
+          <div ng-class="{true:'login-container container-phone',false:'login-container container-phone hidden'}[isLoginType=='qrcode']">
+            <div class="login_code" >
+              <div class="login_msg" ng-show="qrLogin.isMessage(qrLogin.data.act)" style="display: none">
+                <i></i>
+                <span ng-class="{'timeout':'timeout','success':'success','scanned':'scanned'}[qrLogin.data.act]" >
+                  <b></b>
+                  <xfan ng-click="qrLogin.reCode()"  ng-bind="qrLogin.isMessage(qrLogin.data.act)"></xfan>
+                </span>
+              </div>
+              <img  ng-click="qrLogin.reCode()" onerror="this.style.display='block';this.src='/static/images/qrcode_undefind.png'" style="display: none;" ng-src="{{qrLogin.data.qrcode}}" alt="扫码登录">
+            </div>
+            <p ng-show="qrLogin.data.act!='outlink'" ng-click="qrLogin.reCode()">1分钟有效，<a class="text-blue home_re">刷新</a></p>
+            <p ng-show="qrLogin.data.act=='outlink'" ng-click="isLoginTypeFun('qrcode')"><a class="text-blue">重新连接</a></p>
+            <p><a href="/appdown.htm" class="text-blue">下载最新版APP</a>扫一扫登录</p>
+          </div>
+          <!-- 扫码登录 二维码失效 默认不显示 -->
+          <div class="login-container container-invalid hidden">
+            <span class="icon-invalid"></span>
+            <p>二维码失效</p>
+            <span class="btn btn-info center-block">刷新二维码</span>
+          </div>
+          <!-- 密码登录 默认不显示 -->
+          <div ng-class="{true:'login-container container-desk',false:'login-container container-desk hidden'}[isLoginType=='password']">
+            <form class="form-horizontal">
+              <div class="form-group has-feedback-left" style="margin-bottom:0;">
+                <div class="col-sm-12">
+                  <span aria-hidden="true" class="icon-phone form-control-feedback"></span>
+                  <input type="text" ng-model="account" ng-Blur="changeAccount()" placeholder="请输入手机号码/邮箱" class="form-control">
+                  <!-- 隐藏添加类名hidden -->
+                  <span ng-class="{true:'help-block text-red has-icon-error',false:'help-block text-red'}[!error.account=='']" ng-bind="error.account"></span>
+                </div>
+              </div>
+              <div class="form-group has-feedback-left" style="margin-bottom:0;">
+                <div class="col-sm-12 login-password">
+                  <span aria-hidden="true" class="icon-lock form-control-feedback"></span>
+                  <input type="password" ng-model="password" ng-Blur="changePass()" placeholder="请输入密码" class="form-control">
+                  <!-- 隐藏添加类名hidden -->
+                  <span ng-class="{true:'help-block text-red has-icon-error',false:'help-block text-red'}[!error.password=='']" ng-bind="error.password"></span>
+                </div>
+              </div>
+              <div class="form-group has-feedback-left" style="height: 64px;padding-left: 4px">
+
+                <div class="col-sm-12">
+                  <div id="embed-captcha"></div>
+                  <p id="wait" class="show">正在加载验证码......</p>
+                  <span id="notice" class="hidden">请先验证成功</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <span class="btn btn-info center-block" id="embed-submit" ng-click="beginLogin()">登录</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <!-- 记住密码的勾选框 默认勾选 加类名checked -->
+                  <span ng-class="{true:'icon-checkbox checked',false:'icon-checkbox'}[autoLogin]" ng-click="autoFun()"></span>
+                  <span class="login-remember" ng-click="autoFun()">保持7天登录状态</span>
+                  <a class="login-forget" href="/member/user/forget_password.htm">忘记密码?</a>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+          <!-- 登录底部 -->
+          <div class="login-footer clearfix">
+            <p class="login-other">第三方账号登录：</p>
+            <a class="login-qq" href="/member/user/qq_login.htm"></a>
+            <a class="login-wx" href="/member/user/wechat_login.htm"></a>
+            <a href="/member/user/register.htm" class="login-reg">免费注册</a>
+            <p class="login-no">还没有账号？</p>
+          </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="/static/js/gt.js?v=20180903"></script>
+<script type="text/javascript" src="/static/js/factory/qrcode_login.js?v=20180903"></script>
+<script type="text/javascript" src="/static/js/factory/directive.js?v=20180903"></script>
+<script type="text/javascript">
+  referer = "http://www.2898.com/member/order/indexsell.htm";
+</script>
+{include file="footer"}
+<script type="text/javascript" src="/static/js/login.js?v=20180903"></script>
+<script type = "text/javascript" src = "/static/js/index_message.js?v=20180903"></script>
+</body>
+</html>

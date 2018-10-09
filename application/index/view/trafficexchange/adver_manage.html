@@ -1,0 +1,251 @@
+{include file="account/header"}
+<!--右边内容start-->
+<div class="content-right" ng-controller="ctrlArea">
+     <!--我的广告-->
+     <div class="member-index-myadvert bg-white pd20" style = "margin-top: 0;">
+      <div class="myad-head">
+          <span class = "adstr">加入到免费交换中展示的广告，在免费交换--免费交换广告中管理；购买的流量展示的广告在流量买卖--投放计划中管理</span>
+      </div>
+      <div class = "add_adver">
+          <div class="searchbar ">
+              <ul class="list-inline  pr0 ">
+                <li class="head-nav">
+                  <div class="type-name pull-left " >状态：</div>
+                  <div class="dropdown pull-left select_isdel" style="width: 70px;">
+                    <button class="btn btn-default goodstype" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="dropdown-selected" >全部</span>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type">
+                     <li><a href="" ng-click = "change_type('')">全部</a></li>
+                     <li><a href="" ng-click = "change_type('待审核')"> 待审核</a></li>
+                     <li><a href="" ng-click = "change_type('未通过')"> 未通过</a></li>
+                     <li><a href="" ng-click = "change_type('开启中')"> 开启中</a></li>
+                     <li><a href="" ng-click = "change_type('暂停中')"> 暂停中</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>        
+              <a href="/member/trafficexchange/addadbit" class="add_btns">添加广告</a>
+      </div>
+     <div class="clear"></div>
+      <div class="myad-table adv-table" style = "min-height: 450px;">
+          <table class="table">
+              <thead>
+              <tr>
+                  <th width="12%">名称</th>
+                  <th width="10%">类型</th>
+                  <th width="32%">内容</th>
+                  <th width="16%">广告属性</th>
+                  <th width="16%">状态</th>
+                  <th width="16%">操作</th>
+              </tr>
+              </thead>
+              <tbody class="bg-white">
+              <tr ng-show = "data.length == 0">
+                  <td colspan="6" class="bbnone"><img src="/static/images/nodata/icon-no-ad.png" class="mt60" style = "height: 272px;width: 392px;"/></td>
+              </tr>
+              <tr ng-repeat="item in data">
+                <td ng-bind = "item.wname">新闻站推广</td>
+                <td ng-bind = "ad_type(item.type)">图片广告</td>
+                <td>
+                  <img ng-src="{{item.img_fmt}}" alt="" ng-show = "item.type == 2">
+                  <div>
+                    <p ng-show = "item.type == 2"><span><i>尺寸</i>：<ss ng-bind = "item.size"></ss></span></p>
+                    <p ng-show = "item.type == 1" ng-bind="item.title"></p>
+                    <a ng-href="{{item.url}}" target="_blank" ng-bind = "item.url"></a>
+                  </div>
+                </td>
+                <td  >
+                <p style="position: relative;display: inline-block;">
+                    <span ng-bind = "item.is_pay"  ></span>
+                    <i class = "icon_put" ng-show = "item.no != null">已购买</i>
+                </p>
+                </td>
+                <td ng-bind = "item.status">已通过</td>
+                <td>
+                  <a href="/member/trafficexchange/ad_detail?id={{item.id}}" >流量详情</a>
+                  <a href="javascript:void(0)" ng-show = "showDel(item)" ng-click = "del(item.id,$index)">删除</a>
+                  <a href="javascript:void(0)" ng-show = "showEdit(item)" ng-click = "edit(item.id,item.type)">修改</a>
+                </td>
+              </tr>
+
+              </tbody>
+          </table>
+      </div>
+      <div class="text-center" ng-show="advert.length > 5"><a href="javascript:void(0)" ng-click="seemore(2)" class="moresee" id="adv2"></a></div>
+  </div>
+   <!--我的加盟广告暂停弹窗-->
+   <div class="modal fade stop" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:500px;height:auto">
+          <div class="modal-content acc-con">
+              <div class="modal-header headerbar">
+                  <button type="button" class="close close-btn" data-dismiss="modal">
+                      <span aria-hidden="true"></span>
+                  </button>
+                  <h4>暂停</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="text-center">
+                      <div class="waring"></div>
+                      <p class="text-red">暂停后该广告将不再联盟中展示，确认暂停吗？</p>
+                  </div>
+              </div>
+              <div class="modal-footer footer-btn">
+                  <button class="btns cancel" data-dismiss="modal">取消</button>
+                  <button ng-click="stopAdver()" class="btns save" data-dismiss="modal">确认</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--我的加盟广告暂停-->
+
+  <!--我的加盟广告流量查看弹窗-->
+  <div class="modal fade seeflow2" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:410px;height:auto">
+          <div class="modal-content acc-con">
+              <div class="modal-header headerbar">
+                  <button type="button" class="close close-btn" data-dismiss="modal">
+                      <span aria-hidden="true"></span>
+                  </button>
+                  <h4>流量查看</h4>
+              </div>
+              <div class="modal-body" style="padding-top: 20px;">
+                  <div class="flowlist">
+                      <a href="javascript:void(0)">
+                          <i ng-bind="lookAdInfo(ADinfo.pv)">15</i>
+                          浏览量(PV)
+                      </a>
+                      <a>
+                          <i ng-bind="lookAdInfo(ADinfo.uv)">15</i>
+                          访客数(UV)
+                      </a>
+                      <a>
+                          <i ng-bind="lookAdInfo(ADinfo.ip)">15</i>
+                          IP数(IP)
+                      </a>
+                  </div>
+              </div>
+              <div class="recently">
+                  <h5>最近三天流量</h5>
+                  <p>
+                      <label>今日：</label>
+                      <span>
+                          <zz ng-bind="lookAdInfo(ADinfo.today.pv)">10</zz>(PV)</span>
+                      <span>
+                          <zz ng-bind="lookAdInfo(ADinfo.today.uv)">10</zz>(UV)</span>
+                      <span>
+                          <zz ng-bind="lookAdInfo(ADinfo.today.ip)">10</zz>(IP)</span>
+                  </p>
+                  <p>
+                      <label>昨日：</label>
+                      <span>
+                          <zz ng-bind="lookAdInfo(ADinfo.yesterday.pv)">10</zz>(PV)</span>
+                      <span>
+                          <zz ng-bind="lookAdInfo(ADinfo.yesterday.uv)">10</zz>(UV)</span>
+                      <span>
+                          <zz ng-bind="lookAdInfo(ADinfo.yesterday.ip)">10</zz>(IP)</span>
+                  </p>
+                  <p>
+                      <label>前日：</label>
+                      <span>
+                          <zz ng-bind="lookAdInfo(ADinfo.before.pv)">10</zz>(PV)</span>
+                      <span>
+                          <zz ng-bind="lookAdInfo(ADinfo.before.uv)">10</zz>(UV)</span>
+                      <span>
+                          <zz ng-bind="lookAdInfo(ADinfo.before.ip)">10</zz>(IP)</span>
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--我的加盟广告流量查看-->
+
+  <!--我的加盟广告删除弹窗-->
+  <div class="modal fade cutout2" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:500px;height:auto">
+          <div class="modal-content acc-con">
+              <div class="modal-header headerbar">
+                  <button type="button" class="close close-btn" data-dismiss="modal">
+                      <span aria-hidden="true"></span>
+                  </button>
+                  <h4>提示</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="text-center">
+                      <div class="fork"></div>
+                      <p class="text-red">删除后该广告将不再联盟中展示，确认删除吗？</p>
+                  </div>
+              </div>
+              <div class="modal-footer footer-btn">
+                  <button class="btns cancel" data-dismiss="modal">取消</button>
+                  <button class="btns save" data-dismiss="modal" ng-click="deleteAD()">确认</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--我的加盟广告删除弹窗-->
+
+</div>
+
+
+
+<!--右边内容end-->
+
+<!--提交审核-->
+
+<script type="text/javascript" src="/static/js/factory/upimg.js"></script>
+<script type="text/javascript" src="/static/js/factory/directive.js"></script>
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/trafficexchange_adver_manage.js?v=20180903"></script>
+{include file="account/footer"}
+</body>
+</html>

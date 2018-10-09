@@ -1,0 +1,26 @@
+{include file="header"}
+<div class="container">
+<div class="container-bd">
+     <div class="article-wrap" style="width:960px;margin:0 auto 10px auto; overflow: hidden;">
+        <div class="article-left">
+          <div class="list-title" style="font-size:15px;color:#666;">
+                <h3>当前位置</h3> ： 搜索关于 / 有关 <strong style="color:#FF7E00;font-size:16px;"> {$q}</strong> 的结果
+            </div>
+          <div class="row-item">
+             <ul class="left-item">{volist name="list" id="vo"}
+              <li><h3><a href="{:url('detail/'.$vo['id'])}">{$vo['title']}</a></h3>
+       <span class="time">发表于{$vo['addtime']}</span>
+       <p>{$vo['description']}...<a href="{:url('detail/'.$vo['id'])}">[ 阅读全文 ]</a></p></li>
+          {/volist}
+       </ul>  
+       <div class="dede_pages">
+       {$page}
+       </div>
+      </div>
+      <div class="cl"></div>
+     </div>
+     {include file="right"}
+     </div>
+</div><div class="c1 container-bottom"></div>
+</div>
+{include file="footer"}

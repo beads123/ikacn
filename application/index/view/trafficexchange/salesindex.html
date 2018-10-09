@@ -1,0 +1,360 @@
+{include file="account/header"}
+<!--右边内容start-->
+<div class="content-right" ng-controller = "ctrlArea">
+  <div class="traffic_tab clearfix">
+    <ul>
+      <li><a href="javascript:void(0)" ng-click="tabshow(1)" ng-class="{true:'curr',false:'other'}[curr == 1]">购买的流量</a><span class="glyphicon">|</span></li>
+      <li><a href="javascript:void(0)" ng-click="tabshow(2)" ng-class="{true:'curr',false:'other'}[curr == 2]">出售的流量</a></li>
+    </ul>
+  </div>
+  <!--购买的流量start-->
+  <div ng-show="curr == 1">
+    <div class="put_plan mt15">
+      <span class="tfjh">投放计划</span>
+      <span>投放金额<i ng-bind = "data.count.totalcome">1200</i>元，共<i ng-bind = "data.count.total"></i>个投放计划</span>
+      <!-- <span>共<i ng-bind = "data.count.total"></i>个投放计划</span> -->
+       <span style = "margin-left: 20px;">其中：</span>
+      <span>投放中<i ng-bind = "data.count.open">3</i>个，</span>
+      <span>暂停<i ng-bind = "data.count.stop">3</i>个，</span>
+      <span>未通过<i ng-bind = "data.count.not">3</i>个，</span>
+      <span>到期<i ng-bind = "data.count.expire">3</i>个</span>
+      <a href="/member/trafficexchange/my_delivery.htm" class="pull-right">我的投放计划<i class="icon  icon-angle-right"></i></a>
+    </div>
+    
+    <div class="member-data-gk">
+      <span class="title">数据概况</span>
+      <div class="data-summary clearfix">
+        <dl>
+          <dt>&nbsp;</dt>
+          <dd>今日</dd>
+          <dd>昨日</dd>
+          <dd>统计</dd>
+        </dl>
+        <dl>
+          <dt>浏览量（PV）</dt>
+          <dd ng-bind = "data.top.today.pv">15789</dd>
+          <dd ng-bind = "data.top.yesterday.pv">1000</dd>
+          <dd ng-bind = "data.top.total.pv">1000</dd>
+        </dl>
+        <dl>
+          <dt>访客数（UV）</dt>
+          <dd ng-bind = "data.top.today.uv">15789</dd>
+          <dd ng-bind = "data.top.yesterday.uv">1000</dd>
+          <dd ng-bind = "data.top.total.uv">1000</dd>
+        </dl>
+        <dl>
+          <dt>IP数（IP）</dt>
+          <dd ng-bind = "data.top.today.ip">15789</dd>
+          <dd ng-bind = "data.top.yesterday.ip">1000</dd>
+          <dd ng-bind = "data.top.total.ip">1000</dd>
+        </dl>
+        <dl>
+          <dt>消费（元）</dt>
+          <dd ng-bind = "data.top.today.price">15789</dd>
+          <dd ng-bind = "data.top.yesterday.price">1000</dd>
+          <dd ng-bind = "data.top.total.price">1000</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="clear-both"></div>
+    <div class="member-data-fx mt15 clearfix">
+      <span class="plan-fx ">投放计划数据分析：</span>
+      <div class="dropdown  select_isdel" style="display: inline-block;">
+        <button class="btn btn-default goodstype" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="dropdown-selected pdr7">所有</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type">
+          <li ng-click = "change_id('')"><a href="javascript:void(0)" class="hover">所有</a></li>
+          <li ng-repeat="item in plan"  ng-click = "change_id(item.id)"><a href="javascript:void(0)" ng-bind = "item.cid" class="hover"></a></li>
+          
+        </ul>
+      </div>
+      <a href="/index/buy_flow/set_infro" class="pull-right buy_traffic">购买流量</a>
+      
+      <div class="chart_box clearfix">
+        <div class="traffic-tab">
+          <span class="active" ng-class = "{true:'active'}[trClass['p']]" ng-click="changeType('p')">浏览量PV</span>
+          <span ng-class = "{true:'active'}[trClass['u']]" ng-click="changeType('u')">访客数UV</span>
+          <span ng-class = "{true:'active'}[trClass['i']]" ng-click="changeType('i')">IP数</span>
+        </div>
+        <div class="c-date ">
+                  <div class="databoxs">
+                      <span class="active" ng-click="choiceTime(0)">今天</span>
+                      <span ng-click="choiceTime(1)">昨天</span>
+                      <span ng-click="choiceTime(7)">近7天</span>
+                  </div>
+                  <div class="sdates">
+                      <span>日期:</span>
+                      <input class="Wdate date-blue" ng-model="data_stime" type="text" wdate-picker-ch-stime id="startTime" />
+                      <span>~</span>
+                      <input class="Wdate date-blue" ng-model="data_etime" type="text" wdate-picker-ch-etime id="endTime" />
+                      <!--带时间的插件WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false,readOnly:true})-->
+                  </div>
+              </div>
+              <div class="clear-both"></div>
+              <div class="data_amount">
+                <span>浏览量（PV）<i ng-bind = "top_data.pv"></i></span>
+                <span>访客数（UV）<i ng-bind = "top_data.uv"></i></span>
+                <span>IP数（IP）<i ng-bind = "top_data.ip"></i></span>
+                <!-- <span>展示数<i>20</i></span> -->
+                <span>消费金额（元）<i ng-bind = "top_data.price"></i></span>
+              </div>
+              
+              <div class="data_chart">
+                
+              </div>
+              
+      </div>
+    </div>
+    <!--最近流量来源-->
+    <div class="recently_box">
+      <h4>最近流量来源</h4>
+      <div class="recently-table">
+        <table class="table resource-table">
+          <thead>
+            <tr>
+              <th width="16%">来源网站</th>
+              <th width="16%">浏览量（PV）</th>
+              <th width="16%">访客数（UV）</th>
+              <th width="16%">IP数</th>
+              <th width="16%">消费（元）</th>
+              <!-- <th width="16%">占比</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-show = "source.length == 0">
+                <td colspan="5" class="bbnone" >
+                  <img src="/static/images/icon/nodata.png" class="mt60"><p>暂无数据</p>
+                </td>
+            </tr>
+            <tr ng-repeat="item in source">
+              <td>
+                <a href="{{item.ex_url}}" target="_blank" ng-bind = "item.ex_url" target="_blank">www.xiaozhixiang.con</a>
+              </td>
+              <td ng-bind = "item.pv">20</td>
+              <td ng-bind = "item.uv">20</td>
+              <td ng-bind = "item.ip">20</td>
+              <td ng-bind = "item.price">10.00</td>
+              <!-- <td ng-bind = "">40%</td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--分页插件-->
+      <div class="tcdPageCode listpage"></div>
+    </div>
+  </div>
+  <!--购买的流量end-->
+  
+  <!--出售的流量start-->
+  <div ng-show="curr == 2">
+    <div class="put_plan mt15">
+      <span class="csgk">出售概况</span>
+      <span>广告位<i ng-bind = "sell_data.count.total">8</i>个</span>
+      <span>获得收益<i ng-bind = "sell_data.count.totalcome">1200.00</i>元</span>
+      <span>开启中<i ng-bind = "sell_data.count.open">3</i>个</span>
+      <span>暂停<i ng-bind = "sell_data.count.stop">3</i>个</span>
+      <span>已删除<i ng-bind = "sell_data.count.isdel">3</i>个</span>
+      <a href="/member/trafficexchange/newadvert.htm" class="pull-right csll">出售流量</a>
+    </div>
+    
+    <div class="member-data-gk">
+      <span class="title">数据概况</span>
+      <div class="data-summary selltraffic clearfix">
+        <dl>
+          <dt>&nbsp;</dt>
+          <dd>今日</dd>
+          <dd>昨日</dd>
+          <dd>统计</dd>
+        </dl>
+        <dl>
+          <dt>浏览量（PV）</dt>
+          <dd ng-bind = "sell_data.top.today.pv">15789</dd>
+          <dd ng-bind = "sell_data.top.yesterday.pv">1000</dd>
+          <dd ng-bind = "sell_data.top.total.pv">1000</dd>
+        </dl>
+        <dl>
+          <dt>访客数（UV）</dt>
+          <dd ng-bind = "sell_data.top.today.uv">15789</dd>
+          <dd ng-bind = "sell_data.top.yesterday.uv">1000</dd>
+          <dd ng-bind = "sell_data.top.total.uv">1000</dd>
+        </dl>
+        <dl>
+          <dt>IP数（IP）</dt>
+          <dd ng-bind = "sell_data.top.today.ip">15789</dd>
+          <dd ng-bind = "sell_data.top.yesterday.ip">1000</dd>
+          <dd ng-bind = "sell_data.top.total.ip">1000</dd>
+        </dl>
+        <dl>
+          <dt>收益（元）</dt>
+          <dd ng-bind = "sell_data.top.today.price">15789</dd>
+          <dd ng-bind = "sell_data.top.yesterday.price">1000</dd>
+          <dd ng-bind = "sell_data.top.total.price">1000</dd>
+        </dl>
+        <dl>
+          <dt>未结算金额（元）</dt>
+          <dd>-</dd>
+          <dd>-</dd>
+          <dd ng-bind = "sell_data.top.total.income">1000</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="clear-both"></div>
+    
+    <div class="adv-summary">
+      <h4>广告位概况</h4>
+      <div class="recently-table">
+        <table class="table resource-table">
+          <thead>
+            <tr>
+              <th width="14%">广告位名称</th>
+              <th width="18%">广告位地址</th>
+              <th width="10%">浏览量（PV）</th>
+              <th width="10%">访客数（UV）</th>
+              <th width="10%">IP数</th>
+              <th width="12%">获得收益（元）</th>
+              <th width="12%">待结算收益（元）</th>
+              <th width="14%">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr ng-show = "sell_data.list.length == 0">
+                  <td colspan="8" class="bbnone" >
+                    <img src="/static/images/icon/nodata.png" class="mt60"><p>暂无数据</p>
+                  </td>
+              </tr>
+            <tr ng-repeat = "item in sell_data.list">
+              <td> <p ng-bind = "item.adname">小纸箱</p></td>
+              <td>
+                <!-- <p ng-bind = "item.adname">小纸箱</p> -->
+                <a href="{{item.url}}" target="_blank" ng-bind = "item.url">www.xiaozhixiang.con</a>
+              </td>
+              <td ng-bind = "item.tspv">20</td>
+              <td ng-bind = "item.tsuv">20</td>
+              <td ng-bind = "item.tsip">20</td>
+              <td ng-bind = "item.income">10.00</td>
+              <td ng-bind = "item.stay">5.00</td>
+              <td>
+                <a href="javascript:void(0)" ng-click="details(item.id)">结算明细</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--分页插件-->
+      <div class="tcdPageCode listpage2"></div>
+    </div>
+    
+    
+  </div>
+  <!--出售的流量end-->
+  
+  <!-- 结算详情弹窗star -->
+        <div class="modal fade Billing_details" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:795px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>结算明细</h4>
+                    </div>
+                    <div class="modal-body" style="height:550px;overflow:auto;">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th width="25%">结算日期</th>
+                                    <th width="25%">结算金额（元）</th>
+                                    <th width="25%">手续费（元）</th>
+                                    <th width="25%">实际结算（元）</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show = "details_item.length == 0">
+                                    <td colspan="4" class="bbnone" >
+                                        <img src="/static/images/icon/nodata.png" class="mt60"><p>暂无数据</p>
+                                      </td>
+                                </tr>
+                                <tr ng-repeat="item in details_item">
+                                  <td ng-bind = "show_time(item.atime)">2018-5-21 15:20</td>
+                                  <td ng-bind = "item.settle">20.00</td>
+                                  <td ng-bind = "item.routine">1.00</td>
+                                  <td ng-bind = "item.money">19.00</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                    <!-- <div class="modal-footer footer-btn">
+                        <button class="btns cancel" data-dismiss="modal">取消</button>
+                        <button class="btns save" data-dismiss="modal" ng-click="deleteAD()">确认</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- 详情弹窗end -->
+  
+  
+</div>
+<!--右边内容end-->
+<script type= "text/javascript">
+var plan = [];
+var data = {"count":{"total":0,"refund":0,"expire":0,"not":0,"audited":0,"open":0,"stop":0,"totalcome":0,"surpluscome":0,"actualcome":0},"top":{"total":{"ip":0,"price":0,"pv":0,"uv":0},"today":{"price":0,"ip":0,"pv":0,"uv":0},"yesterday":{"price":0,"ip":0,"pv":0,"uv":0}}};
+$('.member-nav .lljh').find('dd').eq(1).find('a').addClass('active')
+</script>
+  <script type="text/javascript" src="/static/js/angular_wdate.js?v=20180903"></script>
+  <script type="text/javascript" src="/static/js/factory/directive.js"></script>
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/trafficexchange_salesindex.js?v=20180903"></script>
+{include file="account/footer"}
+</body>
+</html>

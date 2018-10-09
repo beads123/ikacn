@@ -1,0 +1,240 @@
+{include file="header"}
+<div class="container"><!-- container -->
+<div class="container-bd">
+<div class="main-wrap">
+<!-- 幻灯开始 -->
+<div id="column1_left" class="column1_left">
+<div id="slideBox" class="slideBox">
+<div class="hd"><ul>
+{volist name="huandeng" id="vo"}
+  <li></li>
+{/volist}
+</ul></div>
+<div class="bd">
+<ul>
+{volist name="huandeng" id="vo"}
+  <li><p><a href="{:url('detail/'.$vo['id'])}">{$vo['title']}</a></p>
+<a href="{:url('detail/'.$vo['id'])}"><img src="{$vo['litpic']}" width="350" height="320" alt="{$vo['title']}"/></a></li>
+{/volist}
+</ul></div>
+</div><script type="text/javascript" src="/static/js/jquery_pic.js"></script><script type="text/javascript" src="/static/js/SuperSlide_pic.js"></script>
+<script type="text/javascript">jQuery(".slideBox").slide( { mainCell:".bd ul",effect:"left",autoPlay:true} );</script>
+</div><!-- //幻灯结束 -->
+<!-- 头条开始 -->
+<div id="column1_middle" class="column1_middle">
+<div class="new-top">
+{volist name="new" id="vo"}
+  {lt name="key" value="1"}
+    <h2><a href="{:url('detail/'.$vo['id'])}">{$vo['title']}</a></h2>
+    <p>{$vo['description']}...</p>
+  {/lt}
+{/volist}
+</div>
+<ul class="new-box">
+{volist name="new" id="vo"}
+  {gt name="key" value="0"}
+    <li><span>[<a href="{:url('mlist/'.$vo['typeid'])}">{$vo['catname']}</a>]</span> <a href="{:url('detail/'.$vo['id'])}" title="{$vo['title']}">{$vo['title']}</a></li>
+  {/gt}
+{/volist}
+</ul></div><!-- //头条结束 -->
+<!-- 会员登录 -->
+<div id="column1_right" class="column1_right">
+<!--div id="user-login">
+<div class="title"><h2>会员登录</h2><span><a href="/member/">注册投稿</a></span></div>
+<form name="userlogin" onsubmit="return CheckForm();" target="_self" action="{dede:global.cfg_memberurl/}/index_do.php" method="POST">
+<input type="hidden" name="fmdo" value="login" />
+<input type="hidden" name="dopost" value="login" />
+<input type="hidden" name="keeptime" value="604800" />
+<div class="form-input-row">
+<li><span class="ico3">账号:</span><input type="text" name="userid" size="20" class="ipt-txt" value="请输入用户名" onclick="if(this.value=='请输入用户名'){this.value=''; }" onfocus="if(this.value=='请输入用户名'){this.value=''; }" /></li>
+<li><span class="ico4">密码:</span><input type="password" name="pwd" size="20" class="ipt-txt" /></li></div>
+<div class="form-row">
+<div class="form-other-links">
+<a href="/oauth/login.php" target="_blank" onclick="toQzoneLogin();return false;" class="qq-login-btn" title="只需一步 快速登录"></a></div>
+<button type="submit" class="login-submit">登 录</button></div>
+</form><script>CheckLogin();</script>
+</div--><!-- //会员登录 -->
+<!-- 公告开始 -->
+<div class="gonggao">
+<div class="title"><h2><a href="http://www.meiwen.com.cn/notice/">电影推荐</a></h2></div>
+<ul class="gonggao-row">
+{volist name="v_list" id="vo"}
+    <li><a href="{$vo['url']}" target="_blank">{$vo['vod_name']|mb_substr=0,16}</a></li>
+{/volist}
+</ul></div>
+</div><!-- //公告结束 -->
+<div class ="cl"></div>
+</div>
+<!-- 广告位 -->
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-960" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3142072",
+            container:  s
+        });
+    })();
+</script>
+<!-- //广告位 -->
+{volist name="clist" id="vo" key="kkk"}
+  <div class="main-wrap">
+<div class="main-left">
+<!-- 美文欣赏 -->
+<div class="category-top">
+<span>
+{volist name="vo['sub']" id="vv" key="kk"}
+  {lt name="kk" value="8"}
+  <a href='{:url('mlist/'.$vv['id'])}'>{$vv['typename']}</a>
+  {/lt}
+{/volist}
+</span>
+<h3><a href="{:url('mlist/'.$vo['id'])}">{$vo['typname']}</a></h3>
+</div>
+<div class="category"><!-- 美文 -->
+<div class="category-item">
+<div class="category-item-top">
+{volist name="vo['img']" id="vvv"}
+  {lt name="key" value="1"}
+    <a href="{:url('detail/'.$vvv['id'])}"><img src="{$vvv['litpic']}" width="120" height="90" title="{$vvv['title']}" alt="{$vvv['title']}"/></a>
+    <h4><a href="{:url('detail/'.$vvv['id'])}" title="{$vvv['title']}">{$vvv['title']}</a></h4>
+    <p>{$vvv['description']}...</p>
+  {/lt}
+{/volist}
+</div>
+<ul>
+{volist name="vo['new']" id="vvvv"}
+  <li><span>{$vvvv['ctime']}</span>
+<a class="item-color" href="{:url('mlist/'.$vvvv['typeid'])}">[{$vvvv['catname']}]</a> <a href="{:url('detail/'.$vvvv['id'])}">{$vvvv['title']}</a></li>
+{/volist}
+</ul>
+</div>
+<div class="category-item"><!-- 文章 --> 
+<div class="category-item-top">
+{volist name="vo['img']" id="vvv"}
+  {gt name="key" value="0"}
+    <a href="{:url('detail/'.$vvv['id'])}"><img src="{$vvv['litpic']}" width="120" height="90" title="{$vvv['title']}" alt="{$vvv['title']}"/></a>
+    <h4><a href="{:url('detail/'.$vvv['id'])}" title="{$vvv['title']}">{$vvv['title']}</a></h4>
+    <p>{$vvv['description']}...</p>
+  {/gt}
+{/volist}
+</div>
+<ul>
+{volist name="vo['add']" id="vvvvv"}
+  <li><span>{$vvvvv['ctime']}</span>
+  <a class="item-color" href="{:url('mlist/'.$vvvvv['typeid'])}">{$vvvvv['catname']}</a> <a href="{:url('detail/'.$vvvvv['id'])}">{$vvvvv['title']}</a></li>
+{/volist}
+</ul></div>
+</div></div><!-- //美文欣赏 -->
+<div class="main-right">
+<div class="right-box">
+<div class="right-box-top"><h3>今日热门</h3></div>
+<ul class="right-box-item">
+{volist name="vo['hot']" id="vvvvvv"}
+  <li><a href="{:url('detail/'.$vvvvvv['id'])}">{$vvvvvv['title']|mb_substr=0,15}</a></li>
+{/volist}
+</ul>
+</div></div></div>
+<!-- 广告位 -->
+{eq name="kkk" value="0"}
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-960" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3142082",
+            container:  s
+        });
+    })();
+</script>{/eq}
+{eq name="kkk" value="1"}
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-960" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3142101",
+            container:  s
+        });
+    })();
+</script>{/eq}
+{eq name="kkk" value="2"}
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-960" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u1548897",
+            container:  s
+        });
+    })();
+</script>{/eq}
+{eq name="kkk" value="3"}
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-960" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u1548928",
+            container:  s
+        });
+    })();
+</script>{/eq}
+
+{eq name="kkk" value="4"}
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-960" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u1548892",
+            container:  s
+        });
+    })();
+</script>{/eq}
+{eq name="kkk" value="5"}
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-960" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u1548900",
+            container:  s
+        });
+    })();
+</script>{/eq}
+{eq name="kkk" value="6"}
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-960" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u1548902",
+            container:  s
+        });
+    })();
+</script>{/eq}
+{gt name="kkk" value="6"}
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-960" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3142082",
+            container:  s
+        });
+    })();
+</script>{/gt}
+<!-- //广告位 -->
+{/volist}
+<div class="main-wrap"><!-- link -->
+<div class="link-title">
+<h3>友情链接</h3><span>链接合作要求：美文，文章，小说，文学等内容相关类网站<!--a href="http://meiwen.com.cn/about/link.html" style="color:#373;" target="_blank">更多链接</a--></span>
+</div>
+<div class="friendlink">
+<!--div class="validation"><script>union()</script></div-->
+<ul> {volist name="flink" id="vo"}<li><a href="{$vo['url']}" target="_blank">{$vo['name']}</a></li>{/volist}</ul>
+</div></div><!-- /link -->
+</div><div class="c1 container-bottom"></div>
+</div><!-- /container -->
+{include file="footer"}

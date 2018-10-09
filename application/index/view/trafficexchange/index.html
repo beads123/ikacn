@@ -1,0 +1,935 @@
+{include file="account/header"}
+    <!--右边内容start-->
+    <div class="content-right" ng-controller="ctrlArea">
+        <div class="member-index">
+            <div class="member-index-header clearfix">
+                <!--<h5>交换状况</h5>-->
+                <ul>
+                    <li>
+                        <div class="infolist shadows bg-white">
+                            <h4>
+                                广告获得的流量
+                                <span class="fa fa-question-circle htip" data-toggle="tooltip" data-placement="bottom" data-original-title="加入免费交换的所有广告获得的总浏览量、总访客数、总IP数、总展示数"></span>
+                                <span class="pull-right look_detail" ng-click="AdvertFlowExchange()">查看详情</span>
+                            </h4>
+                            <div class="infolist-div huo">
+                                <a href="javascript:void(0)">
+                                    <i ng-bind="dataInfo(import.pv)"></i>
+                                    浏览量（PV）
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i ng-bind="dataInfo(import.uv)"></i>
+                                    访客数（UV）
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i ng-bind="dataInfo(import.ip)"></i>
+                                    IP数
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i ng-bind="dataInfo(import.rank)"></i>
+                                    展示数
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i ng-bind="dataInfo(import.advert)"></i>
+                                    广告数
+                                </a>
+                            </div>
+                            <div class = "traffic_btn">
+                            <a href="/member/trafficexchange/newaddexchange" class="add_btns">添加广告</a>
+                            <a href="/index/buy_flow/set_infro" class="tr_btns">购买流量</a>
+                           </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="infolist pull-right shadows bg-white" style="position: relative;">
+                            <h4> 广告位贡献的流量
+                                <span class="fa fa-question-circle htip" data-toggle="tooltip" data-placement="bottom"
+                                    data-original-title="所有属性为免费交接的广告位贡献的总浏览量、总访客数、总IP数"></span>
+                                <span class="pull-right look_detail" ng-click="GoodsFlowExchange()">查看详情</span>
+                            </h4>
+                            <div class="infolist-div">
+                                <a href="javascript:void(0)">
+                                    <i ng-bind="dataInfo(export.pv)"></i>
+                                    浏览量（PV）
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i ng-bind="dataInfo(export.uv)"></i>
+                                    访客数（UV）
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i ng-bind="dataInfo(export.ip)"></i>
+                                    IP数
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i ng-bind="dataInfo(export.goods)"></i>
+                                    提供广告位数
+                                </a>
+                            </div>
+                            <div class = "traffic_btn">
+                            <a href="/member/trafficexchange/newadvert" class="add_btns">添加广告位</a>
+                            <a href="/member/trafficexchange/salesindex?type=sell" class="tr_btns">出售流量</a>
+                            </div>
+                            <!--引导-->
+                           
+                            <!--引导-->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix">
+                <!--图表-->
+                <div class="member-index-chart bg-white" >
+                    <!-- <div class="c-head"> -->
+                    <!-- <span class="qst blue_icon">趋势图</span> -->
+                    <!--<ul>
+                      <li class="curr" ng-click = "changeType('pv')">浏览量PV</li>
+                      <li ng-click = "changeType('uv')">访客数UV</li>
+                      <li ng-click = "changeType('ip')">IP数</li>
+                  </ul>-->
+                    <!-- <div class="daynum">
+                        <a href="javascript:void(0)" ng-click="choiceTime('today')" class="active">今天</a>
+                        <a href="javascript:void(0)" ng-click="choiceTime('yesterday')" >昨天</a>
+                      <a href="javascript:void(0)" ng-click="choiceTime(7)" >最近7天</a>
+                      <a href="javascript:void(0)" ng-click="choiceTime(15)">最近15天</a>
+                      <a href="javascript:void(0)" ng-click="choiceTime(30)">最近30天</a>
+                  </div> -->
+                    <!-- </div> -->
+                    <div class="clear"></div>
+                    <div class="tab-con pull-left bg-white"  style= "width:70%;">
+                        <div class="c-head pull-left bg-white clear">
+                           <span class = "qst_span">趋势图</span>
+                            <!-- <ul class="clear">
+                                <li class="curr" ng-click="changeType('p')">浏览量PV</li>
+                                <li ng-click="changeType('u')">访客数UV</li>
+                                <li ng-click="changeType('i')">IP数</li>
+                            </ul> -->
+                            <div class="c-date ">
+                                <div class="databoxs">
+                                    <span class="active" ng-click="choiceTime(0)">今天</span>
+                                    <span ng-click="choiceTime(1)">昨天</span>
+                                    <span ng-click="choiceTime(7)">近7天</span>
+                                    <!--<span ng-click="choiceTime(30)">最近30天</li>-->
+                                </div>
+                                <!--<span class="date-more">日期
+                                <ol class="menu-date" >
+                                    <li class = "active" ng-click="choiceTime(0)">今天</li>
+                                    <li ng-click="choiceTime(1)">昨天</li>
+                                    <li ng-click="choiceTime(7)">最近7天</li>
+                                    <li ng-click="choiceTime(30)">最近30天</li>
+                                </ol> 
+                            </span>-->
+                                <div class="sdates">
+                                    <span>日期:</span>
+                                    <input class="Wdate date-blue" ng-model="data_stime" type="text" wdate-picker-ch-stime id="startTime" />
+                                    <span>~</span>
+                                    <input class="Wdate date-blue" ng-model="data_etime" type="text" wdate-picker-ch-etime id="endTime" />
+                                    <!--带时间的插件WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false,readOnly:true})-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="c-body ">
+                            <div class="clear">
+                            <ul >
+                                <li class="curr" ng-class = "{true:'curr'}[trClass['p']]" ng-click="changeType('p')">浏览量PV</li>
+                                <li  ng-class = "{true:'curr'}[trClass['u']]" ng-click="changeType('u')">访客数UV</li>
+                                <li  ng-class = "{true:'curr'}[trClass['i']]" ng-click="changeType('i')">IP数</li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                            <div class = "get_tr">
+                                <span>获得流量:</span>
+                                <a ng-bind="info.ImPV"></a>
+                                <i>PV</i>
+                                <a ng-bind="info.ImUV"></a>
+                                <i>UV</i>
+                                <a ng-bind="info.ImIP"></a>
+                                <i>IP</i>
+                            </div>
+                            <div class = "out_tr">
+                                <span>贡献流量:</span>
+                                <a href="javascript:void(0)" ng-bind="info.ExPV"></a>
+                                <i>PV</i>
+                                <a href="javascript:void(0)" ng-bind="info.ExUV"></a>
+                                <i>UV</i>
+                                <a href="javascript:void(0)" ng-bind="info.ExIP"></a>
+                                <i>IP</i>
+                            </div>
+
+
+                        </div>
+                        <div class="data_chart clearboth">
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <div class="member-index-ly bg-white">
+            <div class="c-head ">
+                    <span class="qst">最近流量来源</span>
+                    <a class="more" ng-click = "look_more()">更多</a>
+              </div>
+              <div class="flow-source" style="height: 438px;">
+                <ul style="padding-top: 10px;">
+                  <li ng-show="source == false">
+                    <div class="text-center" style="padding-top: 100px;"><img src="/static/images/icon/nodata.png" alt="" /><p>暂无数据</p></div>
+                  </li>
+                  <li ng-repeat="item in source">                                     
+                            <a  href="/website_{{item.url_id}}" class="w_name" target="_blank" ng-bind="item.wname"></a>
+                            <a href="http://{{item.url}}" class="w_url" target="_blank" rel="nofollow" ng-bind="item.url"></a>                        
+                  </li>
+                </ul>
+              
+            
+              </div>
+            
+            </div> -->
+                <!-- <div class="member-traffic ">
+                    <div class="member-traffic-h">最近流量来源</div>
+                    <div class="tb">
+                        <table class="table text-center goto_header">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" width="7%">排名</th>
+                                    <th class="text-center" width="20%">来源网站</th>
+                                    <th class="text-center" width="25%">浏览量</th>
+                                    
+                                    <th class="text-center" width="10%">IP数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="itemLoad" style="display:none;" class="item_load">
+                                    <td colspan="6">
+                                        <div style="width: 100px;height: 55px;margin: 76px auto 113px;">
+                                            <span class="fa fa-spinner fa-pulse fa-3x fa-fw " style="color: #6ec4f2"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                               <tr ng-show="more_data.length == 0" style = "border:none;">
+                               <td colspan="6" class="bbnone"><img src="/static/images/icon/nodata.png" class="mt60"/><p>暂无数据</p></td>
+                               </tr> 
+                               <tr  ng-repeat="(key,item) in more_data" ng-show="show_table">
+                                        <td class="lcolor"  ng-bind = "g_num(key)"></td>
+                                        <td > <a href="{{item.url}}" target="_blank" class="text-blue" ng-bind="item.url"></a></td>
+                                        <td ng-bind="item.PV"></td>                                 
+                                      
+                                        <td  ng-bind="item.IP"></td>
+                                    </tr> 
+
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div> -->
+
+                <div class="member-index-ly bg-white pull-left" style = "margin-top: 0;">
+                    <!-- <div class="c-head ">
+                        <span class="qst">最近流量来源</span>
+                      
+                    </div> -->
+                    <div class="flow-source " style="height: 493px;overflow: auto;">
+                            <table class="table text-center goto_header">
+                                    <thead>
+                                        <tr >
+                                            <!-- <th class="text-center" width="7%">排名</th> -->
+                                            <th class="text-center" width="50%">最近流量来源网站</th>
+                                            <th class="text-center" width="25%">浏览量</th>
+                                            
+                                            <th class="text-center" width="25%">IP数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-show="itemLoad" style="display:none;" class="item_load">
+                                            <td colspan="6">
+                                                <div style="width: 100px;height: 55px;margin: 76px auto 113px;">
+                                                    <span class="fa fa-spinner fa-pulse fa-3x fa-fw " style="color: #6ec4f2"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                       <tr ng-show="more_data.length == 0" style = "border:none;">
+                                       <td colspan="6" class="bbnone"><img src="/static/images/icon/nodata.png" class="mt60"/><p>暂无数据</p></td>
+                                       </tr> 
+                                       <tr  ng-repeat="(key,item) in more_data" >
+                                                <!-- <td class="lcolor"  ng-bind = "g_num(key)"></td> -->
+                                                <td > <a href="javascript:void(0)" target="_blank" class="text-blue" ng-bind="item.url" ng-click="tiao(item.url)"></a></td>
+                                                <td ng-bind="item.PV"></td>                                 
+                                              
+                                                <td  ng-bind="item.IP"></td>
+                                            </tr>
+                                            
+        
+        
+                                    </tbody>
+        
+                                </table>
+                  
+                    </div>
+                    
+                </div>
+
+
+
+
+
+            </div>
+            <!--加盟的广告位-->
+
+
+            <!--我的广告-->
+            <div class="member-index-myadvert bg-white pd20">
+                <div class="myad-head">
+                    <span>免费交换广告 <i>（<ss ng-bind="advert.length"></ss>）</i>
+                        <label>在免费交换的广告位中展示的广告内容</label>
+                    </span>
+                    <span class="fa fa-question-circle htip" data-toggle="tooltip" data-placement="bottom" data-original-title="加盟广告获得流量导入，分成2步</br>第一步：选择需展示的广告类型，设置广告内容后提交审核；</br>第二步：广告审核通过后，即可在流量交换中展示，获得流量导入。贡献流量数越高广告越优先展示，没有贡献流量数时广告不会获得展示。</br>PS：为了获得更多的点击机会，请多多添加各种广告尺寸图片"></span>
+                    <a href="/member/trafficexchange/newaddexchange" class="add_btns">新增交换广告</a>
+                </div>
+                <div class="myad-table h650">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="12%">广告名称</th>
+                                <th width="10%">广告类型</th>
+                                <th width="12%">广告信息</th>
+                                <th width="16%">广告内容</th>
+                                <th width="16%">广告状态</th>
+                                <!-- <th width="16%">加盟状态</th> -->
+                                <th width="16%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                            <tr ng-show="advert.length == 0">
+                                <td colspan="6" class="bbnone">
+                                    <img src="/static/images/nodata/advert.png" class="mt60" />
+                                </td>
+                            </tr>
+                            <tr ng-repeat="item in advert">
+                                <td ng-bind="item.wname"></td>
+                                <td ng-bind="item.type">文字广告</td>
+                                <td>
+                                    <div class="typesize">
+                                        <any ng-switch on="item.type">
+                                            <any ng-switch-when="文字广告">
+                                                <p>-</p>
+                                            </any>
+                                            <any ng-switch-when="图片广告">
+                                                <p>尺寸：
+                                                    <i ng-bind="item.size">500*60</i>
+                                                </p>
+                                            </any>
+                                        </any>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div>
+                                        <any ng-switch on="item.type">
+                                            <any ng-switch-when="文字广告">
+                                                <p ng-bind="item.title" class="web-next">锤子科技科锤子科技科技科技技科技</p>
+                                            </any>
+                                            <any ng-switch-when="图片广告">
+                                                <p style="position: relative;" class="fd-img">
+                                                    <a href="{{{true: '/static/images/demo/demo.jpg', false: item.img_fmt}[!item.img_fmt]}}" target="_blank" class="table-img">
+                                                        <img ng-src="{{item.img_fmt}}" class="smallimg">
+                                                    </a>
+                                                    <!--<img ng-src="{{item.img_fmt}}" height="50" width="70" class="smallimg" />
+                                          <img ng-src="{{item.img_fmt}}"  class="big" />-->
+                                                </p>
+                                            </any>
+                                        </any>
+                                        <a href="{{item.url}}" target="_blank" class="web-next" ng-bind="item.url">www.wielwielaijvfaijvf.com</a>
+                                    </div>
+                                </td>
+                                <td ng-bind="ad_status(item)" ng-class="{true:'text-blue',false:'text-red'}[item.status == '通过']" >审核通过</td>
+                                <!-- <td ng-bind="item.exchange" ng-class="{true:'text-green',false:'text-red'}[item.exchange == '交换中']">交换中</td> -->
+                                <td>
+                                    <any ng-switch on="item.exchange">
+                                        <any ng-switch-when="交换中">
+                                            <a href="javascript:void(0)" class="stop_btn" ng-click="stopADstate(item,$index)" ng-show="item.status=='通过'">暂停</a>
+                                        </any>
+                                        <any ng-switch-when="已暂停">
+                                            <a href="javascript:void(0)" ng-show = "item.status == '通过'" ng-click="changeADstate(item.id,1,item.exchange,$index)">交换</a>
+                                            <a href="javascript:void(0)" class="cutout_btn2" ng-click="del(item.id,$index)">删除</a>
+                                        </any>
+                                    </any>
+                                    <any ng-switch="item.type">
+                                        <any ng-switch-when="文字广告">
+                                            <!-- <a href="/member/trafficexchange/editfontad?id={{item.id}}" ng-show="item.exchange != '交换中'" ng-click="editAD(item)">修改</a> -->
+                                        </any>
+                                        <any ng-switch-when="图片广告">
+                                            <!-- <a href="/member/trafficexchange/editpicad?id={{item.id}}" ng-show="item.exchange != '交换中'" ng-click="editAD(item)">修改</a> -->
+                                        </any>
+                                    </any>
+
+                                    <a href="javascript:void(0)" class="seeflow_btn2"  ng-click="lookAD(item.id)">流量查看</a>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center" ng-show="advert.length > 5">
+                    <a href="javascript:void(0)" ng-click="seemore(2)" class="moresee" id="adv2"></a>
+                </div>
+            </div>
+        </div>
+
+
+        <!--新增广告位的流量查看弹窗-->
+        <div class="modal fade seeflow" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:410px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>流量查看</h4>
+                    </div>
+                    <div class="modal-body" style="padding-top: 20px;">
+                        <div class="flowlist">
+                            <a href="javascript:void(0)">
+                                <i ng-bind="lookAdInfo(goodsInfo.pv)">15</i>
+                                浏览量(PV)
+                            </a>
+                            <a href="javascript:void(0)">
+                                <i ng-bind="lookAdInfo(goodsInfo.uv)">15</i>
+                                访客数(UV)
+                            </a>
+                            <a href="javascript:void(0)">
+                                <i ng-bind="lookAdInfo(goodsInfo.ip)">15</i>
+                                IP数(IP)
+                            </a>
+                        </div>
+                    </div>
+                    <div class="recently">
+                        <h5>最近三天流量</h5>
+                        <p>
+                            <label>今日：</label>
+                            <span>
+                                <zz ng-bind="lookAdInfo(goodsInfo.today.pv)">10</zz>(PV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(goodsInfo.today.uv)">10</zz>(UV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(goodsInfo.today.ip)">10</zz>(IP)</span>
+                        </p>
+                        <p>
+                            <label>昨日：</label>
+                            <span>
+                                <zz ng-bind="lookAdInfo(goodsInfo.yesterday.pv)">10</zz>(PV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(goodsInfo.yesterday.uv)">10</zz>(UV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(goodsInfo.yesterday.ip)">10</zz>(IP)</span>
+                        </p>
+                        <p>
+                            <label>前日：</label>
+                            <span>
+                                <zz ng-bind="lookAdInfo(goodsInfo.before.pv)">10</zz>(PV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(goodsInfo.before.uv)">10</zz>(UV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(goodsInfo.before.ip)">10</zz>(IP)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--新增广告位的流量查看-->
+        <!--新增广告位的暂停弹窗-->
+        <div class="modal fade suspend" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:500px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>暂停</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="waring"></div>
+                            <p class="text-red">暂停后，该广告位将不再导出流量，确认暂停吗？</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer footer-btn">
+                        <button class="btns cancel" data-dismiss="modal">取消</button>
+                        <button class="btns save" data-dismiss="modal" ng-click="stopUserGoods()">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--新增广告位的暂停弹窗-->
+        <!--新增广告位的开启失败弹窗-->
+        <div class="modal fade openfail" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:500px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>开启</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="waring"></div>
+                            <p class="text-red">开启失败，无法检测到您插入的代码，请先确认代码无误后，再次点击【开启】验证，如无法开启请联系客服！</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer footer-btn">
+                        <button class="btns save" data-dismiss="modal">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--新增广告位的开启失败弹窗-->
+        <!--新增广告位的删除弹窗-->
+        <div class="modal fade cutout" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:500px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="fork"></div>
+                            <p class="text-red">确认删除该广告位吗？</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer footer-btn">
+                        <button class="btns cancel" data-dismiss="modal">取消</button>
+                        <button class="btns save" data-dismiss="modal" ng-click="deleteGoods()">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--新增广告位的删除弹窗-->
+
+
+        <!---->
+        <!--我的加盟广告暂停弹窗-->
+        <div class="modal fade stop" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:500px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>暂停</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="waring"></div>
+                            <p class="text-red">暂停后该广告将不再联盟中展示，确认暂停吗？</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer footer-btn">
+                        <button class="btns cancel" data-dismiss="modal">取消</button>
+                        <button ng-click="stopAdver()" class="btns save" data-dismiss="modal">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--我的加盟广告暂停-->
+
+        <!--我的加盟广告流量查看弹窗-->
+        <div class="modal fade seeflow2" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:410px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>流量查看</h4>
+                    </div>
+                    <div class="modal-body" style="padding-top: 20px;">
+                        <div class="flowlist">
+                            <a href="javascript:void(0)">
+                                <i ng-bind="lookAdInfo(ADinfo.pv)">15</i>
+                                浏览量(PV)
+                            </a>
+                            <a>
+                                <i ng-bind="lookAdInfo(ADinfo.uv)">15</i>
+                                访客数(UV)
+                            </a>
+                            <a>
+                                <i ng-bind="lookAdInfo(ADinfo.ip)">15</i>
+                                IP数(IP)
+                            </a>
+                        </div>
+                    </div>
+                    <div class="recently">
+                        <h5>最近三天流量</h5>
+                        <p>
+                            <label>今日：</label>
+                            <span>
+                                <zz ng-bind="lookAdInfo(ADinfo.today.pv)">10</zz>(PV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(ADinfo.today.uv)">10</zz>(UV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(ADinfo.today.ip)">10</zz>(IP)</span>
+                        </p>
+                        <p>
+                            <label>昨日：</label>
+                            <span>
+                                <zz ng-bind="lookAdInfo(ADinfo.yesterday.pv)">10</zz>(PV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(ADinfo.yesterday.uv)">10</zz>(UV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(ADinfo.yesterday.ip)">10</zz>(IP)</span>
+                        </p>
+                        <p>
+                            <label>前日：</label>
+                            <span>
+                                <zz ng-bind="lookAdInfo(ADinfo.before.pv)">10</zz>(PV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(ADinfo.before.uv)">10</zz>(UV)</span>
+                            <span>
+                                <zz ng-bind="lookAdInfo(ADinfo.before.ip)">10</zz>(IP)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--我的加盟广告流量查看-->
+
+        <!--我的加盟广告删除弹窗-->
+        <div class="modal fade cutout2" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:500px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="fork"></div>
+                            <p class="text-red">删除后该广告将不再联盟中展示，确认删除吗？</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer footer-btn">
+                        <button class="btns cancel" data-dismiss="modal">取消</button>
+                        <button class="btns save" data-dismiss="modal" ng-click="deleteAD()">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--我的加盟广告删除弹窗-->
+
+        <!-- 广告获得流量弹窗star -->
+        <div class="modal fade get_traffic" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:795px;height:auto">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>获得流量明细</h4>
+                    </div>
+                    <div class="modal-body" style="height:550px;overflow:scroll;">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th width="10%">排名</th>
+                                    <th width="20%">广告位名称</th>
+                                    <th width="30%">广告页面地址</th>
+                                    <th width="15%">浏览量pv</th>
+                                    <th width="15%">访客数uv</th>
+                                    <th width="10%">IP数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-show="itemLoad" style="display:none;" class="item_load">
+                                    <td colspan="6">
+                                        <div style="width: 100px;height: 55px;margin: 76px auto 113px;">
+                                            <span class="fa fa-spinner fa-pulse fa-3x fa-fw " style="color: #6ec4f2"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr ng-show="AdvertFE.length == 0">
+                                    <td colspan="6" class="bbnone">
+                                        <img src="/static/images/icon/nodata.png" class="mt60" />
+                                        <p>暂无数据</p>
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="item in AdvertFE" ng-show="!itemLoad">
+                                    <td class="lcolor" ng-bind="item.id"></td>
+                                    <td ng-bind="item.wname"></td>
+                                    <td>
+                                        <a href="{{item.url}}" target="_blank" class="text-blue" ng-bind="item.url"></a>
+                                    </td>
+                                    <td class="lcolor" ng-bind="item.browse"></td>
+                                    <td class="lcolor" ng-bind="item.visitor"></td>
+                                    <td class="lcolor" ng-bind="item.ip"></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                    <!-- <div class="modal-footer footer-btn">
+                        <button class="btns cancel" data-dismiss="modal">取消</button>
+                        <button class="btns save" data-dismiss="modal" ng-click="deleteAD()">确认</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- 广告获得流量弹窗end -->
+        <!-- 广告位贡献的弹窗star -->
+        <div class="modal fade out_traffic" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:795px;height:auto;">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>贡献流量明细</h4>
+                    </div>
+                    <div class="modal-body" style="height:550px;overflow:scroll;">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th width="10%">排名</th>
+                                    <th width="20%">广告位名称</th>
+                                    <th width="25%">页面地址</th>
+                                    <!-- <th width= "10%">类型</th>
+                                        <th width= "15%">尺寸</th> -->
+                                    <th width="15%">浏览量pv</th>
+                                    <th width="15%">访客数uv</th>
+                                    <th width="15%">IP数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="itemLoad" style="display:none;" class="item_load">
+                                    <td colspan="6">
+                                        <div style="width: 100px;height: 55px;margin: 76px auto 113px;">
+                                            <span class="fa fa-spinner fa-pulse fa-3x fa-fw " style="color: #6ec4f2"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr ng-show="GoodsFE.length == 0">
+                                    <td colspan="6" class="bbnone">
+                                        <img src="/static/images/icon/nodata.png" class="mt60" />
+                                        <p>暂无数据</p>
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="item in GoodsFE" ng-show="!itemLoad">
+                                    <td class="lcolor" ng-bind="item.id"></td>
+                                    <td ng-bind="item.adname"></td>
+                                    <td>
+                                        <a href="{{item.url}}" target="_blank" class="text-blue" ng-bind="item.url"></a>
+                                    </td>
+                                    <!-- <td class="lcolor" ng-bind="item.ad_type"></td>
+                                        <td class="lcolor" ng-bind="item.size"></td> -->
+                                    <td class="lcolor" ng-bind="item.browse"></td>
+                                    <td class="lcolor" ng-bind="item.visitor"></td>
+                                    <td class="lcolor" ng-bind="item.ip"></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end -->
+
+        <!-- 流量来源列表弹窗 更多star -->
+        <div class="modal fade look_more" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:795px;height:auto;">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>获得流量明细</h4>
+                    </div>
+                    <div class="modal-body" id="look_more" style="height:550px;overflow:scroll;">
+                        <table class="table text-center goto_header">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" width="7%">排名</th>
+                                    <th class="text-center" width="20%">来源网站</th>
+                                    <th class="text-center" width="25%">来源页面地址</th>
+                                    <!-- <th class = "text-center" width= "25%">加盟广告地址</th> -->
+                                    <th class="text-center" width="13%">浏览量pv</th>
+                                    <th class="text-center" width="10%">IP数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="itemLoad" style="display:none;" class="item_load">
+                                    <td colspan="6">
+                                        <div style="width: 100px;height: 55px;margin: 76px auto 113px;">
+                                            <span class="fa fa-spinner fa-pulse fa-3x fa-fw " style="color: #6ec4f2"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr ng-show="more_data.length == 0">
+                                    <td colspan="6" class="bbnone">
+                                        <img src="/static/images/icon/nodata.png" class="mt60" />
+                                        <p>暂无数据</p>
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="(key,item) in more_data" ng-show="show_table">
+                                    <td class="lcolor" ng-bind="g_num(key)"></td>
+                                    <td ng-bind="item.wname"></td>
+                                    <td>
+                                        <a href="{{item.url}}" target="_blank" class="text-blue" ng-bind="item.url"></a>
+                                    </td>
+                                    <!-- <td class="text-blue" ng-bind="item.advert_url"></td> -->
+                                    <td class="lcolor" ng-bind="item.PV"></td>
+                                    <td class="lcolor" ng-bind="item.IP"></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                    <!-- <div class="modal-footer footer-btn">
+                            <button class="btns cancel" data-dismiss="modal">取消</button>
+                            <button class="btns save" data-dismiss="modal" ng-click="deleteAD()">确认</button>
+                        </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- end -->
+
+        <!-- 复制弹窗 -->
+        <div class="modal fade copymodal" id="myModal-5" data-backdrop="static">
+            <div class="modal-dialog" style="width:500px;height:310px">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button ng-click="ok = 2" type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>复制代码</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="copytext traffic_textarea" value="" style="height: 175px;">
+                            <textarea style="height: 120px;"></textarea>
+                            <span class="text-red code-ok" ng-show="ok==1">代码复制成功</span>
+                            <button class="copy_btn  copycode pull-right" id="btn" ng-click="copyCode()">复制代码</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 没有广告位提示 -->
+        <div class="modal fade ggwmodal">
+            <div class="modal-dialog">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>提示</h4>
+                    </div>
+                    <div class="modal-body addggw">
+                        <div class="text-tip">您已经添加了广告，还需添加广告位才能交换流量噢！</div>
+                        <a class="btn btn-info a_btn" href="/member/trafficexchange/newadvert">添加广告位</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- 没有广告提示 -->
+        <div class="modal fade ggmodal">
+            <div class="modal-dialog">
+                <div class="modal-content acc-con">
+                    <div class="modal-header headerbar">
+                        <button type="button" class="close close-btn" data-dismiss="modal">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4>提示</h4>
+                    </div>
+                    <div class="modal-body addggw">
+                        <div class="text-tip">您已经添加了广告位，还需添加广告我们才能给你导流量！</div>
+                        <a class="btn btn-info a_btn" href="/member/trafficexchange/addadbit">添加广告</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--右边内容end-->
+</body>
+<script type="text/javascript">
+    var $list = {"goods":[{"id":3737,"url":"www.cq4a.com","wname":"\u5deb\u5c71\u4fe1\u606f\u6e2f","adname":"\u5deb\u5c71\u4fe1\u606f\u6e2f","type":"\u56fe\u7247\u5e7f\u544a","ad_type":"\u6a2a\u5e45\u5e7f\u544a","size":"960*90","status":"\u5f00\u542f","pageurl":null,"advertType":null,"script":"<script id=\"w2898_3737\">(function () {var zy = document.createElement(\"script\");var flowExchange = window.location.protocol.split(\":\")[0];var http = flowExchange === \"https\"?\"https\":\"http\";zy.src = http+\":\/\/exchange.2898.com\/index\/flowexchange\/getGoods?id=3737&sign=c46626f63e87de90edd77837a34b4030\";var s = document.getElementsByTagName(\"script\");for(var i=0;i< s.length;i++){if(s[i].id){if(s[i].id == \"w2898_3737\"){s[i].parentNode.insertBefore(zy, s[i]);continue;}}}})();<\/script>","pv":10,"uv":10,"ip":10}],"advert":[{"id":3450,"wname":"\u5deb\u5c71\u4fe1\u606f\u6e2f1","type":"\u56fe\u7247\u5e7f\u544a","url":"http:\/\/www.cq4a.com","img":"15716ed04003ec50ba5dc2881f18b01e","title":null,"size":"960*90","status":"\u901a\u8fc7","exchange":"\u4ea4\u6362\u4e2d","rank":1,"img_fmt":"\/upload\/avatar\/15716ed04003ec50ba5dc2881f18b01e.jpg","pv":1,"uv":1,"ip":1},{"id":3451,"wname":"\u5deb\u5c71\u4fe1\u606f\u6e2f1","type":"\u56fe\u7247\u5e7f\u544a","url":"http:\/\/www.cq4a.com","img":"15716ed04003ec50ba5dc2881f18b01e","title":null,"size":"960*90","status":"\u901a\u8fc7","exchange":"\u4ea4\u6362\u4e2d","rank":1,"img_fmt":"\/upload\/avatar\/15716ed04003ec50ba5dc2881f18b01e.jpg","pv":2,"uv":2,"ip":2},{"id":3452,"wname":"\u534e\u4e50\u7f511","type":"\u56fe\u7247\u5e7f\u544a","url":"http:\/\/www.hahacn.com","img":"5c1ea279e7e4c0258ef2209062c30c74","title":null,"size":"960*90","status":"\u901a\u8fc7","exchange":"\u4ea4\u6362\u4e2d","rank":1,"img_fmt":"\/upload\/avatar\/5c1ea279e7e4c0258ef2209062c30c74.jpg","pv":7,"uv":7,"ip":7},{"id":3461,"wname":"cq4a-w-1","type":"\u6587\u5b57\u5e7f\u544a","url":"http:\/\/www.cq4a.com","img":null,"title":"\u5deb\u5c71\u4fe1\u606f\u6e2f","size":null,"status":"\u901a\u8fc7","exchange":"\u4ea4\u6362\u4e2d","rank":1,"img_fmt":"\/images\/icon\/no-img.png","pv":13,"uv":13,"ip":13},{"id":3462,"wname":"hh_w_1","type":"\u6587\u5b57\u5e7f\u544a","url":"http:\/\/www.hahacn.com","img":null,"title":"\u534e\u4e50\u7f51","size":null,"status":"\u901a\u8fc7","exchange":"\u4ea4\u6362\u4e2d","rank":1,"img_fmt":"\/images\/icon\/no-img.png","pv":16,"uv":16,"ip":16},{"id":3463,"wname":"hh_w_2","type":"\u6587\u5b57\u5e7f\u544a","url":"http:\/\/mw.hahacn.com","img":null,"title":"\u534e\u4e50\u7f8e\u6587\u7f51","size":null,"status":"\u901a\u8fc7","exchange":"\u4ea4\u6362\u4e2d","rank":1,"img_fmt":"\/images\/icon\/no-img.png","pv":10,"uv":10,"ip":10},{"id":3464,"wname":"hh_i_2","type":"\u56fe\u7247\u5e7f\u544a","url":"http:\/\/mall.hahacn.com","img":"47ced73f1a791d7d6deeb843a88cd47c","title":null,"size":"250*250","status":"\u901a\u8fc7","exchange":"\u4ea4\u6362\u4e2d","rank":1,"img_fmt":"\/upload\/avatar\/47ced73f1a791d7d6deeb843a88cd47c.jpg","pv":4,"uv":4,"ip":4},{"id":3465,"wname":"hh_i_3","type":"\u56fe\u7247\u5e7f\u544a","url":"http:\/\/mall.hahacn.com\/goods-566584932655.html","img":"388356088059fd9972302305311c7cf0","title":null,"size":"250*250","status":"\u901a\u8fc7","exchange":"\u4ea4\u6362\u4e2d","rank":1,"img_fmt":"\/upload\/avatar\/388356088059fd9972302305311c7cf0.jpg","pv":2,"uv":2,"ip":2},{"id":3466,"wname":"hh_i_4","type":"\u56fe\u7247\u5e7f\u544a","url":"http:\/\/mall.hahacn.com\/goods-562347850920.html","img":"7eb93e89f0ef3ea976a73ca81fbcbed4","title":null,"size":"250*250","status":"\u901a\u8fc7","exchange":"\u4ea4\u6362\u4e2d","rank":1,"img_fmt":"\/upload\/avatar\/7eb93e89f0ef3ea976a73ca81fbcbed4.jpg","pv":3,"uv":3,"ip":3}],"import":{"pv":"58","uv":"58","ip":"57","advert":9,"rank":"9"},"export":{"pv":"7","uv":"7","ip":"5","goods":1},"data":{"2018\/06\/08":0,"2018\/06\/09":0,"2018\/06\/10":0,"2018\/06\/11":0,"2018\/06\/12":0,"2018\/06\/13":0,"2018\/06\/14":0,"2018\/06\/15":0,"2018\/06\/16":0,"2018\/06\/17":0,"2018\/06\/18":0,"2018\/06\/19":0,"2018\/06\/20":0,"2018\/06\/21":0,"2018\/06\/22":0,"2018\/06\/23":0,"2018\/06\/24":0,"2018\/06\/25":0,"2018\/06\/26":0,"2018\/06\/27":0,"2018\/06\/28":0,"2018\/06\/29":0,"2018\/06\/30":0,"2018\/07\/01":0,"2018\/07\/02":0,"2018\/07\/03":0,"2018\/07\/04":0,"2018\/07\/05":0,"2018\/07\/06":0,"2018\/07\/07":0,"2018\/07\/08":0,"2018\/07\/09":0,"2018\/07\/10":0,"2018\/07\/11":0,"2018\/07\/12":0,"2018\/07\/13":0,"2018\/07\/14":0,"2018\/07\/15":0,"2018\/07\/16":0,"2018\/07\/17":0,"2018\/07\/18":0,"2018\/07\/19":0,"2018\/07\/20":0,"2018\/07\/21":0,"2018\/07\/22":0,"2018\/07\/23":0,"2018\/07\/24":0,"2018\/07\/25":0,"2018\/07\/26":0,"2018\/07\/27":0,"2018\/07\/28":0,"2018\/07\/29":0,"2018\/07\/30":0,"2018\/07\/31":0,"2018\/08\/01":0,"2018\/08\/02":0,"2018\/08\/03":0,"2018\/08\/04":0,"2018\/08\/05":0,"2018\/08\/06":0,"2018\/08\/07":0,"2018\/08\/08":0,"2018\/08\/09":0,"2018\/08\/10":0,"2018\/08\/11":0,"2018\/08\/12":0,"2018\/08\/13":0,"2018\/08\/14":0,"2018\/08\/15":0,"2018\/08\/16":0,"2018\/08\/17":0,"2018\/08\/18":0,"2018\/08\/19":0,"2018\/08\/20":0,"2018\/08\/21":0,"2018\/08\/22":0,"2018\/08\/23":0,"2018\/08\/24":0,"2018\/08\/25":0,"2018\/08\/26":0,"2018\/08\/27":0,"2018\/08\/28":0,"2018\/08\/29":0,"2018\/08\/30":0,"2018\/08\/31":0,"2018\/09\/01":0,"2018\/09\/02":0,"2018\/09\/03":0,"2018\/09\/04":0,"2018\/09\/05":{"id":47889,"ptime":20180905,"im_pv":58,"im_uv":58,"im_ip":57,"uid":47155,"ex_pv":7,"ex_uv":7,"ex_ip":5,"im_time":"{\"00\":{\"p\":0,\"u\":0,\"i\":0},\"01\":{\"p\":0,\"u\":0,\"i\":0},\"02\":{\"p\":0,\"u\":0,\"i\":0},\"03\":{\"p\":0,\"u\":0,\"i\":0},\"04\":{\"p\":0,\"u\":0,\"i\":0},\"05\":{\"p\":0,\"u\":0,\"i\":0},\"06\":{\"p\":0,\"u\":0,\"i\":0},\"07\":{\"p\":0,\"u\":0,\"i\":0},\"08\":{\"p\":0,\"u\":0,\"i\":0},\"09\":{\"p\":0,\"u\":0,\"i\":0},\"10\":{\"p\":1,\"u\":1,\"i\":1},\"11\":{\"p\":1,\"u\":1,\"i\":1},\"12\":{\"p\":1,\"u\":1,\"i\":1},\"13\":{\"p\":3,\"u\":3,\"i\":3},\"14\":{\"p\":21,\"u\":21,\"i\":21},\"15\":{\"p\":24,\"u\":24,\"i\":23},\"16\":{\"p\":7,\"u\":7,\"i\":6},\"17\":{\"p\":0,\"u\":0,\"i\":0},\"18\":{\"p\":0,\"u\":0,\"i\":0},\"19\":{\"p\":0,\"u\":0,\"i\":0},\"20\":{\"p\":0,\"u\":0,\"i\":0},\"21\":{\"p\":0,\"u\":0,\"i\":0},\"22\":{\"p\":0,\"u\":0,\"i\":0},\"23\":{\"p\":0,\"u\":0,\"i\":0}}","ex_time":"{\"00\":{\"p\":0,\"u\":0,\"i\":0},\"01\":{\"p\":0,\"u\":0,\"i\":0},\"02\":{\"p\":0,\"u\":0,\"i\":0},\"03\":{\"p\":0,\"u\":0,\"i\":0},\"04\":{\"p\":0,\"u\":0,\"i\":0},\"05\":{\"p\":0,\"u\":0,\"i\":0},\"06\":{\"p\":0,\"u\":0,\"i\":0},\"07\":{\"p\":0,\"u\":0,\"i\":0},\"08\":{\"p\":6,\"u\":6,\"i\":5},\"09\":{\"p\":0,\"u\":0,\"i\":0},\"10\":{\"p\":0,\"u\":0,\"i\":0},\"11\":{\"p\":0,\"u\":0,\"i\":0},\"12\":{\"p\":0,\"u\":0,\"i\":0},\"13\":{\"p\":1,\"u\":1,\"i\":0},\"14\":{\"p\":0,\"u\":0,\"i\":0},\"15\":{\"p\":0,\"u\":0,\"i\":0},\"16\":{\"p\":0,\"u\":0,\"i\":0},\"17\":{\"p\":0,\"u\":0,\"i\":0},\"18\":{\"p\":0,\"u\":0,\"i\":0},\"19\":{\"p\":0,\"u\":0,\"i\":0},\"20\":{\"p\":0,\"u\":0,\"i\":0},\"21\":{\"p\":0,\"u\":0,\"i\":0},\"22\":{\"p\":0,\"u\":0,\"i\":0},\"23\":{\"p\":0,\"u\":0,\"i\":0}}","ispay":1,"cid":null}}};
+    var $source = [{"wname":"\u5deb\u5c71\u4fe1\u606f\u6e2f","url":"www.cq4a.com","url_id":155474},{"wname":"\u5f88\u7ed9\u529b\u798f\u5229\u5bfc\u822a","url":"www.avdh.tw","url_id":155809},{"wname":"qq\u5bfc\u822a\u5929\u4e0b","url":"www.xl1998.cn","url_id":155631},{"wname":"\u706b\u725b\u89c6\u9891","url":"www.977888.net","url_id":155624},{"wname":"\u5947\u827a\u5728\u7ebf","url":"www.aiqiyi.site","url_id":155464},{"wname":"\u5343\u4ebf\u5bfc\u822a","url":"www.ekone.club","url_id":155042},{"wname":"Q\u751c\u70d8\u7119","url":"www.ekone.cn","url_id":149084},{"wname":"\u9ad8\u9e23\u5bb6\u4ff1\u5382","url":"www.gmjjfa.com","url_id":145602},{"wname":"\u7ea2\u5c18\u5e7f\u544a\u4efb\u52a1\u7f51","url":"www.hcggrw.com","url_id":44893},{"wname":"\u7f51\u7ad9\u63a8\u5e7f\u738b","url":"www.xcgk.com","url_id":152540},{"wname":"\u5b8f\u54e5\u5a31\u4e50\u7f51","url":"www.smzjy.cc","url_id":151323},{"wname":"\u5c0f\u767d\u7f51","url":"xiaobainet.cn","url_id":69920}];
+    $('[data-toggle="tooltip"]').tooltip({   // 有宽高限制
+        'html': true,
+        'trigger': 'hover'  // 默认hover
+    })
+    gotoTop('.goto_header', '.header_togo');
+    // $('.menu-date li').hover(function(){
+    //     $(this).addClass('active')
+    // },function(){
+    //     $(this).removeClass('active')
+    // })
+    $('.menu-date li').click(function () {
+        $(this).addClass('active').siblings().removeClass('active')
+    })
+</script>
+<script  src="/static/js/angular_wdate.js?v=20180903"></script> 
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/trafficexchange_index.js?v=20180903"></script>
+{include file="account/footer"}
+</body>
+</html>

@@ -1,0 +1,78 @@
+{include file="tool/header"}
+<div class="s_top clearfix">
+  <div class="whois-title">ip地址查询,查询域名ip地址,搜索IP地址的地理位置</div>
+  <div class="clearfix top_box">
+    <span class="pull-left http">IP地址或者域名</span>
+    <div class="search_whois pull-left" style="width: 500px;">
+      <input type="text" id="domain" name="domain" value="{$url}" style="width: 400px;" placeholder="请输入您要查询的IP地址或者域名"/>
+      <span class="search_btn">查询</span>
+    </div>
+  </div>
+</div>
+{eq name="isget" value="1"}
+<div class="cl-show">
+  <div class="s_middle">
+    <div class="clearfix mtb912">
+      <h5 class="pull-left m0">您查询的IP地址或者域名 <span>{$url}</span> </h5>
+    </div>
+    <div class="">
+      <table class="table beian-table whois_tab">
+        <colgroup>
+          <col width="25%" style="background: #f6f6f6;">
+          <col width="75%">
+        </colgroup>
+        <tbody>
+          <tr>
+            <td>查询详细地址</td>
+            <td>{neq name="sip" value="1"}{$sip}{else/}您输入的好像火星IP,本站不能查询.{/neq}</td>
+          </tr>
+          <tr>
+            <td>您的真实IP是</td>
+            <td>{$tip}</td>
+          </tr>
+          <tr>
+            <td>来自</td>
+            <td>{$taddr}</td>
+          </tr>
+          {notempty name="pip" }
+          <tr>
+            <td>您的代理IP是</td>
+            <td>{$pip}</td>
+          </tr>
+          <tr>
+            <td>来自</td>
+            <td>{$paddr}</td>
+          </tr>
+          {/notempty}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{/eq}
+<!--初始空白页-->
+<div class="tool-jj">
+  <div class="ps_cues">
+    <h5>ip地址查询</h5>
+    <p>收录IP数据 <font color="#FF6600" size="+2">5818561</font> 条，数据仅供参考，本站的IP数据库为最新的数据库,每10天自动更新一次！</p>
+    <p>IP是英文Instruction pointer的缩写，意思是“网络之间互连的协议”，IP协议也可以叫做“因特网协议”。</p>
+    <p>通俗的讲：IP地址也可以称为互联网地址或Internet地址，是用来唯一标识互联网上计算机的逻辑地址。每台连网计算机都依靠IP地址来标识自己，就很类似于我们的电话号码一样，通过电话号码来找到相应的电话，全世界的电话号码都是唯一的。IP地址也是一样。</p>    
+  </div>
+
+
+
+
+
+</div>
+<script type="text/javascript">
+  $('.search_btn').on('click',function(){
+    var url= $('#domain');
+    url = url.val().replace('/\s+/g',"");
+    if(url == ''){
+      alert('请输入您要查询的网站');
+    }else{
+      window.location.href="{:url('ip')}?url="+url;
+    }
+  })
+</script>
+{include file="tool/footer"}

@@ -1,0 +1,37 @@
+{include file="mheader"}
+            <div class="content">
+              <div class="title">{$path}</div>
+                <div class="body">
+                    <div id="listbox">
+                  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+                    <tr>
+                      <th>ID</th>
+                      <th>所属分类</th>
+                      <th>网站名称</th>
+                      <th>网站地址</th>
+                      <th>属性状态</th>
+                      <th>提交时间</th>
+                      <th>操作选项</th>
+                    </tr>
+                    {notempty name="weblist"}
+                    {volist name="weblist" id="vo"}
+                      <tr>
+                      <td>{$vo['web_id']}</td>
+                      <td>{$vo['typename']}</td>
+                      <td class="textleft">{$vo['web_name']}</td>
+                      <td class="textleft">{$vo['web_url']}</td>
+                      <td style="color: #FF0000;">{$vo['web_status']}</td>
+                      <td>{$vo['web_ctime']}</td>
+                      <td><a href="{:url('edit',['wid'=>$vo['web_id']])}">修改</a> {eq name="user['id']" value="2"}<a href="{:url('ok',['wid'=>$vo['web_id']])}">通过</a> <a href="{:url('fail',['wid'=>$vo['web_id']])}">不通过</a>{/eq}</td>
+                    </tr>
+                    {/volist}
+                    {else/}
+                    <tr><td colspan="7">您还未提交任何站点！</td></tr>
+                    {/notempty}
+                  </table>
+                </div>
+                    <div id="showpage" class="clearfix">{$showpage}</div>
+      
+                </div>
+            </div>
+{include file="mfooter"}

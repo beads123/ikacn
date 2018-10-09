@@ -1,0 +1,12 @@
+{include file="mheader"}
+
+<div id="homebox">
+  <h2>{$user['username']} 您好！欢迎登录{$webname}管理中心！</h2>
+    <ol>
+      <li>1. 您现在的会员等级是 <strong>{$user['grades']}</strong>，注册于 {#$myself.join_time#}</li>
+        <li>2. 目前您共有 <strong>{$user['point']}</strong> 个积分</li>
+        <li>3. 目前您共提交 <strong>{#$myself.site_count#}</strong> 个站点，<a href="{:url('member/add')}">继续提交>></a></li>
+        <li>4. 最后一次登录时间：{#$myself.login_time#}，登录IP：{#$myself.login_ip#}</li>
+    </ol>
+</div>
+{include file="mfooter"}

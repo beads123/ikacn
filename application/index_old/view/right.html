@@ -1,0 +1,66 @@
+<div class="home_right">
+        <script type="text/javascript">
+    /*336*280 创建于 2017/11/16*/
+    var cpro_id = "u3138445";
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+</br>
+<script type="text/javascript">
+    /*336*280 创建于 2017/11/16*/
+    var cpro_id = "u3138447";
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+
+    <br>
+      <div class="hrtpic"><script type="text/javascript">
+    /*336*280 创建于 2017/11/16*/
+    var cpro_id = "u3138448";
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+</div>
+    <br>
+    
+      <div class="hrrmht">
+        <div class="hrrmht-title">
+          <div class="hrrmhtttxt">热门话题</div>
+          <hr>
+        </div>
+        <div class="hrrmht-content">
+          <ul>{volist name="wkey" id="vo"}<li><a href="{:url('search')}?q={$vo['name']}" class="btn" target="_blank">{$vo['name']|mb_substr=###,0,3}</a></li>{/volist}
+          </ul>
+        </div>
+      </div>
+      <div class="hrrwbd">
+        <div class="hrrwbd-title">
+          <div class="hrrwbdttxt">热文榜单</div>
+          <hr>
+        </div>
+        <div class="hrrwbd-content">
+          <ul>
+            {volist name="hot" id="vo"}
+                <li class="rwbd-{$key+1}"><a href="{:url('detail/'.$vo['id'])}" target="_blank" title="{$vo['title']}">{$vo['title']}</a></li>
+              {/volist}
+          </ul>
+        </div>
+      </div>
+      <div class="frad2"><script type="text/javascript">
+    /*336*280 创建于 2017/11/16*/
+    var cpro_id = "u3138453";
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+</div>
+      <div class="frad3"><!-- 广告位：砍柴网ikanchai.com(650*180) --></div>
+    <div class="hrrwbd">
+          <div class="hrrwbd-title">
+            <div class="hrrwbdttxt">最新快报</div>
+            <hr>
+          </div>
+          <div class="hrrwbd-content">
+            <ul>
+              {volist name="new" id="vo"}
+                <li class="rwbd-{$key+1}"><a href="{:url('detail/'.$vo['id'])}" target="_blank" title="{$vo['title']}">{$vo['title']}</a></li>
+              {/volist}
+            </ul>
+          </div>
+        </div>
+    </div> 

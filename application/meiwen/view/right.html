@@ -1,0 +1,42 @@
+<div class="article-right">
+  <div class="right-item">
+  <div class="right-item-t"><h3>最新阅读</h3></div>
+  <ul class="right-item-new">
+  {volist name="new" id="vo"}
+      <li><a href="{:url('detail/'.$vo['id'])}" target='_self'>{$vo['title']|mb_substr=0,16}</a></li>
+  {/volist}
+  </ul>
+  </div>
+  <script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-250" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3142391",
+            container:  s
+        });
+    })();
+</script>
+  <div class="right-item">
+  <div class="right-item-t"><h3>热点阅读</h3></div>
+  <ul class="right-item-new">
+  {volist name="hot" id="vo"}
+    <li><a href="{:url('detail/'.$vo['id'])}" target='_self'>{$vo['title']|mb_substr=0,16}</a></li>
+  {/volist}
+  </ul>
+  </div>
+  <div id="right-box">
+  <div id="right-ad" class="item1">
+  <script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-250" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3196709",
+            container:  s
+        });
+    })();
+</script>
+  </div>
+    </div><script language="javascript" type="text/javascript"> follow();</script>
+</div>

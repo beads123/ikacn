@@ -1,0 +1,15 @@
+{include file="m_header"}
+<div class="bar">相关图片</div>
+<div class="box">
+  <div id="container">
+    {volist name="list" id="vo"}
+        <div class="post"> <a href="{:url('m_detail/'.$vo['id'])}" title="{$vo['title']}" target="_blank"><img src="{$vo['imgurl']}" alt="{$vo['title']}" />
+      <p>{$vo['title']}</p>
+      </a></div>
+    {/volist}
+  </div>
+  <div id="pager">
+      {$page}
+    </div>
+</div>
+{include file="m_footer"}

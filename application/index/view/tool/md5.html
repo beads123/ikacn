@@ -1,0 +1,37 @@
+{include file="tool/header"}
+<script type="text/javascript" src="/static/js/md5-2.js"></script>
+<div class="s_top clearfix">
+      <div class="boxs">
+                    <form method="post" name="fmCalcu" id="fmCalcu" action="">
+                    <input type="text" name="oText" id="oText" value="请输入要加密的字符串" class="mds_input">
+                    <input type="button" name="Button" value=" 加 密 " class="submit_all" onClick="CalcuMD5()"><br>
+                    <input name="aCode" type="text" id="aCode" value="" class="md5_input">16位<br>
+                    <input name="aCod2" type="text" id="aCod2" value="" class="md5_input">16位<br>
+                    <input name="bCode" type="text" id="bCode" value="" class="md5_input">32位<br>
+                    <input name="bCod2" type="text" id="bCod2" value="" class="md5_input">32位<br>
+                    </form>
+                </div>
+    </div>
+    <!--初始空白页-->
+    <div class="tool-jj">
+      <div class="ps_cues">
+        <h5>MD5加密工具</h5>
+        <p>MD5加密，分16位和32位的大小写加密。</p>    
+      </div>
+    </div>
+<script type="text/javascript">
+  function CalcuMD5()
+{   
+  var oText = document.fmCalcu.oText.value;
+  jsMD5_Typ = 'Typ16';
+  var aCode = MD5(oText);
+  document.fmCalcu.aCode.value = aCode;
+  document.fmCalcu.aCod2.value = aCode.toLowerCase();
+  jsMD5_Typ = 'Typ32';
+  var bCode = MD5(oText);
+  document.fmCalcu.bCode.value = bCode;
+  document.fmCalcu.bCod2.value = bCode.toLowerCase();
+                        
+}
+</script>
+{include file="tool/footer"}

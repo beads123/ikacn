@@ -1,0 +1,31 @@
+{include file="mheader"}
+            <div class="content">
+              <div class="title">{$path}</div>
+                <div class="body">
+                  <div id="formbox">
+                <form name="myfrom" id="myfrom" method="post" action="{:url('save')}">
+                    <ul>
+                      <li><strong>选择分类：</strong><select name="level_0" id="level_0" class="sel"></select><input type="hidden" name="cate_id" id="cate_id" value=""></li>
+                      <li><strong>网站名称：</strong><input type="text" name="web_name" id="web_name" class="ipt" size="50" maxlength="50" value="" /></li>
+                        <li><strong>网站域名：</strong><input type="text" name="web_url" id="web_url" class="ipt" size="50" maxlength="50" onKeyPress="strip_http()" onChange="strip_http()" onKeyUp="strip_http()" onblur="checkurl(this.value)" value="" /><input type="button" class="btn" id="meta_btn" value="抓取Meta" onclick="getmeta()"></li>
+                        <li><strong>TAG标签：</strong><input type="text" name="web_tags" id="web_tags" class="ipt" size="50" maxlength="50" value="" onBlur="javascript:this.value=this.value.replace(/，/ig,',');" /></li>
+                        <li><strong>网站简介：</strong><textarea name="web_intro" id="web_intro" cols="55" rows="6" class="ipt"></textarea></li>
+                  <li><strong>服务器IP：</strong><input name="web_ip" type="text" class="ipt" id="web_ip" size="30" maxlength="30" value="" readonly /><input type="button" class="btn" id="data_btn" value="获取数据" onclick="getdata()"></li>
+                  <li><strong>PageRank：</strong><input name="web_grank" type="text" class="ipt" id="web_grank" size="10" maxlength="2" value="0" readonly /></li>
+                          <li><strong>BaiduRank：</strong><input name="web_brank" type="text" class="ipt" id="web_brank" size="10" maxlength="2" value="0" readonly /></li>
+                          <li><strong>SogouRank：</strong><input name="web_srank" type="text" class="ipt" id="web_srank" size="10" maxlength="2" value="0" readonly /></li>
+                  <li><strong>AlexaRank：</strong><input name="web_arank" type="text" class="ipt" id="web_arank" size="10" maxlength="10" value="0" readonly /></li>
+                        <li><strong>&nbsp;</strong><input type="hidden" name="web_id" id="web_id" value=""><input type="submit" class="btn" value="提 交"> <input type="reset" class="btn" value="重 填"></li>
+                    </ul>
+                    </form>
+                  <script type="text/javascript" src="/static/js/linkage.select.js"></script>
+                  <script type="text/javascript">
+              var options = {ajax : "{:url('category')}", field_name : '[name=cate_id]', auto : true}
+              var sel = new LinkageSelect(options);
+              sel.bind('#level_0');
+
+                  </script>
+                </div>
+                </div>
+            </div>
+{include file="mfooter"}

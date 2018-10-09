@@ -1,0 +1,248 @@
+{include file="account/header"}
+<!--右边内容start-->
+<div class="content-right" ng-controller = "ctrlArea"  ng-cloak>
+  <!--上-->
+    <div class="all-types">
+      <cite>共购买<span>{{counts.gtoll}}</span>个网站</cite>
+      <cite>交接中<span>{{counts.jiaojie}}</span>个</cite>
+      <cite>申诉<span>{{counts.shensu}}</span>个</cite>
+      <cite>交易完成<span>{{counts.over}}</span>个</cite>
+    </div>
+    <!--上-->
+  <div class="bg-white pd20">
+    <div class="searchbar ">
+      <ul class="list-inline  pr0">
+        <li class="head-nav">
+          <div class="type-name pull-left " >状态：</div>
+          <div class="dropdown pull-left select_isdel" style="width: 100px;">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="dropdown-selected" >全部</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type" style="width: 100px;">
+              <li ng-repeat="(h,i) in types" ng-click="changetype(h)" ><a href="javascript:void(0)" ng-bind="i" ng-class="{true:'curr',false:''}[type==i]"></a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="member-index clearfix">
+      <div class="head-type" style="border: none;">
+        <div class="pull-right search mr10">
+          <input type="text" ng-model="data.search" ng-change="submitData()"  placeholder="请输入网站名称/网址"/>
+        </div>
+      </div>
+    </div>
+    <div class="member-index-center clearfix">
+      <div class="clearboth"></div>
+      <div class="free-table websitetab" infinite-scroll="loadMore()" infinite-scroll-distance='0' infinite-scroll-disabled="{{scrollDisabled}}" >
+        <table class="table">
+          <thead>
+          <tr>
+            <th width="25%">网站信息</th>
+            <th width="10%">出售价</th>
+            <th width="10%">状态</th>
+            <th width="15%">下单时间</th>
+            <th width="10%">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr ng-show="trade.length == 0">
+              <td colspan="5" class="bbnone"><img src="/static/images/nodata/buyweb.png" class="mt60" /></td>
+            </tr>
+            <tr ng-repeat="(k,v) in trade" >
+              <td>
+                <div class="clearfix website-cons">
+                  <div class="left-infos">
+                    <a href="/website_{{v.url_id}}.htm" target="_blank" ><img ng-src="{{v.image_fmt}}"/></a>   <!--跳网站详情页-->
+                  </div>
+                  <div class="right-infos">
+                    <p class="mb10"><a href="/website_{{v.url_id}}.htm" target="_blank" class="webname">{{v.point}}</a></p> 
+                    <span class="lbs">{{v.cateName}}</span>
+                    <a href="http://{{v.url}}" target="_blank" rel="nofollow">{{v.url}}</a>
+                    <p class="mt12 outweb">
+                      <a target="_blank" href="http://rank.chinaz.com/?host=www.csho.com&amp;sortType=0" rel="nofollow"><span class="tuwen bei_tu ">{{v.bdweight}}</span></a>
+                      <a target="_blank" href="http://pr.chinaz.com/?host=www.csho.com&amp;sortType=0" rel="nofollow"><span class=" tuwen icon-google">{{v.googleweight}}</span></a>
+                      <span>日IP数：<i>{{v.rip}}</i></span>
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <ss ng-bind="v.order_price" ng-show="v.is_bargain == 2" style="color: #808080;text-decoration:line-through"></ss>
+                  <p ><span ng-bind="v.price"></span></p>
+                
+              </td>
+
+                            <td>
+                              <img src="/static/images/icon/timeout_icon.png" class="timeouts" ng-show="v.chaoshi == 1"/>
+                               <p  ng-show="v.orderstatus == 1 || v.orderstatus == 4 || v.orderstatus == 5 || v.orderstatus == 6 || v.orderstatus == 8" class="text-red" ng-bind="show_status(v.orderstatus)"></p>                          
+                                <p ng-show="v.orderstatus == 3 " class="text-green">交接中</p>
+                                <p  ng-show="v.orderstatus == 2 || v.orderstatus == 7 "  class="text-gray">交易取消</p> 
+                              </td>
+              <td  ng-bind="formatDate(v.atime)"></td>
+              <td>
+                <a ng-show="v.orderstatus == 3"  href="javascript:void(0)" ng-click="appeal_modal(v.id,$index,1)">申诉</a>
+                <a ng-show="v.orderstatus == 1 && v.chaoshi != 1" href="/index/goods/friend_pay?no={{v.no}}">付款</a>  
+                <a ng-show="v.orderstatus == 1 || v.orderstatus == 7 ||  v.orderstatus == 2 " href="javascript:void(0)" ng-click="delete(v.id,$index)">删除</a>
+                <a ng-show="v.orderstatus == 4 && v.appealt_user == 1" href="javascript:void(0)" ng-click="appeal_modal(v.id,$index,2)">取消申诉</a>    
+                <a href="/member/websitetrade/buywebsitdetail?gid={{v.id}}">详情</a>
+                                <a ng-show="v.orderstatus == 3" href="javascript:void(0)"  ng-click="over_web(v.id,$index)">交易完成</a>
+
+              </td>
+            </tr>
+      
+
+  <!--申诉弹窗start-->
+   <div class="modal fade complaints" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:500px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>申诉</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center sure-text"  style="margin: 0px;">
+            <p class="text-left">请填写申诉理由：</p>
+            <textarea ng-model="message" ></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal">取消</button>
+          <button class="btns save" data-dismiss="modal" ng-click="sure_appeal()">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--申诉弹窗nd-->
+
+
+  <!--取消申诉弹窗start-->
+  <div class="modal fade cancel_ss" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:383px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>取消申诉</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center sure-text">
+            确认您申诉的问题已解决，如未解决请等待解决后再取消！
+          </div>
+
+        </div>
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal">取消</button>
+          <button class="btns save" data-dismiss="modal" ng-click="sure_appeal()">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--取消申诉弹窗nd-->
+  
+  <!--交接完成-->
+  <div class="modal fade handover" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:383px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>交接完成</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center sure-text">
+            确认后订单金额将会结算给卖家，请确认网站的相关信息已交接完成！
+          </div>
+
+        </div>
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal">取消</button>
+          <button class="btns save" data-dismiss="modal" ng-click="sure_over()">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--交接完成-->
+  <!--删除弹窗start-->
+  <div class="modal fade del_web" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:383px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>删除</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center sure-text">
+            确认删除该网站？
+          </div>
+
+        </div>
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal">取消</button>
+          <button class="btns save" data-dismiss="modal" ng-click="sure_delete()">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--删除商品弹窗弹窗end-->
+  
+</div>
+<!--右边内容end-->
+<script type="text/javascript">
+  var res = [];
+  var counts={"over":0,"gtoll":0,"jiaojie":0,"shensu":0};
+  var page = {"num_rows":0,"px":1,"pz":10,"num_page":0};
+</script>
+  <script type="text/javascript" src="/static/js/factory/directive.js"></script>
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/websitetrade_buywebsite.js?v=20180903"></script>
+{include file="account/footer"}
+</body>
+</html>

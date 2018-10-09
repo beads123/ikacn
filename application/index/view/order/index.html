@@ -1,0 +1,344 @@
+{include file="account/header"}
+<!--右边内容start-->
+<div class="content-right" ng-controller="ctrlArea">
+  <div class="member-index clearfix">
+    <!--上-->
+    <div class="all-types">
+              全部<span>0个</span>，
+              未付款<span>0个</span>，
+              服务中<span>0个</span>，
+              故障中<span>0个</span>，
+              关闭订单<span>0个</span>，
+              已拒单<span>0个</span>，
+              将到期<span>0个</span>，
+              待上链<span>0个</span>，
+              服务完成<span>0个</span>，
+            其中自动续费订单<span>0个</span>，
+      续费金额<span>0元</span>
+    </div>
+    <!--上-->
+    <!--中-->
+    <div class="bg-white pd20">
+      <div class="searchbar " style="width: 100%;">
+        <ul class="list-inline  pr0 ">
+          <li class="head-nav">
+            <div class="type-name pull-left " >类型：</div>
+            <div class="dropdown pull-left select_isdel" style="width: 100px;">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="dropdown-selected" ng-bind="order.data_type"></span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type">
+                <li ng-repeat="(k,v) in order.o_type" ng-click="order.changeType(v,1)" ng-class="{true:'hover',false:''}[order.data_type==v]"><a href="javascript:void(0)" ng-bind="v"></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="head-nav">
+            <div class="type-name pull-left " >状态：</div>
+            <div class="dropdown pull-left select_isdel">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="dropdown-selected" ng-bind="order.o_status['list'][order.data.status][3]"></span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type">
+                <li ng-repeat="(k,v) in order.o_status.list" ng-click="order.changeStatus(k,1)" ng-class="{true:'hover',false:''}[order.data.status==k]"><a href="javascript:void(0)" ng-bind="v[3]"></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="head-nav">
+            <div class="type-name pull-left">下单时间：</div>
+            <div class="ton-st">
+              <input class="Wdate date-blue" ng-model="data_stime" type="text" wdate-picker-stime /><!--带时间的插件WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false,readOnly:true})-->
+            </div>
+            <i class="henggan">-</i>
+            <div class="ton-st">
+              <input class="Wdate date-blue" ng-model="data_etime" type="text" wdate-picker-etime />
+            </div>
+          </li>
+          <li class="head-nav">
+            <div class="type-name pull-left">结束时间：</div>
+            <div class="ton-st">
+              <input class="Wdate date-blue" ng-model="data_endstime" type="text" wdate-picker-endstime /><!--带时间的插件WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false,readOnly:true})-->
+            </div>
+            <i class="henggan">-</i>
+            <div class="ton-st">
+              <input class="Wdate date-blue" ng-model="data_endetime" type="text" wdate-picker-endetime />
+            </div>
+          </li>
+        </ul>
+        <div class="pull-right search">
+          <input type="text" ng-model="order.data.search" placeholder="请输入网站名称/域名/订单号" ng-change="order.submitData(false,1)"/>
+          <!--<span ng-click="order.submitData(false,1)"></span>-->
+        </div>
+      </div>
+
+    <!--中-->
+      <div class="member-index-tablist" infinite-scroll="order.loadMore(1)" infinite-scroll-distance='0' infinite-scroll-disabled="false">
+        <div class="resource-table new-order-tab">
+          <table class="table">
+            <thead>
+            <tr>
+              <th width="14%">广告信息</th>
+              <!--<th width="14%">广告类型</th>-->
+              <th width="14%">单价</th>
+              <th width="14%">购买周期</th>
+              <th width="14%">金额</th>
+              <th width="18%">时间</th>
+              <th width="14%">状态</th>
+              <th width="14%">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-show="order.orderData.length == 0">
+              <td colspan="9" class="bbnone"><img src="/static/images/nodata/buy.png" class="mt60"/></td>
+            </tr>
+            <tr ng-repeat="(key,val) in order.orderData" >
+              <td colspan="8" class="plr0" >
+                <div class="thead pl7">
+                  <span>订单号：<i ng-bind="val.no"></i></span>
+                  <span>广告类型：<i ng-bind="val.goods_type"></i></span>
+                  <span>网站名：<a ng-href="{{val.url1}}" target="_blank" ng-bind="val.name1"></a></span>
+                  <span ng-show="val.goods_type=='友情链接'" class="inside">
+                    位置：
+                    <ss ng-show="val.is_qz == 1">全站</ss>
+                    <ss ng-show="val.is_qz == 2">首页</ss>
+                  </span>
+                  <span ng-show="val.goods_type=='图片广告' || val.goods_type=='文字广告'" class="inside">位置：{{val.dispage}}</span>
+                  <span ng-show="val.goods_type=='图片广告'" class="inside">尺寸：{{val.size}}</span>
+                  <a href="javascript:void(0)" ng-click="openWindow(val,'effect')"  ng-show="val.goods_type=='图片广告' || val.goods_type=='文字广告'" class="ml10">预览</a>
+                </div>
+                <div class="listname">
+  
+                  <!--不同类型广告信息-->
+                  <div ng-switch on="val.goods_type">
+                    <article class="link-img" ng-switch-when="图片广告">
+                      <img ng-src="{{val.reurl_image_fmt}}" onerror="this.src='/static/images/40.jpg'">
+                      <p>
+                      <p class="web-name pl7">{{val.reurl_title}}</p>
+                      <a href="{{val.reurl}}" target="_blank" class="web-name pl7" title="{{val.reurl}}">{{val.reurl}}</a>
+                      </p>
+                    </article>
+                    <xfan ng-switch-when="文字广告">
+                      <p ng-bind="val.reurl_title" class="web-next"></p>
+                      <p class="web-next"><a href="{{val.reurl}}" target="_blank" ng-bind="val.reurl" title="{{val.reurl}}"></a></p>
+                    </xfan>
+                    <xfan ng-switch-default>
+                      <p class="web-next" style="color: #555555;">{{val.reurl_title}}</p>
+                      <p class="web-next"><a href="{{val.reurl}}" target="_blank" title="{{val.reurl}}">{{val.reurl}}</a></p>
+                    </xfan>
+                  </div>
+                  <!--end-->
+  
+                  <!--<div ng-bind="val.goods_type"></div>-->
+                  <div> ¥{{val.r_price}}/月 </div>
+                  <div ng-bind="val.num"></div>
+  
+                  <!--是否是套餐价格-->
+                  <div ng-switch on="val.ispackage">
+                    <span ng-switch-when="2" style="margin-top: 15px;display: inline-block;">￥<xfan ng-bind="val.r_price*val.num"></xfan></span>
+                    <xfan ng-switch-when="1">
+                      <span class="old-price">¥<xfan ng-bind="val.r_price*val.num"></xfan></span>
+                      <span class="new-price">¥<xfan ng-bind="val.price"></xfan><span class="meal">套餐价</span></span>
+                      
+                    </xfan>
+                  </div>
+                  <!--end--->
+  
+                  <!--不同订单状态，不同时间展示-->
+                  <div ng-switch on="val.orderstatus">
+                    <xfan ng-switch-when='2'>
+                      <p ng-show = "order.formatDate(val['atime_fmt'])"><span class="time_span">下单：</span><xfan ng-bind="order.formatDate(val['atime_fmt'])"></xfan></p>
+                      <p ng-show = "order.formatDate(val['paytime_fmt'])"><span class="time_span">付款：</span><xfan ng-bind="order.formatDate(val['paytime_fmt'])"></xfan></p>
+                    </xfan>
+                    <xfan ng-switch-when='3'>
+                      <p ng-show = "order.formatDate(val['atime_fmt'])"><span class="time_span">下单：</span><xfan ng-bind="order.formatDate(val['atime_fmt'])"></xfan></p>
+                      <p ng-show = "order.formatDate(val['paytime_fmt'])"><span class="time_span">付款：</span><xfan ng-bind="order.formatDate(val['paytime_fmt'])"></xfan></p>
+                    </xfan>
+                    <xfan ng-switch-when='4'>
+                      <p ng-show = "order.formatDate(val['onchaintime_fmt'])"><span class="time_span">开始：</span><xfan ng-bind="order.formatDate(val['onchaintime_fmt'])"></xfan></p>
+                      <p ng-show = "order.formatDate(val['endtime_fmt'])"><span class="time_span">结束：</span><xfan ng-bind="order.formatDate(val['endtime_fmt'])"></xfan></p>
+                    </xfan>
+                    <xfan ng-switch-when='5'>
+                      <p ng-show = "order.formatDate(val['stoptime_fmt'])"><span class="time_span">故障：</span><xfan ng-bind="order.formatDate(val['stoptime_fmt'])"></xfan></p>
+                      <p ng-show = "order.formatDate(val['endtime_fmt'])"><span class="time_span">结束：</span><xfan ng-bind="order.formatDate(val['endtime_fmt'])"></xfan></p>
+                    </xfan>
+                    <xfan ng-switch-when='6'>
+                      <p ng-show = "order.formatDate(val['onchaintime_fmt'])"><span class="time_span">开始：</span><xfan ng-bind="order.formatDate(val['onchaintime_fmt'])"></xfan></p>
+                      <p ng-show = "order.formatDate(val['endtime_fmt'])"><span class="time_span">结束：</span><xfan ng-bind="order.formatDate(val['endtime_fmt'])"></xfan></p>
+                    </xfan>
+                                      <xfan ng-switch-when='7'>
+                      <p ng-show = "order.formatDate(val['onchaintime_fmt'])"><span class="time_span">开始：</span><xfan ng-bind="order.formatDate(val['onchaintime_fmt'])"></xfan></p>
+                      <p ng-show = "order.formatDate(val['endtime_fmt'])"><span class="time_span">结束：</span><xfan ng-bind="order.formatDate(val['endtime_fmt'])"></xfan></p>
+                    </xfan>
+                    <xfan ng-switch-when = "9">
+                      <p ng-show = "order.formatDate(val['atime_fmt'])"><span class="time_span">下单：</span><xfan ng-bind="order.formatDate(val['atime_fmt'])"></xfan></p>
+                      <p ng-show = "order.formatDate(val['endtime_fmt'])"><span class="time_span">拒单：</span><xfan ng-bind="order.formatDate(val['endtime_fmt'])"></xfan></p>
+                    </xfan>
+                    <xfan ng-show = "order.formatDate(val['atime_fmt'])" ng-switch-default class="tl">下单：<xfan ng-bind="order.formatDate(val['atime_fmt'])"></xfan></xfan>
+                  </div>
+                  <!--end-->
+                  <div ng-bind="order.o_status.value[val.orderstatus][3]"></div>
+                  <form action="index.html" method="post"></form>
+                  <!--不同订单操作-->
+                  <div>
+                    <a href="/member/Order/buyOrderDetail?oid={{val.id}}" target="_blank">详情</a>
+                    <safs ng-switch="val.orderstatus">
+                      <safs ng-switch-when="1">
+                        <xfan ng-bind-html-unsafe="order.showStatus(val.orderstatus,[val.no,val.name1],0,'关闭订单')"></xfan>
+                      </safs>
+                      <safs ng-switch-when="4">
+                        <a href="javascript:void(0);" ng-bind="order.getKeyName(val.orderstatus,0)" ng-click="openWindow(val,'apply-fault')"></a>
+                      </safs>
+                      <safs ng-switch-when='8'>
+                                                <a href="javascript:void(0);" ng-click="delorder(val.no)">删除</a>
+                                            </safs>
+                      <safs ng-switch-default>
+                        <xfan ng-bind-html-unsafe="order.showStatus(val.orderstatus,[val.no,val.name1],0,'重新购买')"></xfan>
+                      </safs>
+                    </safs>
+                    <xfan ng-show='val.orderstatus == 6 || val.orderstatus == 7 || val.orderstatus == 8 || val.orderstatus == 9'>
+                      <a href="javascript:void(0);" ng-click="reBuy(val)">重新购买</a>
+                    </xfan>
+                    <xfan ng-show='val.orderstatus == 1'>
+                      <a href="javascript:void(0);" ng-click="closeOrder(val)">关闭订单</a>
+                    </xfan>
+                    <xfan ng-show='(val.orderstatus == 2 || val.orderstatus == 3 || val.orderstatus == 4) && val.ispackage!=1'>
+                      <label class="auto"><input ng-checked="val.renew==1" ng-click="autoRenew(val.id,key)" type="checkbox" class="none"><b></b>自动续费</label>
+                    </xfan>
+                  </div>
+  
+                </div>
+              </td>
+            </tr>
+  
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--申请故障弹窗start-->  <!--申请故障的按钮加上 类名  apply_btn-->
+  <div class="modal fade apply-fault" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:500px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>申请故障</h4>
+        </div>
+        <div class="modal-body">
+          <div class="apply">
+            <h5>请选择故障原由<span>(*必填)</span></h5>
+            <p class="r_other" ng-click="setBecause('掉链')"><label><input type="radio" name="link" mark="1"/>掉链</label></p>
+            <p class="r_other" ng-click="setBecause('网站打不开')"><label><input type="radio" name="link" mark="1"/>网站打不开</label></p>
+            <p class="r_other" ng-click="setBecause('黑链')"><label><input type="radio" name="link" mark="1"/>黑链</label></p>
+            <p class="r_other" ng-click="setBecause(0)"><label><input type="radio" name="link" mark="2"/>提前下链订单结束，不进行退款</label></p>
+            <!--<p class="remarlbox"><textarea ng-bind="because"></textarea></p>-->
+          </div>
+
+        </div>
+        <div class="modal-footer footer-btn">
+
+          <button ng-class="{false:'btns save cancel',true:'btns save'}[because!='']" ng-click="solve()">提交</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--效果预览弹窗start-->  <!--按钮加上 类名 inside-->
+  <div class="modal fade effect" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:750px;height:auto">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>效果预览</h4>
+        </div>
+        <div class="modal-body" style="padding-top: 20px;">
+          <div class="preview">
+            <p>
+              <label>广告位置：</label>
+              <span ng-bind="orderObj.dispage"></span><span>(</span><a href="//{{orderObj.url2}}"><span ng-bind="orderObj.url2"></span></a><span>)</span>
+            </p>
+                        <p>
+              <label>位置描述：</label>
+              <span ng-bind="orderObj.details"></span>
+            </p>
+            <p>
+              <label>位置截图：</label>
+            <div>
+            <img ng-src="{{orderObj.image_fmt}}" width="100%" onerror="this.src='/static/images/back.png';" alt="" />
+            </div>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--申请故障弹窗弹窗end-->
+</div>
+<!--右边内容end-->
+  <!--效果预览窗弹窗end-->
+  <!--是套餐付款弹窗start-->  <!--按钮加上 类名  pachage-btn-->
+<script type="text/javascript">
+  $('[data-toggle="tooltip"]').tooltip({   // 有宽高限制
+        'html': true,
+        'trigger': 'hover'  // 默认hover
+    })
+  var orderData = [];
+  var o_status = {"list":{"1":[{"\u4ed8\u6b3e":"\/index\/goods\/friend_pay?no={arg}&from=1.0.2","\u5173\u95ed\u8ba2\u5355":"\/member\/Order\/dropOrder?id={arg}"},{"\u5173\u95ed\u8ba2\u5355":""},false,"\u672a\u4ed8\u6b3e"],"4":[{"\u7533\u8bf7\u6545\u969c":"\/member\/Order\/faultApply?id={arg}&because={arg}"},{"\u7533\u8bf7\u6545\u969c":"#"},false,"\u670d\u52a1\u4e2d"],"5":[false,{"\u89e3\u51b3\u6545\u969c":"#","0":"\u65e0\u6cd5\u89e3\u51b3"},{"\u89e3\u51b3\u6545\u969c":"\/member\/Order\/solve?id={arg}&back={arg}"},"\u6545\u969c\u4e2d"],"8":[{"\u91cd\u65b0\u8d2d\u4e70":"\/member\/Order\/buy_again?gid={arg}","\u5220\u9664":"\/member\/Order\/delorder?no={arg}"},false,false,"\u5173\u95ed\u8ba2\u5355"],"9":[{"\u91cd\u65b0\u8d2d\u4e70":"\/member\/Order\/buy_again?gid={arg}"},false,false,"\u5df2\u62d2\u5355"],"100":[false,false,false,"\u5c06\u5230\u671f"],"2,3":[false,{"\u63a5\u5355":"#","\u62d2\u7edd":"#"},{"\u63a5\u5355":"\/member\/Order\/accept?id={arg}&type={arg}","\u62d2\u7edd":"\/member\/Order\/reject?id={arg}&info={arg}&type={arg}"},"\u5f85\u4e0a\u94fe"],"6,7":[{"\u91cd\u65b0\u8d2d\u4e70":"\/member\/Order\/buy_again?gid={arg}"},{"\u7ed3\u7b97":"#"},false,"\u670d\u52a1\u5b8c\u6210"]},"value":{"1":[{"\u4ed8\u6b3e":"\/index\/goods\/friend_pay?no={arg}&from=1.0.2","\u5173\u95ed\u8ba2\u5355":"\/member\/Order\/dropOrder?id={arg}"},{"\u5173\u95ed\u8ba2\u5355":""},false,"\u672a\u4ed8\u6b3e"],"2":[false,{"\u63a5\u5355":"#","\u62d2\u7edd":"#"},{"\u63a5\u5355":"\/member\/Order\/accept?id={arg}&type={arg}","\u62d2\u7edd":"\/member\/Order\/reject?id={arg}&info={arg}&type={arg}"},"\u5f85\u4e0a\u94fe"],"3":[false,{"\u9000\u6b3e(\u5173\u95ed\u8ba2\u5355)":"#","0":["\u786e\u8ba4\u4e0a\u94fe"]},{"\u786e\u8ba4\u4e0a\u94fe":"\/member\/Order\/onchain?id={arg}"},"\u5f85\u4e0a\u94fe"],"4":[{"\u7533\u8bf7\u6545\u969c":"\/member\/Order\/faultApply?id={arg}&because={arg}"},{"\u7533\u8bf7\u6545\u969c":"#"},false,"\u670d\u52a1\u4e2d"],"5":[false,{"\u89e3\u51b3\u6545\u969c":"#","0":"\u65e0\u6cd5\u89e3\u51b3"},{"\u89e3\u51b3\u6545\u969c":"\/member\/Order\/solve?id={arg}&back={arg}"},"\u6545\u969c\u4e2d"],"6":[{"\u91cd\u65b0\u8d2d\u4e70":"\/member\/Order\/buy_again?gid={arg}"},{"\u7ed3\u7b97":"#"},false,"\u670d\u52a1\u5b8c\u6210"],"7":[{"\u91cd\u65b0\u8d2d\u4e70":"\/member\/Order\/buy_again?gid={arg}"},false,false,"\u670d\u52a1\u5b8c\u6210"],"8":[{"\u91cd\u65b0\u8d2d\u4e70":"\/member\/Order\/buy_again?gid={arg}","\u5220\u9664":"\/member\/Order\/delorder?no={arg}"},false,false,"\u5173\u95ed\u8ba2\u5355"],"9":[{"\u91cd\u65b0\u8d2d\u4e70":"\/member\/Order\/buy_again?gid={arg}"},false,false,"\u5df2\u62d2\u5355"],"100":[false,false,false,"\u5c06\u5230\u671f"]}},varData = {};
+</script>
+<script type="text/javascript" src="/static/js/factory/inc_order.js?v=20180903"></script>
+<script type="text/javascript" src="/static/js/angular_wdate.js?v=20180903"></script>
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/order_index.js?v=20180903"></script>
+{include file="account/footer"}
+</body>
+</html>

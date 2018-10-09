@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{$title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">var sitepath = '/';</script>
+<link href="/static/css/member.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="header">
+      <div id="topbox">
+        <a href="/" id="logo"></a>
+            <div id="other"></div>
+        </div>
+        <div id="navbar">
+          <ul>
+        <li><a href="{:url('home')}">会员中心</a></li><li class="navline"></li>
+        <li><a href="{:url('member/mlist')}">网站管理</a></li><li class="navline"></li>
+        <li><a href="{:url('member/add')}">网站提交</a></li><li class="navline"></li>
+        <li><a href="{:url('member/claim')}">网站认领</a></li><li class="navline"></li>
+        <li><a href="{:url('user/home',['id'=>$user['id']],true,'bbs')}">个人资料</a></li><li class="navline"></li>
+        <li><a href="{:url('login/logout','',true,'bbs')}?from={:urlencode('http://'.$Think.server.http_host)}">安全退出</a></li><li class="navline"></li>
+                <li class="home"><a href="{#$site_root#}">返回网站首页&raquo;</a></li>
+          </ul>
+        </div>
+    </div>
+    <div id="sitepath">{$sitepath}{$path}</div>
+    <div id="mainbox" class="mtop10">

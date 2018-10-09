@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>华乐网红包活动</title>
+<meta name="description" content="华乐网红包活动,现金红包" />
+<meta name="format-detection" content="telephone=yes"/>
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<meta name="apple-mobile-web-app-title" content="华乐网红包活动,现金红包">
+<link rel="stylesheet" href="/static/css/act/base.css">
+<script type="text/javascript" src="/static/js/act/jquery.js" ></script>
+<script type="text/javascript" src="/static/js/act/index.js" ></script>
+<script type="text/javascript" src="/static/js/act/jweixin-1.0.0.js" ></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/static/js/act/png.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<div class="swarp">
+   <div class="top_mian">
+       <div class="wrap">
+           <a href="http://www.hahacn.com/" class="lh_btn"></a>
+           <a href="https://www.alipay.com/" class="zfb_btn"></a>
+       </div>
+   </div>
+   <div class="banner_int">
+         <div class="baner_t1">
+            <div class="ban_btn">
+               <a href="https://pan.baidu.com/s/1qZ1z9Kg" target="_blank" class="btn_1">点击下载宣传海报</a>
+               <a href="guizhe.html" class="btn_2">活动规则</a>
+            </div>
+         </div>
+         <div class="wx_btn"><a href="guizhe.html" class="btn_1">查看活动规则</a></div>
+         <div class="content_st">
+             <div class="title_t1"></div>
+             <span class="sp_1">活动时间：2018.1.1-2018.3.31</span>
+             <span class="sp_2">支付宝用户可以</span>
+             <span class="sp_3">领取0.1-99元随机面额红包</span>
+             <span class="sp_4">邀请好友的支付宝赏金总量900万笔，先到先得</span>
+             <div class="title_t2"></div>
+             <div class="sp_img">
+                <b>第一步</b>
+                <p>打开手机支付宝APP，扫描二维码</p>
+                <img src="/static/images/img_1.png">
+                <b>第二步</b>
+                <p>获得随机现金红包，每人每天可有一次领取机会；</p>
+                <img src="/static/images/img_2.png">
+             </div>
+             <div class="so_title"></div>
+             <div class="sp_txt">
+                 <p>打开手机支付宝APP，扫描二维码</p>
+                 <p>获得随机现金红包，每人每天可有一次领取机会；</p>
+             </div>
+              <div class="title_t3"></div>
+             <div class="sp_img">
+                <b>第一步</b>
+                <p>使用支付宝到店付款时，选择红包抵扣，订单金额需大于2元</p>
+                <img src="/static/images/img_3.png">
+                <b>第二步</b>
+                <p>现金红包使用成功</p>
+                <img src="/static/images/img_4.png">
+             </div>
+             <div class="so_title"></div>
+             <div class="sp_txt">
+                 <p>使用支付宝到店付款时，选择红包抵扣，订单金额需大于2元</p>
+                 <p>现金红包使用成功</p>
+             </div>
+         </div>
+   </div>
+
+</div>
+</body>
+<script type="text/javascript" src="/static/js/act/sha1.js" ></script>
+
+<script>
+$.ajax({  
+    url:"http://bug-lh.wwwscn.com/homev.php?m=Homev&c=Weixin&a=actoken&barid=46",  
+    dataType:'jsonp',  
+    data:'',  
+    jsonp:'callback',  
+    success:function(result) { 
+
+      onMenuShare(result.ticket);   
+    },  
+    timeout:3000 
+}); 
+function onMenuShare(ticket){
+/*var ticket = 'kgt8ON7yVITDhtdwci0qeUUBO0zmtHYFQR_lQULWupbnK7f6LeaXI9hrZus8w8a6Iu7JRjHK3q8XJDP3Y7r0KA';*/
+var keystr = 'linhangstr';
+var times = '1499997378';
+var thisURL = document.URL;
+var ss = "jsapi_ticket=" + ticket + "&noncestr=" + keystr + "&timestamp=" + times+ "&url=" + thisURL;
+var signatureStr = hex_sha1(ss);
+wx.config({
+    debug:false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wx64a70e00c6081091', // 必填，公众号的唯一标识
+    timestamp:  times, // 必填，生成签名的时间戳
+    nonceStr: keystr, // 必填，生成签名的随机串
+    signature: signatureStr,// 必填，签名
+    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'] // 必填，需要使用的JS接口列表
+  });
+  wx.ready(function(){
+    wx.onMenuShareAppMessage({
+      title: '华乐网-支付宝现金红包活动第三期', // 分享标题
+      desc: '领现金红 天天可领 想花就花', // 分享描述
+      link: 'http://www.hahacn.com/act/zfbhd.html', // 分享链接
+      imgUrl:'http://v2.wangbayingxiao.com/zfbhd3/img/logo_index.jpg', // 分享图标
+      type: 'link', // 分享类型,music、video或link，不填默认为link
+      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    });
+    wx.onMenuShareTimeline({
+      title: '华乐网-支付宝现金红包活动第三期', // 分享标题
+      desc: '领现金红 天天可领 想花就花', // 分享描述
+      link: 'http://www.hahacn.com/act/zfbhd.html', // 分享链接
+      imgUrl:'http://v2.wangbayingxiao.com/zfbhd3/img/logo_index.jpg', // 分享图标
+      type: 'link', // 分享类型,music、video或link，不填默认为link
+      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    });
+  
+});
+}
+</script>
+</html>

@@ -1,0 +1,926 @@
+{include file="header"}
+<link type="text/css" rel="stylesheet" href="static/css/goods.css" />
+<script src="static/js/jquery.easing.1.3.js"></script>  <!--//购物车插件-->
+<div class="main-block" ng-controller="MainController" ng-cloak>
+  <div class="container">
+<!--网站交易top-->
+    <div class="clearfix">
+      <ol class="breadcrumb col-xs-6">
+        <li><a href="/">首页</a></li>
+        <li class="active">网站交易</li>
+      </ol>
+
+      <div class="input-group col-xs-6 col-sm-5 col-md-4 col-lg-3 pull-right" style="margin-top: 8px; ">
+        <input type="text" class="form-control" placeholder="请输入网站域名" ng-model="search" enter-search>
+        <span class="input-group-btn">
+          <button class="btn btn-info" type="button"  ng-click="searchGoods()">搜索</button>
+        </span>
+      </div>
+    </div>
+
+<!--网站交易middle-->
+    <div class="clearfix">
+      <div class="col-sm-6 col-md-3">
+        <div class="main-list">
+          <div class="main-list-link">
+            <ul>
+              <li><a href="/member/websitetrade/addwebsite.htm">出售网站</a></li>
+              <li><a href="#" ng-click="open_modal()">求购网站</a></li>
+            </ul>
+          </div>
+          <div class="main-list-title">买家求购</div>
+          <div class="mian-list-boxs trade_scroll">
+            <ul>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥PC上IP5到10倍求购文学小说 权重0 IP大于1000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购其他分类 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购信息分类,电子商务,其他分类 权重8 IP大于一万的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1000求购论坛博客 权重1 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购其他分类 权重7 IP大于1000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重0 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购新闻媒体 权重2 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重1 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购休闲娱乐,网络游戏,其他分类 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购教育培训 权重1 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购文学小说,网络游戏,校园高校 权重3 IP大于3000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购教育培训,行业门户 权重4 IP大于3000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购其他分类 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购休闲娱乐,网络游戏,手机网站 权重8 IP大于1000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购电子商务 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购生活服务,行业门户 权重5 IP大于一万的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购影视动漫 权重1 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥50求购网络游戏 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购生活服务,信息分类,行业门户 权重5 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购信息分类,综合网站,其他分类 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购新闻媒体,影视动漫,其他分类 权重3 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购新闻媒体,校园高校 权重1 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购新闻媒体,校园高校 权重1 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购休闲娱乐,新闻媒体,综合网站 权重2 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购汽车网站 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重4 IP大于一万的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购医疗健康 权重2 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购医疗健康 权重5 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重3 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重2 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购综合网站,电子商务,行业门户 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重2 IP大于1000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购汽车网站 权重2 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥500求购信息分类 权重3 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥求购信息分类,综合网站,IT技术 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥300求购文学小说,新闻媒体,行业门户 权重0 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥200求购IT技术 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥888求购影视动漫 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1万求购综合网站,电子商务,行业门户 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1.8万求购文学小说,生活服务,综合网站 权重2 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥200万求购 权重4 IP大于5000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥100求购IT技术 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购 权重1 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥200求购文学小说,教育培训,校园高校 权重7 IP大于一万的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥500求购校园高校 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥20求购网络游戏,电子商务 权重4 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购其他分类 权重4 IP大于1000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1万求购新闻媒体,生活服务,信息分类 权重2 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1000求购文学小说 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥100求购医疗健康,政府机构 权重1 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购行业门户,网址导航,其他分类 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1000求购休闲娱乐 权重0 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥500求购IT技术,网址导航 权重0 IP大于5000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购信息分类,行业门户,其他分类 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1500求购 权重1 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥40求购影视动漫 权重9 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购文学小说,影视动漫 权重4 IP大于5000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥10万求购新闻媒体,生活服务,行业门户 权重2 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购汽车网站 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购旅游酒店,IT技术 权重1 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购旅游酒店,IT技术 权重1 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购网络游戏 权重1 IP大于1000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥2500求购文学小说,网络游戏,手机网站 权重4 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购电子商务 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1000求购 权重3 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1000求购 权重3 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥1000求购 权重3 IP大于500的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购 权重1 IP大于100的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购IT技术 权重3 IP大于3000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购体育竞技 权重0 IP大于1000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥2000求购影视动漫 权重1 IP大于1000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购 权重3 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购 权重4 IP大于5000的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购新闻媒体 权重0 IP不限的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">¥5万求购IT技术,影视动漫 权重4 IP大于一万的网站</span>
+            </li>
+                           <li class="clearfix" >
+            <span class="label-box" style="margin-top: 8px;">求购</span>
+            <span class="main-list-text">求购网络游戏,教育培训,旅游酒店 权重3 IP大于3000的网站</span>
+            </li>
+                           </ul>
+          </div>
+        </div>
+      </div>
+      <script>
+        var trade_opts = {go: 'top', obj: $('.trade_scroll'), cons: 3, goTime: 2000, stopTime: 4000}
+        scrollFun(trade_opts)
+      </script>
+      <!--右侧分类-->
+
+
+          <div class="col-xs-12 col-sm-6 col-md-9 main-search">
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">行业分类：</div>
+          <div class="main-search-mark hidden" ng-click="toggleMe('cateIsOpen')" ng-class="{true: 'icon-up', false: 'icon-down'}[cateIsOpen]">更多 </div>
+          <ul class="main-search-con clearfix fix-height" ng-class="{open: cateIsOpen}" >
+            <li ng-class="{active: cateAll['active']}" ng-click="clickCate('all')"><span >不限</span></li>
+            <li ng-repeat="c in cate" ng-class="{active: c['active']}" cid="{{c.cid1}}" ng-click="clickCate($index)"><span ng-bind="c.cidname1"></span></li>
+          </ul>
+        </div>
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">百度权重：</div>
+          <ul class="main-search-con  clearfix">
+            <li ng-click="moreSelect('bdweight', 'any')" ng-class="{active: bdweight.any.active}" class="active"><span >不限</span></li>
+            <li ng-click="moreSelect('bdweight', 'w0')" ng-class="{active: bdweight.w0.active}"><span>0</span></li>
+            <li ng-click="moreSelect('bdweight', 'w1')" ng-class="{active: bdweight.w1.active}"><span>1</span></li>
+            <li ng-click="moreSelect('bdweight', 'w2')" ng-class="{active: bdweight.w2.active}"><span>2</span></li>
+            <li ng-click="moreSelect('bdweight', 'w3')" ng-class="{active: bdweight.w3.active}"><span>3</span></li>
+            <li ng-click="moreSelect('bdweight', 'w4')" ng-class="{active: bdweight.w4.active}"><span>4</span></li>
+            <li ng-click="moreSelect('bdweight', 'w5')" ng-class="{active: bdweight.w5.active}"><span>5</span></li>
+            <li ng-click="moreSelect('bdweight', 'w6')" ng-class="{active: bdweight.w6.active}"><span>6</span></li>
+            <li ng-click="moreSelect('bdweight', 'w7')" ng-class="{active: bdweight.w7.active}"><span>7</span></li>
+            <li ng-click="moreSelect('bdweight', 'w8')" ng-class="{active: bdweight.w8.active}"><span>8</span></li>
+            <li ng-click="moreSelect('bdweight', 'w9')" ng-class="{active: bdweight.w9.active}"><span>9</span></li>
+          </ul>
+        </div>
+
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">PR&nbsp;&nbsp;值：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="moreSelect('googleweight', 'any')" ng-class="{active: googleweight.any.active}" class="active"><span >不限</span></li>
+            <li ng-click="moreSelect('googleweight', 'w0')" ng-class="{active: googleweight.w0.active}"><span>0</span></li>
+            <li ng-click="moreSelect('googleweight', 'w1')" ng-class="{active: googleweight.w1.active}"><span>1</span></li>
+            <li ng-click="moreSelect('googleweight', 'w2')" ng-class="{active: googleweight.w2.active}"><span>2</span></li>
+            <li ng-click="moreSelect('googleweight', 'w3')" ng-class="{active: googleweight.w3.active}"><span>3</span></li>
+            <li ng-click="moreSelect('googleweight', 'w4')" ng-class="{active: googleweight.w4.active}"><span>4</span></li>
+            <li ng-click="moreSelect('googleweight', 'w5')" ng-class="{active: googleweight.w5.active}"><span>5</span></li>
+            <li ng-click="moreSelect('googleweight', 'w6')" ng-class="{active: googleweight.w6.active}"><span>6</span></li>
+            <li ng-click="moreSelect('googleweight', 'w7')" ng-class="{active: googleweight.w7.active}"><span>7</span></li>
+            <li ng-click="moreSelect('googleweight', 'w8')" ng-class="{active: googleweight.w8.active}"><span>8</span></li>
+            <li ng-click="moreSelect('googleweight', 'w9')" ng-class="{active: googleweight.w9.active}"><span>9</span></li>
+          </ul>
+        </div>
+
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">价&nbsp;&nbsp;&nbsp;&nbsp;格：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="singleSelect('price', 'any')" ng-class="{active: price.any.active}" class="active"><span>不限</span></li>
+            <li ng-click="singleSelect('price', 'w0')" ng-class="{active: price.w0.active}"><span>0-1000元</span></li>
+            <li ng-click="singleSelect('price', 'w1')" ng-class="{active: price.w1.active}"><span>1000-5000元</span></li>
+            <li ng-click="singleSelect('price', 'w2')" ng-class="{active: price.w2.active}"><span>5000-1万元</span></li>
+            <li ng-click="singleSelect('price', 'w3')" ng-class="{active: price.w3.active}"><span>1万-3万</span></li>
+            <li ng-click="singleSelect('price', 'w4')" ng-class="{active: price.w4.active}"><span>3万-5万</span></li>
+            <li ng-click="singleSelect('price', 'w5')" ng-class="{active: price.w5.active}"><span>5万-10万</span></li>
+            <li ng-click="singleSelect('price', 'w6')" ng-class="{active: price.w6.active}"><span>10万以上</span></li>
+          </ul>
+        </div>
+        
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">日&nbsp;IP&nbsp;数：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="singleSelect('rip', 'any')" ng-class="{active: rip.any.active}" class="active"><span >不限</span></li>
+           <li ng-click="singleSelect('rip', 'w0')" ng-class="{active: rip.w0.active}"><span>0-100IP</span></li>
+            <li ng-click="singleSelect('rip', 'w1')" ng-class="{active: rip.w1.active}"><span>100-500IP</span></li>
+            <li ng-click="singleSelect('rip', 'w2')" ng-class="{active: rip.w2.active}"><span>500-1000IP</span></li>
+            <li ng-click="singleSelect('rip', 'w3')" ng-class="{active: rip.w3.active}"><span>1000-3000IP</span></li>
+            <li ng-click="singleSelect('rip', 'w4')" ng-class="{active: rip.w4.active}"><span>3000-5000IP</span></li>
+            <li ng-click="singleSelect('rip', 'w5')" ng-class="{active: rip.w5.active}"><span>5000-10000IP</span></li>
+            <li ng-click="singleSelect('rip', 'w6')" ng-class="{active: rip.w6.active}"><span>≥1万IP</span></li>
+          </ul>
+        </div>
+
+      <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">百度收录：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="singleSelect('bdincluded', 'any')" ng-class="{active: bdincluded.any.active}" class="active"><span>不限</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w0')" ng-class="{active: bdincluded.w0.active}"><span>0-1万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w1')" ng-class="{active: bdincluded.w1.active}"><span>1-5万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w2')" ng-class="{active: bdincluded.w2.active}"><span>5-10万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w3')" ng-class="{active: bdincluded.w3.active}"><span>10-50万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w4')" ng-class="{active: bdincluded.w4.active}"><span>50-100万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w5')" ng-class="{active: bdincluded.w5.active}"><span>100-500万</span></li>
+            <li class="main-search-input clearfix" ng-class="{'has-error': bdincluded.input.invalid}">
+              <input enter-search="" check-input="" check-target="bdincluded" check-name="min" check-type="int" ng-model="bdincluded.input.min" type="text" class="form-control ng-pristine ng-valid">
+              <span style="margin: 0;">至</span>
+              <input enter-search="" check-input="" check-target="bdincluded" check-name="max" check-type="int" ng-model="bdincluded.input.max" type="text" class="form-control ng-pristine ng-valid">
+              <span>万</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">网站收入：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="singleSelect('websr', 'any')" ng-class="{active: websr.any.active}" class="active"><span >不限</span></li>
+            <li ng-click="singleSelect('websr', 'w0')" ng-class="{active: websr.w0.active}"><span>0-1000</span></li>
+            <li ng-click="singleSelect('websr', 'w1')" ng-class="{active: websr.w1.active}"><span>1000-5000</span></li>
+            <li ng-click="singleSelect('websr', 'w2')" ng-class="{active: websr.w2.active}"><span>5000-1万</span></li>
+            <li ng-click="singleSelect('websr', 'w3')" ng-class="{active: websr.w3.active}"><span>一万以上</span></li>  
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--综合排序列表start-->
+    <div class="clearfix main-search-bar">
+
+     <span ng-click="clickOrder('order', 'any')" ng-class="{active: order.any.active}" class="search-item">综合排序</span>
+     <span ng-click="clickOrder('order', 'bdweight')" ng-class="{active: order.bdweight.active}" class="search-item">百度权重 <span class="{{{true: 'icon-up', false: 'icon-down'}[order.bdweight.asc]}}" class="icon-down"></span></span>
+      <span ng-click="clickOrder('order', 'googleweight')" ng-class="{active: order.googleweight.active}" class="search-item">PR值 <span class="{{{true: 'icon-up', false: 'icon-down'}[order.googleweight.asc]}}" class="icon-down"></span></span>
+      <span ng-click="clickOrder('order', 'rip')" ng-class="{active: order.rip.active}" class="search-item">日IP <span class="{{{true: 'icon-up', false: 'icon-down'}[order.rip.asc]}}" class="icon-up"></span></span>
+     <span ng-click="clickOrder('order', 'price')" ng-class="{active: order.price.active}" class="search-item">价格 <span class="{{{true: 'icon-up', false: 'icon-down'}[order.price.asc]}}" class="icon-up"></span></span> 
+     
+      <div class="page-mini " style="margin-top: 5px">
+          <span ng-click="getPage('prev')"  class="left fa fa-angle-left " ng-class="{'disabled': page.px==1}"></span>
+          <span ng-click="getPage('next')"  class="right fa fa-angle-right" ng-class="{'disabled': page.px==page.num_page}"></span>
+      </div>
+      <div class="page-num" style="margin-top: 4px">
+          <span class="px" ng-bind="page.px"></span> /
+          <span class="pz" ng-bind="page.num_page"></span>
+      </div>
+        <span class="search-count">共 <span class="text-yellow" ng-bind="page.num_rows"></span> 个网站</span>
+     
+     
+    </div>
+
+    <!--商品list循环-->
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="r in res" ng-show="!itemLoad">
+        <div class="media">
+          <a class="media-left" ng-href="website_{{r.url_id}}.htm">
+            <img class="media-object" ng-src="{{common.staticHost(r.image_fmt)}}@w152_h110" width="152" height="110">
+          </a>
+          <div class="media-body">
+            <div class="media_left">
+              <h4 class="media-heading" style="margin-top: 10px">
+                <span class="label-box" ng-bind="r.cid1name"></span>
+                <a ng-href="website_{{r.url_id}}.htm" ng-bind="r.point" target="_blank"></a>
+              </h4>
+              <p class="list_text">网站地址：
+                   <a class="hidden-md hidden-sm hidden-xs word-break" href="http://{{r.url}}" ng-bind="r.url" target="_blank" rel="nofollow"></a>
+                   </p>
+              <p class="list_text">
+             <span class="list_texts">
+                百度权重：
+                <a rel="nofollow" href="http://rank.chinaz.com/?host={{r.url}}&amp;sortType=0" target="_blank">
+                  <span class="tuwen bai_du" ng-bind="r.bdweight"></span>
+                </a>
+              </span>
+             <span class="list_texts">
+                PR值：
+                <a rel="nofollow" href="http://rank.chinaz.com/?host={{r.url}}&amp;sortType=0" target="_blank">
+                  <span class="tuwen pr" ng-bind="r.googleweight"></span>
+                </a>
+             </span>
+                <span class="list_texts">日IP数：{{r.rip}}</span>
+                <span class="list_texts">网站收入：{{r.income}}元/月</span>
+                <span class="list_texts">百度收录：{{r.bdincluded}}</span>
+              </p>
+            </div>
+            <div class="media_right">
+                <p class="good_price">￥{{r.price}}</p>
+                <span ng-show="r.status == 3" class="btn btn-blue shop fly{{r.fid}}" ng-click="buyGoods(r.fid,$index)">加入购物车</span>
+                <span  ng-show="r.status == 5 || r.status == 6 || r.status == 9"  class="btn btn-gray exchange">交易中</span>
+                <span  ng-show="r.status == 7 || r.status == 8"  class="btn btn-gray exchange">交易完成</span>
+                <span ng-show="r.status == 3  && r.bargain == 1" class="btn btn-red" ng-click="yijiaGoods(r.gid)">议价</span>
+            </div>
+          </div>
+        </div>
+      </li>
+
+     <li ng-show="res.length==0">
+        <div style="width: 340px;margin: 90px auto 150px;">
+          <img src="static/images/demo/nodata.png" style="display:block;margin: 0 auto 50px;">
+          <p style="color: #808080;font-size: 16px;text-align: center;">非常抱歉，没有找到相关商品，请重新检索！~</p>
+        </div>
+      </li>
+
+    </ul>
+     <div class="tcdPageCode item_page" style="margin-bottom: 120px;" ng-hide="res.length==0"></div>
+    <!--商品list循环结束-->
+
+    <!--求购网站弹框start-->
+    <div class="modal fade modal-qiugou modal-blue"  style="display: none;">
+      <div class="modal-backdrop fade in" style="z-index:1"></div>
+      <div class="modal-dialog modal-lg" role="document" style="z-index:9">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="location.reload()"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title">求购网站</h4>
+          </div>
+          <div class="modal-main">
+            <div class="list-group clearfix">
+              <label class="pull-left">行业分类：</label>
+             <div class="pl0 pr8 pull-left" style="position:relative">
+                <input type="text" class="class" id ="cateName" cid=''  readonly value="不限">
+                <p class="help-block such mb0">（最多选择3个行业分类）</p>
+                <div class="select-tab">
+                  <div class="con">
+                    <ul class="list-unstyled" >
+                     <!--                       <li cid="">网络游戏</li>
+                                          <li cid="">新闻媒体</li>
+                                          <li cid="">文学小说</li>
+                                          <li cid="">体育竞技</li>
+                                          <li cid="">生活服务</li>
+                                          <li cid="">休闲娱乐</li>
+                                          <li cid="">信息分类</li>
+                                          <li cid="">手机网站</li>
+                                          <li cid="">动物宠物</li>
+                                          <li cid="">论坛博客</li>
+                                          <li cid="">汽车网站</li>
+                                          <li cid="">旅游酒店</li>
+                                          <li cid="">教育培训</li>
+                                          <li cid="">医疗健康</li>
+                                          <li cid="">综合网站</li>
+                                          <li cid="">IT技术</li>
+                                          <li cid="">电子商务</li>
+                                          <li cid="">校园高校</li>
+                                          <li cid="">政府机构</li>
+                                          <li cid="">行业门户</li>
+                                          <li cid="">网址导航</li>
+                                          <li cid="">影视动漫</li>
+                                          <li cid="">其他分类</li>
+                      -->
+                     <li ng-repeat="b in cate" cid="{{b.cid1}}" ng-bind="b.cidname1"></li>
+                    </ul>
+                  </div>
+                  <div class="foot">
+                    <a class="ok pull-right">确定</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="list-group clearfix">
+              <div class="pull-left wd250">
+                <label class="pull-left">百度权重≥：</label>
+                <div class="dropdown pull-left select_isdel" style="width: 178px;">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 178px;">
+               <span class="dropdown-selected" value="all"></span>
+                    <span class="caret"></span>
+                  </button>
+      
+                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type" style="width: 178px;">
+                  <li ng-repeat="(k, v) in bdqz" ng-click="changebd(v)"><a href="javascript:void(0)"  ng-class="{true:'hover',false:''}[type==v]" ng-bind="v"></a></li>
+                </ul>
+
+      
+                </div>
+              </div>
+              <div class="pull-left" style="margin-left: 15px">
+                <label class="pull-left   lh35">PR值≥：</label>
+                <div class="dropdown pull-left select_isdel" style="width: 178px;">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 178px;">
+                     <span class="dropdown-selected" value="all"></span>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type" style="width: 178px;">
+                      <li ng-repeat="(k, v) in bdqz" ng-click="changepr(v)"><a href="javascript:void(0)"  ng-class="{true:'hover',false:''}[type==v]" ng-bind="v"></a></li>
+                  </ul>
+                </div> 
+              </div>
+            </div>
+
+            <div class="list-group">
+              <label class="pull-left">日IP数≥：</label>
+              <div class="dropdown  select_isdel" style="width: 178px;">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 178px;">
+                 <span class="dropdown-selected" value="all"></span>
+                  <span class="caret"></span>
+                </button>
+           
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type" style="width: 178px;">
+                      <li ng-repeat="(k, v) in qgrip" ng-click="changerip(v)"><a href="javascript:void(0)"  ng-class="{true:'hover',false:''}[type==v]" ng-bind="v"></a></li>
+                  </ul>
+
+              </div>
+            </div>
+
+            <div class="list-group">
+              <label class="pull-left">价格：</label>
+              <div class="list_price">
+                <div class="checkplace">
+                  <input type="radio" name="price" value="" checked="checked" class="none"  mark="0">
+                  <b></b>
+                  无要求
+                </div>
+                <div class="checkplace">
+                  <input type="radio" name="price" value=""  class="none" mark="1">
+                  <b></b>
+                  其他
+                </div>
+                <input type="text" ng-model="ad.price" placeholder="请输入您期望的价格" maxlength="10" class="ng-pristine ng-valid">
+              </div>
+            </div>
+
+            <div class="list-group clear">
+              <label>其他求购需求：</label>
+              <input  type="text" ng-model="ad.other" placeholder="请输入您的其他的求购需求" maxlength="10" class="ng-pristine ng-valid">
+            </div>
+            <div class="list-group">
+              <label>称呼：</label>
+              <input  type="text" ng-model="ad.name" placeholder="请输入您的姓名" maxlength="10" class="ng-pristine ng-valid">
+            </div>
+            <div class="list-group">
+              <label>联系方式：</label>
+              <input type="text" ng-model="ad.connect" placeholder="请输入您的QQ/电话/微信/邮箱" class="ng-pristine ng-valid">
+            </div>
+
+            <!--发布按钮-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info modal_tips_yes tj_btn"  ng-click="adddemand()">发布求购需求</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--发布求购需求弹框end-->
+    <!--议价弹窗-->
+    <div class="modal fade modal-bargaining modal-blue"  style="display: none;">
+      <div class="modal-backdrop fade in" style="z-index:1"></div>
+      <div class="modal-dialog modal-lg" role="document" style="z-index:9">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title">议价</h4>
+          </div>
+            <div class="modal-main" style="padding-top: 30px;">
+              <div class="list-group">
+                  <h5 class="infoweb">网站信息</h5>
+                  <div class="modal-tab clearfix">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="modal-tab-name">网站地址：</div>
+                    <div class="modal-tab-value" ng-bind="bargainMsg.url"></div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="modal-tab-name">百度权重：</div>
+                    <div class="modal-tab-value" ng-bind="bargainMsg.bdweight"></div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="modal-tab-name">PR值：</div>
+                    <div class="modal-tab-value" ng-bind="bargainMsg.googleweight"></div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="modal-tab-name">日IP数：</div>
+                    <div class="modal-tab-value" ng-bind="bargainMsg.rip"></div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="modal-tab-name">网站收入：</div>
+                    <div class="modal-tab-value" >{{bargainMsg.income}}元/月</div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="modal-tab-name">百度收录：</div>
+                    <div class="modal-tab-value" ng-bind="bargainMsg.bdincluded"></div>
+                </div>
+            </div>
+              </div>
+              <div class="list-group newversion">
+                <label style="width: 85px;">当前售价：</label>
+                <span>¥{{bargainMsg.price}}</span>
+              </div>
+              <div class="list-group newversion">
+                <label style="width: 85px;">预期价格：</label>
+                <input type="text"  placeholder="请输入您的预期价格" class="ng-pristine ng-valid" ng-model="tobargain.how" required="required" integer-only="integer-only"><em>元</em>
+              </div>
+              <div class="list-group newversion mb80 text-red" style="padding-left: 15px;">
+                  注:卖家同意您的议价后，会以当前输入的预期价格生成一个未付款的订单，订单有效期45分钟，请及时到会员中心付款。
+              </div>
+            <!--发布按钮-->
+              <div class="modal-footer">
+                <button type="button" class="btn  btn_red" ng-click="tobargaining()">提交议价</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!--议价弹窗end-->
+    <!--提交成功弹窗-->
+    <div class="modal fade modal_submit_succedd modal-blue"  style="display: none;">
+      <div class="modal-backdrop fade in" style="z-index:1"></div>
+      <div class="modal-dialog" role="document" style="z-index:9">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title">提交成功</h4>    
+          </div>
+            <div class="modal-main" style="padding-top: 30px;">
+             <p class="text-center mtb53"><img src="static/images/fly.png"/></p> 
+             <p class="fp80">已把您的预期价位发送给卖家，请耐心等待！回复结果将以短信的形式通知您。工作日内可联系平台客服进行三方沟通，效率会更快喔！</p>
+             
+            <!--联系客服-->
+              <div class="modal-footer">
+                <a target=blank href="http://q.url.cn/s/NwGSv8m?_type=wpa"  type="button" class="btn  btn-info w134">联系客服</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!--提交成功弹窗end-->
+    
+     <!--重复议价弹窗-->
+    <div class="modal fade modal_againyijia modal-blue"  style="display: none;">
+      <div class="modal-backdrop fade in" style="z-index:1"></div>
+      <div class="modal-dialog" role="document" style="z-index:9">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title">重复议价</h4>    
+          </div>
+            <div class="modal-main" style="padding-top: 30px;">
+             <p class="text-center mtb53"><img src="static/images/waring.png"/></p> 
+             <p class="fp80">该网站您已参与议价，请耐心等待卖家回复。也可联系在线客服帮您和卖家沟通！</p>
+            <!--联系客服-->
+              <div class="modal-footer">
+                <a target=blank href="https://wpa.qq.com/msgrd?V=3&uin=3232892002&Site=QQ客服&Menu=yes"  type="button" class="btn  btn-info w134">联系客服</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!--重复议价弹窗end-->
+    
+  </div>
+    
+<!-- 右侧打开加 open -->
+<div class="menu-right">
+  <div class="menu-right-goods">
+    <div class="menu-right-header">
+      <span class="icon-cart"></span>
+      <span class="header-text">购物车</span>
+      <span class="icon-close menu_right_close" ></span>
+    </div>
+    <div class="menu-right-con" >
+      <ul ng-repeat="(key,val) in common.itemDataList" >
+         <h1 ng-bind="val.title" ng-show="val.count>0"></h1>
+        <li ng-repeat="(key1,val1) in val.data">
+          <div class="web_title">
+            <span class="label-box" ng-bind="val1.catename"></span>
+            <h3  class="con-title" ng-bind="val1.webname" ng-show="val.title=='友情链接' || val.title=='图文广告'" title="{{val1.webname}}"></h3>
+            <h3 ng-show="val.title=='网站交易'" class="con-title" ng-bind="val1.point" title="{{val1.point}}"></h3>
+          </div>
+          <span class="con-text" >
+            网站地址：
+            <span class="web_url" ng-bind="val1.goodsurl" title="{{val1.goodsurl}}"></span>
+          </span>
+          <p class="web_weight">
+            权重：
+            <span class="tuwen bai_du" style="margin-right: 36px" ng-bind="val1.bdweight"></span>
+            PR值：
+            <span class="tuwen pr"  ng-bind="val1.pr"></span>
+          </p>
+          <p>
+            IP值：<xfan ng-bind="val1.ip"></xfan>
+            <xfan ng-show="val.title=='友情链接'" style="margin-left: 20%;">
+              位置：
+              <span ng-bind="{true:'全站',false:'首页'}[val1.is_qz == 1]">全站</span>             
+            </xfan>
+          </p>
+          <div class="clearfix">
+            <span class="con-price">￥<span ng-bind="val1.price"></span><ss ng-hide="val.title=='网站交易'">/月</ss></span>
+            <span class="con-btn" ng-click="common.delItem(val1.gid)">删除</span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- 购物车没有商品时显示 默认隐藏 -->
+      <div class="menu-right-empty " ng-class="{'hidden': common.itemNum*1>0}">
+        <img src="static/images/bg/shopping.png">
+        <p>购物车空空，快去选购一下哦！</p>
+      </div>
+    </div>
+    <div class="menu-right-footer">
+      <div class="clearfix ">
+        <span class="footer-left">已选 <span class="text-yellow" ng-bind="common.itemNum"></span> 个网站</span>
+        <span class="footer-right">共计： <span class="text-yellow" ng-bind="common.itemPrice"></span></span>
+      </div>
+      <a href="/index/goods/submit_order" ng-show="common.itemNum>0">
+        <span class="btn btn-info center-block">去购买</span>
+      </a>
+      <span class="btn center-block" style="background: gray;color: #fff;" ng-show="common.itemNum==0">去购买</span>
+    </div>
+  </div>
+  <ul class="menu-right-btns">
+    <li class="" onclick="window.open('/member/account/member.htm')">
+       <div>
+         <span class="title">会员中心</span>
+          <span class="icon icon-person"></span>
+       </div> 
+    </li>
+    <li  style="position: relative">
+      <div class="kefu">
+        <span class="title">客服</span>
+        <span class="icon icon-service"></span>
+      </div>
+      <b style=" position: absolute;top: 7px; left: 66px;opacity: 0;z-index: 999;"><script charset="utf-8" type="text/javascript" src="//wpa.b.qq.com/cgi/wpa.php?key=XzgwMDE4NTQ4OV80ODI2ODlfODAwMTg1NDg5Xw"></script></b>
+    </li>
+    <li class="menu_right_btn" >
+      <div>
+        <span class="title">购物车</span>
+        <span class="icon icon-shop" ng-click="common.CartLogin()"></span>
+        <span class="badge"  ng-bind="common.itemNum"></span>
+      </div>
+    </li>
+    <li class="hidden">
+      <div>
+        <span class="title">加盟</span>
+        <span class="icon icon-hands"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/user_feedback.htm')">
+      <div>
+        <span class="title">意见反馈</span>
+        <span class="icon icon-pen"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/appdown.htm')">
+      <div>
+        <span class="title">APP下载</span>
+        <span class="icon icon-code"></span>
+      </div>
+    </li>
+    <li class="go_top">
+      <div>
+        <span class="title">顶部</span>
+        <span class="icon icon-up"></span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+</div>
+ 
+
+<script>
+  var api_cate = [{"cid1":6,"cidname1":"\u7f51\u7edc\u6e38\u620f"},{"cid1":5,"cidname1":"\u65b0\u95fb\u5a92\u4f53"},{"cid1":4,"cidname1":"\u6587\u5b66\u5c0f\u8bf4"},{"cid1":8,"cidname1":"\u4f53\u80b2\u7ade\u6280"},{"cid1":7,"cidname1":"\u751f\u6d3b\u670d\u52a1"},{"cid1":1,"cidname1":"\u4f11\u95f2\u5a31\u4e50"},{"cid1":25,"cidname1":"\u4fe1\u606f\u5206\u7c7b"},{"cid1":27,"cidname1":"\u624b\u673a\u7f51\u7ad9"},{"cid1":28,"cidname1":"\u52a8\u7269\u5ba0\u7269"},{"cid1":22,"cidname1":"\u8bba\u575b\u535a\u5ba2"},{"cid1":23,"cidname1":"\u6c7d\u8f66\u7f51\u7ad9"},{"cid1":18,"cidname1":"\u65c5\u6e38\u9152\u5e97"},{"cid1":16,"cidname1":"\u6559\u80b2\u57f9\u8bad"},{"cid1":12,"cidname1":"\u533b\u7597\u5065\u5eb7"},{"cid1":33,"cidname1":"\u7efc\u5408\u7f51\u7ad9"},{"cid1":46,"cidname1":"IT\u6280\u672f"},{"cid1":49,"cidname1":"\u7535\u5b50\u5546\u52a1"},{"cid1":54,"cidname1":"\u6821\u56ed\u9ad8\u6821"},{"cid1":59,"cidname1":"\u653f\u5e9c\u673a\u6784"},{"cid1":60,"cidname1":"\u884c\u4e1a\u95e8\u6237"},{"cid1":64,"cidname1":"\u7f51\u5740\u5bfc\u822a"},{"cid1":310,"cidname1":"\u5f71\u89c6\u52a8\u6f2b"},{"cid1":367,"cidname1":"\u5176\u4ed6\u5206\u7c7b"}];
+  var api_res = [{"gid":784,"rip":"0-100","price":"2500.00","image":"d314d807545d683b10237001e9e53508","income":"0-1000","status":3,"point":"\u67431\uff0c\u5feb\u7167\u65b0\uff0c\u5907\u6848\u57df\u540d\uff0c\u6536\u5f55\u56db\u5343\u591a","fid":80246,"bargain":1,"wid":161351,"webname":"\u7693\u6708\u5c0f\u8bf4\u9605\u8bfb\u7f51","cid":"81","url":"www.haoyue9.com","url_id":130239,"googleweight":0,"bdweight":1,"bdincluded":3743,"cid1name":"\u6587\u5b66\u5c0f\u8bf4","cid2name":"\u5c0f\u8bf4\u7f51\u7ad9","cid1":4,"cid2":81,"image_fmt":"\/upload\/avatar\/d314d807545d683b10237001e9e53508.png"},{"gid":782,"rip":"0-100","price":"2800.00","image":"f07762f24fce6601a26239721dbf8784","income":"0-1000","status":3,"point":"7\u5e74\u81ea\u5df1\u6ce8\u518c\u4e00\u624b\u8001\u57df\u540d\u57df\u540d100\u5206  \u4e00\u767e\u5206","fid":80222,"bargain":1,"wid":143073,"webname":"100F\u5b66\u4e60\u7f51","cid":"302","url":"www.100f.com.cn","url_id":130928,"googleweight":0,"bdweight":0,"bdincluded":2094,"cid1name":"IT\u6280\u672f","cid2name":"\u7f51\u7ad9\u6e90\u7801","cid1":46,"cid2":302,"image_fmt":"\/upload\/avatar\/f07762f24fce6601a26239721dbf8784.png"},{"gid":781,"rip":"\u5927\u4e8e1\u4e07","price":"120000.00","image":"ca170a09cd12facebbb77686332949d3","income":"0-1000","status":3,"point":"\u79fb\u52a8\u67436\u25cfIP2.4\u4e07\u5de6\u53f3\u25cf\u767e\u5ea6\u5b98\u7f51\u25cf6\u5e74\u8001\u7ad9","fid":80138,"bargain":2,"wid":157633,"webname":"\u6b87\u60c5\u5f71\u9662","cid":"205","url":"www.yy4138.com","url_id":152971,"googleweight":0,"bdweight":4,"bdincluded":"39.36\u4e07","cid1name":"\u5f71\u89c6\u52a8\u6f2b","cid2name":"\u7535\u5f71\u5f71\u89c6","cid1":310,"cid2":205,"image_fmt":"\/upload\/avatar\/ca170a09cd12facebbb77686332949d3.png"},{"gid":780,"rip":"1000-3000","price":"10000.00","image":"7f46f72b626afe762706b685983c1422","income":"0-1000","status":3,"point":"\u5173\u952e\u8bcd\u6392\u540d\u7a33\u5b9a\u9760\u524d \u53ef\u52305118\u3001\u7231\u7ad9\u7b49\u67e5\u8be2","fid":80129,"bargain":1,"wid":161251,"webname":"7k21\u5b9e\u7528\u8f6f\u4ef6\u5206\u4eab","cid":"449","url":"www.7k21.com","url_id":148797,"googleweight":0,"bdweight":1,"bdincluded":1355,"cid1name":"\u8bba\u575b\u535a\u5ba2","cid2name":"\u535a\u5ba2\u7f51\u7ad9","cid1":22,"cid2":449,"image_fmt":"\/upload\/avatar\/7f46f72b626afe762706b685983c1422.png"},{"gid":778,"rip":"500-1000","price":"5000.00","image":"23f69b2e5f2c3f07b8526de808522b80","income":"0-1000","status":3,"point":"\u6bcf\u65e5\u6536\u5f55\uff0c\u597d\u57df\u540d\u3002","fid":80075,"bargain":1,"wid":161209,"webname":"\u8d44\u8baf\u7f51\u7ad9\u4f4e\u4ef7\u8f6c\u8ba9","cid":"255","url":"www.0ya.cn","url_id":156134,"googleweight":0,"bdweight":0,"bdincluded":2796,"cid1name":"\u7efc\u5408\u7f51\u7ad9","cid2name":"\u7efc\u5408\u95e8\u6237","cid1":33,"cid2":255,"image_fmt":"\/upload\/avatar\/23f69b2e5f2c3f07b8526de808522b80.jpg"},{"gid":777,"rip":"1000-3000","price":"18000.00","image":"c8dd36a0e2b381ad9d23b78b3dfa168e","income":"1000-5000","status":3,"point":"kuangxun.cn \u5c31\u5355\u72ec\u57df\u540d\u4ef7\u503c5000\u5143","fid":80072,"bargain":1,"wid":161207,"webname":"\u884c\u4e1a\u8d44\u8baf\u4f4e\u4ef7\u8f6c\u8ba9","cid":"34","url":"www.kuangxun.cn","url_id":156132,"googleweight":0,"bdweight":0,"bdincluded":4754,"cid1name":"\u884c\u4e1a\u95e8\u6237","cid2name":"\u91d1\u878d\u4fdd\u9669","cid1":60,"cid2":34,"image_fmt":"\/upload\/avatar\/c8dd36a0e2b381ad9d23b78b3dfa168e.jpg"},{"gid":772,"rip":"0-100","price":"800.00","image":"5eed930198df871644cd94416891a406","income":"0-1000","status":3,"point":"\u53ef\u5e2e\u4f60\u8fdb\u884c\u7b80\u5355\u7684\u4fee\u6539\uff0c\u57fa\u7840\u4f18\u5316\u5df2\u7ecf\u505a\u597d","fid":80009,"bargain":1,"wid":161162,"webname":"\u673a\u68b0\u7f51\u7ad9","cid":"296","url":"www.ths520.com","url_id":156093,"googleweight":0,"bdweight":0,"bdincluded":15,"cid1name":"\u884c\u4e1a\u95e8\u6237","cid2name":"\u673a\u68b0\u8bbe\u5907","cid1":60,"cid2":296,"image_fmt":"\/upload\/avatar\/5eed930198df871644cd94416891a406.png"},{"gid":771,"rip":"0-100","price":"1600.00","image":"fabb8d27fc0ab1a91527cecdb48d7c9a","income":"0-1000","status":3,"point":"\u4f01\u4e1a\u7f51\u7ad9\uff0c\u53ef\u4ee5\u6309\u8981\u6c42\u6539\u7248\u3002","fid":80004,"bargain":1,"wid":144647,"webname":"RTO","cid":"365","url":"www.zgjpds.com","url_id":141258,"googleweight":0,"bdweight":0,"bdincluded":66,"cid1name":"\u7535\u5b50\u5546\u52a1","cid2name":"\u5546\u4e1a\u7ecf\u6d4e","cid1":49,"cid2":365,"image_fmt":"\/upload\/avatar\/fabb8d27fc0ab1a91527cecdb48d7c9a.jpg"},{"gid":769,"rip":"100-500","price":"5000.00","image":"d3c04aa82e68d4b0a9e111e39c29d233","income":"0-1000","status":3,"point":"10\u51e0\u5e74\u8001\u57df\u540d\u300210\u51e0\u5e74\u8001\u57df\u540d\u3002","fid":79952,"bargain":1,"wid":150937,"webname":"265G\u7f51\u9875\u6e38\u620f","cid":"77","url":"www.265g.net","url_id":65609,"googleweight":0,"bdweight":0,"bdincluded":169,"cid1name":"\u7f51\u7edc\u6e38\u620f","cid2name":"\u6e38\u620f\u8d44\u8baf","cid1":6,"cid2":77,"image_fmt":"\/upload\/avatar\/d3c04aa82e68d4b0a9e111e39c29d233.png"},{"gid":767,"rip":"0-100","price":"800.00","image":"8952f1f94bb3c28e003ad7bca5148cb5","income":"0-1000","status":3,"point":"\u5168\u81ea\u52a8\u91c7\u96c6\uff0c\u767e\u5ea6\u79d2\u6536\u5f55\uff0c\u5e1d\u56fdcms+mysql","fid":79937,"bargain":2,"wid":161102,"webname":"\u795e\u9f99\u79d1\u6280\u8d44\u8baf","cid":"255","url":"www.slkjzx.com","url_id":156039,"googleweight":0,"bdweight":0,"bdincluded":0,"cid1name":"\u7efc\u5408\u7f51\u7ad9","cid2name":"\u7efc\u5408\u95e8\u6237","cid1":33,"cid2":255,"image_fmt":"\/upload\/avatar\/8952f1f94bb3c28e003ad7bca5148cb5.jpg"},{"gid":766,"rip":"1000-3000","price":"6000.00","image":"0bd87d678a9d9f608fcaa2becaf2ecba","income":"0-1000","status":3,"point":"\u7535\u5f71\u7ad9 \u7231\u7ad9\u67432\u624b\u673a\u67433 \u767e\u5ea6\u6536\u5f5552W","fid":79909,"bargain":1,"wid":141505,"webname":"VIP\u5f71\u89c6\u5bfc\u822a\u7f51","cid":"205","url":"www.vip321.cn","url_id":138447,"googleweight":0,"bdweight":1,"bdincluded":"53.06\u4e07","cid1name":"\u5f71\u89c6\u52a8\u6f2b","cid2name":"\u7535\u5f71\u5f71\u89c6","cid1":310,"cid2":205,"image_fmt":"\/upload\/avatar\/0bd87d678a9d9f608fcaa2becaf2ecba.png"},{"gid":765,"rip":"0-100","price":"500.00","image":"5632594ef1879f2cfa4a75a381f62bd6","income":"0-1000","status":3,"point":"\u60f3\u5356\u4e86\u54b1\u5c31\u5356\u4e86\uff0c\u7f51\u7ad9\u4e0d\u9519\u3002\u9002\u5408\u4f01\u4e1a\u3002","fid":79889,"bargain":1,"wid":161066,"webname":"\u73b0\u4ee3POS\u673a\u529e\u7406","cid":"34","url":"www.posdls.com","url_id":156005,"googleweight":0,"bdweight":0,"bdincluded":1,"cid1name":"\u884c\u4e1a\u95e8\u6237","cid2name":"\u91d1\u878d\u4fdd\u9669","cid1":60,"cid2":34,"image_fmt":"\/upload\/avatar\/5632594ef1879f2cfa4a75a381f62bd6.jpg"},{"gid":764,"rip":"0-100","price":"5000.00","image":"cce6a0896e9e95600af5a42e97edfda6","income":"0-1000","status":3,"point":"\u65b0\u95fb\u7c7b\u7f51\u7ad9\uff0c\u767e\u5ea6\u6536\u5f551.7\u4e07","fid":79865,"bargain":1,"wid":159659,"webname":"\u4eac\u73e0\u79d1\u6280","cid":"382","url":"www.shjingzhu.com","url_id":52412,"googleweight":0,"bdweight":0,"bdincluded":"1.06\u4e07","cid1name":"IT\u6280\u672f","cid2name":"IT\u8d44\u8baf","cid1":46,"cid2":382,"image_fmt":"\/upload\/avatar\/cce6a0896e9e95600af5a42e97edfda6.png"},{"gid":763,"rip":"500-1000","price":"3000.00","image":"e9fbf547e2326c72dc0e818a210f5ae9","income":"0-1000","status":3,"point":"\u6743\u91cd\u4e00\uff0c\u8001\u57df\u540d\uff0c\u7535\u5f71\u7ad9","fid":79748,"bargain":1,"wid":120808,"webname":"\u5728\u7ebf\u7535\u5f71","cid":"205","url":"www.675dy.com","url_id":66584,"googleweight":0,"bdweight":0,"bdincluded":154,"cid1name":"\u5f71\u89c6\u52a8\u6f2b","cid2name":"\u7535\u5f71\u5f71\u89c6","cid1":310,"cid2":205,"image_fmt":"\/upload\/avatar\/e9fbf547e2326c72dc0e818a210f5ae9.png"},{"gid":762,"rip":"1000-3000","price":"15000.00","image":"a0c01b61848e8b8eb6c39e703fe7eb09","income":"1000-5000","status":3,"point":"\u7535\u5f71\u7f51\u7ad9\uff0c\u7231\u7ad9\u6743\u91cd2\uff0c\u4f01\u4e1a\u5907\u6848","fid":79747,"bargain":1,"wid":120807,"webname":"vip\u5f71\u89c6","cid":"205","url":"www.vipys.net","url_id":66583,"googleweight":0,"bdweight":0,"bdincluded":3108,"cid1name":"\u5f71\u89c6\u52a8\u6f2b","cid2name":"\u7535\u5f71\u5f71\u89c6","cid1":310,"cid2":205,"image_fmt":"\/upload\/avatar\/a0c01b61848e8b8eb6c39e703fe7eb09.png"}];
+  var api_page = {"num_rows":301,"px":1,"pz":15,"num_page":21};
+   var demand = [{"id":111,"cate":"\u6587\u5b66\u5c0f\u8bf4","bdqz":"0","pr":"0","rip":"\u5927\u4e8e1000","price":"\u00a5PC\u4e0aIP5\u523010\u500d","connect":"592685149@qq.com","other":"\u4e3b\u8981\u5173\u6ce8PC\u6d41\u91cf","status":1,"atime":1536077989,"name":"\u4f55\u4e50"},{"id":110,"cate":"\u5176\u4ed6\u5206\u7c7b","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"2914609692","other":"\u514d\u8d39","status":1,"atime":1535426989,"name":"\u8096\u6842\u53cb"},{"id":109,"cate":"\u4fe1\u606f\u5206\u7c7b,\u7535\u5b50\u5546\u52a1,\u5176\u4ed6\u5206\u7c7b","bdqz":"8","pr":"2","rip":"\u5927\u4e8e\u4e00\u4e07","price":"\u00a5","connect":"14780659900","other":"\u6c34\u679c","status":1,"atime":1535264620,"name":"\u738b\u8fce\u6625"},{"id":108,"cate":"\u8bba\u575b\u535a\u5ba2","bdqz":"1","pr":"1","rip":"\u5927\u4e8e100","price":"\u00a51000","connect":"QQ\uff1b369339527","other":null,"status":1,"atime":1534672164,"name":"\u5468\u5148\u751f"},{"id":107,"cate":"\u5176\u4ed6\u5206\u7c7b","bdqz":"7","pr":"7","rip":"\u5927\u4e8e1000","price":"\u00a5","connect":"QQ1597465317","other":"\u6a21\u7248\u7f51\u7ad9","status":1,"atime":1534555345,"name":"\u8d75\u751f"},{"id":105,"cate":"","bdqz":"0","pr":"0","rip":"\u5927\u4e8e100","price":"\u00a5","connect":"2128324272","other":"\u6ca1\u6709","status":1,"atime":1534187651,"name":"\u97e9\u4e3d"},{"id":104,"cate":"","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"15599460326","other":null,"status":1,"atime":1534094323,"name":"\u73b2\u73d1"},{"id":103,"cate":"","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"15599460326","other":null,"status":1,"atime":1534094266,"name":"\u73b2\u73d1"},{"id":102,"cate":"\u65b0\u95fb\u5a92\u4f53","bdqz":"2","pr":"3","rip":"\u5927\u4e8e100","price":"\u00a5","connect":"985648884","other":"\u4e3b\u6253\u4f53\u80b2\u677f\u641c\u72d7\u6536\u5f55","status":1,"atime":1533931779,"name":"\u738b\u5148\u751f"},{"id":101,"cate":"","bdqz":"1","pr":"1","rip":"\u5927\u4e8e500","price":"\u00a5","connect":"1828656547","other":null,"status":1,"atime":1533883960,"name":"\u5d14\u76f8\u51ef"},{"id":100,"cate":"","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"2429706463","other":"\u5356\u53f7","status":1,"atime":1533866785,"name":"\u5b8b\u535a"},{"id":99,"cate":"\u4f11\u95f2\u5a31\u4e50,\u7f51\u7edc\u6e38\u620f,\u5176\u4ed6\u5206\u7c7b","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"w15537619826","other":"\u76d7\u5fae\u4fe1\u53f7","status":1,"atime":1533816421,"name":"\u6768\u70e8"},{"id":98,"cate":"\u6559\u80b2\u57f9\u8bad","bdqz":"1","pr":"1","rip":"\u5927\u4e8e100","price":"\u00a5","connect":"18507141698","other":"\u8bba\u6587\u7f51","status":1,"atime":1533698010,"name":"\u5468\u8fc5"},{"id":97,"cate":"\u6587\u5b66\u5c0f\u8bf4,\u7f51\u7edc\u6e38\u620f,\u6821\u56ed\u9ad8\u6821","bdqz":"3","pr":"4","rip":"\u5927\u4e8e3000","price":"\u00a5","connect":"2609526230","other":null,"status":1,"atime":1533587117,"name":"\u59da\u767b\u8fd0"},{"id":96,"cate":"\u6559\u80b2\u57f9\u8bad,\u884c\u4e1a\u95e8\u6237","bdqz":"4","pr":"4","rip":"\u5927\u4e8e3000","price":"\u00a5","connect":"115508324","other":null,"status":1,"atime":1533274985,"name":"\u738b"},{"id":95,"cate":"\u5176\u4ed6\u5206\u7c7b","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"1500949393","other":"\u8bda\u610f\u6c42\u8d2d\u6dd8\u5b9d\u94bb\u7ea7\u6dd8\u5e97","status":1,"atime":1533267509,"name":"\u5468\u5927\u4fa0"},{"id":94,"cate":"\u4f11\u95f2\u5a31\u4e50,\u7f51\u7edc\u6e38\u620f,\u624b\u673a\u7f51\u7ad9","bdqz":"8","pr":"8","rip":"\u5927\u4e8e1000","price":"\u00a5","connect":"917468522","other":null,"status":1,"atime":1532855021,"name":"\u5c0f\u5c0f"},{"id":93,"cate":"\u7535\u5b50\u5546\u52a1","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"2978725840","other":"\u7535\u5546\u7f51\u7ad9\uff0c\u5e26\u5907\u6848","status":1,"atime":1532754774,"name":"\u963f\u6770"},{"id":92,"cate":"","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"13117673928","other":"\u60c5\u8da3\u7528\u54c1","status":1,"atime":1532747873,"name":"\u9ec4\u78a7\u519b"},{"id":91,"cate":"","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"\u67ef\u8001\u677f","other":null,"status":1,"atime":1532421925,"name":"\u8001K"},{"id":88,"cate":"\u751f\u6d3b\u670d\u52a1,\u884c\u4e1a\u95e8\u6237","bdqz":"5","pr":"9","rip":"\u5927\u4e8e\u4e00\u4e07","price":"\u00a5","connect":"18382582861","other":null,"status":1,"atime":1532193915,"name":"\u51af\u5c0f\u59d0"},{"id":87,"cate":"\u5f71\u89c6\u52a8\u6f2b","bdqz":"1","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"457634632","other":"\u80fd\u51fa\u57df\u540d+\u7f51\u7ad9","status":1,"atime":1532023835,"name":"\u674e"},{"id":86,"cate":"\u7f51\u7edc\u6e38\u620f","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a550","connect":"QQ3266225912","other":"\u751f\u6b7b\u72d9\u51fb\u7684\u8d26\u53f7\u4ea4\u6613\u7f51","status":1,"atime":1531872246,"name":"\u5e38\u6668\u66e6"},{"id":85,"cate":"\u751f\u6d3b\u670d\u52a1,\u4fe1\u606f\u5206\u7c7b,\u884c\u4e1a\u95e8\u6237","bdqz":"5","pr":"5","rip":"\u4e0d\u9650","price":"\u00a5","connect":"13703907612","other":"\u804c\u4e1a\u4e2d\u4ecb\u7f51\u7ad9","status":1,"atime":1531798656,"name":"\u5c24\u632f\u6c5f"},{"id":83,"cate":"\u4fe1\u606f\u5206\u7c7b,\u7efc\u5408\u7f51\u7ad9,\u5176\u4ed6\u5206\u7c7b","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"36264870","other":"\u6c42\u8d2d\u5546\u673a\u52a0\u76df\u7f51\u7ad9","status":1,"atime":1531269945,"name":"\u590f\u5148\u751f"},{"id":82,"cate":"\u65b0\u95fb\u5a92\u4f53,\u5f71\u89c6\u52a8\u6f2b,\u5176\u4ed6\u5206\u7c7b","bdqz":"3","pr":"3","rip":"\u5927\u4e8e100","price":"\u00a5","connect":"3237157245","other":null,"status":1,"atime":1531247547,"name":"\u868a\u5b50"},{"id":81,"cate":"\u65b0\u95fb\u5a92\u4f53,\u6821\u56ed\u9ad8\u6821","bdqz":"1","pr":"1","rip":"\u5927\u4e8e100","price":"\u00a5","connect":"2295673484","other":null,"status":1,"atime":1530868452,"name":"\u6797"},{"id":80,"cate":"\u65b0\u95fb\u5a92\u4f53,\u6821\u56ed\u9ad8\u6821","bdqz":"1","pr":"1","rip":"\u5927\u4e8e100","price":"\u00a5","connect":"2295673484","other":null,"status":1,"atime":1530868401,"name":"\u6797"},{"id":79,"cate":"\u4f11\u95f2\u5a31\u4e50,\u65b0\u95fb\u5a92\u4f53,\u7efc\u5408\u7f51\u7ad9","bdqz":"2","pr":"0","rip":"\u5927\u4e8e100","price":"\u00a5","connect":"17313158549","other":"\u6536\u5f55500\u4ee5\u4e0a","status":1,"atime":1530785527,"name":"\u7f57\u5148\u751f"},{"id":78,"cate":"\u6c7d\u8f66\u7f51\u7ad9","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"13837992495","other":"\u900d\u5ba22.0L\u624b\u52a8\u6321\u81ea","status":1,"atime":1530713688,"name":"\u738b\u5174\u6c11"},{"id":77,"cate":"","bdqz":"4","pr":"4","rip":"\u5927\u4e8e\u4e00\u4e07","price":"\u00a5","connect":"75757577","other":null,"status":1,"atime":1530081568,"name":"11"},{"id":76,"cate":"\u533b\u7597\u5065\u5eb7","bdqz":"2","pr":"2","rip":"\u5927\u4e8e100","price":"\u00a5","connect":"19963621","other":"\u4e0e\u533b\u7597\u7f8e\u5bb9\u76f8\u5173\u7684","status":1,"atime":1530066215,"name":"\u9648"},{"id":75,"cate":"\u533b\u7597\u5065\u5eb7","bdqz":"5","pr":"5","rip":"\u5927\u4e8e500","price":"\u00a5","connect":"77602582","other":null,"status":1,"atime":1529634261,"name":"\u4e8e"},{"id":74,"cate":"","bdqz":"3","pr":"2","rip":"\u5927\u4e8e500","price":"\u00a5","connect":"QQ  1624875","other":null,"status":1,"atime":1529626899,"name":"\u9ec4\u5e1d"},{"id":73,"cate":"","bdqz":"2","pr":"1","rip":"\u5927\u4e8e500","price":"\u00a5","connect":"QQ  1624875","other":"\u80fd\u7533\u8bf7\u767e\u5ea6 360\u5e7f","status":1,"atime":1529626432,"name":"\u9ec4\u5e1d"},{"id":72,"cate":"\u7efc\u5408\u7f51\u7ad9,\u7535\u5b50\u5546\u52a1,\u884c\u4e1a\u95e8\u6237","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"13652222790.13425426689","other":"\u9700\u6709\u4ea4\u6613\u529f\u80fd","status":1,"atime":1529529580,"name":"\u8427\u751f"},{"id":71,"cate":"","bdqz":"2","pr":"0","rip":"\u5927\u4e8e1000","price":"\u00a5","connect":"1540626562","other":"\u770b\u6027\u4ef7\u6bd4","status":1,"atime":1529408836,"name":"\u738b"},{"id":70,"cate":"","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"10541981733","other":"\u6c42\u8d2d\u5408\u4f5c\u641c\u72d7\u6536\u5f55\u591a\u7684","status":1,"atime":1529328814,"name":"\u674e"},{"id":69,"cate":"\u6c7d\u8f66\u7f51\u7ad9","bdqz":"2","pr":"2","rip":"\u4e0d\u9650","price":"\u00a5","connect":"992876320","other":null,"status":1,"atime":1528682278,"name":"\u59da"},{"id":68,"cate":"\u4fe1\u606f\u5206\u7c7b","bdqz":"3","pr":"3","rip":"\u4e0d\u9650","price":"\u00a5500","connect":"QQ1549398066","other":"\u4e2a\u4eba\u4fe1\u606f\u8d44\u6599","status":1,"atime":1528538196,"name":"\u7a7a\u95f4"},{"id":67,"cate":"\u4fe1\u606f\u5206\u7c7b,\u7efc\u5408\u7f51\u7ad9,IT\u6280\u672f","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5","connect":"QQ1549398066","other":"\u60f3\u4e70\u4e2a\u4eba\u5f97\u4fe1\u606f\u5b9a\u4f4d","status":1,"atime":1528536310,"name":"\u7a7a\u95f4"},{"id":66,"cate":"\u6587\u5b66\u5c0f\u8bf4,\u65b0\u95fb\u5a92\u4f53,\u884c\u4e1a\u95e8\u6237","bdqz":"0","pr":"1","rip":"\u5927\u4e8e100","price":"\u00a5300","connect":"1761929995","other":"\u81ea\u52a8\u91c7\u96c6 \u6536\u5f55\u6709ip","status":1,"atime":1528169257,"name":"\u675c"},{"id":65,"cate":"IT\u6280\u672f","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5200","connect":"443316702","other":"\u8981\u4e00\u4e2a\u8d44\u6e90\u7f51\u6e90\u7801","status":1,"atime":1528107747,"name":"\u5c0f\u53ef"},{"id":64,"cate":"\u5f71\u89c6\u52a8\u6f2b","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5888","connect":"727440793","other":"\u7535\u5f71\u7f51\u7ad9 \u4e0d\u662f\u5b85\u7247","status":1,"atime":1527315382,"name":"\u9ec4\u80b2\u68ee"},{"id":63,"cate":"\u7efc\u5408\u7f51\u7ad9,\u7535\u5b50\u5546\u52a1,\u884c\u4e1a\u95e8\u6237","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a51\u4e07","connect":"15818616061","other":"\u65e0","status":1,"atime":1527033703,"name":"\u5218"},{"id":62,"cate":"\u6587\u5b66\u5c0f\u8bf4,\u751f\u6d3b\u670d\u52a1,\u7efc\u5408\u7f51\u7ad9","bdqz":"2","pr":"3","rip":"\u4e0d\u9650","price":"\u00a51.8\u4e07","connect":"2776216936","other":null,"status":1,"atime":1526955125,"name":"\u738b"},{"id":61,"cate":"","bdqz":"4","pr":"8","rip":"\u5927\u4e8e5000","price":"\u00a5200\u4e07","connect":"3279428141","other":"\u8981\u5e72\u51c0\u6b63\u89c4\u884c\u4e1a\u7684\u7f51\u7ad9","status":1,"atime":1526880778,"name":"\u795e\u5728\u7ebf"},{"id":60,"cate":"IT\u6280\u672f","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5100","connect":"927123824","other":"","status":1,"atime":1526706190,"name":"\u5b59\u4f73\u4fca"},{"id":59,"cate":"","bdqz":"1","pr":"0","rip":"\u5927\u4e8e100","price":"","connect":"454838693","other":"\u5927\u91cf\u6536\u8d2d\uff0c","status":1,"atime":1526704551,"name":"\u90ed"},{"id":58,"cate":"\u6587\u5b66\u5c0f\u8bf4,\u6559\u80b2\u57f9\u8bad,\u6821\u56ed\u9ad8\u6821","bdqz":"7","pr":"8","rip":"\u5927\u4e8e\u4e00\u4e07","price":"\u00a5200","connect":"18571407624","other":null,"status":1,"atime":1526324452,"name":"\u675c\u5148\u751f"},{"id":57,"cate":"\u6821\u56ed\u9ad8\u6821","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a5500","connect":"1617557342","other":null,"status":1,"atime":1526323439,"name":"\u675c\u5148\u751f"},{"id":55,"cate":"\u7f51\u7edc\u6e38\u620f,\u7535\u5b50\u5546\u52a1","bdqz":"4","pr":"3","rip":"\u5927\u4e8e100","price":"\u00a520","connect":"30305859","other":"\u65e0\u5176\u4ed6\u9700\u6c42","status":1,"atime":1524453554,"name":"\u77f3\u5148\u751f"},{"id":54,"cate":"\u5176\u4ed6\u5206\u7c7b","bdqz":"4","pr":"2","rip":"\u5927\u4e8e1000","price":"","connect":"2280145118","other":"\u6bcf\u65e5\u66f4\u65b0","status":1,"atime":1524452616,"name":"\u53f6\u5148\u751f"},{"id":53,"cate":"\u65b0\u95fb\u5a92\u4f53,\u751f\u6d3b\u670d\u52a1,\u4fe1\u606f\u5206\u7c7b","bdqz":"2","pr":"4","rip":"\u4e0d\u9650","price":"\u00a51\u4e07","connect":"QQ799332556","other":"\u79d2\u6536\u5f55","status":1,"atime":1523094004,"name":"\u7f8a\u7f8a"},{"id":52,"cate":"\u6587\u5b66\u5c0f\u8bf4","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"\u00a51000","connect":"qq:1626382747","other":"\u6839\u636e\u5b57\u6570\u53d1\u5199\u6587\u8f9b\u82e6\u8d39","status":1,"atime":1522483756,"name":"\u738b\u6842\u6797"},{"id":51,"cate":"\u533b\u7597\u5065\u5eb7,\u653f\u5e9c\u673a\u6784","bdqz":"1","pr":"1","rip":"\u5927\u4e8e100","price":"\u00a5100","connect":"18857327997","other":"","status":1,"atime":1522392341,"name":"\u5434"},{"id":50,"cate":"\u884c\u4e1a\u95e8\u6237,\u7f51\u5740\u5bfc\u822a,\u5176\u4ed6\u5206\u7c7b","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"","connect":"18326683008@163.com","other":"\u6c7d\u8f66\u51b2\u538b\u4ef6\u5916\u677f\u6a21\u5177\u5382","status":1,"atime":1522371253,"name":"\u5f20\u5148\u751f"},{"id":49,"cate":"\u4f11\u95f2\u5a31\u4e50","bdqz":"0","pr":"0","rip":"\u5927\u4e8e100","price":"\u00a51000","connect":"qq1763110929","other":"\u6ca1\u6709","status":1,"atime":1521888559,"name":"\u97e9\u751f"},{"id":48,"cate":"IT\u6280\u672f,\u7f51\u5740\u5bfc\u822a","bdqz":"0","pr":"0","rip":"\u5927\u4e8e5000","price":"\u00a5500","connect":"86900237","other":null,"status":1,"atime":1521801635,"name":"\u51cc\u5ea6"},{"id":47,"cate":"\u4fe1\u606f\u5206\u7c7b,\u884c\u4e1a\u95e8\u6237,\u5176\u4ed6\u5206\u7c7b","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"","connect":"15010678994","other":"\u6392\u540d\u7a33\u5b9a","status":1,"atime":1521597643,"name":"\u6881"},{"id":46,"cate":"","bdqz":"1","pr":"0","rip":"\u5927\u4e8e500","price":"\u00a51500","connect":"807292","other":"\u6c42\u8d2d\u6743\u91cd1-3\u5de6\u53f3\u5747","status":1,"atime":1521519156,"name":"\u8d85"},{"id":45,"cate":"","bdqz":"0","pr":"3","rip":"\u4e0d\u9650","price":"","connect":"QQ:1747182655","other":"\u6536\u641c\u72d7\u6743\u91cd3\u6709\u6536\u7ad9","status":1,"atime":1521373467,"name":"\u6253\u5750"},{"id":44,"cate":"\u5f71\u89c6\u52a8\u6f2b","bdqz":"9","pr":"9","rip":"\u4e0d\u9650","price":"\u00a540","connect":"2332536552","other":"\u6211\u5c31\u60f3\u8981\u4e00\u4e2a\u7f51\u957f","status":1,"atime":1521188179,"name":"\u4eae\u4eae"},{"id":43,"cate":"\u6587\u5b66\u5c0f\u8bf4,\u5f71\u89c6\u52a8\u6f2b","bdqz":"4","pr":"4","rip":"\u5927\u4e8e5000","price":"","connect":"3096945399","other":"\u4e0d\u8981cn \u4e0d\u8981b2b","status":1,"atime":1521007831,"name":"\u55ef"},{"id":42,"cate":"\u65b0\u95fb\u5a92\u4f53,\u751f\u6d3b\u670d\u52a1,\u884c\u4e1a\u95e8\u6237","bdqz":"2","pr":"0","rip":"\u5927\u4e8e500","price":"\u00a510\u4e07","connect":"784880600","other":"cn\u7684\u57df\u540d\u4e0d\u8981,","status":1,"atime":1520571979,"name":"\u5609\u4e49"},{"id":41,"cate":"\u6c7d\u8f66\u7f51\u7ad9","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"","connect":"603575799","other":null,"status":1,"atime":1520392691,"name":"\u6768"},{"id":36,"cate":"\u65c5\u6e38\u9152\u5e97,IT\u6280\u672f","bdqz":"1","pr":"1","rip":"\u5927\u4e8e500","price":"","connect":"5315135","other":"1111","status":1,"atime":1520385643,"name":"52541"},{"id":35,"cate":"\u65c5\u6e38\u9152\u5e97,IT\u6280\u672f","bdqz":"1","pr":"1","rip":"\u5927\u4e8e500","price":"","connect":"5315135","other":"1111","status":1,"atime":1520385642,"name":"52541"},{"id":34,"cate":"\u7f51\u7edc\u6e38\u620f","bdqz":"1","pr":"1","rip":"\u5927\u4e8e1000","price":"","connect":"78946546","other":"asas","status":1,"atime":1520385571,"name":"asa"},{"id":31,"cate":"\u6587\u5b66\u5c0f\u8bf4,\u7f51\u7edc\u6e38\u620f,\u624b\u673a\u7f51\u7ad9","bdqz":"4","pr":"0","rip":"\u4e0d\u9650","price":"\u00a52500","connect":"1150593175","other":"\u5b8c\u5584\u7cfb\u7edf","status":1,"atime":1520224140,"name":"\u80e1\u900d\u9065"},{"id":30,"cate":"\u7535\u5b50\u5546\u52a1","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"","connect":"1716892803   QQ","other":null,"status":1,"atime":1519994596,"name":"\u8d75\u677e"},{"id":29,"cate":"","bdqz":"3","pr":"2","rip":"\u5927\u4e8e500","price":"\u00a51000","connect":"10000","other":"1000","status":1,"atime":1519627254,"name":"1000"},{"id":28,"cate":"","bdqz":"3","pr":"2","rip":"\u5927\u4e8e500","price":"\u00a51000","connect":"10000","other":"1000","status":1,"atime":1519627254,"name":"1000"},{"id":27,"cate":"","bdqz":"3","pr":"2","rip":"\u5927\u4e8e500","price":"\u00a51000","connect":"10000","other":"1000","status":1,"atime":1519627254,"name":"1000"},{"id":26,"cate":"","bdqz":"1","pr":"0","rip":"\u5927\u4e8e100","price":"","connect":"13321682559","other":"\u53d1\u5e03","status":1,"atime":1519373558,"name":"\u5218\u4f1f\u71d5"},{"id":24,"cate":"","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"","connect":"872792154","other":null,"status":1,"atime":1518149100,"name":"\u674e"},{"id":18,"cate":"IT\u6280\u672f","bdqz":"3","pr":"3","rip":"\u5927\u4e8e3000","price":"","connect":"2045302297","other":null,"status":1,"atime":1518095502,"name":"word"},{"id":17,"cate":"\u4f53\u80b2\u7ade\u6280","bdqz":"0","pr":"0","rip":"\u5927\u4e8e1000","price":"","connect":"327776686","other":null,"status":1,"atime":1518086861,"name":"\u9648"},{"id":16,"cate":"\u5f71\u89c6\u52a8\u6f2b","bdqz":"1","pr":"1","rip":"\u5927\u4e8e1000","price":"\u00a52000","connect":"15001993674","other":null,"status":1,"atime":1517905525,"name":"\u5f20"},{"id":15,"cate":"","bdqz":"3","pr":"0","rip":"\u4e0d\u9650","price":"","connect":"6119963","other":"360\u6743\u91cd\u4e5f\u67093\u4ee5\u5185","status":1,"atime":1517803135,"name":"\u5f90\u83f2"},{"id":14,"cate":"","bdqz":"4","pr":"4","rip":"\u5927\u4e8e5000","price":"","connect":"18559280830","other":"\u6211\u60f3\u505a\u7f51\u7ad9\u5bfc\u822a","status":1,"atime":1517550649,"name":"\u5434\u5148\u751f"},{"id":13,"cate":"\u65b0\u95fb\u5a92\u4f53","bdqz":"0","pr":"0","rip":"\u4e0d\u9650","price":"","connect":"78865747","other":"\u4f01\u4e1a\u5907\u6848\u6b63\u89c4\u7ad9","status":1,"atime":1517396783,"name":"\u738b"},{"id":12,"cate":"IT\u6280\u672f,\u5f71\u89c6\u52a8\u6f2b","bdqz":"4","pr":"2","rip":"\u5927\u4e8e\u4e00\u4e07","price":"\u00a55\u4e07","connect":"505794106","other":"\u6d41\u91cf\u6765\u6e90\u73cd\u8d35\u6392\u540d\u7a33\u5b9a","status":1,"atime":1517298002,"name":"\u5f20\u5148\u751f"},{"id":11,"cate":"\u7f51\u7edc\u6e38\u620f,\u6559\u80b2\u57f9\u8bad,\u65c5\u6e38\u9152\u5e97","bdqz":"3","pr":"2","rip":"\u5927\u4e8e3000","price":"","connect":"505794106","other":"\u6b63\u89c4\u6d41\u91cf\u6765\u6e90\u7f51\u7ad9\u7a33\u5b9a","status":1,"atime":1517297897,"name":"\u5f20\u5148\u751f"}];
+// $('.modal-bargaining').modal('show')
+//$('.modal_againyijia').modal('show')
+</script>
+<script type="text/javascript" src="static/js/angular_wdate.js?v=20180903"></script>
+{include file="footer"}
+<script type="text/javascript" src="static/js/web_exchange.js?v=20180903"></script>
+<script type = "text/javascript" src = "static/js/index_message.js?v=20180903"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{include file="tool/header"}
+<div class="s_top clearfix">
+      <div class="whois-title">域名信息查询（WHOIS）</div>
+      <div class="clearfix top_box">
+        <span class="pull-left http">http://</span>
+        <div class="search_whois pull-left">
+          <input type="text" id="domain" name="domain" value="{$url}" placeholder="请输入您要查询的网站"/>
+          <span class="search_btn">查询</span>
+        </div>
+      </div>
+    </div>
+    {eq name="isget" value="1"}
+      <div class="cl-show">
+        <div class="s_middle">
+          <div class="clearfix mtb912">
+            <h5 class="pull-left m0">域名 <span>{$url}</span> 的注册信息</h5>
+            <!--span class="pull-right">信息更新时间：
+            <ss ng-bind="whoisQueryTimeW"></ss>
+            <a href="javascript:void(0)" ng-show="updateYz" class="now_updata" ng-click="list(1)">立即更新 </a>
+            <a href="javascript:void(0)" ng-show="!updateYz" class="now_updata" style="color: #b8c1c8">立即更新 </a>
+          </span-->
+          </div>
+          <div class="">
+            <!--table class="table beian-table whois_tab">
+            <colgroup>
+              <col width="25%" style="background: #f6f6f6;">
+              <col width="75%">
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>注册商</td>
+                <td ng-bind="registrar"></td>
+              </tr>
+              <tr>
+                <td>联系人邮箱</td>
+                <td ng-bind="email"></td>
+              </tr>
+              <tr>
+                <td>联系电话</td>
+                <td ng-bind="phone"></td>
+              </tr>
+              <tr>
+                <td>状态</td>
+                <td ng-bind-html-unsafe="domain_status"></td>
+              </tr>
+              <tr>
+                <td>创建时间</td>
+                <td class="text-blue" ng-bind="creation_date"></td>
+              </tr>
+              <tr>
+                <td>过期时间</td>
+                <td class="text-blue" ng-bind="registry_expiry_date"></td>
+              </tr>
+              <tr>
+                <td>whois服务器</td>
+                <td class="text-blue" ng-bind="whois_server"></td>
+              </tr>
+              <tr>
+                <td>DNS</td>
+                <td style="word-break: break-all">
+                  <p ng-bind-html-unsafe="name_DNS_server"></p>
+                </td>
+              </tr>
+            </tbody>
+          </table-->
+          </div>
+           <div class="call_code">
+            <span>WHOIS信息</span>
+            <div class="call_box">
+              <p>{$result}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/eq}
+    <!--初始空白页-->
+    <div class="tool-jj">
+      <div class="ps_cues">
+        <h5>Whois简介</h5>
+        <p>简单来说，whois就是一个用来查询域名是否已经被注册，以及注册域名的详细信息的数据库（如域名所有人、域名注册商、域名注册日期和过期日期等），即通过whois来实现对域名信息的查询。</p>    
+      </div>
+    </div>
+<script type="text/javascript">
+  $('.search_btn').on('click',function(){
+    var url= $('#domain');
+    url = url.val().replace('/\s+/g',"");
+    if(url == ''){
+      alert('请输入您要查询的网站');
+    }else{
+      window.location.href="{:url('alexa')}?url="+url;
+    }
+  })
+</script>
+{include file="tool/footer"}

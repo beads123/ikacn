@@ -1,0 +1,30 @@
+{include file="header"}
+<div class="container">
+<div class="container-bd">
+     <div class="article-wrap" style="width:960px;margin:0 auto 10px auto; overflow: hidden;">
+   <div class="article-left">
+   <div class="list-title">
+   <h3><a href="{:url('mlist/'.$typeid)}">{$ctype}</a></h3>
+   </div>
+   <div class="list-title" style="border: none;">
+   <ul>{volist name="type" id="vo"}<li><a href='{:url('mlist/'.$vo['id'])}'>{$vo['typename']}</a></li>{/volist}</ul>
+   </div><!-- /list-title -->
+   <div class="row-item">
+   <ul class="left-item">{volist name="list" id="vo"}
+            <li><h3><a href="{:url('detail/'.$vo['id'])}">{$vo['title']}</a></h3> 
+   <span class="time">发表于{$vo['addtime']|date='Y年m月d日 h:s',###}</span> 
+   <p>{$vo['description']}...<a href="{:url('detail/'.$vo['id'])}"> [ 阅读全文 ]</a></p>
+   </li>
+        {/volist}
+   </ul>  
+       <div class="dede_pages">
+     {$page}
+     </div><!-- /dede_pages -->
+     </div><!-- /row-item -->
+   <div class="cl"></div>
+   </div><!-- /article-left -->
+<!-- article-right  -->
+ {include file="right"}
+</div></div>  
+</div><div class="c1 container-bottom"></div></div>
+{include file="footer"}

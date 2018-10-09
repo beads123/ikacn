@@ -1,0 +1,110 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>华乐网红包活动</title>
+<meta name="description" content="华乐网红包活动" />
+<meta name="format-detection" content="telephone=yes"/>
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, maximum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<meta name="apple-mobile-web-app-title" content="华乐网红包活动">
+<link rel="stylesheet" href="/static/css/act/base.css">
+<script type="text/javascript" src="/static/js/act/jquery.js" ></script>
+<script type="text/javascript" src="/static/js/act/index.js" ></script>
+<script type="text/javascript" src="/static/js/act/jweixin-1.0.0.js" ></script>
+
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/static/js/act/png.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<div class="swarp">
+   <div class="top_mian">
+       <div class="wrap">
+           <a href="http://www.hahacn.com/" class="lh_btn"></a>
+           <a href="https://www.alipay.com/" class="zfb_btn"></a>
+       </div>
+   </div>
+   <div class="banner_int">
+         <div class="baner_t1">
+         </div>
+         <div class="guize">
+            <h3> 一、活动规则:</h3>
+<span>1.活动长期有效，一期活动时间为2018年1月1日-2018年3月31日;</span>
+<span>2.发出邀请的用户(简称邀请者)每邀请一个好友，该好友领取到支付宝红包，且在门店使用支付宝付款满2元后，则视为邀请成功。邀请者可获得一笔支付宝赏金，赏金面额根据被邀请的对象不同，金额不一样。如果邀请的是一个支付宝新用户(没有注册过支付宝或没有使用支付宝APP登录过) 可以获得10元; 如果邀请的是到店付款新用户(从未在门店使用过支付宝支付) 可以获得5元; 如果邀请的是其他类型用户则可以获得0.1元;</span>
+<span>3.活动周期内，邀请者可根据邀请成功的好友数累积奖励支付宝赏金，最多可获得10万笔支付宝赏金;10月13日起支付宝赏金将直接转入用户的支付宝余额中;</span>
+<span>4.被邀请的用户，进入活动页面，如果是支付宝新用户(没有注册过支付宝或没有使用支付宝APP登录过) 可以领取一个10元新人红包; 如果未在门店使用过支付宝支付，可以领取一个5元新人红包; 其他情况的支付宝用户可以领取0.1-99元随机面额红包;</span>
+<span>5.若同一天内，同一用户被多人邀请，则按照该用户最后点击的邀请并领取红包链接为准，该用户完成了上述任务后，发出该邀请的邀请者可以获得奖励红包;</span>
+<span>6.活动周期内，被邀请者每天可领取一个红包。邀请好友的支付宝赏金总量900万笔，先到先得。</span>
+
+<h3> 二、红包使用规则</h3>
+<span>1.红包仅限在中国大陆地区使用。在门店不可提现，如红使用支付宝付款时抵扣，包有效期已过且发生退款，红包金额不退;</span>
+<span>2.红包可以一次性抵扣使用，多个红包可以叠加使用，一次最多可叠加抵扣10个红包;一次性抵扣单个红包时需实际支付金额大于红包面额; 多个红包叠加使用时，如果红包加和总金额高于实际支付金额，红包可以被拆分使用;</span>
+<span>3.被邀请者获得的红包有效期为3天，12月30日前，邀请者获得的支付宝赏金亦为红包，有效期为30天，从获得红包之日算起，超时未使用则自动过期(请在红包详情页面关注红包具体有效期信息)，红包过期不补发;</span>
+<span>4.红包更多使用规则详见领取的红包详情页。</span>
+
+<h3> 三、其他说明</h3>
+<span>1.同一支付宝账号、手机号、身份证、手机终端，符合以上任一条件的,均视为同一用户。因支付宝账号非实名导致用户无法参与活动的，视同用户自动放弃活动资格;</span>
+<span>2.门店使用支付宝付款的定义范围，仅限用户使用支付宝手机客户端(限9.0及以上版本)的付钱码被扫，或者扫一扫收钱码进行支付才能参与，个人转账、支付宝境外交易除外;</span>
+<span>3.如用户出现违规行为(如虚假交易、作弊、刷信等)，支付宝将撤销活动参与资格。</span>
+<span>4.如您张贴本活动的宣传海报，请遵守当地城市环境保护法规;如您未遵守法规导致被投诉的，支付宝将撤销活动参与资格。</span>
+         </div>
+
+   </div>
+
+</div>
+</body>
+<script type="text/javascript" src="/static/js/act/sha1.js" ></script>
+
+<script>
+$.ajax({  
+    url:"http://bug-lh.wwwscn.com/homev.php?m=Homev&c=Weixin&a=actoken&barid=46",  
+    dataType:'jsonp',  
+    data:'',  
+    jsonp:'callback',  
+    success:function(result) { 
+
+      onMenuShare(result.ticket);   
+    },  
+    timeout:3000 
+}); 
+function onMenuShare(ticket){
+/*var ticket = 'kgt8ON7yVITDhtdwci0qeUUBO0zmtHYFQR_lQULWupbnK7f6LeaXI9hrZus8w8a6Iu7JRjHK3q8XJDP3Y7r0KA';*/
+var keystr = 'linhangstr';
+var times = '1499997378';
+var thisURL = document.URL;
+var ss = "jsapi_ticket=" + ticket + "&noncestr=" + keystr + "&timestamp=" + times+ "&url=" + thisURL;
+var signatureStr = hex_sha1(ss);
+wx.config({
+    debug:false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wx64a70e00c6081091', // 必填，公众号的唯一标识
+    timestamp:  times, // 必填，生成签名的时间戳
+    nonceStr: keystr, // 必填，生成签名的随机串
+    signature: signatureStr,// 必填，签名
+    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'] // 必填，需要使用的JS接口列表
+  });
+  wx.ready(function(){
+    wx.onMenuShareAppMessage({
+      title: '华乐网-支付宝现金红包活动第三期', // 分享标题
+      desc: '领现金红 天天可领 想花就花', // 分享描述
+      link: 'http://www.hahacn.com/act/zfbhd.html', // 分享链接
+      imgUrl:'http://v2.wangbayingxiao.com/zfbhd3/img/logo_index.jpg', // 分享图标
+      type: 'link', // 分享类型,music、video或link，不填默认为link
+      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    });
+    wx.onMenuShareTimeline({
+      title: '华乐网-支付宝现金红包活动第三期', // 分享标题
+      desc: '领现金红 天天可领 想花就花', // 分享描述
+      link: 'http://www.hahacn.com/act/zfbhd.html', // 分享链接
+      imgUrl:'http://v2.wangbayingxiao.com/zfbhd3/img/logo_index.jpg', // 分享图标
+      type: 'link', // 分享类型,music、video或link，不填默认为link
+      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    });
+  
+});
+}
+</script>
+</html>

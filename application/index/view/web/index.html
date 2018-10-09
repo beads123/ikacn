@@ -1,0 +1,712 @@
+{include file="header"}
+<link type="text/css" rel="stylesheet" href="static/css/rank.css" />
+<div class="main-block"  ng-controller="articleControl" style="margin-top: -12px;">
+  <div class="container">
+    <!--网站排行头部-->
+    <div class="clearfix newtop nav-middle text-center" style="margin-top: 8px">
+    <div class="container">
+        <a href="/webmain.htm" mark="webmain">排行首页</a>
+        <a href="/ranklist.htm" mark="ranklist">网站排行</a>
+        <a href="/rankclass.htm" mark="rankclass">分类目录</a>
+        <a href="/ranktag.htm" mark="ranktag">标签目录</a>
+        <a href="/ranknew.htm" mark="ranknew">最新收录</a>
+        <a href="/rankdata.htm" mark="rankdata">数据归档</a>
+        <a href="/apply_include.htm" target="_blank" class="applye_a">申请收录</a>
+    </div>
+</div>
+<!-- 数据统计 -->
+<div class="dataCount ">
+    <div class="left_side">
+        <p>数据统计：
+            <i>133</i>个主题分类，
+            <i>70359</i>个优秀站点，
+            <i>0</i>个站点正在等待审核。</p>
+    </div>
+    <div class="right_side sellercenter">
+        <input type="text" placeholder="请输入网站名称或网址" id="searchval" on/>
+        <span id="search_btn"></span>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', '#search_btn', function () {
+            var url = $('#searchval').val();    
+            window.location.href = 'selectWebList.htm?search=' + url;
+        })
+
+        $("#searchval").keyup(function (event) {
+            event = document.all ? window.event : event;
+            if ((event.keyCode || event.which) == 13) {
+                var url = $('#searchval').val();
+            window.location.href = 'selectWebList.htm?search=' + url;
+            }
+        });
+    })
+</script>
+
+    <!-- 网站列表 -->
+            <div class="MenuWrap  clearfix" style="margin-top: 20px;">
+                <div class="LeftWebMenu  col-xs-4">
+                    <div class="Topbox  clearfix">
+                        <ul class="row">
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon10.png" alt="" /><a href="/webmain/xxyl.htm">休闲娱乐</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon11.png" alt="" /><a href="/webmain/xwmt.htm">新闻媒体</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon9.png" alt="" /><a href="/webmain/wxxs.htm">文学小说</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon13.png" alt="" /><a href="/webmain/shfw.htm">生活服务</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon8.png" alt="" /><a href="/webmain/tyjj.htm">体育竞技</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon12.png" alt="" /><a href="/webmain/jypx.htm">教育培训</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon14.png" alt="" /><a href="/webmain/xxfl.htm">信息分类</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon7.png" alt="" /><a href="/webmain/lyjd.htm">旅游酒店</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon6.png" alt="" /><a href="/webmain/ltbk.htm">论坛博客</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon5.png" alt="" /><a href="/webmain/qcwz.htm">汽车网站</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon4.png" alt="" /><a href="/webmain/yljk.htm">医疗健康</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon3.png" alt="" /><a href="/webmain/wzdh.htm">网址导航</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon2.png" alt="" /><a href="/webmain/dwcw.htm">动物宠物</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon1.png" alt="" /><a href="/webmain/syjj.htm">商业经济</a></li>
+                            <li class="  col-sm-4"><img src="static/images/I-con/icon0.png" alt="" /><a href="/webmain/hymh.htm">行业门户</a></li>
+                        </ul>
+                    </div>
+                    <div class="Classifybox mt15 clearfix">
+                        <dl class="Recreation row">
+                            <dt class="col-xs-12"><a href="/webmain/hymh.htm">行业门户</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/hymh_jxsb.htm">机械设备</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/hymh_jrbx.htm">金融保险</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/hymh_fcjj.htm">房产家居</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/hymh_txfw.htm">通信服务</a></dd>
+                        </dl>
+                        <dl class="ComputerNet">
+                            <dt class="col-xs-12"><a href="/webmain/qcwz.htm">汽车网站</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/qcwz_qczx.htm">汽车资讯</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/qcwz_qclt.htm">汽车论坛</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/qcwz_escw.htm">二手车网</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/qcwz_jxxc.htm">驾校学车</a></dd>
+                        </dl>
+                        <dl class="LifeService">
+                            <dt class="col-xs-12"><a href="/webmain/itjs.htm">IT技术</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/itjs_wzjs.htm">网站建设</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/itjs_wzym.htm">网站源码</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/itjs_dnwz.htm">电脑网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/itjs_ssyq.htm">搜索引擎</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/itjs_ymzj.htm">域名主机</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/itjs_bksj.htm">博客设计</a></dd>
+                        </dl>
+                        <dl class="Education">
+                            <dt class="col-xs-12"><a href="/webmain/lyjd.htm">旅游酒店</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/lyjd_lyfw.htm">旅游服务</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/lyjd_lyzx.htm">旅游资讯</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/lyjd_dfly.htm">地方旅游</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/lyjd_jdjp.htm">酒店机票</a></dd>
+                        </dl>
+                        <dl class="E-Business">
+                            <dt class="col-xs-12"><a href="/webmain/sjwz.htm">手机网站</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/sjwz_sjyx.htm">手机游戏</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/sjwz_sjlt.htm">手机论坛</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/sjwz_sjpp.htm">手机品牌</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/sjwz_sjyy.htm">手机应用</a></dd>
+                        </dl>
+                        <dl class="Company">
+                            <dt class="col-xs-12"><a href="/webmain/xxyl.htm">休闲娱乐</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/xxyl_yywz.htm">音乐网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/xxyl_whys.htm">文化艺术</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/xxyl_shsc.htm">书画收藏</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/xxyl_lyxq.htm">梨园戏曲</a></dd>
+                        </dl>
+                        <dl class="Business">
+                            <dt class="col-xs-12"><a href="/webmain/xxfl.htm">信息分类</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/xxfl_flml.htm">分类目录</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/xxfl_hyxx.htm">行业信息</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/xxfl_bdxx.htm">本地信息</a></dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/tyjj.htm">体育竞技</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/tyjj_tywz.htm">体育网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/tyjj_jjwz.htm">竞技网站</a></dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/wxxs.htm">文学小说</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/wxxs_jdwx.htm">经典文学</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/wxxs_xswz.htm">小说网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/wxxs_sjzz.htm">书籍杂志</a></dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/wlyx.htm">网络游戏</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/wlyx_yxwz.htm">游戏网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/wlyx_yxlt.htm">游戏论坛</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/wlyx_yxzx.htm">游戏资讯</a></dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/wzdh.htm">网址导航</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/wzdh_zhdh.htm">综合导航</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/wzdh_fldh.htm">分类导航</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/wzdh_dfdh.htm">地方导航</a></dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/syjj.htm">商业经济</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/syjj_swmy.htm">商务贸易</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/syjj_dzsw.htm">电子商务</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/syjj_wzxm.htm">网赚项目</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/syjj_zzzy.htm">站长资源</a></dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/yljk.htm">医疗健康</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/yljk_ylwz.htm">医疗网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/yljk_jkwz.htm">健康网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/yljk_zyzy.htm">中医中药</a></dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/xygx.htm">校园高校</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/xygx_gxwz.htm">高校网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/xygx_xysh.htm">校园生活</a></dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/jypx.htm">教育培训</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/jypx_jywz.htm">教育网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/jypx_pxjg.htm">培训机构</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/jypx_zxjy.htm">在线教育</a></dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/ysdm.htm">影视动漫</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/ysdm_dsjw.htm">电视剧网</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/ysdm_dmwz.htm">动漫网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/ysdm_dyys.htm">电影影视</a></dd>
+                            <dd class="  col-sm-3">&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                        </dl>
+                        <dl class="Other">
+                            <dt class="col-xs-12"><a href="/webmain/shfw.htm">生活服务</a></dt>
+                            <dd class="  col-sm-3"><a href="/webmain/shfw_fzfs.htm">服装服饰</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/shfw_mywz.htm">母婴网站</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/shfw_qzzp.htm">求职招聘</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/shfw_hjhj.htm">婚嫁婚介</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/shfw_spms.htm">食品美食</a></dd>
+                            <dd class="  col-sm-3"><a href="/webmain/shfw_bdsh.htm">本地生活</a></dd>
+                        </dl>
+                        <div class="seemore">
+                            <a href="/rankclass.htm">查看更多>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="RightWebMenu  col-xs-8">
+                    <!-- 站长推荐 -->
+                    <div class="MasterRecommend">
+                        <h2><span><img src="static/images/I-con/hot.png" alt="" />站长推荐</span></h2>
+                        <div class="RecommendList clearfix">
+                            <ul class="row">
+                                <li class="  col-md-2"><a href="/website_30536.htm">雅虎分类目录</a></li>
+                                <li class="  col-md-2"><a href="/website_39401.htm">高速公路网</a></li>
+                                <li class="  col-md-2"><a href="/website_31122.htm">优选网站目录</a></li>
+                                <li class="  col-md-2"><a href="/website_39435.htm">凯迪社区</a></li>
+                                <li class="  col-md-2"><a href="/website_31112.htm">12345网址大全</a></li>
+                                <li class="  col-md-2"><a href="/website_2707.htm">西安新闻网</a></li>
+                                <li class="  col-md-2"><a href="/website_38767.htm">联合早报</a></li>
+                                <li class="  col-md-2"><a href="/website_38299.htm">逸名网</a></li>
+                                <li class="  col-md-2"><a href="/website_1936.htm">邯郸在线</a></li>
+                                <li class="  col-md-2"><a href="/website_37344.htm">殁漂遥</a></li>
+                                <li class="  col-md-2"><a href="/website_31900.htm">第一网贷</a></li>
+                                <li class="  col-md-2"><a href="/website_38320.htm">月城品客网</a></li>
+                                <li class="  col-md-2"><a href="/website_37533.htm">中国第一财经网</a></li>
+                                <li class="  col-md-2"><a href="/website_37503.htm">奇书网</a></li>
+                                <li class="  col-md-2"><a href="/website_38301.htm">健康安全网</a></li>
+                                <li class="  col-md-2"><a href="/website_37620.htm">微信吧</a></li>
+                                <li class="  col-md-2"><a href="/website_39403.htm">动漫网</a></li>
+                                <li class="  col-md-2"><a href="/website_39411.htm">宣汉网</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 酷站导航 -->
+                    <div class="CoolSites mt15">
+                        <div class="titlebar">
+                            <h3>酷站导航</h3>
+                        </div>
+                        <div class="navlist">
+                            <dl class="VideoMusic">
+                                <dt><a href="/webmain/xwmt_xwzx.htm">新闻资讯</a></dt>
+                                                          <dd><a href='/website_154049'>影视资讯网</a></dd>
+                                                          <dd><a href='/website_153968'>soso名人网</a></dd>
+                                                          <dd><a href='/website_153806'>明星网</a></dd>
+                                                          <dd><a href='/website_153759'>达阵中国</a></dd>
+                                                          <dd><a href='/website_153629'>佰佰安全网</a></dd>
+                                                          <dd><a href='/website_153349'>今日视川</a></dd>
+                              
+                                <a class="More" href="/webmain/xwmt_xwzx.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="Game">
+                                <dt><a href="/webmain/itjs_wzjs.htm">网站建设</a></dt>
+                                                          <dd><a href='/website_153993'>云南seo</a></dd>
+                                                          <dd><a href='/website_153946'>佛山网络公司</a></dd>
+                                                          <dd><a href='/website_153934'>app开发公司</a></dd>
+                                                          <dd><a href='/website_153849'>我评测网页制作教程</a></dd>
+                                                          <dd><a href='/website_153848'>HQAQL编程教学</a></dd>
+                                                          <dd><a href='/website_153826'>金频金服</a></dd>
+                              
+                                <a class="More" href="/webmain/itjs_wzjs.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ImgRing ">
+                                <dt><a href="/webmain/qcwz_qczx.htm">汽车资讯</a></dt>
+                                                                <dd><a href='/website_153982'>汽车脚垫材料</a></dd>
+                                                          <dd><a href='/website_153843'>新能源汽车充电桩厂家</a></dd>
+                                                          <dd><a href='/website_153764'>汽车商业网</a></dd>
+                                                          <dd><a href='/website_153719'>汽车优惠</a></dd>
+                                                          <dd><a href='/website_153716'>汽车销量月份</a></dd>
+                                                          <dd><a href='/website_153714'>新能源汽车</a></dd>
+                              
+                                <a class="More" href="/webmain/qcwz_qczx.htm">更多>></a>
+                            </dl>
+                            <dl class="StarPhoto">
+                                <dt><a href="/webmain/lyjd_lyfw.htm">旅游服务</a></dt>
+                                                             <dd><a href='/website_153884'>奇异岛旅游网</a></dd>
+                                                          <dd><a href='/website_153713'>川藏越野俱乐部</a></dd>
+                                                          <dd><a href='/website_153086'>成都租车</a></dd>
+                                                          <dd><a href='/website_153047'>江西海外旅行社</a></dd>
+                                                          <dd><a href='/website_153024'>伴个桔子导游平台</a></dd>
+                                                          <dd><a href='/website_153018'>星商旅同业平台</a></dd>
+                              
+                                <a class="More" href="/webmain/lyjd_lyfw.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ChatDating">
+                                <dt><a href="/webmain/wzdh_zhdh.htm">综合导航</a></dt>
+                                                             <dd><a href='/website_153925'>技术导航网</a></dd>
+                                                          <dd><a href='/website_153865'>安逸导航</a></dd>
+                                                          <dd><a href='/website_153864'>奇台导航网</a></dd>
+                                                          <dd><a href='/website_153844'>「煅烧」代刷网</a></dd>
+                                                          <dd><a href='/website_153802'>广西导航</a></dd>
+                                                          <dd><a href='/website_151763'>洪洪导航网</a></dd>
+                              
+                                <a class="More" href="/webmain/wzdh_zhdh.htm" target="_blank">更多>></a>
+                            </dl>
+                        </div>
+                        <div class="line"></div>
+                        <div class="navlist">
+                            <dl class="VideoMusic">
+                                <dt><a href="/webmain/shfw_hjhj.htm">婚嫁婚介</a></dt>
+                                                            <dd><a href='/website_153991'>相亲网</a></dd>
+                                                          <dd><a href='/website_153370'>映之婚礼策划</a></dd>
+                                                          <dd><a href='/website_152909'>青海婚庆网</a></dd>
+                                                          <dd><a href='/website_152154'>郑州婚介</a></dd>
+                                                          <dd><a href='/website_152120'>成都婚恋网</a></dd>
+                                                          <dd><a href='/website_151944'>成都征婚网</a></dd>
+                              
+                                <a class="More" href="/webmain/shfw_hjhj.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="Game">
+                                <dt><a href="/webmain/tyjj_tywz.htm">体育网站</a></dt>
+                                                           <dd><a href='/website_153909'>悦然轮滑网</a></dd>
+                                                          <dd><a href='/website_153446'>及时体育资讯</a></dd>
+                                                          <dd><a href='/website_153445'>足球赛事分析</a></dd>
+                                                          <dd><a href='/website_153397'>48比赛网</a></dd>
+                                                          <dd><a href='/website_153073'>足球新闻网</a></dd>
+                                                          <dd><a href='/website_152494'>汇丰高尔夫冠军赛</a></dd>
+                              
+                                <a class="More" href="/webmain/tyjj_tywz.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ImgRing ">
+                                <dt><a href="/webmain/shfw_qzzp.htm">求职招聘</a></dt>
+                                                               <dd><a href='/website_153992'>常熟人才网</a></dd>
+                                                          <dd><a href='/website_153935'>东方外聘</a></dd>
+                                                          <dd><a href='/website_153880'>宜昌人才网</a></dd>
+                                                          <dd><a href='/website_153854'>安顺人才网</a></dd>
+                                                          <dd><a href='/website_153599'>东莞樟城锁业开锁公司</a></dd>
+                                                          <dd><a href='/website_152905'>海员信息网</a></dd>
+                              
+                                <a class="More" href="/webmain/shfw_qzzp.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="StarPhoto">
+                                <dt><a href="/webmain/shfw_spms.htm">食品美食</a></dt>
+                                                             <dd><a href='/website_154022'>福建海鲜批发市场</a></dd>
+                                                          <dd><a href='/website_154011'>哈尔滨红肠</a></dd>
+                                                          <dd><a href='/website_153974'>曼玲粥店</a></dd>
+                                                          <dd><a href='/website_153973'>馋面加盟</a></dd>
+                                                          <dd><a href='/website_153953'>麻花妹糯米小麻花</a></dd>
+                                                          <dd><a href='/website_153821'>折200</a></dd>
+                              
+                                <a class="More" href="/webmain/shfw_spms.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ChatDating">
+                                <dt><a href="/webmain/wxxs_xswz.htm">小说网站</a></dt>
+                                                             <dd><a href='/website_154007'>天天小说网</a></dd>
+                                                          <dd><a href='/website_153912'>浪里沙阅读</a></dd>
+                                                          <dd><a href='/website_153793'>悦读小说</a></dd>
+                                                          <dd><a href='/website_153770'>派派阅读网</a></dd>
+                                                          <dd><a href='/website_153594'>聚宝盟小说</a></dd>
+                                                          <dd><a href='/website_153582'>新书楼</a></dd>
+                              
+                                <a class="More" href="/webmain/wxxs_xswz.htm" target="_blank">更多>></a>
+                            </dl>
+                        </div>
+                        <div class="line"></div>
+                        <div class="navlist">
+                            <dl class="VideoMusic">
+                                <dt><a href="/webmain/wlyx_yxwz.htm">游戏网站</a></dt>
+                                                             <dd><a href='/website_153938'>绝地求生黑号购买平台</a></dd>
+                                                          <dd><a href='/website_153614'>星力游戏</a></dd>
+                                                          <dd><a href='/website_153496'>梦幻西游发布网</a></dd>
+                                                          <dd><a href='/website_153366'>大唐无双</a></dd>
+                                                          <dd><a href='/website_153363'>电竞游戏视频站</a></dd>
+                                                          <dd><a href='/website_153360'>U8棋牌游戏</a></dd>
+                              
+                                <a class="More" href="/webmain/wlyx_yxwz.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="Game">
+                                <dt><a href="/webmain/ltbk_ltwz.htm">论坛网站</a></dt>
+                                                               <dd><a href='/website_153926'>长沙美容整形论坛</a></dd>
+                                                          <dd><a href='/website_153768'>阿煜资源论坛</a></dd>
+                                                          <dd><a href='/website_153739'>许昌论坛</a></dd>
+                                                          <dd><a href='/website_153611'>卡盟论坛</a></dd>
+                                                          <dd><a href='/website_153536'>拾暮娱乐网</a></dd>
+                                                          <dd><a href='/website_153534'>黑冰娱乐网</a></dd>
+                              
+                                <a class="More" href="/webmain/ltbk_ltwz.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ImgRing ">
+                                <dt><a href="/webmain/syjj_swmy.htm">商务贸易</a></dt>
+                                                               <dd><a href='/website_153979'>金氏红高粱关东酒坊</a></dd>
+                                                          <dd><a href='/website_153960'>兴豫网</a></dd>
+                                                          <dd><a href='/website_153851'>联合广告网</a></dd>
+                                                          <dd><a href='/website_153617'>聚货源</a></dd>
+                                                          <dd><a href='/website_153572'>中国竹编网</a></dd>
+                                                          <dd><a href='/website_153471'>快递单印刷</a></dd>
+                              
+                                <a class="More" href="/webmain/syjj_swmy.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="StarPhoto">
+                                <dt><a href="/webmain/syjj_zzzy.htm">站长资源</a></dt>
+                                                               <dd><a href='/website_153966'>淘宝如何领取优惠券</a></dd>
+                                                          <dd><a href='/website_153824'>广州锦盛化妆品代加工</a></dd>
+                                                          <dd><a href='/website_153499'>逆天云代挂</a></dd>
+                                                          <dd><a href='/website_152664'>淘源吧资源交易平台</a></dd>
+                                                          <dd><a href='/website_151241'>软文批发网</a></dd>
+                                                          <dd><a href='/website_150019'>空包网</a></dd>
+                              
+                                <a class="More" href="/webmain/syjj_zzzy.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ChatDating">
+                                <dt><a href="/webmain/wzdh_dfdh.htm">地方导航</a></dt>
+                                                               <dd><a href='/website_153978'>QQ技术导航</a></dd>
+                                                          <dd><a href='/website_153937'>股市资讯</a></dd>
+                                                          <dd><a href='/website_156227'>洪洪网络</a></dd>
+                                                          <dd><a href='/website_152946'>站长目录</a></dd>
+                                                          <dd><a href='/website_152941'>网址大全目录</a></dd>
+                                                          <dd><a href='/website_152776'>我不是百度</a></dd>
+                              
+                                <a class="More" href="/webmain/wzdh_dfdh.htm" target="_blank">更多>></a>
+                            </dl>
+                        </div>
+                        <div class="line"></div>
+                        <div class="navlist">
+                            <dl class="VideoMusic">
+                                <dt><a href="/webmain/gxwz.htm">高校网站</a></dt>
+                                                             <dd><a href='/website_153007'>西安海华技工学校</a></dd>
+                                                          <dd><a href='/website_152370'>安徽财经大学就业信息</a></dd>
+                                                          <dd><a href='/website_152300'>68大学社区</a></dd>
+                                                          <dd><a href='/website_151574'>娃哈哈国际双语学校</a></dd>
+                                                          <dd><a href='/website_150876'>武科大高级技能班</a></dd>
+                                                          <dd><a href='/website_149766'>演讲与口才训练网</a></dd>
+                              
+                                <a class="More" href="/webmain/xygx_gxwz.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="Game">
+                                <dt><a href="/webmain/yljk_jkwz.htm">健康网站</a></dt>
+                                                             <dd><a href='/website_154003'>激光洗纹身</a></dd>
+                                                          <dd><a href='/website_153985'>深圳馨安国际健康管理</a></dd>
+                                                          <dd><a href='/website_153983'>泰国传烽代怀孕中心</a></dd>
+                                                          <dd><a href='/website_153890'>上海天丰制药机械</a></dd>
+                                                          <dd><a href='/website_153888'>上海智联精密机械</a></dd>
+                                                          <dd><a href='/website_153825'>妙桃之恋美食裹饮</a></dd>
+                              
+                                <a class="More" href="/webmain/yljk_jkwz.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ImgRing ">
+                                <dt><a href="/webmain/jypx_jywz.htm">教育网站</a></dt>
+                                                              <dd><a href='/website_154010'>唯美语句</a></dd>
+                                                          <dd><a href='/website_153989'>出文网</a></dd>
+                                                          <dd><a href='/website_153980'>成都劳动仲裁</a></dd>
+                                                          <dd><a href='/website_153931'>西安天天家教网</a></dd>
+                                                          <dd><a href='/website_153753'>ppt说幻模板网下载</a></dd>
+                                                          <dd><a href='/website_153490'>浙江自考网</a></dd>
+                              
+                                <a class="More" href="/webmain/jypx_jywz.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="StarPhoto">
+                                <dt><a href="/webmain/hymh_jxsb.htm">机械设备</a></dt>
+                                                               <dd><a href='/website_154056'>粤翔机械设备租赁公司</a></dd>
+                                                          <dd><a href='/website_154042'>灯商在线</a></dd>
+                                                          <dd><a href='/website_154014'>保温钢管</a></dd>
+                                                          <dd><a href='/website_153996'>许昌智工机械</a></dd>
+                                                          <dd><a href='/website_153988'>定制精密运动平台</a></dd>
+                                                          <dd><a href='/website_153956'>恒温房</a></dd>
+                              
+                                <a class="More" href="/webmain/hymh_jxsb.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ChatDating">
+                                <dt><a href="/webmain/hymh_dfmh.htm">地方门户</a></dt>
+                                                         <dd><a href='/website_154046'>上海同城信息网</a></dd>
+                                                          <dd><a href='/website_154000'>企信商务通</a></dd>
+                                                          <dd><a href='/website_153958'>上海中铁快运</a></dd>
+                                                          <dd><a href='/website_153939'>成都网站建设</a></dd>
+                                                          <dd><a href='/website_153832'>泾县365</a></dd>
+                                                          <dd><a href='/website_153804'>乡镇通论坛分类信息</a></dd>
+                              
+                                <a class="More" href="/webmain/hymh_dfmh.htm" target="_blank">更多>></a>
+                            </dl>
+                        </div>
+                        <div class="line"></div>
+                        <div class="navlist">
+                            <dl class="VideoMusic">
+                                <dt><a href="/webmain/hymh_jrbx.htm">金融保险</a></dt>
+                                                             <dd><a href='/website_153877'>久久金业</a></dd>
+                                                          <dd><a href='/website_153827'>配资加盟网</a></dd>
+                                                          <dd><a href='/website_153789'>经济信息时讯网</a></dd>
+                                                          <dd><a href='/website_153717'>卡行金服</a></dd>
+                                                          <dd><a href='/website_153655'>盛联国融</a></dd>
+                                                          <dd><a href='/website_153259'>贵州中进</a></dd>
+                              
+                                <a class="More" href="/webmain/hymh_jrbx.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="Game">
+                                <dt><a href="/webmain/zfjg_sydw.htm">事业单位</a></dt>
+                                                          <dd><a href='/website_153869'>深圳武警医院生殖中心</a></dd>
+                                                          <dd><a href='/website_153272'>东南教科网</a></dd>
+                                                          <dd><a href='/website_153271'>人民编制网</a></dd>
+                                                          <dd><a href='/website_152619'>新兴经济产业研究所</a></dd>
+                                                          <dd><a href='/website_152403'>魔方搭建网</a></dd>
+                                                          <dd><a href='/website_150694'>管理课程,中层管理</a></dd>
+                              
+                                <a class="More" href="/webmain/zfjg_sydw.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ImgRing ">
+                                <dt><a href="/webmain/cwwz.htm">宠物网站</a></dt>
+                                                            <dd><a href='/website_154035'>宠物食品</a></dd>
+                                                          <dd><a href='/website_153797'>宠物美容学校</a></dd>
+                                                          <dd><a href='/website_153792'>宠物饲养网</a></dd>
+                                                          <dd><a href='/website_153399'>如愿宠物机构</a></dd>
+                                                          <dd><a href='/website_153185'>东方时空鱼缸背景</a></dd>
+                                                          <dd><a href='/website_152819'>一片小森林</a></dd>
+                              
+                                <a class="More" href="/webmain/dwcw_cwwz.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="StarPhoto">
+                                <dt><a href="/webmain/lyjd_jdjp.htm">酒店机票</a></dt>
+                                                         <dd><a href='/website_152424'>光大国际酒店</a></dd>
+                                                          <dd><a href='/website_149459'>丰宁坝上草原农家院</a></dd>
+                                                          <dd><a href='/website_149222'>海外差旅</a></dd>
+                                                          <dd><a href='/website_148572'>乐活旅行网</a></dd>
+                                                          <dd><a href='/website_148372'>住呼呼</a></dd>
+                                                          <dd><a href='/website_143802'>iGola骑鹅旅行</a></dd>
+                              
+                                <a class="More" href="/webmain/lyjd_jdjp.htm" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="ChatDating">
+                                <dt><a href="/webmain/hymh_fcjj.htm">房产家居</a></dt>
+                                                            <dd><a href='/website_154002'>海南海祥居房产网</a></dd>
+                                                          <dd><a href='/website_153986'>爱屋网</a></dd>
+                                                          <dd><a href='/website_153943'>佛山除四害</a></dd>
+                                                          <dd><a href='/website_153886'>365房产网</a></dd>
+                                                          <dd><a href='/website_153817'>南宁住朋网</a></dd>
+                                                          <dd><a href='/website_153816'>红木家具</a></dd>
+                              
+                                <a class="More" href="/webmain/hymh_fcjj.htm" target="_blank">更多>></a>
+                            </dl>
+                        </div>
+                    </div>
+                    <!-- 推荐资源交换 -->
+                    <div class="ResourceSwap mt15">
+                        <div class="titlebar">
+                            <h3>推荐资源交换</h3>
+                        </div>
+                        <div class="navlist">
+                            <dl class="ImgLink">
+                                <dt><a href="/fontlink.htm?type=w1" target="_blank">图片广告</a></dt>
+                                <dd><a href="/website_38761.htm">武汉快车网</a></dd>
+                                <dd><a href="/website_38200.htm">爱情电影网</a></dd>
+                                <dd><a href="/website_38639.htm">星夜论坛</a></dd>
+                                <dd><a href="/website_38956.htm">云南方言网</a></dd>
+                                <dd><a href="/website_38840.htm">汉安堂论坛</a></dd>
+                                <dd><a href="/website_38611.htm">梦动网络</a></dd>
+                                <a class="More" href="/fontlink.htm?type=w1" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="TextLink">
+                                <dt><a href="/fontlink.htm?type=w0" target="_blank">文字广告</a></dt>
+                                <dd><a href="/website_40430.htm">深圳乐器网</a></dd>
+                                <dd><a href="/website_40419.htm">香道论坛</a></dd>
+                                <dd><a href="/website_40160.htm">青岛旅行社</a></dd>
+                                <dd><a href="/website_38956.htm">云南方言网</a></dd>
+                                <dd><a href="/website_38611.htm">梦动网络</a></dd>
+                                <a class="More" href="/fontlink.htm?type=w0" target="_blank">更多>></a>
+                            </dl>
+                            <dl class="FriendLink">
+                                <dt><a href="/friendlink.htm" target="_blank">友情链</a></dt>
+                                <dd><a href="/website_36015.htm">全国律师网</a></dd>
+                                <dd><a href="/website_39407.htm">菜瓢谷养生网</a></dd>
+                                <dd><a href="/website_39395.htm">淘宝助理</a></dd>
+                                <dd><a href="/website_38768.htm">精彩资讯网</a></dd>
+                                <dd><a href="/website_37633.htm">医通无忧网</a></dd>
+                                <dd><a href="/website_38301.htm">健康安全网</a></dd>
+                                <a class="More" href="/friendlink.htm" target="_blank">更多>></a>
+                            </dl>
+                        </div>
+                    </div>
+                    <!-- 最新收录 -->
+                    <div class="NewInclude mt15">
+                        <div class="titlebar">
+                            <h3>最新收录</h3>
+                        </div>
+                        <div class="RecommendList clearfix">
+                            <ul class="row">
+                                                           <li class="  col-md-2"><a href='/website_154057'>美美静娱乐网</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154056'>粤翔机械设备租赁公司</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154055'>六日祛斑膜法神话总部</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154054'>化工废水处理</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154053'>97玩游戏社区</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154052'>深圳部落</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154051'>6S电影网</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154050'>31祝福语</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154049'>影视资讯网</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154048'>yyq影院</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154047'>176kan一起来看</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154046'>上海同城信息网</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154045'>苏州广告公司</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154042'>灯商在线</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154041'>易码论坛</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154040'>游戏辅助网</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154039'>山东同志聊天室</a></li>
+                                                       <li class="  col-md-2"><a href='/website_154035'>宠物食品</a></li>
+                              
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="cle"></div>
+
+            </div>
+        
+<!-- 右侧打开加 open -->
+<div class="menu-right">
+  <div class="menu-right-goods">
+    <div class="menu-right-header">
+      <span class="icon-cart"></span>
+      <span class="header-text">购物车</span>
+      <span class="icon-close menu_right_close" ></span>
+    </div>
+    <div class="menu-right-con" >
+      <ul ng-repeat="(key,val) in common.itemDataList" >
+         <h1 ng-bind="val.title" ng-show="val.count>0"></h1>
+        <li ng-repeat="(key1,val1) in val.data">
+          <div class="web_title">
+            <span class="label-box" ng-bind="val1.catename"></span>
+            <h3  class="con-title" ng-bind="val1.webname" ng-show="val.title=='友情链接' || val.title=='图文广告'" title="{{val1.webname}}"></h3>
+            <h3 ng-show="val.title=='网站交易'" class="con-title" ng-bind="val1.point" title="{{val1.point}}"></h3>
+          </div>
+          <span class="con-text" >
+            网站地址：
+            <span class="web_url" ng-bind="val1.goodsurl" title="{{val1.goodsurl}}"></span>
+          </span>
+          <p class="web_weight">
+            权重：
+            <span class="tuwen bai_du" style="margin-right: 36px" ng-bind="val1.bdweight"></span>
+            PR值：
+            <span class="tuwen pr"  ng-bind="val1.pr"></span>
+          </p>
+          <p>
+            IP值：<xfan ng-bind="val1.ip"></xfan>
+            <xfan ng-show="val.title=='友情链接'" style="margin-left: 20%;">
+              位置：
+              <span ng-bind="{true:'全站',false:'首页'}[val1.is_qz == 1]">全站</span>             
+            </xfan>
+          </p>
+          <div class="clearfix">
+            <span class="con-price">￥<span ng-bind="val1.price"></span><ss ng-hide="val.title=='网站交易'">/月</ss></span>
+            <span class="con-btn" ng-click="common.delItem(val1.gid)">删除</span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- 购物车没有商品时显示 默认隐藏 -->
+      <div class="menu-right-empty " ng-class="{'hidden': common.itemNum*1>0}">
+        <img src="static/images/bg/shopping.png">
+        <p>购物车空空，快去选购一下哦！</p>
+      </div>
+    </div>
+    <div class="menu-right-footer">
+      <div class="clearfix ">
+        <span class="footer-left">已选 <span class="text-yellow" ng-bind="common.itemNum"></span> 个网站</span>
+        <span class="footer-right">共计： <span class="text-yellow" ng-bind="common.itemPrice"></span></span>
+      </div>
+      <a href="/index/goods/submit_order" ng-show="common.itemNum>0">
+        <span class="btn btn-info center-block">去购买</span>
+      </a>
+      <span class="btn center-block" style="background: gray;color: #fff;" ng-show="common.itemNum==0">去购买</span>
+    </div>
+  </div>
+  <ul class="menu-right-btns">
+    <li class="" onclick="window.open('/member/account/member.htm')">
+       <div>
+         <span class="title">会员中心</span>
+          <span class="icon icon-person"></span>
+       </div> 
+    </li>
+    <li  style="position: relative">
+      <div class="kefu">
+        <span class="title">客服</span>
+        <span class="icon icon-service"></span>
+      </div>
+      <b style=" position: absolute;top: 7px; left: 66px;opacity: 0;z-index: 999;"><script charset="utf-8" type="text/javascript" src="//wpa.b.qq.com/cgi/wpa.php?key=XzgwMDE4NTQ4OV80ODI2ODlfODAwMTg1NDg5Xw"></script></b>
+    </li>
+    <li class="menu_right_btn" >
+      <div>
+        <span class="title">购物车</span>
+        <span class="icon icon-shop" ng-click="common.CartLogin()"></span>
+        <span class="badge"  ng-bind="common.itemNum"></span>
+      </div>
+    </li>
+    <li class="hidden">
+      <div>
+        <span class="title">加盟</span>
+        <span class="icon icon-hands"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/user_feedback.htm')">
+      <div>
+        <span class="title">意见反馈</span>
+        <span class="icon icon-pen"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/appdown.htm')">
+      <div>
+        <span class="title">APP下载</span>
+        <span class="icon icon-code"></span>
+      </div>
+    </li>
+    <li class="go_top">
+      <div>
+        <span class="title">顶部</span>
+        <span class="icon icon-up"></span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+  </div>
+</div>
+
+<script type="text/javascript" src="static/js/factory/directive.js"></script>
+<script type="text/javascript" src="static/js/publichead.js?v="></script>
+<script>
+   $('.nav-middle a[mark="webmain"]').addClass('active').siblings().removeClass('active')
+  var res = null;
+</script>
+{include file="footer"}
+<script type="text/javascript" src="static/js/webmain.js?v=20180903"></script>
+<script type = "text/javascript" src = "static/js/index_message.js?v=20180903"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<div class="bottom">Copyright &copy; 2002-2017 华乐美眉网 版权所有 <a href=http://www.hahacn.com target='_blank'>Power by hahacn</a>  </div>
+<div class="clear"></div>
+<script>
+blie=parseInt($(document).innerWidth()/150);
+bmarginLeft=parseInt(($(document).innerWidth()-150*blie)/(blie+1));
+bliewidth=parseInt(($(document).innerWidth()-bmarginLeft-2)/blie)
+var $container = $('#container');
+$container.imagesLoaded(function(){
+  $("#container ").css("margin-left",bmarginLeft+"px");
+  $("#container .post").css("margin-left","0px")
+  $container.masonry({
+  itemSelector : '.post',
+  columnWidth : bliewidth
+  });
+});
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?51ba25c989545b6ef50bf52ea400e310";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>

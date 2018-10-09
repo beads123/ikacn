@@ -1,0 +1,571 @@
+{include file="header"}
+<link type="text/css" rel="stylesheet" href="/static/css/rankdetail.css"/>
+<link type="text/css" rel="stylesheet" href="/static/css/member.css"/>
+<link type="text/css" rel="stylesheet" href="/static/css/goods.css"/>
+<script src="/static/js/jquery.easing.1.3.js"></script>  <!--//购物车插件-->
+<div ng-app="application" id="ng-app" class="'ng-app:application' ">
+  
+    <div class="main-block" ng-controller="articleControl" style="margin-top: -15px;">
+        
+        <div class="container" style="background:#e8e8e8;">
+          <!--网站排行头部-->
+          <div class="clearfix newtop nav-middle text-center" style="margin-top: 8px">
+    <div class="container">
+        <a href="/webmain.htm" mark="webmain">排行首页</a>
+        <a href="/ranklist.htm" mark="ranklist">网站排行</a>
+        <a href="/rankclass.htm" mark="rankclass">分类目录</a>
+        <a href="/ranktag.htm" mark="ranktag">标签目录</a>
+        <a href="/ranknew.htm" mark="ranknew">最新收录</a>
+        <a href="/rankdata.htm" mark="rankdata">数据归档</a>
+        <a href="/apply_include.htm" target="_blank" class="applye_a">申请收录</a>
+    </div>
+</div>
+<!-- 数据统计 -->
+<div class="dataCount ">
+    <div class="left_side">
+        <p>数据统计：
+            <i>133</i>个主题分类，
+            <i>70359</i>个优秀站点，
+            <i>0</i>个站点正在等待审核。</p>
+    </div>
+    <div class="right_side sellercenter">
+        <input type="text" placeholder="请输入网站名称或网址" id="searchval" on/>
+        <span id="search_btn"></span>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', '#search_btn', function () {
+            var url = $('#searchval').val();    
+            window.location.href = 'selectWebList.htm?search=' + url;
+        })
+
+        $("#searchval").keyup(function (event) {
+            event = document.all ? window.event : event;
+            if ((event.keyCode || event.which) == 13) {
+                var url = $('#searchval').val();
+            window.location.href = 'selectWebList.htm?search=' + url;
+            }
+        });
+    })
+</script>
+            <!--网站服务-->
+            <div class="con  clearfix">
+                <ol class="col-xs-12 breadcrumb" style="position: relative">
+                    <span>当前位置：</span>
+                    <a href="webmain.htm">排行首页</a> &gt; <a class="get_catalog" href="ranklist.htm">网站排行</a>  &gt;  <a class="get_catalog" href="/webmain/jypx.htm">教育培训 </a>  &gt;  <a class="get_catalog" href="/webmain/jypx_pxjg.htm">培训机构 </a> &gt; <a class="get_catalog" href="/website_156264.htm">网址详情</a>
+
+                    <!--<div class="search-box search_website" >-->
+                        <!--<input name="url" placeholder="请输入网站网址" value="" class="zname form-control" id="input_url" type="text">-->
+                        <!--<span class="search-btn">搜索</span>-->
+                    <!--</div>-->
+                </ol>
+                <div class="con_index pull-left">
+                    <div class="con_index_left">
+                        <div class="website-img">
+                            <img src="/static/images/icon/no_pic.png" alt="佛山瑜伽教练培训">
+                        </div>
+                        <div class="website-data" style="position: relative;">
+                            <div class="website-name"><a href="http://www.qlyoga.com" target="_blank" rel="nofollow">佛山瑜伽教练培训</a><span
+                                    style="margin-left: 5px;"><img src="/static/images/yellow-authen.png"></span></div>
+                            <div class="website-url"><a href="http://www.qlyoga.com" target="_blank" rel="nofollow">www.qlyoga.com</a></div>
+                            <div class="website-info">
+                                <span class="cl-gray">网站行业：</span>
+                                <a href="/webmain/jypx.htm" target="_blank" rel="nofollow">教育培训</a>
+                            </div>
+                            <div class="website-info">
+                                <span class="cl-gray">收录查询：</span>
+                                <span><a href="http://www.baidu.com/s?wd=site:www.qlyoga.com" target="_blank">[百度]</a></span>
+                                <span><a href="https://www.so.com/s?q=site:www.qlyoga.com" target="_blank">[360]</a></span>
+                                <span><a href="https://www.sogou.com/web?query=site:www.qlyoga.com" target="_blank">[搜狗]</a></span>
+                                <span><a href="http://cn.bing.com/search?q=site:www.qlyoga.com" target="_blank">[必应]</a></span>
+                            </div>
+                            <div class="website-info">
+                                <span class="website-intr" title="--">网站简介：--</span>
+                            </div>
+                            <div class="website-rank">
+                                <span class="zan" data-id="156264">0</span>
+                                <span class="low" data-id="156264">0</span>
+                             
+                            </div>
+                        </div>
+                    </div>
+                    <div class="con_index_right">
+                        <div class="con_num">
+            <span>
+              <b>173</b>
+              <p>百度收录</p>
+            </span>
+                        <span style="float: right">
+              <b>0</b>
+              <p>百度权重</p>
+            </span>
+                        </div>
+                        <div class="con_pr">
+                            <ul>
+                                <li><a href="/whois/www.qlyoga.com">whois查询</a></li>
+                                <li><a href="/webtool/friendchain.htm?linkname=www.qlyoga.com">友链检测</a></li>
+                                <li><a href="/webtool/record.htm">备案查询</a></li>
+                                <li><a href="/webtool/autochain.htm">外链工具</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="con_index_bottom">
+                        <p>网站服务</p>
+                        <ul>
+                            <li style="padding:20px 15px;">
+                                <h4><a href="/friendlink.htm" target="_blank">友情链接</a></h4>
+                                <div class="con_index_money">
+                                  <span ng-show="yqljpd" class="c8">首页</span>
+                                    <span ng-show="!yqljpd && !yqljpd_qz" ng-bind="yqljPrice"></span>
+                                    <span ng-show="yqljpd" ng-bind="yqljPrice"></span>
+                                    <span class="con_buy fly{{yqljID}}" ng-show="yqljpd" ng-click="add_cart(1,yqljID)">购买</span>
+                                    <span class="con_buy unbuy" ng-show="!yqljpd && !yqljpd_qz" >购买</span>
+                                    <div style="margin-top: 5px;">
+                                      <span ng-show="yqljpd_qz" class="c8">全站</span>
+                                      <span ng-show="yqljpd_qz" ng-bind="yqljPrice_qz"></span>
+                                      <span class="con_buy fly{{yqljID}}" ng-show="yqljpd_qz" ng-click="add_cart(1,yqljID,1)">购买</span>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="text_ad">
+                                <h4><a href="/fontlink_font.htm" target="_blank">文字广告</a></h4>
+                                <div class="con_index_money">
+                                    <span ng-bind="wzggPrice"></span>
+                                    <span class="con_buy fly{{wzggID}}" ng-show="wzggpd" ng-click="add_cart(2,wzggID)">购买</span>
+                                    <span class="con_buy unbuy" ng-show="!wzggpd" >购买</span>
+                                </div>
+                            </li>
+                            <li class="pic_ad">
+                                <h4><a href="/fontlink_img.htm" target="_blank">图片广告</a></h4>
+                                <div class="con_index_money">
+                                    <span ng-bind="tpggPrice"></span>
+                                    <span class="con_buy fly{{tpggID}}" ng-show="tpggpd" ng-click="add_cart(3,tpggID)">购买</span>
+                                    <span class="con_buy unbuy" ng-show="!tpggpd" >购买</span>
+                                </div>
+                            </li>
+                            <li class="link_exchange">
+                                <h4><a href="/friendchange.htm" target="_blank">交换链接</a></h4>
+                                <div class="con_index_money">
+                                    <span class="text-gray" ng-bind="mfhlPrice"></span>
+                                    <a href="/friendchange.htm?weburl=www.qlyoga.com" ng-show="mfhlpd"><span class="con_buy">交换</span></a>
+                                    <a href="/member/freechange/addchange.htm" ng-show="!mfhlpd"><span class="con_buy" >加入</span></a>
+                                </div>
+                            </li>
+                            <li class="flow_exchange">
+                                <h4><a href="/flowad.htm" target="_blank">流量交换</a></h4>
+                                <div class="con_index_money">
+                                    <span class="text-green" ng-bind="lljhPrice">已加盟</span>
+                                    <a href="/member/trafficexchange/index.htm"><span class="con_buy">交换</span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--广告-->
+            <div class="website_ad">
+                <script src="//www.2898.com/index/flowexchange/getGoods?id=484&sign=b86132484f6fb13c94a3680c7397aa21"></script>
+            </div>
+                        <div class="website-con">
+                <table class="table website-table">
+                    <tbody>
+                    <tr class="font_gray" style="background: #f7f7f7">
+                        <td>
+                            百度权重
+                            <i class="web_refresh" id="change1"  ng-show="bdweightData" title="更新" ng-click="upBaiduRank()"></i>
+                        </td>
+                        <td>
+                            百度收录
+                            <i class="web_refresh" id="change2" ng-show="bdincludedData" title="更新" ng-click="upBaiduInclude()"></i>
+                        </td>
+                        <td>百度反链</td>
+                        <td>百度索引量</td>
+                        <td>百度预估流量</td>
+                        <td>Alexa排名</td>
+                        <td>Alexa流量排名</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tuwen bd" style="border-color: #4b97fe"><b class="bd_logo" ng-bind="data.bdweight">0</b></span>
+                        </td>
+                        <td ng-bind="data.bdincluded">173</td>
+                        <td ng-bind="data.bdtrans">2</td>
+                        <td ng-bind="data.index">0</td>
+                        <td ng-bind="data.traffic">0</td>
+                        <td ng-bind="data.worldrank">0</td>
+                        <td ng-bind="data.trafficrank">0</td>
+                    </tr>
+
+
+                    <tr class="font_gray" style="background: #f7f7f7">
+                        <td>谷歌权重</td>
+                        <td>谷歌收录</td>
+                        <td>谷歌反链</td>
+                        <td>360收录</td>
+                        <td>360反链</td>
+                        <td>搜狗收录</td>
+                        <td>搜狗收录</td>
+                    </tr>
+                    <tr>
+                        <td ng-bind="data.googleweight">0</td>
+                        <td ng-bind="data.googleincluded">0</td>
+                        <td ng-bind="data.googletrans">0</td>
+                        <td ng-bind="data.360included">0</td>
+                        <td ng-bind="data.360trans">0</td>
+                        <td ng-bind="data.sougouincluded">0</td>
+                        <td ng-bind="data.sougoutrans">0</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt20">
+              <script src="//www.2898.com/index/flowexchange/getGoods?id=485&sign=6ab2aa0c5d7bf94f9ed7091de7d45015"></script>
+            </div>
+            <div class="bg-white pd20 mt20">
+              <div class="website-title" style="margin-bottom: 30px;">成长历程</div>
+          
+            <div class="website-time">
+                <div class="icon-time"></div>
+          <div class="time-line" id="productTrade">
+                      </div>      
+            </div>
+          </div>
+          
+            <div class="website_record">
+                <ul>
+                    <li>
+                        <h4>
+                            备案信息
+                            <!--灰色按钮加‘cur’样式-->
+                            <span ng-show="!beianDataUP" ng-click="beianUP()">更新</span>
+                            <span ng-show="beianDataUP" style="background: gray;color: #fff;border: none;">已更新</span>
+                            <b ng-bind="isNull(tools_uptime)">--</b>
+                        </h4>
+                        <p class="mt15"><span>单位名称：</span><zz ng-bind="isNull(tools_company)">--</zz></p>
+                        <p><span>单位性质：</span><zz ng-bind="isNull(tools_nature)">--</zz></p>
+                        <p><span>网站备案：</span><zz ng-bind="isNull(tools_no)">--</zz></p>
+                        <p><span>网站名称：</span><zz ng-bind="isNull(tools_name)">--</zz></p>
+                        <p><span>网站首页：</span><zz ng-bind="isNull(tools_url)"></zz></p>
+                    </li>
+                    <li>
+                        <h4>
+                            域名<a href="/whois/www.qlyoga.com" target="_blank" style="color:#4b97fe;font-size: 15px;">(whois信息)</a>
+                            <span ng-show="!domainUP" ng-click="upWhoisQuery()">更新</span>
+                            <span ng-show="domainUP" style="background: gray;color: #fff;border: none;">已更新</span>
+                            <b ng-bind="isNull(whoisQueryTime)">2018-09-10</b>
+                        </h4>
+                        <p class="mt15"><span>域名：</span>
+                            <zz ng-bind="isNull(domain_name)">QLYOGA.COM</zz>
+                        </p>
+                        <p>
+                            <span style="float: left">域名注册服务商：</span>
+                            <zz class='dns_detail' ng-bind="isNull(registrar)" title="Alibaba Cloud Computing (Beijing) Co., Ltd.">Alibaba Cloud Computing (Beijing) Co., Ltd.</zz>
+                        </p>
+                        <p>
+                            <span style="float: left">DNS服务器：</span>
+                            <zz class="dns_detail" title="DNS10.HICHINA.COM&nbsp;&nbsp;DNS9.HICHINA.COM" ng-html-bind="isNull(name_DNS_server)">DNS10.HICHINA.COM&nbsp;&nbsp;DNS9.HICHINA.COM</zz>
+                        </p>
+                        <p><span>创建时间：</span><zz ng-bind="isNull(creation_date)">2016年10月28日</zz></p>
+                        <p><span>到期时间：</span><zz ng-bind="isNull(registry_expiry_date)">2018年10月28日</zz></p>
+                    </li>
+                    <li>
+                        <h4>
+                            服务器
+                            <span ng-show="!serverUP" ng-click="upQueryIP()">更新</span>
+                            <span ng-show="serverUP" style="background: gray;color: #fff;border: none;">已更新</span>
+                            <b ng-bind="queryIP_time">2018-09-10</b>
+                        </h4>
+                        <p class="mt15"><span>IP地址：</span><zz ng-bind="isNull(ip)">210.209.84.118</zz></p>
+                        <p><span>服务器地址：</span><zz ng-bind="isNull(country)">香港</zz></p>
+                        <p><span>服务器类型：</span><zz ng-bind="isNull(web_server)">--</zz></p>
+                        <p><span>页面类型：</span>text/html</p>
+                        <p><span>编码：</span><zz ng-bind="isNull(web_code)">--</zz></p>
+                    </li>
+                </ul>
+                <div style="clear: both"></div>
+            </div>
+            
+            <!--关键词、标题等table-->
+            <div class="website_key">
+                <span ng-show="!titleUP" ng-click="upGetWebSiteTitle()">更新</span>
+                <span ng-show="titleUP" style="background: gray;color: #fff;border: none;">已更新</span>
+                <table class="table website-table">
+                    <tbody>
+                    <tr>
+                        <td class="keyword">标题（Title）</td>
+                        <td style="text-align: left; padding: 0 15px;" ng-bind="data.title">--</td>
+                    </tr>
+                    <tr>
+                        <td class="keyword">关键词（KeyWords）</td>
+                        <td style="text-align: left;padding: 0 15px;" ng-bind="data.keywords">--</td>
+                    </tr>
+                    <tr>
+                        <td class="keyword">描述（Description）</td>
+                        <td style="text-align: left;padding: 0 15px;" ng-bind="data.description">--</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--table-->
+            <!--滚动链接信息start-->
+            <div class="website_list">
+                <div class="turn_left"></div>
+                <div class="website_list" id="trendChart">
+                    <ul id="chart">
+                        <li ng-repeat="item in regoods">
+                            <div class="top">
+                                <h4 ng-bind="item.type" ng-class="{'文字广告':'bg_word','图片广告':'bg_pic','网站交易':'bg_web'}[item.type]"></h4>
+                                <a href="/website_{{item.url_id}}.htm" target="_blank"><p ng-bind="item.name"></p></a>
+                            </div>
+                            <div ng-show="item.type != '网站交易'" class="index">
+                                <span>百度权重：</span>
+                                <span class="tuwen bd" style="border-color: #4b97fe"><b class="bd_logo" ng-bind="item.bdweight"></b></span>
+                                <p><span>销量：</span><zz ng-bind="item.count"></zz></p>
+                                <p><span>百度收录：</span><zz ng-bind="item.bdincluded"></zz></p>
+                            </div>
+                            <div ng-show="item.type == '网站交易'" class="index" style="padding-left: 35px">
+                                <img ng-src="{{common.staticHost(item.image_fmt)}}" width="150px;" height="95px">
+                            </div>
+                            <div class="con_index_money">
+                                <span ng-bind="item.price"></span>
+                                <span class="con_buy fly{{item.id}}" ng-click="add_cart(false,item.id)">购买</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="turn_right"></div>
+            </div>
+            <!--滚动链接end-->
+
+            <!--网站推荐star-->
+            <div class="web_good">
+                <p>热门推荐</p>
+                <div>
+                    <ul>
+                                                <li><i>1</i><a href="/website_156265.htm" title="造型红继木"> 造型红继木</a></li>
+                                                <li><i>2</i><a href="/website_156264.htm" title="佛山瑜伽教练培训"> 佛山瑜伽教练培训</a></li>
+                                                <li><i>3</i><a href="/website_156263.htm" title="佛山除甲醛"> 佛山除甲醛</a></li>
+                                                <li><i>4</i><a href="/website_156262.htm" title="武汉搬家公司"> 武汉搬家公司</a></li>
+                                                <li><i>5</i><a href="/website_156261.htm" title="泽企软件"> 泽企软件</a></li>
+                                                <li><i>6</i><a href="/website_156260.htm" title="君思软件"> 君思软件</a></li>
+                                                <li><i>7</i><a href="/website_156259.htm" title="线报大全网"> 线报大全网</a></li>
+                                                <li><i>8</i><a href="/website_156258.htm" title="上海律师网"> 上海律师网</a></li>
+                                                <li><i>9</i><a href="/website_156257.htm" title="9388小游戏"> 9388小游戏</a></li>
+                                                <li><i>10</i><a href="/website_156256.htm" title="G玩家游戏社区"> G玩家游戏社区</a></li>
+                                                <li><i>11</i><a href="/website_156255.htm" title="图优网"> 图优网</a></li>
+                                                <li><i>12</i><a href="/website_156254.htm" title="莎普爱思网络"> 莎普爱思网络</a></li>
+                                                <li><i>13</i><a href="/website_156253.htm" title="三真久味"> 三真久味</a></li>
+                                                <li><i>14</i><a href="/website_156252.htm" title="全民招标网"> 全民招标网</a></li>
+                                                <li><i>15</i><a href="/website_156251.htm" title="吾爱百分百软件站"> 吾爱百分百软件站</a></li>
+                                                <li><i>16</i><a href="/website_156250.htm" title="量格视频"> 量格视频</a></li>
+                                                <li><i>17</i><a href="/website_156249.htm" title="QQ豪华馆"> QQ豪华馆</a></li>
+                                                <li><i>18</i><a href="/website_156248.htm" title="蚀刻加工"> 蚀刻加工</a></li>
+                                                <li><i>19</i><a href="/website_38227.htm" title="吉安信息网"> 吉安信息网</a></li>
+                                                <li><i>20</i><a href="/website_39695.htm" title="中文资讯"> 中文资讯</a></li>
+                                                <li><i>21</i><a href="/website_37678.htm" title="最省油论坛"> 最省油论坛</a></li>
+                                            </ul>
+                </div>
+            </div>
+            <!--网站推荐end-->
+            <!--备案信息更新提示框start-->
+            <div class="modal fade modal-blue bei_modals_tishi" style="padding-right: 17px;">
+                <div class="modal-backdrop fade in" style="z-index: 1"></div>
+                <div class="modal-dialog modal-sm bei_modal" style="top: 0px; left: 0px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title">请输入验证码</h4>
+                        </div>
+                        <div class="bei_box ">
+                            <p>
+                                <img ng-click="getverify()" id="imgverify" ng-src="" height="26px" width="100px">
+                            </p>
+                            <p>
+                                <input type="text" placeholder="请输入验证码" class="ng-pristine ng-valid" ng-model="verify">
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info modal_tips_yes" ng-click="yzVerify()">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--备案信息更新提示框end-->
+            <!--网站保障-->
+            <div class="website_protect">
+                <ul>
+                    <li>
+                        <h4>服务保障</h4>
+                        <p>专业的服务团队，全程交易跟踪</p>
+                    </li>
+                    <li class="protect1">
+                        <h4>资金保障</h4>
+                        <p>平台担保交易，安全放心</p>
+                    </li>
+                    <li class="protect2">
+                        <h4>交易保障</h4>
+                        <p>交易取消即退还款项</p>
+                    </li>
+                    <li class="protect3">
+                        <h4>法律保障</h4>
+                        <p>签署法律保护三方合同</p>
+                    </li>
+                </ul>
+            </div>
+            
+            </div>
+        </div>
+        
+<!-- 右侧打开加 open -->
+<div class="menu-right">
+  <div class="menu-right-goods">
+    <div class="menu-right-header">
+      <span class="icon-cart"></span>
+      <span class="header-text">购物车</span>
+      <span class="icon-close menu_right_close" ></span>
+    </div>
+    <div class="menu-right-con" >
+      <ul ng-repeat="(key,val) in common.itemDataList" >
+         <h1 ng-bind="val.title" ng-show="val.count>0"></h1>
+        <li ng-repeat="(key1,val1) in val.data">
+          <div class="web_title">
+            <span class="label-box" ng-bind="val1.catename"></span>
+            <h3  class="con-title" ng-bind="val1.webname" ng-show="val.title=='友情链接' || val.title=='图文广告'" title="{{val1.webname}}"></h3>
+            <h3 ng-show="val.title=='网站交易'" class="con-title" ng-bind="val1.point" title="{{val1.point}}"></h3>
+          </div>
+          <span class="con-text" >
+            网站地址：
+            <span class="web_url" ng-bind="val1.goodsurl" title="{{val1.goodsurl}}"></span>
+          </span>
+          <p class="web_weight">
+            权重：
+            <span class="tuwen bai_du" style="margin-right: 36px" ng-bind="val1.bdweight"></span>
+            PR值：
+            <span class="tuwen pr"  ng-bind="val1.pr"></span>
+          </p>
+          <p>
+            IP值：<xfan ng-bind="val1.ip"></xfan>
+            <xfan ng-show="val.title=='友情链接'" style="margin-left: 20%;">
+              位置：
+              <span ng-bind="{true:'全站',false:'首页'}[val1.is_qz == 1]">全站</span>             
+            </xfan>
+          </p>
+          <div class="clearfix">
+            <span class="con-price">￥<span ng-bind="val1.price"></span><ss ng-hide="val.title=='网站交易'">/月</ss></span>
+            <span class="con-btn" ng-click="common.delItem(val1.gid)">删除</span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- 购物车没有商品时显示 默认隐藏 -->
+      <div class="menu-right-empty " ng-class="{'hidden': common.itemNum*1>0}">
+        <img src="/static/images/bg/shopping.png">
+        <p>购物车空空，快去选购一下哦！</p>
+      </div>
+    </div>
+    <div class="menu-right-footer">
+      <div class="clearfix ">
+        <span class="footer-left">已选 <span class="text-yellow" ng-bind="common.itemNum"></span> 个网站</span>
+        <span class="footer-right">共计： <span class="text-yellow" ng-bind="common.itemPrice"></span></span>
+      </div>
+      <a href="/index/goods/submit_order" ng-show="common.itemNum>0">
+        <span class="btn btn-info center-block">去购买</span>
+      </a>
+      <span class="btn center-block" style="background: gray;color: #fff;" ng-show="common.itemNum==0">去购买</span>
+    </div>
+  </div>
+  <ul class="menu-right-btns">
+    <li class="" onclick="window.open('/member/account/member.htm')">
+       <div>
+         <span class="title">会员中心</span>
+          <span class="icon icon-person"></span>
+       </div> 
+    </li>
+    <li  style="position: relative">
+      <div class="kefu">
+        <span class="title">客服</span>
+        <span class="icon icon-service"></span>
+      </div>
+      <b style=" position: absolute;top: 7px; left: 66px;opacity: 0;z-index: 999;"><script charset="utf-8" type="text/javascript" src="//wpa.b.qq.com/cgi/wpa.php?key=XzgwMDE4NTQ4OV80ODI2ODlfODAwMTg1NDg5Xw"></script></b>
+    </li>
+    <li class="menu_right_btn" >
+      <div>
+        <span class="title">购物车</span>
+        <span class="icon icon-shop" ng-click="common.CartLogin()"></span>
+        <span class="badge"  ng-bind="common.itemNum"></span>
+      </div>
+    </li>
+    <li class="hidden">
+      <div>
+        <span class="title">加盟</span>
+        <span class="icon icon-hands"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/user_feedback.htm')">
+      <div>
+        <span class="title">意见反馈</span>
+        <span class="icon icon-pen"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/appdown.htm')">
+      <div>
+        <span class="title">APP下载</span>
+        <span class="icon icon-code"></span>
+      </div>
+    </li>
+    <li class="go_top">
+      <div>
+        <span class="title">顶部</span>
+        <span class="icon icon-up"></span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+    </div>
+</div>
+<script type="text/javascript" src="//cdn.2898.com/js/factory/directive.js"></script>
+<script type="text/javascript" src="//cdn.2898.com/js/index/index/publichead.js?v="></script>
+<script>
+    var res = {"url_id":156264,"cid":212,"name":"\u4f5b\u5c71\u745c\u4f3d\u6559\u7ec3\u57f9\u8bad","url":"www.qlyoga.com","image":null,"abstract":"--","bdweight":0,"bdincluded":"173","bdtrans":"2","index":0,"traffic":0,"worldrank":0,"trafficrank":0,"googleweight":0,"googleincluded":0,"googletrans":0,"360included":0,"360trans":0,"sougouincluded":0,"sougoutrans":0,"likes":0,"unlikes":0,"web_keyword":null,"abnormal_time":0,"title":"--","keywords":"--","description":"--","ip":"210.209.84.118","country":"\u9999\u6e2f","area":"\u65b0\u4e16\u754c\u7535\u8baf(NWT)\u6570\u636e\u4e2d\u5fc3","tools_company":"--","tools_nature":"--","tools_no":"--","tools_name":"--","tools_uptime":"--","registrar":"Alibaba Cloud Computing (Beijing) Co., Ltd.","domain_name":"QLYOGA.COM","name_DNS_server":"DNS10.HICHINA.COM&nbsp;&nbsp;DNS9.HICHINA.COM","creation_date":"2016\u5e7410\u670828\u65e5","registry_expiry_date":"2018\u5e7410\u670828\u65e5","whoisQueryTime":"2018-09-10","queryIP_time":"2018-09-10","web_server":"--","web_code":"--","onename":"\u6559\u80b2\u57f9\u8bad","image_fmt":"\/images\/icon\/no_pic.png","goods":{"yqlj":{"cur":false,"cur_qz":false,"price":"0","price_qz":"0"},"wzgg":{"cur":false,"cur_qz":false,"price":"0","price_qz":"0"},"tpgg":{"cur":false,"cur_qz":false,"price":"0","price_qz":"0"},"mfhl":{"cur":false,"cur_qz":false,"price":"0","price_qz":"0"},"lljh":{"price":"0","cur":false}},"estimateIP":"0","bdincludedTime":1536564287,"queryIP_time_cuo":1536564285,"email":"DomainAbuse@service.aliyun.com","phone":"+86.95187","domain_status":"","whois_server":"grs-whois.hichina.com","info":"   Domain Name: QLYOGA.COM<br\/>   Registry Domain ID: 2069623644_DOMAIN_COM-VRSN<br\/>   Registrar WHOIS Server: grs-whois.hichina.com<br\/>   Registrar URL: http:\/\/www.net.cn<br\/>   Updated Date: 2017-10-23T08:03:23Z<br\/>   Creation Date: 2016-10-28T02:15:44Z<br\/>   Registry Expiry Date: 2018-10-28T02:15:44Z<br\/>   Registrar: Alibaba Cloud Computing (Beijing) Co., Ltd.<br\/>   Registrar IANA ID: 420<br\/>   Registrar Abuse Contact Email: DomainAbuse@service.aliyun.com<br\/>   Registrar Abuse Contact Phone: +86.95187<br\/>   Domain Status: ok https:\/\/icann.org\/epp#ok<br\/>   Name Server: DNS10.HICHINA.COM<br\/>   Name Server: DNS9.HICHINA.COM<br\/>   DNSSEC: unsigned<br\/>   URL of the ICANN Whois Inaccuracy Complaint Form: https:\/\/www.icann.org\/wicf\/<br\/>>>> Last update of whois database: 2018-09-10T07:57:29Z <<<<br\/><br\/>For more information on Whois status codes, please visit https:\/\/icann.org\/epp<br\/><br\/>NOTICE: The expiration date displayed in this record is the date the<br\/>registrar's sponsorship of the domain name registration in the registry is<br\/>currently set to expire. This date does not necessarily reflect the expiration<br\/>date of the domain name registrant's agreement with the sponsoring<br\/>registrar.  Users may consult the sponsoring registrar's Whois database to<br\/>view the registrar's reported date of expiration for this registration.<br\/><br\/>TERMS OF USE: You are not authorized to access or query our Whois<br\/>database through the use of electronic processes that are high-volume and<br\/>automated except as reasonably necessary to register domain names or<br\/>modify existing registrations; the Data in VeriSign Global Registry<br\/>Services' (\"VeriSign\") Whois database is provided by VeriSign for<br\/>information purposes only, and to assist persons in obtaining information<br\/>about or related to a domain name registration record. VeriSign does not<br\/>guarantee its accuracy. By submitting a Whois query, you agree to abide<br\/>by the following terms of use: You agree that you may use this Data only<br\/>for lawful purposes and that under no circumstances will you use this Data<br\/>to: (1) allow, enable, or otherwise support the transmission of mass<br\/>unsolicited, commercial advertising or solicitations via e-mail, telephone,<br\/>or facsimile; or (2) enable high volume, automated, electronic processes<br\/>that apply to VeriSign (or its computer systems). The compilation,<br\/>repackaging, dissemination or other use of this Data is expressly<br\/>prohibited without the prior written consent of VeriSign. You agree not to<br\/>use electronic processes that are automated and high-volume to access or<br\/>query the Whois database except as reasonably necessary to register<br\/>domain names or modify existing registrations. VeriSign reserves the right<br\/>to restrict your access to the Whois database in its sole discretion to ensure<br\/>operational stability.  VeriSign may restrict or terminate your access to the<br\/>Whois database for failure to abide by these terms of use. VeriSign<br\/>reserves the right to modify these terms at any time.<br\/><br\/>The Registry database contains ONLY .COM, .NET, .EDU domains and<br\/>Registrars.<br\/>","whoisQueryTimeW":"2018-09-10 15:57:43","whoisQueryTimeCuo":1536566263};
+    var regoods = [{"id":66164,"type":"\u53cb\u60c5\u94fe\u63a5","count":93,"price":"\uffe55.00\/\u6708","image":null,"name":"\u534e\u4e2d\u4f1a\u8ba1\u5e08\u57f9\u8bad","url":"www.tianrunmudan.com","url_id":143538,"bdweight":0,"bdincluded":"9072250"},{"id":28140,"type":"\u53cb\u60c5\u94fe\u63a5","count":82,"price":"\uffe525.00\/\u6708","image":null,"name":"\u51fa\u56fd\u7559\u5b66\u57f9\u8bad","url":"www.tjlzs.cn","url_id":60043,"bdweight":1,"bdincluded":"2993"},{"id":19295,"type":"\u53cb\u60c5\u94fe\u63a5","count":77,"price":"\uffe525.00\/\u6708","image":null,"name":"\u957f\u6c99\u4ea4\u53cb\u7f51","url":"www.hflxzs.com.cn","url_id":53090,"bdweight":1,"bdincluded":"3124"},{"id":67218,"type":"\u6587\u5b57\u5e7f\u544a","count":0,"price":"\uffe55.00\/\u6708","image":"18695714847ff5ef0e64c7564165cd76","name":"\u82cf\u822a\u827a\u53f7\u827a\u672f\u8003\u7814","url":"www.suhangyihao.com","url_id":137932,"bdweight":0,"bdincluded":"159"},{"id":15710,"type":"\u56fe\u7247\u5e7f\u544a","count":7,"price":"\uffe55.00\/\u6708","image":"0e8eb0021775630f448fe662c7539a64","name":"\u961c\u9633\u5c0f\u5403\u57f9\u8bad\u73ed","url":"www.fuyangjuanmo.com","url_id":50545,"bdweight":0,"bdincluded":"61"},{"id":72039,"type":"\u56fe\u7247\u5e7f\u544a","count":2,"price":"\uffe52.00\/\u6708","image":"abd30887b792565e6a9bbc30bcc2a704","name":"\u8bda\u4fe1\u6559\u80b2\u7f51","url":"www.hnjycxlm.com","url_id":148303,"bdweight":1,"bdincluded":"31"},{"id":67219,"type":"\u56fe\u7247\u5e7f\u544a","count":1,"price":"\uffe510.00\/\u6708","image":"18695714847ff5ef0e64c7564165cd76","name":"\u82cf\u822a\u827a\u53f7\u827a\u672f\u8003\u7814","url":"www.suhangyihao.com","url_id":137932,"bdweight":0,"bdincluded":"159"}];
+    var list = {"webTrade":false,"bdweight":0};
+    var recomend = [{"url_id":156265,"url":"www.gyhjm1.com","name":"\u9020\u578b\u7ea2\u7ee7\u6728"},{"url_id":156264,"url":"www.qlyoga.com","name":"\u4f5b\u5c71\u745c\u4f3d\u6559\u7ec3\u57f9\u8bad"},{"url_id":156263,"url":"www.chuqujiaquan.com","name":"\u4f5b\u5c71\u9664\u7532\u919b"},{"url_id":156262,"url":"www.fenglingbanjia.com","name":"\u6b66\u6c49\u642c\u5bb6\u516c\u53f8"},{"url_id":156261,"url":"www.zeqisoft.com","name":"\u6cfd\u4f01\u8f6f\u4ef6"},{"url_id":156260,"url":"www.junsisoft.com.cn","name":"\u541b\u601d\u8f6f\u4ef6"},{"url_id":156259,"url":"www.yz666.top","name":"\u7ebf\u62a5\u5927\u5168\u7f51"},{"url_id":156258,"url":"www.shhyjg.com","name":"\u4e0a\u6d77\u5f8b\u5e08\u7f51"},{"url_id":156257,"url":"www.9388.co","name":"9388\u5c0f\u6e38\u620f"},{"url_id":156256,"url":"www.gwanjia.cn","name":"G\u73a9\u5bb6\u6e38\u620f\u793e\u533a"},{"url_id":156255,"url":"www.91toyou.com","name":"\u56fe\u4f18\u7f51"},{"url_id":156254,"url":"www.shapuaisi.info","name":"\u838e\u666e\u7231\u601d\u7f51\u7edc"},{"url_id":156253,"url":"www.3z9w.com","name":"\u4e09\u771f\u4e45\u5473"},{"url_id":156252,"url":"qmzhaobiao.com","name":"\u5168\u6c11\u62db\u6807\u7f51"},{"url_id":156251,"url":"www.520rjz.cn","name":"\u543e\u7231\u767e\u5206\u767e\u8f6f\u4ef6\u7ad9"},{"url_id":156250,"url":"v.359mai.com","name":"\u91cf\u683c\u89c6\u9891"},{"url_id":156249,"url":"www.qqhhg.cn","name":"QQ\u8c6a\u534e\u9986"},{"url_id":156248,"url":"www.xinhsen.com","name":"\u8680\u523b\u52a0\u5de5"},{"url_id":38227,"url":"www.jaghc.com","name":"\u5409\u5b89\u4fe1\u606f\u7f51"},{"url_id":39695,"url":"www.lu96.com","name":"\u4e2d\u6587\u8d44\u8baf"},{"url_id":37678,"url":"www.zuishengyou.com","name":"\u6700\u7701\u6cb9\u8bba\u575b"}];
+</script>
+{include file="footer"}
+<script type="text/javascript" src="/static/js/web_details.js?v=20180903"></script>
+<script type = "text/javascript" src = "/static/js/index_message.js?v=20180903"></script>
+<!--滚动效果-->
+<script type="text/javascript">
+    var timer, width;
+    var sp = 486;
+    var speed = 100;
+    $(document).on('mousedown', '.turn_right', function () {
+        width = $('#chart').width();
+        timer = setInterval(function () {    //开启定时器
+            var sleft = $("#trendChart").scrollLeft();
+            $("#trendChart").scrollLeft(sleft + sp);
+            clearInterval(timer);    //清除定时器
+        }, speed)
+    });
+    $(document).on('mouseup', '.turn_right', function () {
+        clearInterval(timer);    //清除定时器
+    });
+    $(document).on('mousedown', '.turn_left', function () {
+        width = $('#chart').width();
+        timer = setInterval(function () {    //开启定时器
+            var sleft = $("#trendChart").scrollLeft();
+            $("#trendChart").scrollLeft(sleft - sp);
+            clearInterval(timer);    //清除定时器
+        }, speed)
+    });
+    $(document).on('mouseup', '.turn_left', function () {
+        clearInterval(timer);    //清除定时器
+    });
+</script>
+</body>
+</html>

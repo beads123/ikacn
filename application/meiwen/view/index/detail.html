@@ -1,0 +1,104 @@
+{include file="header"}
+<div class="container">
+<div class="container-bd">
+    <div class="article-wrap" style="width:960px;margin:0 auto 10px auto; overflow: hidden;">
+  <div class="article-left">
+  <div class="list-title">
+  <h3>当前位置</h3>：<a href='/'>{$webname}</a> > {volist name="subnav" id="vo"} <a href="{:url('mlist/'.$vo['id'])}">{$vo['tname']}</a> > {/volist}<a >{$cur['title']}</a>
+  </div>
+<div class="content">
+  <div class="title"><h1>{$cur['title']}</h1></div>         
+  <div class="info">
+  <span>作者：{$cur['writer']}</span>
+  <span>来源：{$cur['source']}</span>
+  <span>时间：{$cur['addtime']|date='Y.m.d h:s',###}</span>
+  <span>阅读：<script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}" type='text/javascript' language="javascript"></script> 次</span>
+  <span>字体：<a href="javascript:doZoom(18);">大</a> <a href="javascript:doZoom(16);">中</a> <a href="javascript:doZoom(14);">小</a></span>
+  <span><a href="/member/article_add.php" rel="nofollow" target="_blank">在线投稿</a></span>
+  </div>
+  <div class="ac-content">
+  <div class="ac-content-ad">
+  <script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-336" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3138445",
+            container:  s
+        });
+    })();
+</script>
+  </div>
+  <div id="zoomtext" oncopy="copy();">
+  {$cur['content']}
+  </div>
+  </div>
+  <div class="dede_pagess">
+  <!--ul class="pagelist">{dede:pagebreak/}</ul-->
+  </div>
+  <div class="pagelast">
+  <p>{empty name="pre"}<a href="javascript:;" class="noprev">没有了</a>{else/}<a href="{:url('detail/'.$pre['id'])}" class="prev">{$pre['title']}</a>{/empty}
+  <a class="rand" href="/"></a>
+  {empty name="next"}<a href="javascript:;" class="nonext">没有了</a>{else/}<a href="{:url('detail/'.$next['id'])}" class="next">{$next['title']}</a>{/empty}</p>
+  </div>
+  <!--div class="feedbeet">  
+  <span class="tags ico5">标签：{dede:tag type='current'}<a href="[field:link/]" class="tag" target="_blank">[field:tag /]</a>{/dede:tag}</span>
+  <span class="mark">
+  <div class="likeitem" id="newdigg">
+  <a class="like" onclick="javascript:postDigg('good',{dede:field.id/})">
+  <em class="likenum" title="共收到{dede:field.goodpost/}赞">{dede:field.goodpost/}</em>
+  <em class="dolike" title="喜欢就点个赞">我喜欢</em></a>
+  </div><script>getDigg({dede:field.id/});</script>
+  </span></div-->
+</div><!-- //content -->
+  <div class="likeyou">
+  <div class="likeyou-t">
+  <h3>你可能也喜欢这些</h3>
+  <span><div id="bdshare" class="bdshare_t bds_tools_24 get-codes-bdshare">
+  <span class="bds_more"></span><a class="bds_tsina"></a><a class="bds_qzone"></a><a class="bds_huaban"></a><a class="bds_tqq"></a><a class="bds_hi"></a><a class="bds_renren"></a><a class="bds_kaixin001"></a>
+  </div></span></div> 
+  <div class="photo">
+  <ul class="likeyou-b">
+  {volist name="tuijian" id="vo"}
+     <li><a href="{:url('detail/'.$vo['id'])}" target="_blank"><img src="{$vo['litpic']}" width="155" height="120" title="{$vo['title']}" alt="{$vo['title']}"/><span>{$vo['title']}</span></a></li>
+{/volist}
+  </ul></div>
+  </div><!-- //likeyou -->
+  <script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3138463",
+            container:  s
+        });
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div class="ad-690" style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3151443",
+            container:  s
+        });
+    })();
+</script>
+  <div class="pinglun">
+  <div class="box">
+  <!--PC版-->
+<div id="SOHUCS" sid="{$cur['id']}"></div>
+<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cytrcAIuq',
+conf: 'prod_0353efcc38aa43985b4ba688d2c06080'
+});
+</script>
+</div></div>
+  <div class="cl"></div>
+  </div>
+  {include file="right"}
+  </div></div>  
+</div><div class="c1 container-bottom"></div></div>
+{include file="footer"}

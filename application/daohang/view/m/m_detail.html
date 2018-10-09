@@ -1,0 +1,98 @@
+
+<!doctype html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"  />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>{$title}</title>
+    <meta name="keywords" content="{$keywords}">
+    <meta name="description" content="{$description},{$cur['description']}">
+    <link rel="stylesheet" href="http://m.ikanchai.com/templates/ikanchai/touch/css/touch-app.css" />
+    <link rel="apple-touch-startup-image" href="http://m.ikanchai.com/templates/ikanchai/touch/startup/320x460.png" />
+    <link rel="apple-touch-icon" apple-touch-icon-precomposed="false" sizes="57x57" href="http://m.ikanchai.com/templates/ikanchai/touch/startup/cover.png"/>
+    <script src="http://m.ikanchai.com/templates/ikanchai/touch/js/zepto.min.js"></script><!--http://zeptojs.com/ -->
+    <script src="http://m.ikanchai.com/templates/ikanchai/touch/js/cmstop.touchapp.js"></script>
+</head>
+<body>
+<div class="ui-container">
+    <header>
+        <div class="ui-header-bar">
+            <a href="/m" class="ui-gohomepage"></a>
+            <div class="ui-pagetitle">华乐网</div>
+            <div class="ui-menu-trigger js-menubtn-top"></div>
+        </div>
+    </header>
+    {include file="m_header"}
+    <div>
+        <article class="ui-article-container">
+            <header>
+                <h1 class="ui-article-title">{$cur['title']}</h1>
+                <div class="ui-article-infos">
+                    <time>{$cur['addtime']}</time>
+                    <var class="js-font big-fontSize"></var>
+                </div>
+            </header>
+            <!-- 正文 -->
+            <section class="ui-article-detail">
+                <div id="content-show" class="mar-t-20">{$cur['content']}</div>
+            </section>
+            <!--版权信息开始-->
+            <!--版权信息 END-->   
+            <!-- 广告位 -->
+            <script type="text/javascript">
+    /*自适应 创建于 2017/11/17*/
+    var cpro_id = "u3138486";
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/mi.js"></script>
+
+            <div class="AdPositionId"><script type="text/javascript">
+    /*20:5 创建于 2017/11/17*/
+    var cpro_id = "u3138487";
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/cm.js"></script>
+</div>
+            <!--@end 广告位 -->
+        
+              <!-- 相关内容 -->
+            <section class="on-content" style="border:none;"></section>
+            <!--@end 相关内容 -->
+            
+            <!-- 精彩推荐 -->
+           
+            <!--@end 精彩推荐 -->
+            <!-- @end正文 -->
+        </article>
+    </div>
+</div>
+    <!-- 评论 -->
+            <div class="comment">
+              <!-- UY BEGIN -->
+              <div id="uyan_frame"></div>
+              <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1790115"></script>
+              <!-- UY END -->
+            </div>
+            <!--@end 评论 -->
+<!--<div class="download">
+    <a href="#" id="client-link">
+<img src="http://m.ikanchai.com/templates/ikanchai/touch/css/ui/download.png" alt="">
+</a>
+<script type="text/javascript">
+$(function(){
+    if (!!navigator.userAgent.match(/AppleWebKit.*Mobile.*/)||!!navigator.userAgent.match(/AppleWebKit/)) {
+        if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+            $("#client-link").attr('href', 'https://itunes.apple.com/cn/app/si-ta-xin-wen/id599473994?mt=8');
+        } else {
+            $("#client-link").attr('href', 'http://m.cmstop.com/download/CmsTop2.0.0.apk');
+        }  
+    } else {
+        $("#client-link").attr('href', 'https://itunes.apple.com/cn/app/si-ta-xin-wen/id599473994?mt=8');
+    }  
+});
+</script>
+
+</div>-->
+{include file="m_footer"}
+</body>
+</html>

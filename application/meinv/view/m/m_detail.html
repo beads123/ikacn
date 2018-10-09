@@ -1,0 +1,66 @@
+{include file="m_header"}
+<style type="text/css">
+  .pageart li {float: left;margin-left: 5px;}
+</style>
+<script language="javascript" type="text/javascript">
+
+<!--
+//点击图片翻页
+  var shortname = ".html";
+  var npage = 1;
+  var totalpage = 2;
+  var namehand = '52';
+  var displaytype = 'st';
+  var gtimer = null;
+  //下一张
+  function dPlayNext()
+  {
+    if(npage==totalpage) { location.href = GetNextUrl(); }
+    else
+    {
+      if(displaytype=='st' && namehand!='') location.href = namehand+"_"+(npage+1)
+
++shortname;
+      else location.href = "view.php?aid=52&pageno="+(npage+1);
+    }
+  }
+function GetNextUrl() {
+var nexthtml = "下一篇：<a href='/meinvmingxing/53.html'>Angelababy落入凡间的天使写真照</a> ";
+var NextUrl = nexthtml.split("href='")[1].split("'>")[0];
+return (NextUrl);
+}
+-->
+</script>
+  <div class="w1000" id="mainlist">
+    <div id="content" class="w750">
+      <div id="entry" style="margin-bottom: 10px;">
+        <h1>{$cur['title']}</h1>
+        <div class="postinfo" id="52">{$cur['addtime']|date='Y.m.d',###}<span class="blog-line">/</span> {$cur['catname']}<span class="blog-line">/</span> 标签： </div>
+        <div id="postarea"> 
+          <div id='bigpic'> <a href="javascript:dPlayNext();" title="点击图片进入下一页"><img src='{$cimg}' alt='' style="width: 100%" /></a> </div>
+          <div class="pageart" id="52">
+            <ul>
+              <li><a>共{$count}页: </a></li><li><a href="{gt name="cpos" value="1"}{:url('m_detail/'.$cur['id'].'/'.($cpos-1))}{else/}javascript::{/gt}">上一页</a></li>
+              {for start="0" end="$count"}
+              <li {eq name="cpos" value="$i+1" } class="thisclass"{/eq}><a href="{:url('m_detail/'.$cur['id'].'/'.($i+1))}">{$i+1}</a></li>
+              {/for}
+              <li><a href="{lt name="cpos" value="$count"}{:url('m_detail/'.$cur['id'].'/'.($cpos+1))}{else/}javascript::{/lt}">下一页</a></li>
+            </ul>
+            <div style="clear: both;"></div>
+          </div>
+          <div class="pageart" id="52">
+            <div class="xyz" id="52">上一篇：{empty name="pre"}没有了{else/}<a href="{:url('m_detail/'.$pre['id'])}">{$pre['title']}</a>{/empty} </div>
+            <div class="xyz1" id="52">下一篇：{empty name="next"}没有了{else/}<a href="{:url('m_detail/'.$next['id'])}">{$next['title']}</a>{/empty} </div>
+          </div>
+        </div>
+      </div>
+      <div id="container"> 
+      {volist name="tuijian" id="vo"}
+          <div class="post"> <a href="{:url('m_detail/'.$vo['id'])}" title="{$vo['title']}" target="_blank"><img src="{$vo['imgurl']}" alt="{$vo['title']}" />
+          <p>{$vo['title']}</p>
+          </a></div>
+        {/volist}
+        </div>
+    </div>
+  </div>
+{include file="m_footer"}

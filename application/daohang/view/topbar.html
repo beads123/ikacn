@@ -1,0 +1,41 @@
+<div class="wrapper">
+	<div class="clearfix sobox">
+    	<a href="/" class="logo" title="{$title}"><h1>{$webname}</h1></a>
+		<div class="search">
+    		<form name="sofrm" class="sofrm" method="get" action="" onSubmit="return rewrite_search()">
+				<input name="mod" type="hidden" id="mod" value="search" />
+				<input name="type" type="hidden" id="type" value="name" />
+				<div id="selopt">
+                	<div id="cursel">网站名称</div>
+					<ul id="options">
+                    	<li><a href="javascript: void(0);" name="name">网站名称</a></li>
+						<li><a href="javascript: void(0);" name="url">网站地址</a></li>
+						<li><a href="javascript: void(0);" name="tags">TAG标签</a></li>
+						<li><a href="javascript: void(0);" name="intro">网站描述</a></li>
+					</ul>
+				</div>
+				<input name="query" type="text" class="sipt" id="query" onFocus="this.value='';" />
+				<input type="submit" class="sbtn" value="搜 索" />
+			</form>
+		</div>
+	</div>
+	<div class="navbox">
+		<ul class="navbar">
+			<li class="navcur"><a href="?mod=index"><span></span>网站首页</a></li>
+			<li class="navline"></li>
+			<li><a href="?mod=update">最新收录</a></li>
+			<li class="navline"></li>
+			<li><a href="?mod=archives">数据归档</a></li>
+			<li class="navline"></li>
+			<li><a href="?mod=top">TOP排行榜</a></li>
+            <li class="navline"></li>
+			<li><a href="https://www.duba.com/?un_454974_121402" target="_blank">网址导航</a></li>
+			<li class="navline"></li>
+			<li><a href="?mod=feedback">意见反馈</a></li>
+		</ul>
+	</div>
+</div>
+<div class="blank10"></div>
+<div class="wrapper">
+	<div class="crumb">{$site_path} {$site_rss}</div>
+</div>

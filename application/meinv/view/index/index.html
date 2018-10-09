@@ -1,0 +1,36 @@
+{include file="header"}
+  <div class="ad960index w980">
+    <!--/*980*90广告尺寸-->
+    <a href="http://mall.hahacn.com" target="_blank"><img src="http://www.cq4a.com/ad/ad_mall3.jpg" width="980"></a></div>
+  <div class="c"></div>
+  <div class="indexlx-1">
+    <ul>
+      <li class="indexlxli">最新美女</li>
+      <li class="indexlxli-1">您可以“<a href="javascript:" onClick="jscript:window.external.AddFavorite(document.location.href,document.title);">收藏本站</a>”方便下次访问，或者百度搜索“华乐美眉网”找到我们。</li>
+      <li class="indexlxli-2" style="margin-top:5px"><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></li>
+    </ul>
+  </div>
+  <div class="c"></div>
+  <div class="w1000" id="mainindex">
+    <div id="container">
+      {volist name="list" id="vo"}
+            <div class="post"> <a href="{:url('detail/'.$vo['id'])}" title="{$vo['title']}" target="_blank"><img src="{$vo['imgurl']}" alt="{$vo['title']}" /></a>
+              <div class="piax">
+                <h2><a href="{:url('detail/'.$vo['id'])}" title="{$vo['title']}" target="_blank">{$vo['title']}</a></h2>
+                <div class="pac">{$vo['addtime']|date='Y.m.d',###}<span class="blog-line">/</span><a href="{:url('mlist/'.$vo['typeid'])}">{$vo['catname']}</a><span class="blog-line">/</span> 共{$vo['imgcount']}张图片 </div>
+              </div>
+            </div>
+        {/volist}
+ </div>
+    <div class="c"></div>
+    <div class="ad960 w980"><a href="http://mall.hahacn.com" target="_blank"><img src="http://www.cq4a.com/ad/ad_mall3.jpg" width="980"></a></div>
+    <div class="cc"></div>
+    <div class="yqlj">
+      <p>友情链接</p>
+      <ul>
+      {volist name="flink" id="vo"}<li><a href="{$vo['url']}" target="_blank">{$vo['name']}</a></li>{/volist}
+      </ul>
+    </div>
+  </div>
+{include file="footer"}

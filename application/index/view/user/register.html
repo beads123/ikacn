@@ -1,0 +1,109 @@
+{include file="header"}
+<link type="text/css" rel="stylesheet" href="/static/css/index.css" />
+<!-- 注册模块 -->
+<div class="main-block" ng-controller="ctrlArea">
+  <div class="container" style="padding-top: 20px">
+    <div class="col-md-10 col-md-offset-1 col-xs-12 main-box">
+      <div class="col-sm-3 text-right col-xs-12 pull-right">
+        已有账号？<a href="/member/user/login.htm" class="text-blue">马上登录</a>
+      </div>
+
+      <form class="form-horizontal col-sm-5 col-sm-offset-4 col-xs-12 login-box">
+        <div class="form-group main-title">
+          欢迎注册站长资源平台
+        </div>
+        <div class="form-group has-feedback-left">
+          <div class="col-sm-12">
+            <span aria-hidden="true" class="icon-phone form-control-feedback"></span>
+            <input type="text" ng-model="regData.phone" ng-keyup="changeArg(1)" placeholder="请填写真实手机，用于提现等隐私操作" class="form-control">
+            <span ng-class="{false:'help-block text-red has-icon-error',true:'help-block text-red'}[error.phone=='']" ng-bind="error.phone"></span>
+          </div>
+        </div>
+        <!--div class="form-group has-feedback-left">
+          <div class="col-xs-8">
+            <span aria-hidden="true" class="icon-code form-control-feedback"></span>
+            <input type="text" ng-model="regData.ver" ng-keyup="changeArg(2)" placeholder="请输入手机验证码" class="form-control">
+            <span ng-class="{2:'help-block text-red has-icon-error',1:'help-block text-red',3:'help-block has-icon-success text-blue'}[verfiyMsg()]" ng-bind="error.ver"></span>
+          </div>
+          <div class="col-xs-4" >
+            <span class="btn center-block send-code" ng-class="{true:' btn-disabled',false:'btn-info'}[timeout<60 || error.phone!='' || regData.phone.length!=11]" ng-click="sendVerfiy()" ng-bind="timeoutInfo">发送验证码</span>
+          </div>
+        </div-->
+        <div class="form-group has-feedback-left">
+          <div class="col-sm-12">
+            <span aria-hidden="true" class="icon-locks form-control-feedback"></span>
+            <input type="password" ng-model="regData.pass" ng-keyup="changeArg(3)" placeholder="设置密码" class="form-control">
+            <span ng-class="{false:'help-block text-red has-icon-error',true:'help-block text-red'}[error.pass=='']" ng-bind="error.pass">密码错误</span>
+          </div>
+        </div>
+        <div class="form-group has-feedback-left">
+          <div class="col-sm-12">
+            <span aria-hidden="true" class="icon-locks form-control-feedback"></span>
+            <input type="password" placeholder="确认密码" ng-keyup="changeArg(4)" ng-model="regData.password" class="form-control">
+            <span ng-class="{false:'help-block text-red has-icon-error',true:'help-block text-red'}[error.password=='']" ng-bind="error.password">密码错误</span>
+          </div>
+        </div>
+        <div class="form-group has-feedback-left">
+          <div class="col-sm-12">
+            <span aria-hidden="true" class="icon-invite form-control-feedback"></span>
+            <input type="text"  placeholder="非必填，请输入邀请码" class="form-control" ng-model="regData.inviter" ng-keyup="changeArg(5)">
+            <span ng-class="{false:'help-block text-red has-icon-error',true:'help-block text-red'}[error.inviter != '']" ng-bind="error.inviter">邀请码错误</span>
+            <span></span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-12" ng-click="serviceTermFun()">
+            <span ng-class="{true:'icon-checkbox checked',false:'icon-checkbox'}[serviceTerm]"></span>
+            <span class="login-remember">
+              我已阅读并同意
+              <a class="text-blue" href="/question.htm?mark=con-xiyi" target="_blank">《站长资源平台服务条款》</a>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <!-- 按钮激活btn-info 按钮失效btn-disabled -->
+            <span class="btn center-block btn-info" ng-click="register();">注册</span>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <!--输入验证码-->
+  <div class="modal fade modal-blue verifybox" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="width: 400px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">提示</h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel-body text-blue text-left" style="word-wrap: break-word;">
+              <div style="line-height: 1.8;font-size: 16px;" class="modal_tips_text">
+                <img id="verifyimg"  ng-src="{{verfiyImg}}" height="50px" width="120px" ng-click="getverify()" alt="验证码"/>
+                
+                <div style="margin-top: 20px;">
+                  <input type="text" name="verify" id="verify" placeholder="请输入验证码" ng-model="verify" style="border: 1px solid;padding: 5px;">
+                  <span style="color:#00a8ff;vertical-align: bottom;cursor: pointer;" ng-click="getverify()">刷新验证码</span>
+                </div>
+                <span ng-bind="errorMsg" ng-show="errorMsg" class="text-red"></span>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+         <!-- <button type="button" class="btn btn-blue modal_tips_no" data-dismiss="modal">返回</button>-->
+          <button type="button" class="btn btn-info modal_tips_yes" ng-click="sendVerfiy()">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/static/js/factory/directive.js"></script>
+{include file="footer"}
+<script type="text/javascript" src="/static/js/register.js?v=20180903"></script>
+<script type = "text/javascript" src = "/static/js/index_message.js?v=20180903"></script>
+</body>
+</html>

@@ -1,0 +1,875 @@
+{include file="header"}
+<link type="text/css" rel="stylesheet" href="static/css/goods.css" />
+<div class="main-block" ng-controller="MainController">
+  <div class="container">
+    <div class="clearfix">
+      <ol class="breadcrumb col-xs-6">
+        <li><a href="/">首页</a></li>
+        <li class="active">免费换链</li>
+      </ol>
+
+      <div class="input-group col-xs-6 col-sm-5 col-md-4 col-lg-3 pull-right" style="margin-top: 8px; ">
+        <input type="text" class="form-control" placeholder="请输入网站名称/域名" ng-model="search" enter-search>
+        <span class="input-group-btn">
+          <button class="btn btn-info" type="button" ng-click="searchGoods()">搜索</button>
+        </span>
+      </div>
+    </div>
+
+    
+    <div class="clearfix" style="width: 1200px">
+      <div class="col-sm-6 col-md-3">
+        <div class="main-list">
+          <a href="" ng-click = "go_freed()" class="main-list-img">
+            <img src="static/images/demo/free_link.jpg" alt="免费换链">
+          </a>
+          <div class="main-list-title">交易动态</div>
+          <div class="main-list-box trade_scroll" style="height:165px;margin-bottom: 0px;">
+            <ul>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">益艺贝</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">久恒生态</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">益艺贝</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">高鸣家俱厂</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">益艺贝</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">阿克苏信息网</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">益艺贝</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">物流巴士</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">环旗网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">三水新闻网</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">环旗网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">宁夏网虫</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">图优网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">易云技术论坛</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">佛山甲醛检测</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">郑州婚宴酒店</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">图优网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">中药材百科</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">火山数字</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">新视觉数码官网</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">图优网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">51便民网</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">图优网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">会计之家</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">图优网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">少儿编程</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">图优网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">智游论坛</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">图优网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">江西教育网</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">图优网</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">产业并购</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">益艺贝</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">云南农网</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">益艺贝</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">江北招投标网</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">益艺贝</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">招投标监管网</span>
+              </li>
+                            <li class="clearfix">
+                <span class="main-list-exchange text-right">益艺贝</span>
+                <span class="icon-exchange"></span>
+                <span class="main-list-exchange text-left">宜春市招投标监管网</span>
+              </li>
+                          </ul>
+          </div>
+        </div>
+      </div>
+      <script>
+        var trade_opts = {go: 'top', obj: $('.trade_scroll'), cons: 4, goTime: 1000, stopTime: 2000}
+        scrollFun(trade_opts)
+      </script>
+
+      <div class="col-xs-12 col-sm-6 col-md-9 main-search" style="overflow:initial">
+          <!-- <div class="main-search-item" style="padding-right: 0;z-index: 99">
+              <div class="main-search-title">快速匹配：</div>
+              <div  class = "fast-search">
+                 <div class = "search_web" ng-click = "get_list()"> <span ng-bind = "fast_str">请选择您要匹配的网站</span>
+                    <ul class = "fast-search-ul " ng-show = "fast_list.length > 0">
+                        <li ng-repeat=" item in fast_list" ng-bind = "item.name" ng-click = "quick_search(item)"></li>
+                      </ul>
+                 </div> <span id = "reset_str" ng-click = "reset_quick_search()">清除</span>
+                 
+              </div>
+            </div> -->
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">行业分类：</div>
+          <div class="main-search-mark hidden" ng-click="toggleMe('cateIsOpen')" ng-class="{true: 'icon-up', false: 'icon-down'}[cateIsOpen]">更多 </div>
+          <ul class="main-search-con clearfix fix-height" ng-class="{open: cateIsOpen}" >
+            <li ng-class="{active: cateAll['active']}" ng-click="clickCate('all')"><span >不限</span></li>
+            <li ng-repeat="c in cate" ng-class="{active: c['active']}" cid="{{c.cid1}}" ng-click="clickCate($index)"><span ng-bind="c.cidname1"></span></li>
+          </ul>
+        </div>
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">百度权重：</div>
+          <ul class="main-search-con  clearfix">
+            <li ng-click="moreSelect('bdweight', 'any')" ng-class="{active: bdweight.any.active}" class=""><span >不限</span></li>
+            <li ng-click="moreSelect('bdweight', 'w0')" ng-class="{active: bdweight.w0.active}"><span class="">0</span></li>
+            <li ng-click="moreSelect('bdweight', 'w1')" ng-class="{active: bdweight.w1.active}"><span class="">1</span></li>
+            <li ng-click="moreSelect('bdweight', 'w2')" ng-class="{active: bdweight.w2.active}"><span class="">2</span></li>
+            <li ng-click="moreSelect('bdweight', 'w3')" ng-class="{active: bdweight.w3.active}"><span class="">3</span></li>
+            <li ng-click="moreSelect('bdweight', 'w4')" ng-class="{active: bdweight.w4.active}"><span class="">4</span></li>
+            <li ng-click="moreSelect('bdweight', 'w5')" ng-class="{active: bdweight.w5.active}"><span class="">5</span></li>
+            <li ng-click="moreSelect('bdweight', 'w6')" ng-class="{active: bdweight.w6.active}"><span class="">6</span></li>
+            <li ng-click="moreSelect('bdweight', 'w7')" ng-class="{active: bdweight.w7.active}"><span class="">7</span></li>
+            <li ng-click="moreSelect('bdweight', 'w8')" ng-class="{active: bdweight.w8.active}"><span class="">8</span></li>
+            <li ng-click="moreSelect('bdweight', 'w9')" ng-class="{active: bdweight.w9.active}"><span class="">9</span></li>
+          </ul>
+        </div>
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">百度收录：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="singleSelect('bdincluded', 'any')" ng-class="{active: bdincluded.any.active}"><span >不限</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w0')" ng-class="{active: bdincluded.w0.active}"><span class="">0-1万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w1')" ng-class="{active: bdincluded.w1.active}"><span class="">1-5万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w2')" ng-class="{active: bdincluded.w2.active}"><span class="">5-10万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w3')" ng-class="{active: bdincluded.w3.active}"><span class="">10-50万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w4')" ng-class="{active: bdincluded.w4.active}"><span class="">50-100万</span></li>
+            <li ng-click="singleSelect('bdincluded', 'w5')" ng-class="{active: bdincluded.w5.active}"><span class="">100-500万</span></li>
+            <li class="main-search-input clearfix" ng-class="{'has-error': bdincluded.input.invalid}">
+              <input enter-search check-input check-target="bdincluded" check-name="min" check-type="int" ng-model="bdincluded.input.min" type="text" class="form-control">
+              <span style="margin: 0;">至</span>
+              <input enter-search check-input check-target="bdincluded" check-name="max" check-type="int" ng-model="bdincluded.input.max" type="text" class="form-control">
+              <span>万</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">反&nbsp;&nbsp;&nbsp;&nbsp;链：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="singleSelect('trans', 'any')" ng-class="{active: trans.any.active}"><span >不限</span></li>
+            <li ng-click="singleSelect('trans', 'w0')" ng-class="{active: trans.w0.active}"><span class="">0-1万</span></li>
+            <li ng-click="singleSelect('trans', 'w1')" ng-class="{active: trans.w1.active}"><span class="">1-5万</span></li>
+            <li ng-click="singleSelect('trans', 'w2')" ng-class="{active: trans.w2.active}"><span class="">5-10万</span></li>
+            <li ng-click="singleSelect('trans', 'w3')" ng-class="{active: trans.w3.active}"><span class="">10-50万</span></li>
+            <li ng-click="singleSelect('trans', 'w4')" ng-class="{active: trans.w4.active}"><span class="">50-100万</span></li>
+            <li ng-click="singleSelect('trans', 'w5')" ng-class="{active: trans.w5.active}"><span class="">100-500万</span></li>
+            <li ng-class="{'has-error': trans.input.invalid}" class="main-search-input clearfix">
+              <input enter-search check-input check-target="trans" check-name="min" check-type="int" ng-model="trans.input.min" type="text" class="form-control">
+              <span style="margin: 0;">至</span>
+              <input enter-search check-input check-target="trans" check-name="max" check-type="int" ng-model="trans.input.max" type="text" class="form-control">
+              <span>万</span>
+            </li>
+          </ul>
+        </div>
+        <div class="main-search-item " style="padding-right: 0;">
+          <div class="main-search-title">域名年龄：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="singleSelect('age', 'any')" ng-class="{active: age.any.active}"><span >不限</span></li>
+            <li ng-click="singleSelect('age', 'w0')" ng-class="{active: age.w0.active}"><span class="">1年以内</span></li>
+            <li ng-click="singleSelect('age', 'w1')" ng-class="{active: age.w1.active}"><span class="">1-2年</span></li>
+            <li ng-click="singleSelect('age', 'w2')" ng-class="{active: age.w2.active}"><span class="">2-5年</span></li>
+            <li ng-click="singleSelect('age', 'w3')" ng-class="{active: age.w3.active}"><span class="">5-10年</span></li>
+            <li ng-click="singleSelect('age', 'w4')" ng-class="{active: age.w4.active}"><span class="">10年以上</span></li>
+            <li ng-class="{'has-error': age.input.invalid}" class="main-search-input clearfix">
+              <input enter-search check-input check-target="age" check-name="min" check-type="int" ng-model="age.input.min" type="text" class="form-control">
+              <span style="margin: 0;">至</span>
+              <input enter-search check-input check-target="age" check-name="max" check-type="int" ng-model="age.input.max" type="text" class="form-control">
+              <span>年</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">更新时间：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="singleSelect('utime', 'any')" ng-class="{active: utime.any.active}"><span >不限</span></li>
+            <li ng-click="singleSelect('utime', 'w0')" ng-class="{active: utime.w0.active}"><span class="">今天</span></li>
+            <li ng-click="singleSelect('utime', 'w1')" ng-class="{active: utime.w1.active}"><span class="">三天内</span></li>
+            <li ng-click="singleSelect('utime', 'w2')" ng-class="{active: utime.w2.active}"><span class="">7天内</span></li>
+            <li ng-click="singleSelect('utime', 'w3')" ng-class="{active: utime.w3.active}"><span class="">15天内</span></li>
+            <li ng-click="singleSelect('utime', 'w4')" ng-class="{active: utime.w4.active}"><span class="">1个月内</span></li>
+          </ul>
+        </div>
+        <!-- <div class="main-search-item" style="padding-right: 0;">
+          <div class="main-search-title">认证状态：</div>
+          <ul class="main-search-con clearfix">
+            <li ng-click="singleSelect('validate', 'any')" ng-class="{active: validate.any.active}"><span >不限</span></li>
+            <li ng-click="singleSelect('validate', 'w0')" ng-class="{active: validate.w0.active}"><span class="">已认证</span></li>
+            <li ng-click="singleSelect('validate', 'w1')" ng-class="{active: validate.w1.active}"><span class="">未认证</span></li>
+          </ul>
+        </div> -->
+        <div class="main-search-item" style="padding-right: 0;">
+            <div class="main-search-title" style="top: 6px;">其他条件：</div>
+             <div class="clearfix" style="margin:10px 0 12px 0">
+            <div class="">
+                   <div class="col-sm-2 pl10 pr0" style="padding-left: 0px;">
+                       <div class="dropdown fistCate " style="width: 100%;">
+                           <button class="btn form-control dropdown-toggle lv1cate" data-toggle="dropdown" style="border-color:#c7d5de;height: 30px;">
+                               <span class="dropdown-selected"  value="all">敏感词不限</span>
+                               <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu lv1cateMenu" style="width:117px;height: auto;">
+                               <li ng-click="singleSelect('sense', 'any')" ng-class="{active: sense.any.active}"><a>敏感词不限</a></li>
+                           <li ng-click="singleSelect('sense', 'w0')" ng-class="{active: sense.w0.active}"><a>接受敏感词</a></li>
+                           <li ng-click="singleSelect('sense', 'w1')" ng-class="{active: sense.w1.active}"><a>拒绝敏感词</a></li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class="">
+                   <div class="col-sm-2 pl10 pr0" style="padding-left: 0px;">
+                       <div class="dropdown fistCate " style="width: 100%;">
+                           <button class="btn form-control dropdown-toggle lv1cate" data-toggle="dropdown" style="border-color:#c7d5de;height: 30px;">
+                               <span class="dropdown-selected"  value="all">上链方式不限</span>
+                               <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu lv1cateMenu" style="width:117px;height: auto;">
+                               <li ng-click="singleSelect('autochain', 'any')" ng-class="{active: autochain.any.active}"><a>上链方式不限</a></li>
+                           <li ng-click="singleSelect('autochain', 'w0')" ng-class="{active: autochain.w0.active}"><a>手动上链</a></li>
+                           <li ng-click="singleSelect('autochain', 'w1')" ng-class="{active: autochain.w1.active}"><a>自动上链</a></li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class="">
+                   <div class="col-sm-2 pl10 pr0" style="padding-left: 0px;">
+                       <div class="dropdown fistCate " style="width: 100%;">
+                           <button class="btn form-control dropdown-toggle " data-toggle="dropdown" style="border-color:#c7d5de;height: 30px;">
+                               <span class="dropdown-selected"  value="all">显示风格不限</span>
+                               <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu lv1cateMenu" style="width:117px;height: auto;">
+                               <li ng-click="singleSelect('show_style', 'any')"><a>显示风格不限</a></li>
+                           <li ng-click="singleSelect('show_style', 'w0')"><a>直接显示</a></li>
+                           <li ng-click="singleSelect('show_style', 'w1')"><a>鼠标滑显</a></li>
+                           <li ng-click="singleSelect('show_style', 'w2')"><a>隐藏不显示</a></li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="clearfix main-search-bar">
+      <span ng-click="clickOrder('order', 'any')" ng-class="{active: order.any.active}" class="search-item">综合排序</span>
+      <span ng-click="clickOrder('order', 'bdweight')" ng-class="{active: order.bdweight.active}" class="search-item">权重 <span class="{{{true: 'icon-up', false: 'icon-down'}[order.bdweight.asc]}}" class="icon-down"></span></span>
+      
+     
+      <span ng-click="clickOrder('order', 'bdincluded')" ng-class="{active: order.bdincluded.active}" class="search-item">收录 <span class="{{{true: 'icon-up', false: 'icon-down'}[order.bdincluded.asc]}}" class="icon-down"></span></span>
+      <span ng-click="clickOrder('order', 'bdtrans')" ng-class="{active: order.bdtrans.active}" class="search-item">反链 <span class="{{{true: 'icon-up', false: 'icon-down'}[order.bdtrans.asc]}}" class="icon-up"></span></span>
+      <!-- <span ng-click="clickOrder('order', 'price')" ng-class="{active: order.price.active}" class="search-item">价格 <span class="{{{true: 'icon-up', false: 'icon-down'}[order.price.asc]}}" class="icon-up"></span></span> -->
+      <span ng-click="clickOrder('order', 'sales')" ng-class="{active: order.sales.active}" class="search-item">被申请次数 <span class="{{{true: 'icon-up', false: 'icon-down'}[order.sales.asc]}}" class="icon-up"></span></span>
+      
+      <!-- 勾选加类名 checked -->
+      <span class="search-check" ng-click="toggleMe('myweb')"><span class="icon-checkbox" ng-class="{checked: myweb}"></span> 显示我的网站</span>
+      <div class="page-mini " style="margin-top: 5px">
+        <span ng-click="getPage('prev')"  class="left fa fa-angle-left " ng-class="{'disabled': page.px==1}"></span>
+        <span ng-click="getPage('next')"  class="right fa fa-angle-right" ng-class="{'disabled': page.px==page.num_page}"></span>
+      </div>
+      <div class="page-num" style="margin-top: 4px">
+        <span class="px" ng-bind="page.px"></span> /
+        <span class="pz" ng-bind="page.num_page"></span>
+      </div>
+      <span class="search-count" >共 <span class="text-yellow" ng-bind="page.num_rows"></span> 个网站</span>
+    </div>
+
+
+    <table class="table table-border-bottom goto_header">
+      <thead>
+        <tr>
+          <th style="width: 11.5%;">网站名称</th>
+          <th style="width: 7%;" class="hidden-xs">行业分类</th>
+          <th style="width: 7%;">百度权重</th>
+          <th style="width: 8%;" class="hidden-xs">百度收录</th>
+          <th style="width: 8%;" class="hidden-sm hidden-xs">域名年龄</th>
+          <th style="width: 8%;" class="hidden-xs">反链</th>
+          <!--<th style="width: 8%;" class="hidden-sm hidden-xs">友链类型</th>-->
+          <th style="width: 7%;" class="hidden-sm hidden-xs">上链方式</th>
+          <!-- <th style="width: 8%;" >认证状态</th> -->
+          <th style="width: 9%;">显示风格</th>
+          <th style="width: 12%;" class="hidden-sm hidden-xs">更新时间</th>
+          <th style="width: 8%;">交换条件</th>
+          <th style="width: 9%;">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="itemLoad" class="item_load"><td colspan="10"> <div style="width: 100px;height: 55px;margin: 76px auto 113px;background:#fff;"><span class="fa fa-spinner fa-pulse fa-3x fa-fw " style="color: #6ec4f2"></span></div> </td></tr>
+
+        <tr ng-repeat="r in res" ng-show="!itemLoad" render-ok="setRenderOk()">
+          <td style="" class="has-table">
+
+            <a target="_blank" href="website_{{r.url_id}}.htm" class="" ng-bind="r.webname"></a>
+         <img ng-show="r.sortadd == 1" src="static/images/icon/icon_mark.png" data-toggle="tooltip" data-placement="top" data-original-title="推荐">
+            <img ng-show="r.qualitylink == 1" src="static/images/icon/icon_good.png" data-toggle="tooltip" data-placement="top" data-original-title="优质">
+            <!--<div style="" class="hidden-xs table-sm show_table" yid = "{{r.gid}}"> 
+              <table style="display: none;" class="table table-border" > 
+                <thead>   
+                  <tr>      
+                    <th>网站网址</th>  
+                    <th colspan="3">交换条件</th>
+                    <!--<th>百度权重</th>     
+                    <th>百度收录</th>     -->
+                    <!--<th>域名年龄</th>     
+                    <th>反链</th>     -->
+                    <!--<th>被申请次数</th>     
+                    <th>敏感词</th>    
+                  </tr> 
+                </thead>  
+                <tbody>   
+                  <tr>      
+                    <td><a rel="nofollow" target="_blank" href="http://{{r.url}}" ng-bind="r.url"></a></td>    
+                    <td>行业：<span></span></td>
+                    <td >权重：><span></span></td>      
+                    <td >收录：≥<span></span></td>      -->
+                    <!--<td><span ng-bind="r.age"></span> 年</td>      
+                    <td ng-bind="r.bdtrans"></td> -->    
+                    <!--<td ng-bind="r.sales"></td>       
+                    <td ng-bind="{true: '接受', false: '拒绝'}[r.sense==1]"></td>   
+                  </tr> 
+                </tbody>
+              </table>
+
+              <a target="_blank" href="website_{{r.url_id}}.htm" ng-bind="r.webname"></a>
+            </div>-->
+
+          </td>
+          <td class="hidden-xs" ng-bind="r.cid1name"></td>
+          <td><a target="_blank" href="http://rank.chinaz.com/?host={{r.url}}&amp;sortType=0" rel="nofollow"><span class="tuwen bai_du" ng-bind="r.bdweight"></span></a></td>
+          <td class="hidden-xs"><a target="_blank" href="http://www.baidu.com/s?wd=site:{{r.url}}" rel="nofollow" ng-bind="r.bdincluded"></a></td>
+          <td class="hidden-xs"><a target="_blank" href="http://tool.chinaz.com/DomainDel/?wd={{r.url}}" rel="nofollow"><span ng-bind="r.age"></span> 年</a></td>
+          <td class="hidden-xs"><a target="_blank" href="http://www.baidu.com/s?wd=domain:{{r.url}}" rel="nofollow" ng-bind="r.bdtrans"></a></td>
+          <!--<td class="hidden-sm hidden-xs" ng-bind="r.dispage"></td>-->
+          <td class="hidden-sm hidden-xs" ng-bind="{true: '自动上链', false: '手动上链'}[r.autochain==2]"></td>
+          <!-- <td><span class="text-yellow" ng-bind="{true: '未认证', false: '已认证'}[r.validate==2]"></span></td> -->
+          <td ng-bind = "show_style_str(r.show_style)"></td>
+          <td class="hidden-sm hidden-xs" ng-bind="common.formatTime(r.utime, 'seconds', 'y-m-d h:i')"></td>
+          <td>
+            <div style="width: 100%;" class="table-sm show_table" yid = "{{r.gid}}"> 
+              <table style="display: none;left:-555px" class="table table-border" > 
+                <thead>   
+                  <tr>      
+                    <th>网站网址</th>  
+                    <th colspan="3">
+                     交换条件
+                                         </th>
+                    <th>被申请次数</th>     
+                    <th>敏感词</th>    
+                  </tr> 
+                </thead>  
+                <tbody>   
+                  <tr>      
+                    <td><a rel="nofollow" target="_blank" href="http://{{r.url}}" ng-bind="r.url"></a></td>    
+                    <td><b style="vertical-align: top;">行业：</b><span style="display: inline-block;width: 150px;white-space: pre-wrap;text-align: left;"></span></td>
+                    <td >权重：≥<span></span></td>      
+                    <td >收录：≥<span></span></td>         
+                    <td ng-bind="r.sales"></td>       
+                    <td ng-bind="{true: '接受', false: '拒绝'}[r.sense==1]"></td>   
+                  </tr> 
+                </tbody>
+              </table>
+
+              <a >查看</a>
+            </div>
+          </td>
+          
+          <td><span class="btn btn-blue btn-sm" style="{{{true: 'background: #eee;cursor: not-allowed;color:#999', false: ''}[r.loading]}}"  ng-click="exchangeGoods(r.gid)" ng-bind="{true: '申请交换', false: '申请中...'}[!r.loading]"></span></td>
+        </tr>
+
+        <tr ng-show="res.length==0">
+          <td colspan="9">
+            <div style="width: 340px;margin: 90px auto 150px;">
+              <img src="static/images/demo/nodata.png" style="display:block;margin: 0 auto 50px;">
+              <p style="color: #808080;font-size: 16px;text-align: center;">非常抱歉，没有找到相关商品，请重新检索！~</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tcdPageCode item_page" style="margin-bottom: 120px;" ng-show="res.length!=0"></div>
+
+
+
+<div class="modal fade modal-blue" tabindex="-1" role="dialog" id="exchange_ok">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel-body">
+          <span class="icon-fly"></span>
+          <div class="icon-fly-text">您已向对方发出了免费换链的申请，可通过以下联系方式联系对方上链！</div>
+          <p>对方网站：<span ng-bind="exchangeSeller.webname"></span></p>
+          <p>对方网址：<span ng-bind="exchangeSeller.url"></span></p>
+          <p>联系方式：  QQ  <span ng-bind="exchangeSeller.qq"></span> </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-blue" tabindex="-1" role="dialog" id="exchange_fail">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel-body" style="padding: 80px 45px;font-size: 18px;">
+          <p>
+            您没有可交换的网站，请在
+            <span class="text-yellow">【会员中心】</span>
+            --
+            <span class="text-yellow">【免费换链】</span>
+            处添加后再进行交换！
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" onclick="window.open('/member/freechange/addchange.htm')">去添加</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-blue" tabindex="-1" role="dialog" id="exchange_tab">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" ng-class="{'hidden': !exchangeTabShow}">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cha()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">申请交换</h4>
+      </div>
+      <div class="modal-body"  style="height:500px; overflow-y:auto;">
+        <div class="modal-tab-title">网站信息</div>
+        <div class="modal-tab clearfix">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">网站名称：</div>
+            <div class="modal-tab-value" ng-bind="exchangeData.webname">超科技小说网</div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">百度权重：</div>
+            <div class="modal-tab-value"><span class="icon-baidu"></span> <span ng-bind="exchangeData.bdweight"></span></div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">域名年龄：</div>
+            <div class="modal-tab-value"><span ng-bind="exchangeData.age"></span>年</div>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">网站地址：</div>
+            <div class="modal-tab-value" ng-bind="exchangeData.url"></div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">百度收录：</div>
+            <div class="modal-tab-value" ng-bind="exchangeData.bdincluded"></div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">友链类型：</div>
+            <div class="modal-tab-value" ng-bind="exchangeData.linktype"></div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">行业分类：</div>
+            <div class="modal-tab-value" ng-bind="exchangeData.cid1name"></div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;链：</div>
+            <div class="modal-tab-value" ng-bind="exchangeData.bdtrans"></div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">更新时间：</div>
+            <div class="modal-tab-value" ng-bind="common.formatTime(exchangeData.utime, 'seconds', 'y-m-d h:i')"></div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">关  &nbsp;&nbsp;键&nbsp;&nbsp;  词：</div>
+            <div class="modal-tab-value" ng-bind="exchangeData.free_keyword"></div>
+          </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="modal-tab-name">上链方式：</div>
+          <div class="modal-tab-value" ng-show="exchangeData.autochain==1">手动上链</div>
+          <div class="modal-tab-value" ng-show="exchangeData.autochain==2">自动上链</div>
+        </div>
+      </div>
+        <div class="modal-tab-title">交换要求</div>
+        <div class="modal-tab clearfix">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="modal-tab-name">行  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    业：</div>
+            <div class="modal-tab-value" ng-bind="exchangeLimit.cate1name"></div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">百度权重≥：</div>
+            <div class="modal-tab-value"><span class="icon-baidu"></span><span ng-bind="exchangeLimit.bdweight"></span></div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="modal-tab-name">百度收录≥：</div>
+            <div class="modal-tab-value" ng-bind="exchangeLimit.bdincluded"></div>
+          </div>
+
+        </div>
+
+        <div class="modal-tab-title">
+          符合交换要求的友链
+          <span class="text-yellow" style="font-size:14px;">(如果您申请的网站是自动上链，您要先给对方上链才能申请成功哦！)</span>
+          <!-- <span class="icon-checkbox" style="margin-left: 20px;"></span>  
+          符合交换要求的网址 -->
+        </div>
+        <table class="table table-border" style="position: relative;margin-bottom:0;width: 100%;top:0;left:0;">
+          <thead>
+            <tr>  
+              <th style="width: 16%" class="hidden-sm hidden-xs">网站名称</th>
+              <th style="width: 24%">网站地址</th>
+              <th style="width: 14%" class="hidden-sm hidden-xs">行业分类</th>
+              <th style="width: 10%">权重</th>
+              <th style="width: 14%" class="hidden-xs">百度收录</th>
+              <th style="width: 14%">状态</th>
+              <th style="width: 8%">操作</th>
+            </tr>
+          </thead>
+        </table>
+        <div style="height: auto;overflow: auto;margin-bottom: 20px;{{{true: 'margin-right: 0px'}[exchangeResLen>3]}}" ng-show="exchangeResLen>0">
+          <table class="table table-border" style="position: relative;margin-bottom:0;width: 100%;top:0;left:0;">
+            <tbody>
+              <tr ng-repeat="r in exchangeRes">
+                <!--<td style="width: 4%">-->
+                  <!--<span ng-class="{'icon-radio': r.sellstatus=='上架', 'checked': exchangeGid==r.wid}" ng-click="selectExchange(r.wid)"></span>-->
+                <!--</td>-->
+                <td style="width: 16%" class="hidden-sm hidden-xs" ng-bind="r.webname"></td>
+                <td style="width: 24%" ng-bind="r.url"></td>
+                <td style="width: 14%" class="hidden-sm hidden-xs" ng-bind="r.cid1name"></td>
+                <td style="width: 10%" ng-bind="r.bdweight"></td>
+                <td style="width: 14%" class="hidden-xs" ng-bind="r.bdincluded"></td>
+                <td style="width: 14%">
+                  <span  ng-bind="{true: '开启', false: '暂停'}[r.sellstatus=='上架']"></span>
+                </td>
+                <td style="width: 8%">
+                  <a><span ng-class="{true: 'text-yellow', false: 'text-gray'}[r.sellstatus=='上架']" ng-show="r.sellstatus=='上架'" ng-click="exchangeGo(r.wid)">申请</span></a>
+                  <a href="/member/freechange/release.htm"><span ng-class="{true: 'text-yellow', false: 'text-gray'}[r.sellstatus=='上架']" ng-show="r.sellstatus=='下架'">去开启</span></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div ng-show="exchangeResLen==0" >
+          <table class="table table-border" style="position: relative;margin-bottom:0;width: 100%;top:0;left:0;">
+            <tbody>
+              <tr >
+                <td colspan="7" style="height: 50px;font-size: 16px;text-align: center;line-height: 50px;">
+                  没有符合要求的友链...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-yellow hidden">
+          注：只能选择在开启状态下的网站进行交换，暂停状态的网站请到
+          【<a class="text-yellow" href="/member/account/personal.htm">会员中心</a>-<a class="text-yellow" href="/member/freechange/index.htm">免费换链</a>】
+          处开启，交换成功后可根据对方提供的QQ/邮箱联系对方上链！</p>
+        <p class="text-red hidden" >*您选择的网站已向对方申请过换链，请选择其他的网站！</p>
+        <p class="text-yellow">PS:只能选择开启状态下的网站，交换后根据提供的联系方式联系对方上链！</p>
+      </div>
+      <!--<div class="modal-body" ng-class="{'hidden': exchangeShow}">
+        <div ng-class="{'hidden': !exchangeLoading}"> <div style="width: 100px;height: 55px;margin: 56px auto 0;"><span class="fa fa-spinner fa-pulse fa-3x fa-fw " style="color: #6ec4f2;margin: 0 auto;display: block"></span></div> </div>
+        <h3 style="text-align: center;color: #3eb5f6" ng-bind="exchangeMessage"></h3>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn " ng-class="{'hidden': !exchangeShow, 'btn-info': !!exchangeGid, 'btn-disabled': !exchangeGid}" ng-click="exchangeGo()">申请交换</button>-->
+        <!--<button type="button" class="btn btn-info" ng-class="{'hidden': exchangeShow}" data-dismiss="modal">确定</button>
+      </div>-->
+    </div>
+    <div class="modal-content" ng-class="{'hidden': !exchangeFailShow}">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel-body" style="padding: 80px 45px;font-size: 18px;">
+          <p>
+            您没有可交换的网站，请在
+            <span class="text-yellow">【会员中心】</span>
+            --
+            <span class="text-yellow">【免费换链】</span>
+            处添加后再进行交换！
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" onclick="window.open('/member/freechange/addchange.htm')">去添加</button>
+      </div>
+    </div>
+    <div class="modal-content" ng-class="{'hidden': !exchangeOkShow}">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel-body text-center">
+          <span class="icon-fly"></span>
+          <div class="icon-fly-text">您已向对方发出了免费换链的申请，可通过以下联系方式联系对方上链！</div>
+          <div class="text-left" style="width: 300px;margin: 0px auto">
+            <p>对方网站：<span ng-bind="exchangeSeller.webname"></span></p>
+            <p>对方网址：<span ng-bind="exchangeSeller.url"></span></p>
+            <p  ng-repeat="sb in exchangeSeller.connect">联系方式：{{sb.type}}：<span ng-bind="sb.msg"></span> </p>
+          </div>
+
+          <!--<p ng-show = "exchangeSeller.qq == ''">联系方式：  邮箱   <span ng-bind="exchangeSeller.email"></span> </p>-->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-info" data-dismiss="modal" ng-click="release">查看</button>-->
+        <a href="/member/freechange/changelist.htm" class="btn btn-info" target="_blank">查看</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+  <!--完善个人资料start-->
+<div class="modal fade person modal-blue" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:600px;height:auto">
+        <div class="modal-content acc-con" >
+            <div class="modal-header ">
+                <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true" style = "font-size:24px;color:#cccccc;">x</span></button>
+                <h4 class = "modal-title">完善个人资料</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-info pd0">
+                    <!--有手机号的情况      其他显示隐藏的加上none类名              -->
+                    <div class="form-group "  ng-show = "complete_info.userInfo.phone != ''">
+                        <label for="" class="col-sm-2 control-label">手机号：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <span class="phone" ng-bind="complete_info.userInfo.phone">185*****1635</span>
+                        </div>
+                    </div>
+                    <!--没有手机号的情况-->
+                    <div class="form-group "  ng-show = "complete_info.userInfo.phone == ''">
+                        <label for="" class="col-sm-2 control-label">手机号：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input ng-model="complete_info.phone" ng-blur = "complete_info.check_str('phone',complete_info.phone)"   type="text"  class="form-control" />
+                        </div><span class="must-sign"></span>
+                    </div>
+                    <div  class="form-group text-center text-red" ng-show = "complete_info.isphone" >请输入正确的手机号</div>
+                    <div class="form-group" ng-show = "complete_info.userInfo.phone == ''">
+                        <label for="" class="col-sm-2 control-label">验证码：</label>
+                        <div class="col-sm-3 pl0 pr8">
+                            <!--<span class="phone">185*****1635</span>-->
+                            <input ng-model="complete_info.verify" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-5"  >
+                            <!--<a href="javascript:void(0)" class="code">获取验证码</a>-->
+                            <div id="getCode" class="verifyCodeImg  send-code-btn"   ng-click = "complete_info.authCode()">
+                                <a href="javascript:void(0)" class="btn code">获取验证码</a>
+                            </div>
+                            <div id="timeCount" class="verifyCodeImg  resend-btn hidden " >
+                                <a href="javascript:void(0)" class="btn btn-lg "><i id="d-sec"  >60</i> &nbsp;秒后重新获取</a>
+                            </div>                          
+                        </div>
+                    
+                        
+                    </div>
+                        <div class="form-group text-center text-red" ></div>
+                    <div class="form-group" ng-show = "complete_info.userInfo.qq == ''">
+                        <label for="" class="col-sm-2 control-label">QQ：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input ng-model="complete_info.qq" ng-blur = "complete_info.check_str('qq',complete_info.qq)" type="text" class="form-control name">
+                        </div><span class="must-sign"></span>
+                    </div>
+                    <div  class="form-group text-center text-red" ng-show = "complete_info.isqq" >请输入正确的QQ号</div>
+                    <div class="form-group" ng-show ="complete_info.userInfo.email == ''">
+                        <label for="" class="col-sm-2 control-label">邮箱：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input type="text" ng-model="complete_info.email" ng-blur = "complete_info.check_str('email',complete_info.email)"  class="form-control url">
+                        </div>
+                    </div>
+                    <div id="tipMsg" class="form-group text-center text-red" ng-show = "complete_info.isemail" >请输入正确的邮箱</div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer footer-btn">
+                <button id="save" class="btn btns save btn-info"   ng-click ="complete_info.siveEdit()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--完善个人资料弹窗end-->
+  
+<!-- 右侧打开加 open -->
+<div class="menu-right">
+  <div class="menu-right-goods">
+    <div class="menu-right-header">
+      <span class="icon-cart"></span>
+      <span class="header-text">购物车</span>
+      <span class="icon-close menu_right_close" ></span>
+    </div>
+    <div class="menu-right-con" >
+      <ul ng-repeat="(key,val) in common.itemDataList" >
+         <h1 ng-bind="val.title" ng-show="val.count>0"></h1>
+        <li ng-repeat="(key1,val1) in val.data">
+          <div class="web_title">
+            <span class="label-box" ng-bind="val1.catename"></span>
+            <h3  class="con-title" ng-bind="val1.webname" ng-show="val.title=='友情链接' || val.title=='图文广告'" title="{{val1.webname}}"></h3>
+            <h3 ng-show="val.title=='网站交易'" class="con-title" ng-bind="val1.point" title="{{val1.point}}"></h3>
+          </div>
+          <span class="con-text" >
+            网站地址：
+            <span class="web_url" ng-bind="val1.goodsurl" title="{{val1.goodsurl}}"></span>
+          </span>
+          <p class="web_weight">
+            权重：
+            <span class="tuwen bai_du" style="margin-right: 36px" ng-bind="val1.bdweight"></span>
+            PR值：
+            <span class="tuwen pr"  ng-bind="val1.pr"></span>
+          </p>
+          <p>
+            IP值：<xfan ng-bind="val1.ip"></xfan>
+            <xfan ng-show="val.title=='友情链接'" style="margin-left: 20%;">
+               位置：
+               <span ng-bind="{true:'全站',false:'首页'}[val1.is_qz == 1]">全站</span>             
+            </xfan>
+          </p>
+          <div class="clearfix">
+            <span class="con-price">￥<span ng-bind="val1.price"></span><ss ng-hide="val.title=='网站交易'">/月</ss></span>
+            <span class="con-btn" ng-click="common.delItem(val1.gid)">删除</span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- 购物车没有商品时显示 默认隐藏 -->
+      <div class="menu-right-empty " ng-class="{'hidden': common.itemNum*1>0}">
+        <img src="static/images/bg/shopping.png">
+        <p>购物车空空，快去选购一下哦！</p>
+      </div>
+    </div>
+    <div class="menu-right-footer">
+      <div class="clearfix ">
+        <span class="footer-left">已选 <span class="text-yellow" ng-bind="common.itemNum"></span> 个网站</span>
+        <span class="footer-right">共计： <span class="text-yellow" ng-bind="common.itemPrice"></span></span>
+      </div>
+      <a href="/index/goods/submit_order" ng-show="common.itemNum>0">
+        <span class="btn btn-info center-block">去购买</span>
+      </a>
+      <span class="btn center-block" style="background: gray;color: #fff;" ng-show="common.itemNum==0">去购买</span>
+    </div>
+  </div>
+  <ul class="menu-right-btns">
+    <li class="" onclick="window.open('/member/account/member.htm')">
+       <div>
+         <span class="title">会员中心</span>
+          <span class="icon icon-person"></span>
+       </div> 
+    </li>
+    <li  style="position: relative">
+      <div class="kefu">
+        <span class="title">客服</span>
+        <span class="icon icon-service"></span>
+      </div>
+      <b style=" position: absolute;top: 7px; left: 66px;opacity: 0;z-index: 999;"><script charset="utf-8" type="text/javascript" src="//wpa.b.qq.com/cgi/wpa.php?key=XzgwMDE4NTQ4OV80ODI2ODlfODAwMTg1NDg5Xw"></script></b>
+    </li>
+    <li class="menu_right_btn" >
+      <div>
+        <span class="title">购物车</span>
+        <span class="icon icon-shop" ng-click="common.CartLogin()"></span>
+        <span class="badge"  ng-bind="common.itemNum"></span>
+      </div>
+    </li>
+    <li class="hidden">
+      <div>
+        <span class="title">加盟</span>
+        <span class="icon icon-hands"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/user_feedback.htm')">
+      <div>
+        <span class="title">意见反馈</span>
+        <span class="icon icon-pen"></span>
+      </div>
+    </li>
+    <li class="" onclick="window.open('/appdown.htm')">
+      <div>
+        <span class="title">APP下载</span>
+        <span class="icon icon-code"></span>
+      </div>
+    </li>
+    <li class="go_top">
+      <div>
+        <span class="title">顶部</span>
+        <span class="icon icon-up"></span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+</div>
+
+
+
+<script>
+  var api_cate = [{"cid1":6,"cidname1":"\u7f51\u7edc\u6e38\u620f"},{"cid1":5,"cidname1":"\u65b0\u95fb\u5a92\u4f53"},{"cid1":4,"cidname1":"\u6587\u5b66\u5c0f\u8bf4"},{"cid1":8,"cidname1":"\u4f53\u80b2\u7ade\u6280"},{"cid1":7,"cidname1":"\u751f\u6d3b\u670d\u52a1"},{"cid1":1,"cidname1":"\u4f11\u95f2\u5a31\u4e50"},{"cid1":25,"cidname1":"\u4fe1\u606f\u5206\u7c7b"},{"cid1":27,"cidname1":"\u624b\u673a\u7f51\u7ad9"},{"cid1":28,"cidname1":"\u52a8\u7269\u5ba0\u7269"},{"cid1":22,"cidname1":"\u8bba\u575b\u535a\u5ba2"},{"cid1":23,"cidname1":"\u6c7d\u8f66\u7f51\u7ad9"},{"cid1":18,"cidname1":"\u65c5\u6e38\u9152\u5e97"},{"cid1":16,"cidname1":"\u6559\u80b2\u57f9\u8bad"},{"cid1":12,"cidname1":"\u533b\u7597\u5065\u5eb7"},{"cid1":33,"cidname1":"\u7efc\u5408\u7f51\u7ad9"},{"cid1":46,"cidname1":"IT\u6280\u672f"},{"cid1":49,"cidname1":"\u7535\u5b50\u5546\u52a1"},{"cid1":54,"cidname1":"\u6821\u56ed\u9ad8\u6821"},{"cid1":59,"cidname1":"\u653f\u5e9c\u673a\u6784"},{"cid1":60,"cidname1":"\u884c\u4e1a\u95e8\u6237"},{"cid1":64,"cidname1":"\u7f51\u5740\u5bfc\u822a"},{"cid1":310,"cidname1":"\u5f71\u89c6\u52a8\u6f2b"},{"cid1":367,"cidname1":"\u5176\u4ed6\u5206\u7c7b"}];
+  var api_res = [{"gid":71891,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":100418,"sortadd":1,"qualitylink":null,"show_style":1,"wid":108674,"webname":"\u62c9\u65af\u7279\u5f71\u89c6","cid":"207","url":"www.last.net.cn","sense":1,"validate":3,"utime":1499436737,"url_id":56688,"autochain":1,"age":"2","bdincluded":3200,"bdtrans":11,"bdweight":1,"sales":9,"cid1name":"\u5f71\u89c6\u52a8\u6f2b"},{"gid":61111,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":100404,"sortadd":1,"qualitylink":null,"show_style":1,"wid":142077,"webname":"\u5b9d\u5178\u5e93","cid":"493","url":"www.baodianku.com","sense":2,"validate":3,"utime":1522395409,"url_id":138967,"autochain":1,"age":"2","bdincluded":8397,"bdtrans":5,"bdweight":0,"sales":64,"cid1name":"\u4f11\u95f2\u5a31\u4e50"},{"gid":64076,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":100404,"sortadd":1,"qualitylink":null,"show_style":1,"wid":145094,"webname":"\u5e02\u573a\u8d2d","cid":"365","url":"www.shichanggou.com","sense":2,"validate":3,"utime":1524999398,"url_id":141668,"autochain":1,"age":"1","bdincluded":1,"bdtrans":8,"bdweight":0,"sales":13,"cid1name":"\u7535\u5b50\u5546\u52a1"},{"gid":11822,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":100401,"sortadd":1,"qualitylink":null,"show_style":1,"wid":97254,"webname":"\u7231\u624b\u6e38\u7f51","cid":"77","url":"www.ishouyou.cn","sense":1,"validate":3,"utime":1486446259,"url_id":46656,"autochain":1,"age":"5","bdincluded":"1.6\u4e07","bdtrans":10,"bdweight":0,"sales":0,"cid1name":"\u7f51\u7edc\u6e38\u620f"},{"gid":23328,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":100212,"sortadd":1,"qualitylink":null,"show_style":1,"wid":108427,"webname":"\u901f\u4f01\u4fe1\u606f\u7f51","cid":"444","url":"www.suqitech.com","sense":2,"validate":1,"utime":1499567781,"url_id":56509,"autochain":1,"age":"0","bdincluded":"10.5\u4e07","bdtrans":17,"bdweight":1,"sales":10,"cid1name":"\u4fe1\u606f\u5206\u7c7b"},{"gid":80243,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":620,"sortadd":0,"qualitylink":null,"show_style":1,"wid":101464,"webname":"\u706b\u5c71\u6570\u5b57","cid":"290","url":"www.zghuoshan.com","sense":2,"validate":1,"utime":1494302556,"url_id":50976,"autochain":1,"age":"9","bdincluded":910,"bdtrans":9,"bdweight":2,"sales":0,"cid1name":"\u7535\u5b50\u5546\u52a1"},{"gid":80189,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":620,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161295,"webname":"\u62fc\u9014\u7f51","cid":"386","url":"www.pintour.com","sense":2,"validate":3,"utime":1536486067,"url_id":156212,"autochain":1,"age":"0","bdincluded":"44.5\u4e07","bdtrans":45,"bdweight":2,"sales":0,"cid1name":"\u65c5\u6e38\u9152\u5e97"},{"gid":80244,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":610,"sortadd":0,"qualitylink":null,"show_style":1,"wid":105197,"webname":"\u5168\u606f\u7d20\u6750\u5236\u4f5c","cid":"290","url":"www.88vj.com","sense":2,"validate":1,"utime":1496646261,"url_id":53537,"autochain":1,"age":"15","bdincluded":58,"bdtrans":7,"bdweight":1,"sales":0,"cid1name":"\u7535\u5b50\u5546\u52a1"},{"gid":80215,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":610,"sortadd":0,"qualitylink":null,"show_style":1,"wid":147200,"webname":"\u7535\u5b50\u5382\u62db\u8058","cid":"455","url":"www.gonghr.com","sense":2,"validate":3,"utime":1526518464,"url_id":140513,"autochain":1,"age":"1","bdincluded":113,"bdtrans":41,"bdweight":1,"sales":0,"cid1name":"\u751f\u6d3b\u670d\u52a1"},{"gid":80212,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":610,"sortadd":0,"qualitylink":null,"show_style":1,"wid":147207,"webname":"\u5206\u5b50\u7b5b","cid":"365","url":"www.xt988.com","sense":2,"validate":3,"utime":1526519714,"url_id":135816,"autochain":1,"age":"15","bdincluded":1370,"bdtrans":5,"bdweight":1,"sales":0,"cid1name":"\u7535\u5b50\u5546\u52a1"},{"gid":80188,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":610,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161292,"webname":"\u4e4e\u670b\u77e5\u8bc6\u793e\u533a","cid":"366","url":"www.whope.org","sense":2,"validate":3,"utime":1536485594,"url_id":156209,"autochain":1,"age":"0","bdincluded":"359.2\u4e07","bdtrans":13,"bdweight":1,"sales":0,"cid1name":"\u7efc\u5408\u7f51\u7ad9"},{"gid":80214,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":147202,"webname":"\u5206\u5b50\u7b5b","cid":"296","url":"www.packedmall.com","sense":2,"validate":3,"utime":1526518779,"url_id":139270,"autochain":1,"age":"1","bdincluded":5,"bdtrans":5,"bdweight":0,"sales":0,"cid1name":"\u884c\u4e1a\u95e8\u6237"},{"gid":80213,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":147205,"webname":"\u5317\u4eac\u7f51\u7ad9\u6539\u7248","cid":"191","url":"www.nnzhan.com","sense":2,"validate":3,"utime":1526519429,"url_id":135817,"autochain":1,"age":"2","bdincluded":648,"bdtrans":9,"bdweight":0,"sales":0,"cid1name":"IT\u6280\u672f"},{"gid":80177,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":158580,"webname":"\u7ea2\u6728\u5bb6\u5177","cid":"36","url":"www.ldfjj.com","sense":2,"validate":3,"utime":1534228187,"url_id":153816,"autochain":1,"age":"2","bdincluded":955,"bdtrans":15,"bdweight":0,"sales":0,"cid1name":"\u884c\u4e1a\u95e8\u6237"},{"gid":80178,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":160864,"webname":"\u56de\u6536\u5fae\u4fe1","cid":"383","url":"www.ezt888.com","sense":1,"validate":3,"utime":1536047947,"url_id":155832,"autochain":1,"age":"0","bdincluded":0,"bdtrans":0,"bdweight":0,"sales":1,"cid1name":"\u7535\u5b50\u5546\u52a1"},{"gid":80179,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":160866,"webname":"ezt\u8f6f\u4ef6\u7ad9","cid":"383","url":"www.ezt999.com","sense":1,"validate":3,"utime":1536048011,"url_id":155834,"autochain":1,"age":"0","bdincluded":0,"bdtrans":0,"bdweight":0,"sales":0,"cid1name":"\u7535\u5b50\u5546\u52a1"},{"gid":80175,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161283,"webname":"PUA\u6ce1\u599e\u5b9e\u6218","cid":"259","url":"www.520papa.com","sense":2,"validate":3,"utime":1536476009,"url_id":156201,"autochain":1,"age":"0","bdincluded":0,"bdtrans":0,"bdweight":0,"sales":0,"cid1name":"\u751f\u6d3b\u670d\u52a1"},{"gid":80180,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161285,"webname":"\u7535\u67dc\u9664\u6e7f\u88c5\u7f6e","cid":"446","url":"www.jianxiuren.com","sense":1,"validate":3,"utime":1536478401,"url_id":156203,"autochain":1,"age":"0","bdincluded":29,"bdtrans":1,"bdweight":0,"sales":0,"cid1name":"\u4fe1\u606f\u5206\u7c7b"},{"gid":80181,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161286,"webname":"\u7b51\u5b66\u6559\u80b2","cid":"214","url":"zhuanchab.com","sense":2,"validate":3,"utime":1536479165,"url_id":156204,"autochain":1,"age":"0","bdincluded":39,"bdtrans":0,"bdweight":0,"sales":0,"cid1name":"\u6559\u80b2\u57f9\u8bad"},{"gid":80182,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161287,"webname":"\u65b0\u516c\u53f8\u6ce8\u518c","cid":"456","url":"ww.zhuanchab.com","sense":2,"validate":3,"utime":1536479332,"url_id":156205,"autochain":1,"age":"0","bdincluded":0,"bdtrans":0,"bdweight":0,"sales":0,"cid1name":"\u751f\u6d3b\u670d\u52a1"},{"gid":80185,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161290,"webname":"\u798f\u5229\u4e00\u5bb6","cid":"366","url":"www.fuliyj.com","sense":2,"validate":3,"utime":1536482080,"url_id":156207,"autochain":1,"age":"0","bdincluded":1,"bdtrans":6,"bdweight":0,"sales":0,"cid1name":"\u7efc\u5408\u7f51\u7ad9"},{"gid":80197,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161302,"webname":"\u6d77\u79d1Q\u5237\u5b98\u7f51","cid":"383","url":"www.suapos.cn","sense":2,"validate":3,"utime":1536491817,"url_id":156218,"autochain":1,"age":"0","bdincluded":0,"bdtrans":0,"bdweight":0,"sales":0,"cid1name":"\u7535\u5b50\u5546\u52a1"},{"gid":80198,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161303,"webname":"TV6789\u9ad8\u6e05\u5f71\u89c6","cid":"205","url":"www.tv6789.com","sense":2,"validate":3,"utime":1536493026,"url_id":156216,"autochain":1,"age":"0","bdincluded":0,"bdtrans":10,"bdweight":0,"sales":0,"cid1name":"\u5f71\u89c6\u52a8\u6f2b"},{"gid":80200,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161305,"webname":"\u4e92\u8e6d\u5f71\u89c6","cid":"205","url":"huceng.com","sense":1,"validate":3,"utime":1536499111,"url_id":156220,"autochain":1,"age":"0","bdincluded":2940,"bdtrans":17,"bdweight":0,"sales":0,"cid1name":"\u5f71\u89c6\u52a8\u6f2b"},{"gid":80202,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161307,"webname":"SEO\u7f51\u7ad9\u4f18\u5316","cid":"382","url":"www.guyaheng.com","sense":2,"validate":3,"utime":1536500762,"url_id":156222,"autochain":1,"age":"3","bdincluded":834,"bdtrans":3,"bdweight":0,"sales":3,"cid1name":"IT\u6280\u672f"},{"gid":80203,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161309,"webname":"Q\u5237\u4f19\u4f34\u5b98\u7f51","cid":"383","url":"www.kstc0512.com","sense":2,"validate":3,"utime":1536501204,"url_id":156224,"autochain":1,"age":"0","bdincluded":53,"bdtrans":0,"bdweight":0,"sales":2,"cid1name":"\u7535\u5b50\u5546\u52a1"},{"gid":80204,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161310,"webname":"YO\u71c3\u5c0f\u8d5a\u574a","cid":"449","url":"www.yoran888.com","sense":2,"validate":3,"utime":1536501948,"url_id":156225,"autochain":1,"age":"4","bdincluded":134,"bdtrans":1,"bdweight":0,"sales":1,"cid1name":"\u8bba\u575b\u535a\u5ba2"},{"gid":80235,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161317,"webname":"\u7231\u65b0\u7586\u65c5\u6e38","cid":"104","url":"www.aixinjiangly.cn","sense":2,"validate":3,"utime":1536518466,"url_id":156232,"autochain":1,"age":"0","bdincluded":0,"bdtrans":0,"bdweight":0,"sales":0,"cid1name":"\u65c5\u6e38\u9152\u5e97"},{"gid":80210,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161318,"webname":"\u5bfb\u6885\u535a\u5ba2","cid":"382","url":"www.qibaofu.com","sense":2,"validate":3,"utime":1536520748,"url_id":156122,"autochain":1,"age":"0","bdincluded":0,"bdtrans":0,"bdweight":0,"sales":0,"cid1name":"IT\u6280\u672f"},{"gid":80220,"type":"\u514d\u8d39\u6362\u94fe","paytype":"-","price":"0.00","dispage":"\u9996\u9875","sort":600,"sortadd":0,"qualitylink":null,"show_style":1,"wid":161326,"webname":"\u6587\u7ae0\u7f51","cid":"447","url":"www.wenzhang.la","sense":2,"validate":3,"utime":1536545801,"url_id":156240,"autochain":1,"age":"0","bdincluded":991,"bdtrans":27,"bdweight":0,"sales":0,"cid1name":"\u6587\u5b66\u5c0f\u8bf4"}];
+  var api_page = {"num_rows":22599,"px":1,"pz":30,"num_page":754};
+</script>
+
+  <script type="text/javascript" src="static/js/factory/complete_info.js"></script>
+  <script type="text/javascript" src="static/js/factory/directive.js"></script>
+{include file="footer"}
+<script type="text/javascript" src="static/js/free.js?v=20180903"></script>
+<script type = "text/javascript" src = "static/js/index_message.js?v=20180903"></script>
+</body>
+</html>

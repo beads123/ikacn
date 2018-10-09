@@ -1,0 +1,62 @@
+{include file="tool/header"}
+<div class="s_top clearfix">
+  <div class="whois-title">alexa全球排名查询</div>
+  <div class="clearfix top_box">
+    <span class="pull-left http">http://</span>
+    <div class="search_whois pull-left">
+      <input type="text" id="domain" name="domain" value="{$url}" placeholder="请输入您要查询的网站"/>
+      <span class="search_btn">查询</span>
+    </div>
+  </div>
+</div>
+{eq name="isget" value="1"}
+<div class="cl-show">
+  <div class="s_middle">
+    <div class="clearfix mtb912">
+      <h5 class="pull-left m0">域名 <span>{$url}</span> alexa全球排名</h5>
+    </div>
+    <div class="">
+      <table class="table beian-table whois_tab">
+        <colgroup>
+          <col width="25%" style="background: #f6f6f6;">
+          <col width="75%">
+        </colgroup>
+        <tbody>
+          <tr>
+            <td>目前的流量排名(traffic rank)</td>
+            <td>{gt name="TRank" value="0"}{$TRank}{else/}不存在{/gt}</td>
+          </tr>
+          <tr>
+            <td>排名走势图</td>
+            <td><img src="http://traffic.alexa.com/graph?w=700&h=280&r=6m&y=t&u={$url}"></td>
+          </tr>
+          <tr>
+            <td>搜索流量占比</td>
+            <td><img src="http://traffic.alexa.com/graph?o=lt&y=q&b=ffffff&n=666666&f=999999&p=4e8cff&r=1y&t=2&z=0&c=1&h=150&w=340&u={$url}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{/eq}
+<!--初始空白页-->
+<div class="tool-jj">
+  <div class="ps_cues">
+    <h5>alexa全球排名查询</h5>
+    <p>[网站alexa排名查询]：请输入你要查询的正确域名，比如hahacn.com；</p>
+    <p>alexa 排名是目前常引用的用来评价某一网站访问量的一个指标</p>    
+  </div>
+</div>
+<script type="text/javascript">
+  $('.search_btn').on('click',function(){
+    var url= $('#domain');
+    url = url.val().replace('/\s+/g',"");
+    if(url == ''){
+      alert('请输入您要查询的网站');
+    }else{
+      window.location.href="{:url('alexa')}?url="+url;
+    }
+  })
+</script>
+{include file="tool/footer"}

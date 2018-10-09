@@ -1,0 +1,35 @@
+{include file="tool/header"}
+<script type="text/javascript" src="/static/js/gw.js"></script>
+<div class="s_top clearfix">
+      <strong>1、把您要转换的文字输入到下面的输入框中</strong>
+                <textarea class="gwtxts" id="s"></textarea><br>
+                <strong>2、点击『转换』按钮</strong><br><br>
+                <p>每页<select id='x'><option value='5'>5</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15'>15</option><option value='16'>16</option><option value='17'>17</option><option value='18' selected>18</option><option value='19'>19</option><option value='20'>20</option><option value='25'>25</option><option value='30'>30</option></select>竖行，
+    每竖行<select id='y'><option value='5'>5</option><option value='8'>8</option><option value='9'>9</option><option value='10' selected>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15'>15</option><option value='16'>16</option><option value='17'>17</option><option value='18'>18</option><option value='19'>19</option><option value='20'>20</option><option value='25'>25</option><option value='30'>30</option></select>个字
+    使用<select id='tbl'><option value='0'>粗实线+细实线</option><option value='1' selected>双实线+细实线</option><option value='2'>细实线+细虚线</option><option value='3'>无线框</option><option value='4'>无头尾线框</option></select>边框
+    <input type="checkbox" id="tt" value="t"><label for="tt">转换为繁体</label>
+    <input type="button" onClick="javascript:convert();" class="search_but" value="转换↓"><br>
+    <a class="copybutton" href="javascript:copyresult();">拷贝转换结果</a>
+    <input type="checkbox" id="addlink" value="add">不要增加转换器信息</p><br>
+                <strong>3、结果就在下面，你可以拷贝到论坛、博客里面去了</strong>
+                <textarea class="gwtxts" id="t" readonly onMouseOver="this.focus();this.select();"></textarea>
+    </div>
+    <!--初始空白页-->
+    <div class="tool-jj">
+      <div class="ps_cues">
+        <h5>竖排古文转换器</h5>
+        <p>把横排文字转成古典竖排文字的小工具。直接粘贴转换结果到论坛、博客等</p>    
+      </div>
+    </div>
+<script type="text/javascript">
+  $('.search_btn').on('click',function(){
+    var url= $('#domain');
+    url = url.val().replace('/\s+/g',"");
+    if(url == ''){
+      alert('请输入您要查询的网站');
+    }else{
+      window.location.href="{:url('alexa')}?url="+url;
+    }
+  })
+</script>
+{include file="tool/footer"}

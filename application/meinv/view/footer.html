@@ -1,0 +1,109 @@
+</div>
+<div class="footnav">
+<ul>
+ <li><a href="/">首页</a></li>
+{volist name="nav" id="vo"}
+    <li><a href="{:url('mlist',array('id'=>$vo['id']))}" >{$vo['typename']}</a></li>
+{/volist}
+</ul>
+</div>
+<div id="footer">
+    <div class="w990">
+        <p>Copyright &copy; 2012-2017 华乐美眉网 版权所有 <a href=http://www.hahacn.com target='_blank'>Power by hahacn</a>   </p>
+</div>
+</div>
+
+<script>
+var $container = $('#container');
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector : '.post',
+    columnWidth : 250
+  });
+});
+</script>
+<script type="text/javascript">
+$(function(){
+    var mytop,getPosTop
+    $(window).resize(function()
+    {
+        mytop = $(document).scrollTop();
+        if($(document).scrollTop()>="1"){
+        $("#header1").css({"top":mytop});
+        };
+    });
+
+    $(window).scroll(function()
+    {
+        mytop = $(document).scrollTop();
+        if($(document).scrollTop()>="1"){
+            $("#header1").css({"top":mytop});
+        }else {
+            $("#header1").css({"top":0});
+        };
+    });
+});
+jQuery(document).ready(function(){
+    jQuery(".post").hover(function(){       
+        jQuery(".piax",this).addClass('hvv'); 
+    }, function(){    
+        jQuery(".piax",this).removeClass('hvv');
+    });    
+});
+jQuery(document).ready(function(){
+    jQuery(".arcbox").hover(function(){     
+        jQuery(".piax",this).addClass('hvv'); 
+    }, function(){    
+        jQuery(".piax",this).removeClass('hvv');
+    });    
+    jQuery("#icon-share").hover(function(){     
+                $('ul.list-share').animate({width:300}, 400);
+                $('ul.list-share').css('display','block');
+                $('.icon-share').addClass('hvv');
+                
+            }, function(){    
+                $('ul.list-share').animate({width:0}, 1);
+                $('ul.list-share').css('display','none');
+                $('.icon-share').removeClass('hvv');
+            });
+});
+</script>
+<script>
+$(function(){
+    $.fn.scrollToTop=function(){
+        var scrollDiv=$(this);
+        $(window).scroll(function(){
+            if($(window).scrollTop()<"1"){
+                $(scrollDiv).removeClass("fixednav")
+            }else{
+                $(scrollDiv).addClass("fixednav")
+            }
+        });
+    }
+});
+
+$(function() {
+    $("#header1").scrollToTop();
+});
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?51ba25c989545b6ef50bf52ea400e310";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+</body>
+</html>

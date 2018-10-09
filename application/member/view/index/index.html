@@ -1,0 +1,902 @@
+{include file="header"}
+  <div ng-controller="ctrlArea">
+    <!--右边内容start-->
+    <div class="content-right">
+      <div class="member-index">
+        <!--用户信息-->
+        <div class="clearfix">
+          <div class="pull-left shadows" style="width:66%;background:#ffff">
+            <div class="member-index-hd clearfix h200">
+              <div class="info clearfix" style="width: 100%;position: relative;">
+                <a href="/index/integral/index.htm" class="pull-right color_bluea signin" target="_blank">签到</a>
+                <div class="headimg pull-left">
+                  <a href="">点击更换头像</a>
+                  <img src="/static/images/headimg.png" onerror="this.src='/static/images/headimg.png';" alt="" />
+                </div>
+                <div class="pull-left member-userinfo">
+                  <h5>{$user['grade']}_{$user['id']}                   <!--用户不同等级-->
+                    <a href="/index/integral/growth_process.htm" target="_blank">
+                      <img src="/static/images/jf/vip{$user['grades']}.png"/>
+                    </a>
+                  </h5>
+                  <p>
+                    <label>绑定手机：</label>
+                    <span>{$user['mobile']}</span>
+                  </p>
+                  <p class="mys_jf">
+                    <a href="/member/account/integral_detail.htm" target="_blank">
+                      <span>积分：<i>{$user['point']}</i></span>
+                    </a>
+                    <a href="/member/account/redcard.htm">
+                      <span class="ml20">红包/卡券：<i>0张</i></span>
+                    </a>
+                    <!--引导-->
+                    <img src="/static/images/guide/guide_one.png" class="show_guide guide_zhgs"/>
+                    <div class="member-guide-mask show_guide guide_zhgs"></div>
+                    <!--引导-->
+                  </p>
+                  <p class="mys_jf">
+                    <label class="c555">账户余额：</label>
+                    <span class="ft18">¥0.28</span>
+                    <a href="/member/account/recharge.htm" class="price_btn czbtn">充值</a>
+                    <a href="/member/account/withdraw.htm" class="price_btn">提现</a>
+                    <a href="/member/account/records.htm" class="record">明细</a>
+                  </p>
+                </div>
+                <a href="/member/account/personal.htm" class="go_center">进入个人中心</a>
+              </div>
+              <!--签到-->
+              
+            </div>
+          </div>
+          <!--平台公告-->
+          <div class="pull-left bg-white shadows" style="width: 32.5%;margin-left: 1.5%;height:201px">
+            <div class="pnotice">
+              <h4>
+                公告通知
+                <a href="/question.htm?mark=con-castlist" class="pull-right record" target="_blank">更多</a>
+              </h4>
+              <ul>
+                                <li>
+                                      <img src="/static/images/icon/tz.png"/>
+                                    <a href="/questioncast.htm?mark=con-cast&cast_id=48" rel="nofollow" target="_blank">关于网站升级通知！！！</a>
+                  <span class="newtz">新</span>
+                </li>
+                                <li>
+                                      <img src="/static/images/icon/tz.png"/>
+                                    <a href="/questioncast.htm?mark=con-cast&cast_id=46" rel="nofollow" target="_blank">关于掉链检测订单延期说明！！！</a>
+                  <span class="newtz">新</span>
+                </li>
+                                <li>
+                                      <img src="/static/images/icon/tz.png"/>
+                                    <a href="/questioncast.htm?mark=con-cast&cast_id=45" rel="nofollow" target="_blank">关于流量付费违规处罚通知！！！</a>
+                  <span class="newtz">新</span>
+                </li>
+                              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!--用户信息-->
+        <!--管理-->
+        <div class="member-index-cd">
+          <ul>
+            <li>
+              <div class="item ddgl shadows">
+                <div class="blue_ddgl">订单管理</div>
+                <div class="list-div">
+                  <a href="/member/order/index?status=1" class="list">
+                    <i>0</i>
+                    未付款
+                  </a>
+                  <a href="/member/order/indexsell?status=2" class="list">
+                    <i>0</i>
+                    待接单
+                  </a>
+                  <a href="/member/order/indexsell?status=3" class="list">
+                    <i>0</i>
+                    待上链
+                  </a>
+                  <a href="/member/order/indexsell?status=5" class="list">
+                    <i>0</i>
+                    待处理故障
+                  </a>
+                </div>
+                
+              </div>
+            </li>
+            <li>
+              <div class="item mfhl shadows">
+                <div class="blue_mfhl">免费换链</div>
+                <div class="list-div">
+                  <a href="/member/freechange/release" class="list">
+                    <i>9</i>
+                    我发布的
+                  </a>
+                  <a href="/member/freechange/changelist" class="list">
+                    <i>0</i>
+                    我申请的
+                  </a>
+                  <a href="/member/freechange/changelist?type=2" class="list">
+                    <i>2</i>
+                    被申请的
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item lljh right shadows">
+                <div class="blue_lljh">流量交换</div>
+                <div class="list-div">
+                  <a href="/member/trafficexchange/index" class="list">
+                    <i>
+                                            0
+                                          </i>
+                    贡献流量
+                  </a>
+                  <a href="/member/trafficexchange/index" class="list">
+                    <i>
+                                            0
+                                          </i>
+                    获得流量
+                  </a>
+                  <a href="/member/trafficexchange/index" class="list">
+                    <i>1</i>
+                    加盟广告位
+                  </a>
+                  <a href="/member/trafficexchange/index" class="list">
+                    <i>13</i>
+                    加盟广告
+                  </a>
+                </div>
+                
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!--管理-->
+
+        <!--我的网站start-->
+        <div class="member-index-list clearfix plr20" infinite-scroll="loadMore()" infinite-scroll-distance='0' infinite-scroll-disabled="{{scrollDisabled}}">
+          <div class="clearfix mt20 mb10" style="position: relative;">
+            <h5 class="title">我的网站(<span ng-bind="nums"></span>)</h5>
+            <a href="javascript:void(0)" class="add_btn" style="position: relative;">
+              添加网站
+              
+            </a>
+            <div class="pull-right search">
+              <input ng-change="seachWeb()" ng-model="webString" type="text" placeholder="请输入网站名称/域名" />
+            </div>
+            
+          </div>
+          
+          <div class="clearboth pt7">
+            <div class="table-responsive resource new-web-box">
+              
+              <table class="table newtbor">
+                
+                <tbody class="lp">
+                  <tr ng-show="webSize.length == 0">
+                    <td colspan="5" class="bbnone"><img src="/static/images/nodata/myzy.png" class="mt60" /></td>
+                  </tr>
+                  <tr ng-repeat="item in webSize">
+                    <td>
+                      <div class="new-box">
+                        <div class="left-zone">
+                          <a href="/website_{{item.url_id}}.htm" target="_blank"><img ng-src="{{item.image_fmt}}"/></a>
+                        </div>
+                        <div class="right-zone">
+                          <span class="lbs">{{item.catename}}</span>
+                          <a href="/website_{{item.url_id}}.htm" target="_blank"><span class="names" ng-bind="item.name"></span></a>
+                          <span class="gray-r" ng-show="item.validate == '未认证'"><img src="/static/images/icon/no.png"/></span>
+                          <span class="yellow-r" ng-show="item.validate != '未认证'"><img src="/static/images/icon/yes.png"/></span>
+                          <span class="red_jy" ng-show="item.isdel != '启用'"><img src="/static/images/icon/gray-jy.png"/></span>
+                          <span class="green_qy" ng-show="item.isdel == '启用'"><img src="/static/images/icon/green-qy.png"/></span>
+                          <span class="red-sz" ng-show="item.adver != '接受'"><img src="/static/images/icon/red-mgc.png"/></span>
+                          <p class="bottom-data">
+                            <a href="http://{{item.url}}" target="_blank" rel="nofollow" class="c999">{{item.url}}</a>
+                            <a target="_blank" href="http://rank.chinaz.com/?host={{item.url}}&amp;sortType=0" rel="nofollow"><span class="tuwen bei_tu ">{{item.bdweight}}</span></a>
+                            <a target="_blank" href="http://pr.chinaz.com/?host={{item.url}}&amp;sortType=0" rel="nofollow"><span class=" tuwen icon-google">{{item.googleweight}}</span></a>
+                            <span>百度收录：<i><a target="_blank" href="http://www.baidu.com/s?wd=site:{{item.url}}" rel="nofollow">{{item.bdincluded}}</a></i></span>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <label class="fwn"><span class="dagou" ng-class="{true:'blue-g',false:'other'}[item.autochain==2]" ng-click="autochain(item,$index)"></span>自动上链</label>
+                      <a href="javascript:void(0)" data-id="{{item.id}}" class="tb_btn rz_btn" ng-show="item.validate == '未认证'" ng-click="approve_web(item,$index)">认证</a>
+                      <a href="javascript:void(0)" class="tb_btn edit-btn" ng-click="edit(item.id,item,$index)">编辑</a>
+                      <!--a href="javascript:void(0)" class="tb_btn" ng-click="addcaiji(item.url)">更新信息</a-->
+                      <a href="javascript:void(0)" class="tb_btn" ng-click="addcaiji(item.id)">更新信息</a>
+                      <a href="javascript:void(0)" class="tb_btn" ng-click="del_soft(item.id,$index,item)">删除</a>
+                      <p class="data-link">
+                        <a href="javascript:void(0)" ng-class="{true:'bg-pink',false:'bg-pink bg-grays'}[item.yqlj==true]" ng-click="yzYqlj(item.yqlj,item.id)">友情链接</a>    <!--有：/member/goods/friendgoods  无：/member/goods/friendsell 类名加bg-grays-->
+                        <a href="javascript:void(0)" ng-class="{true:'bg-blue',false:'bg-blue bg-grays'}[item.twgg==true]" ng-click="yzTwgg(item.twgg,item.id)">图文广告</a>  <!--有：/member/twgoods/twgoods  无：/member/twgoods/twSell-->
+                        <a href="javascript:void(0)" ng-class="{true:'bg-green',false:'bg-green bg-grays'}[item.mfhl==true]" ng-click="yzMfhl(item.mfhl,item.id)">免费换链</a>  <!--有：/member/freechange/index 无 ：/member/freechange/addchange-->
+                        <a href="javascript:void(0)" ng-class="{true:'bg-yellow',false:'bg-yellow bg-grays'}[item.lljh==true]" ng-click="yzLljh(item.lljh,item.id)">流量交换</a> <!--有：/member/trafficexchange/index 无：/member/trafficexchange/newadvert-->
+                        <a href="javascript:void(0)" ng-class="{true:'bg-lightblue',false:'bg-lightblue bg-grays'}[item.wzjy==true]" ng-click="yzWzjy(item.wzjy,item.id)">网站交易</a> <!--有：/member/trafficexchange/index 无：/member/trafficexchange/newadvert-->
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--资源列表end-->
+      </div>
+
+    </div>
+    <!--右边内容end-->
+    <!--添加网站弹窗start-->
+    <div class="modal fade addwebsite" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content acc-con" style="width:660px;height:auto">
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>添加网站</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal form-info pd0">
+              <div class="form-group">
+                <label for="" class="col-sm-2 control-label">网站名称：</label>
+                <div class="col-sm-6 pl0 pr8">
+                  <input type="text" ng-model="webName" maxlength="10"  class="form-control name" placeholder="例：站长资源平台">
+                </div><span class="cue">请控制在3-10个字，方便买家搜索到您的网站</span>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-sm-2 control-label">网站域名：</label>
+                <div class="col-sm-6 pl0 pr8">
+                  <input ng-model="webUrl" type="text" ng-blur="rete()"  class="form-control url" placeholder="例：www.2898.com">
+                </div><span class="must-sign"></span><span class="cue  span-cue" ng-show = "errmsg"  style = "color:#FB6363">您输入的网址不符合规定</span>
+              </div>
+              <div class="form-group">
+                <div class="">
+                  <label for="" class="col-sm-3 control-label col-999 pr0" style="margin-left:-59px;margin-right:-8px;">一级分类：</label>
+                  <div class="col-sm-3 pl10 pr0">
+                    <div class="dropdown fistCate">
+                      <button id="addWeb" class="btn form-control dropdown-toggle lv1cate" data-toggle="dropdown" style="border-color:#c7d5de">
+                                      <span class="dropdown-selected" value="首页" ng-bind="public.addOneCate" id="firstCate">一级分类</span>
+                                      <span class="caret"></span>
+                                  </button>
+                      <ul class="dropdown-menu lv1cateMenu">
+                        <li ng-click="public.changeOneCate(item.name,'addweb','addOneCate','addTwoCate')" ng-repeat="item in public.cateArr">
+                          <a href="javascript:void(0)" value="{{item.name}}" ng-bind="item.name">{{item.name}}</a>
+                        </li>
+                        <!-- <li><a href="javascript:void(0)" value="栏目">栏目</a></li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="">
+                  <label for="" class="col-sm-2 control-label col-999 pr0" style="margin-left:8px;margin-right:-8px;">二级分类：</label>
+                  <div class="col-sm-3 pl10 pr0">
+                    <div class="dropdown secCate">
+                      <button id="addWebTow" class="btn form-control dropdown-toggle lv2cate" data-toggle="dropdown" style="border-color:#c7d5de">
+                                      <span class="dropdown-selected" value="首页" ng-bind="public.addTwoCate" id="secondCate">二级分类</span>
+                                      <span class="caret"></span>
+                                  </button>
+                      <ul class="dropdown-menu lv2cateMenu" style="border-color:#c7d5de">
+                        <!-- <li><a href="javascript:void(0)" value="二级域名">二级域名</a></li> -->
+                        <li ng-click="public.changeTwoCate(item.name,'addTwoCate')" ng-repeat="item in public.addweb">
+                          <a href="javascript:void(0)" value="{{item.name}}" ng-bind="item.name"></a>
+                        </li>
+                        <!-- <li><a href="javascript:void(0)" value="栏目">栏目</a></li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt29">
+                <label for="" class="col-sm-3 control-label ml32">敏感网站广告：</label>
+                <div class="col-sm-9 pl0 pr8" style="margin-top:7px" id="addWeb">
+                  <label class="check"><input  value="1"  type="radio" name="flink"  class="none" mark="1"/ ><b></b>接受</label>
+                  <label class="check"><input   value="2" type="radio" name="flink" checked   class="none" mark="2"/><b></b>拒绝</label>
+                  <span class="span-cue">（是否接受灰色行业友链！）</span>
+
+                </div>
+              </div>
+              <!--上传图片前-->
+              <div class="list-group upimg">
+                <label class="vatop">网站截图：</label>
+                <a href="javascript:void(0)" class="adimgUp"><img id="img" src="" alt="" /><span></span></a>
+                <input id="adimgUp" name="fileToUpload" class="hidden" md5file="" type="file" accept="image/jpg,image/png,image/jpeg">
+                <p class="gray-p">上传后在网站详情页、图文广告页中展示</p>
+              </div>
+              <!--上传图片前-->
+            </form>
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button ng-show="!AddWeb" ng-click="addWeb()" class="btns save">确认添加</button>
+            <button ng-show="AddWeb" style="background: #b8c1c8" class="btns save">确认添加</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--添加网站弹窗end-->
+
+    <!--编辑网站弹窗start-->
+    <div class="modal fade editwebsite" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content acc-con" style="width:660px;height:auto">
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>编辑网站</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal form-info pd0">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">网站名称：</label>
+                <div class="col-sm-6 pl0 pr8">
+                  <input type="text" class="form-control name"  placeholder="例：站长资源平台" ng-model="editWebName" maxlength="10">
+                </div><span class="cue">请控制在3-10个字，方便买家搜索到您的网站</span>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">网站域名：</label>
+                <div class="col-sm-6 pl0 pr8">
+                  <span class="domain" ng-bind="webData.url">www.2898.com</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="">
+                  <label for="" class="col-sm-3 control-label col-999 pr0" style="margin-left:-59px;margin-right:-8px;">一级分类：</label>
+                  <div class="col-sm-3 pl10 pr0">
+                    <div class="dropdown fistCate">
+                      <button class="btn form-control dropdown-toggle lv1cate" data-toggle="dropdown" style="border-color:#c7d5de">
+                                      <span class="dropdown-selected" value="首页" ng-bind="public.editOneCate" id="firstCate">一级分类</span>
+                                      <span class="caret"></span>
+                                  </button>
+                      <ul class="dropdown-menu lv1cateMenu">
+                        <!-- <li><a href="javascript:void(0)" value="二级域名">二级域名</a></li> -->
+                        <li ng-repeat="item in public.cateArr" ng-click="public.changeOneCate(item.name,'editweb','editOneCate','editTwoCate')">
+                          <a href="javascript:void(0)" ng-bind="item.name" value="首页">一级分类</a>
+                        </li>
+                        <!-- <li><a href="javascript:void(0)" value="栏目">栏目</a></li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="">
+                  <label for="" class="col-sm-2 control-label col-999 pr0" style="margin-left:8px;margin-right:-8px;">二级分类：</label>
+                  <div class="col-sm-3 pl10 pr0">
+                    <div class="dropdown secCate">
+                      <button class="btn form-control dropdown-toggle lv2cate" data-toggle="dropdown" style="border-color:#c7d5de">
+                                      <span class="dropdown-selected" value="首页" ng-bind="public.editTwoCate" id="secondCate">二级分类</span>
+                                      <span class="caret"></span>
+                                  </button>
+                      <ul class="dropdown-menu lv2cateMenu">
+                        <!-- <li><a href="javascript:void(0)" value="二级域名">二级域名</a></li> -->
+                        <li ng-click="public.changeTwoCate(item.name,'editTwoCate')" ng-repeat="item in public.editweb">
+                          <a href="javascript:void(0)" ng-bind="item.name" value="首页">二级分类</a>
+                        </li>
+                        <!-- <li><a href="javascript:void(0)" value="栏目">栏目</a></li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt29">
+                <label for="" class="col-sm-3 control-label ml32">敏感网站广告：</label>
+                <div class="col-sm-9 pl0 pr8" style="margin-top:7px">
+                  <label class="check"><input type="radio" name="editWeb" value="1"  class="none" mark="1"/><b></b>接受</label>
+                  <label class="check"><input type="radio" name="editWeb" value= "2"   class="none" mark="2"/><b></b>拒绝</label>
+                  <span class="span-cue">（是否接受灰色行业友链！）</span>
+                </div>
+              </div>
+              <div class="list-group upimg">
+                <label class="vatop">网站截图：</label>
+                <a href="javascript:void(0)" class="adFontImgUp"><img id="fontImg" ng-src="{{imgUrl}}" alt="" /><span></span></a>
+                <input id="fontUpImg" name="fileToUpload" class="hidden" md5file="" type="file" accept="image/jpg,image/png,image/jpeg">
+                <p class="gray-p">上传后在网站详情页、图文广告页中展示</p>
+              </div>
+            </form>
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns save" data-dismiss="modal" ng-click="saveEdit()">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--编辑网站弹窗end-->
+
+  
+
+    <!--添加成功弹窗start-->
+    <div class="modal fade add_success" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content acc-con" style="width:500px;height:auto">
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal" onclick="window.location.reload()"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <div class="success"></div>
+              <p class="wish">恭喜您，网站添加成功</p>
+              <h5 class="cueh5">为了您添加的友链、图文广告能及时上架出售，请先进行网站认证！</h5>
+            </div>
+
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns save" data-dismiss="modal" ng-click="addsure()">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--添加成功弹窗end-->
+
+    <!--编辑成功弹窗start-->
+    <div class="modal fade  edit_success" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content acc-con" style="width:500px;height:auto">
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <div class="success"></div>
+              <p class="wish" ng-bind="editSuccessMsg">恭喜您，网站编辑成功</p>
+              <!--<h5 class="cueh5">为了您添加的友链、图文广告能及时上架出售，请先进行网站认证！</h5>-->
+            </div>
+
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns save" data-dismiss="modal" >确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--编辑成功弹窗end-->
+
+    <!--编辑失败弹窗start-->
+    <div class="modal fade edit_waring" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content acc-con" style="width:500px;height:auto">
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <div class="waring-img"></div>
+              <h5 class="waring-text" ng-bind="editErrMsg">网站已存在您的资源列表中，不能重复添加！</h5>
+            </div>
+
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns save" data-dismiss="modal">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--编辑失败弹窗end-->
+
+    <!--重复添加弹窗start-->
+    <div class="modal fade add_waring" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content acc-con" style="width:660px;height:412px">
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <div class="waring-img"></div>
+              <h5 class="waring-text" ng-bind="msg">网站已存在您的资源列表中，不能重复添加！</h5>
+            </div>
+
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns save" data-dismiss="modal">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--重复添加弹窗end-->
+
+    <!--网站认证弹窗start-->
+  <div class="modal fade checkwebsite" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content acc-con" style="width:660px;height:auto">
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn cancel-authen" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>网站认证</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal form-info pd0">
+              <div class="authentication">
+                <p class="warning">为了您出售的网站友链、广告可以及时上架出售，请您先进行网站认证！</p>
+                <div class="mt50">
+                  <ul class="nav nav-pills h26">
+                    <li ng-class="{true:'active'}[approve.codeIndex==2]" ng-click="approve.codeIndex=2" mark="code"><a class="pt5 pb5 mr10" href="javascript:void(0)">代码验证</a><span class="glyphicon glyphicon-triangle-bottom yz-bot"></span></li>
+                    <li ng-class="{true:'active'}[approve.codeIndex==1]" ng-click="approve.codeIndex=1" mark="file"><a class="pt5 pb5" href="javascript:void(0)">文件验证</a><span class="glyphicon glyphicon-triangle-bottom yz-bot"></span></li>
+                  </ul>
+                </div>
+                <div class="style code" ng-class="{true:'none'}[approve.codeIndex==1]">
+                  <form class="">
+                    <div class="form-group clearfix mt20 pd010">
+                      <label for="" class="col-999 mb15"></label>
+                      <textarea id="textCode" class="form-control code-box get-code" ng-model="approve.appCode" placeholder="<script src='http://nnfa.fjat.com/s.php?id=1100'></script>"></textarea>
+                      <a href="javascript:void(0)" class="pull-right mt10 copy-btn" id="btn" ng-click="approve.copyCode()">复制代码</a>
+                    </div>
+                  </form>
+                </div>
+                <div class="style file" ng-class="{true:'none'}[approve.codeIndex==2]">
+                  <form class="form-inline col-md-12 bgg mt20">
+                    <div class="form-group">
+                      <label for="" class="col-999 rz-text"><ss ng-bind="approve.appData.name"></ss>.txt</label>
+                      <a class="dl-btn" href="/member/Account/download.htm?name={{approve.appData.filename}}" target="_blank">下载</a>
+                      <!--<a href="/runtime/calog/.txt" class="dl-btn"  download >下载</a>-->
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-12 mb70">
+                  <h3 class="fs14 way-head">验证说明</h3>
+                  <ol class="pl15">
+                    <li>请选择以上任意一种验证方式进行网站验证</li>
+                    <li>代码验证：将网站验证代码添加到您的网站首页HTML的标签和标签之间，并点击网站验证按钮</br>文件验证：将网站验证文件添加到您的网站根目录下，并点击网站验证按钮</li>
+                    <li>站长资源平台保证文件代码只用于网站验证功能，验证通过后您可以立即删除文件代码</li>
+                  </ol>
+                </div>
+              </div>
+  
+            </form>
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns save" data-dismiss="modal" ng-click="approve.webApprove(cb)">网站认证</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--网站认证弹窗end-->
+  
+  
+  <!--认证成功弹窗start-->
+      <div class="modal fade authen_success" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:500px;height:auto">
+        <div class="modal-content acc-con" >
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <div class="success-blue"></div>
+              <p class="wish">认证成功</p>
+              <h5 class="cueh5">如有商品，请在对应的商品列表点击【上架】按钮</h5>
+            </div>  
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns cancel" data-dismiss="modal">关闭</button>
+            <a  href="/member/goods/friendsell.htm" class="btns save">继续出售</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--认证成功弹窗end-->
+  
+  
+  <!--认证失败弹窗start-->
+  <div class="modal fade authen_lose" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:500px;height:auto">
+      <div class="modal-content acc-con">
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>提示</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center">
+            <div class="lose"></div>
+            <p class="wish"></p>
+            <h5 class="loseh5" ng-click="approve.reAuth ()">认证失败，请确认已插入代码或在根目录已放置文件后重新认证！</h5>
+          </div>
+  
+        </div>
+        <!-- back="selectsource" -->
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal">取消</button>
+          <button class="btns save" data-dismiss="modal" ng-click="approve.reAuth()">重新认证</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--认证失败弹窗end-->
+  <!--取消认证-->
+  <div class="modal fade cancel_modal" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:500px;height:auto">
+      <div class="modal-content acc-con">
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>提示</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center sure-text c80">
+            网站未认证，无法上架该网站的商品，请及时认证网站！
+          </div>
+  
+        </div>
+        <!-- back="selectsource" -->
+        <div class="modal-footer footer-btn">
+          <!-- <button class="btns cancel" data-dismiss="modal" ng-click = "cancal_re()">取消</button>     -->
+          <!-- <a  data-dismiss="modal"  class="btns cancel">取消</a> -->
+          <button class="btns save" data-dismiss="modal" ng-click="approve.reAuth()">继续认证</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--取消认证-->
+    
+    <!--上链设置-->
+      <div class="modal fade chain-set" id="myModal-5" data-backdrop="static">
+        <div class="modal-dialog" style="width:860px;height:auto">
+          <div class="modal-content acc-con" >
+            <div class="modal-header headerbar">
+              <button type="button" class="close close-btn cancel-chain" data-dismiss="modal" onclick="location.reload();"><span aria-hidden="true"></span></button>
+              <h4>上链设置</h4>
+            </div>
+            <div class="modal-body" style="padding: 25px 0px;">
+              <form class="form-horizontal form-info pd0">
+                <div class="authentication">
+                  <div class="list-group">
+                    <label>网站名称：</label>
+                    <span ng-bind="chainame" kid="{{kid}}" class="kname">站长资源平台</span>
+                  </div>
+                  <div class="list-group weblanguage">
+                    <label>网站语言：</label>
+                    <a href="javascript:void(0)" ng-click="language(1)" ng-class="{true:'active',false:'other'}[curr==1]">PHP</a>
+                    <a href="javascript:void(0)" ng-click="language(2)" ng-class="{true:'active',false:'other'}[curr==2]">ASP</a>
+                    <i><cite>*</cite>网站代码指您网站使用的编程语言</i>
+                  </div>
+                  <div class="list-group return_format">
+                    <label>返回格式：</label>
+                    <a href="javascript:void(0)" ng-click="show(1)" ng-class="{true:'active',false:'other'}[active==1]">JSON</a>
+                    <a href="javascript:void(0)" ng-click="show(2)" ng-class="{true:'active',false:'other'}[active==2]">XML</a>
+                    <a href="javascript:void(0)" ng-click="show(3)" ng-class="{true:'active',false:'other'}[active==3]">HTML</a>
+                    <i>生成的代码格式，需要根据您要插代码的格式一致才能生效</i>
+                  </div>
+                  <div class="list-group testcode">
+                    <label>网站代码：</label>
+                    <a href="javascript:void(0)" ng-click="code(1)" ng-class="{true:'active',false:'other'}[act==1]">调试代码</a>
+                    <a href="javascript:void(0)" ng-click="code(2)" ng-class="{true:'active',false:'other'}[act==2]">正式代码</a>
+                    <span>调试代码会在您网站显示“站长资源平台”，测试通过使用正式代码不占友链位置！</span>
+                  </div>
+                  <div class="list-group" style="margin-bottom: 7px;">
+                    <div class="codebox">
+                      <textarea ng-show="curr==1" readonly>
+  &lt?php
+  //注意自己网站编码，如果前面已经定义，下面这行可以删除
+      header('Content-Type:text/html; charset=utf-8');
+    $testurl = "{{codes}}";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $testurl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HEADER,0);
+    $output = curl_exec($ch);
+    curl_close($ch);
+    if($output){
+        $json = json_decode($output,true);
+        if($json){
+          //json格式，请按自己要求输出
+        }else{
+          echo $output;
+        }
+    }
+  ?&gt
+                      </textarea>
+                      <textarea ng-show="curr==2" readonly>
+  <%
+    Dim Http,HttpUrl
+    Dim Objstream
+    HttpUrl = "{{codes}}"
+    Set Http=server.createobject("MSXML2.XMLHTTP")
+    Http.open "GET",HttpUrl,False
+    Http.Send()
+    If Http.Readystate<>4 then
+    Response.Write "获取数据失败"
+    End if
+    Set Objstream = Server.CreateObject("adodb.stream")
+    objstream.Type = 1
+    objstream.Mode =3
+    objstream.Open
+    objstream.Write Http.responseBody
+    objstream.Position = 0
+    objstream.Type = 2
+    objstream.Charset = "GB2312"
+    BytesToBstr = objstream.ReadText
+    Response.Write BytesToBstr
+  %>
+                      </textarea>
+                    </div>
+                  </div>
+                  <div class="list-group codetest">
+                    <label>代码验证：</label>
+                    <a href="javascript:void(0)" ng-click="codetest()" ng-bind="yz">验证</a>
+                    <b><span class="text-red" ng-bind="returndata">模拟请求，接收到返回数据！</span> </b>
+                    <p>只有验证代码已经生效了，您才能真的使用自动上链功能！</p>
+                  </div>
+                  <div class="list-group text-red">
+                    <p>注：1、这是后端程序的代码（如：php、asp）把代码放在要显示友情链接的位置，该代码不占用友链位置；</p>
+                    <p style="padding-left: 28px;">2、开启自动上链功能后，订单接单后状态为”已上链“，如果没插代码或者代码失效，则会转为故障订单；</p>
+                    <p style="padding-left: 28px;"> 3、为了保证能正常使用自动上链功能，请先测试下代码是否有生效；</p>
+                    <p style="padding-left: 28px;color: #337AB7;font-weight: bold;">4、<a href="/cms/cms.rar">下载常用CMS自动上链加入示例</a></p>
+                  </div>
+                </div>
+  
+              </form>
+            </div>
+            <!-- back="selectsource" -->
+            <div class="modal-footer footer-btn">
+              <button class="btns save"  ng-click="check_ok()">完成</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!--上链设置-->
+  
+  <!--检测中-->
+    <div class="modal fade modal-blue modal_cue" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="panel-body text-blue text-center" >
+                <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text" ng-bind="up_data">数据更新中...</h4>
+                <img src="/static/images/tool/loading.png" ng-show="loading==1"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+  
+  <!--引导-->
+    <div class="modal fade modal-blue yindao" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content" style="width: 0px;height: 0px;">
+          
+        </div>
+      </div>
+    </div>
+  
+    
+    <!--完善个人资料start-->
+<div class="modal fade person modal-blue" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:600px;height:auto">
+        <div class="modal-content acc-con" >
+            <div class="modal-header ">
+                <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true" style = "font-size:24px;color:#cccccc;">x</span></button>
+                <h4 class = "modal-title">完善个人资料</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-info pd0">
+                    <!--有手机号的情况      其他显示隐藏的加上none类名              -->
+                    <div class="form-group "  ng-show = "complete_info.userInfo.phone != ''">
+                        <label for="" class="col-sm-2 control-label">手机号：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <span class="phone" ng-bind="complete_info.userInfo.phone">185*****1635</span>
+                        </div>
+                    </div>
+                    <!--没有手机号的情况-->
+                    <div class="form-group "  ng-show = "complete_info.userInfo.phone == ''">
+                        <label for="" class="col-sm-2 control-label">手机号：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input ng-model="complete_info.phone" ng-blur = "complete_info.check_str('phone',complete_info.phone)"   type="text"  class="form-control" />
+                        </div><span class="must-sign"></span>
+                    </div>
+                    <div  class="form-group text-center text-red" ng-show = "complete_info.isphone" >请输入正确的手机号</div>
+                    <div class="form-group" ng-show = "complete_info.userInfo.phone == ''">
+                        <label for="" class="col-sm-2 control-label">验证码：</label>
+                        <div class="col-sm-3 pl0 pr8">
+                            <!--<span class="phone">185*****1635</span>-->
+                            <input ng-model="complete_info.verify" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-5"  >
+                            <!--<a href="javascript:void(0)" class="code">获取验证码</a>-->
+                            <div id="getCode" class="verifyCodeImg  send-code-btn"   ng-click = "complete_info.authCode()">
+                                <a href="javascript:void(0)" class="btn code">获取验证码</a>
+                            </div>
+                            <div id="timeCount" class="verifyCodeImg  resend-btn hidden " >
+                                <a href="javascript:void(0)" class="btn btn-lg "><i id="d-sec"  >60</i> &nbsp;秒后重新获取</a>
+                            </div>                  
+                        </div>
+                    
+                        
+                    </div>
+                        <div class="form-group text-center text-red" ></div>
+                    <div class="form-group" ng-show = "complete_info.userInfo.qq == ''">
+                        <label for="" class="col-sm-2 control-label">QQ：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input ng-model="complete_info.qq" ng-blur = "complete_info.check_str('qq',complete_info.qq)" type="text" class="form-control name">
+                        </div><span class="must-sign"></span>
+                    </div>
+                    <div  class="form-group text-center text-red" ng-show = "complete_info.isqq" >请输入正确的QQ号</div>
+                    <div class="form-group" ng-show ="complete_info.userInfo.email == ''">
+                        <label for="" class="col-sm-2 control-label">邮箱：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input type="text" ng-model="complete_info.email" ng-blur = "complete_info.check_str('email',complete_info.email)"  class="form-control url">
+                        </div>
+                    </div>
+                    <div id="tipMsg" class="form-group text-center text-red" ng-show = "complete_info.isemail" >请输入正确的邮箱</div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer footer-btn">
+                <button id="save" class="btn btns save btn-info"   ng-click ="complete_info.siveEdit()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--完善个人资料弹窗end-->
+  
+
+  </div>
+  <script type="text/javascript">
+    var weblist = {"data":[{"id":160890,"url_id":155855,"adver":"\u63a5\u53d7","name":"\u534e\u4e50\u5546\u57ce","url":"mall.hahacn.com","validate":"\u4e2a\u4eba\u8ba4\u8bc1","isdel":"\u542f\u7528","autochain":1,"image":"b07f89c1d10586e3314bbc49c1bea76e","bdweight":0,"googleweight":0,"bdincluded":1342,"yqlj":true,"twgg":false,"mfhl":true,"wzjy":false,"lljh":false,"image_fmt":"\/upload\/avatar\/b07f89c1d10586e3314bbc49c1bea76e.jpg","catename":"\u7535\u5b50\u5546\u52a1","catename2":"\u5546\u52a1\u8d38\u6613"},{"id":160461,"url_id":155474,"adver":"\u62d2\u7edd","name":"\u5deb\u5c71\u4fe1\u606f\u6e2f","url":"www.cq4a.com","validate":"\u4e2a\u4eba\u8ba4\u8bc1","isdel":"\u542f\u7528","autochain":1,"image":"8cb5e0f70d1d80632470b8020821c5da","bdweight":1,"googleweight":0,"bdincluded":"4.7\u4e07","yqlj":true,"twgg":true,"mfhl":true,"wzjy":false,"lljh":true,"image_fmt":"\/upload\/avatar\/8cb5e0f70d1d80632470b8020821c5da.png","catename":"\u884c\u4e1a\u95e8\u6237","catename2":"\u5730\u65b9\u95e8\u6237"},{"id":160459,"url_id":155472,"adver":"\u63a5\u53d7","name":"\u534e\u4e50\u7b11\u8bdd\u7f51","url":"joke.hahacn.com","validate":"\u4e2a\u4eba\u8ba4\u8bc1","isdel":"\u542f\u7528","autochain":1,"image":"dc5bd0d64dbb6b402056f759f8808d97","bdweight":0,"googleweight":0,"bdincluded":9,"yqlj":true,"twgg":false,"mfhl":true,"wzjy":false,"lljh":false,"image_fmt":"\/upload\/avatar\/dc5bd0d64dbb6b402056f759f8808d97.png","catename":"\u4f11\u95f2\u5a31\u4e50","catename2":"\u5e7d\u9ed8\u7b11\u8bdd"},{"id":160458,"url_id":155471,"adver":"\u63a5\u53d7","name":"\u534e\u4e50\u5f71\u89c6","url":"v.hahacn.com","validate":"\u4e2a\u4eba\u8ba4\u8bc1","isdel":"\u542f\u7528","autochain":1,"image":"7bc60093c5eb2ae3eaa6119c36a1df8e","bdweight":0,"googleweight":0,"bdincluded":2,"yqlj":true,"twgg":false,"mfhl":true,"wzjy":false,"lljh":false,"image_fmt":"\/upload\/avatar\/7bc60093c5eb2ae3eaa6119c36a1df8e.png","catename":"\u5f71\u89c6\u52a8\u6f2b","catename2":"\u7535\u5f71\u5f71\u89c6"},{"id":160457,"url_id":154852,"adver":"\u63a5\u53d7","name":"\u534e\u4e50\u7f8e\u6587\u7f51","url":"mw.hahacn.com","validate":"\u4e2a\u4eba\u8ba4\u8bc1","isdel":"\u542f\u7528","autochain":1,"image":"2501006784b81423d30d34d2435ac10e","bdweight":0,"googleweight":0,"bdincluded":2139,"yqlj":true,"twgg":false,"mfhl":true,"wzjy":false,"lljh":false,"image_fmt":"\/upload\/avatar\/2501006784b81423d30d34d2435ac10e.png","catename":"\u6587\u5b66\u5c0f\u8bf4","catename2":"\u7ecf\u5178\u6587\u5b66"},{"id":160430,"url_id":155082,"adver":"\u62d2\u7edd","name":"\u534e\u4e50\u7f51","url":"www.hahacn.com","validate":"\u4e2a\u4eba\u8ba4\u8bc1","isdel":"\u542f\u7528","autochain":1,"image":"70c460f9e8927e2d4336595db221cc8e","bdweight":0,"googleweight":0,"bdincluded":"8.9\u4e07","yqlj":true,"twgg":true,"mfhl":true,"wzjy":false,"lljh":false,"image_fmt":"\/upload\/avatar\/70c460f9e8927e2d4336595db221cc8e.png","catename":"\u7efc\u5408\u7f51\u7ad9","catename2":"\u7efc\u5408\u95e8\u6237"},{"id":159994,"url_id":155072,"adver":"\u63a5\u53d7","name":"\u534e\u4e50\u5065\u5eb7\u7f51","url":"jk.hahacn.com","validate":"\u4e2a\u4eba\u8ba4\u8bc1","isdel":"\u542f\u7528","autochain":1,"image":"664adf84c16fc32d5909d4fc038109f5","bdweight":0,"googleweight":0,"bdincluded":3948,"yqlj":true,"twgg":true,"mfhl":true,"wzjy":false,"lljh":false,"image_fmt":"\/upload\/avatar\/664adf84c16fc32d5909d4fc038109f5.png","catename":"\u533b\u7597\u5065\u5eb7","catename2":"\u5065\u5eb7\u7f51\u7ad9"},{"id":159993,"url_id":155071,"adver":"\u63a5\u53d7","name":"\u5403\u8d27\u5929\u4e0b","url":"ch.hahacn.com","validate":"\u4e2a\u4eba\u8ba4\u8bc1","isdel":"\u542f\u7528","autochain":1,"image":"0cf09a22f9440e2681878c2a4bbbdef5","bdweight":0,"googleweight":0,"bdincluded":2913,"yqlj":true,"twgg":false,"mfhl":true,"wzjy":false,"lljh":false,"image_fmt":"\/upload\/avatar\/0cf09a22f9440e2681878c2a4bbbdef5.png","catename":"\u751f\u6d3b\u670d\u52a1","catename2":"\u98df\u54c1\u7f8e\u98df"},{"id":159751,"url_id":154851,"adver":"\u63a5\u53d7","name":"\u534e\u4e50\u7f8e\u56fe\u7f51","url":"mm.hahacn.com","validate":"\u4e2a\u4eba\u8ba4\u8bc1","isdel":"\u542f\u7528","autochain":1,"image":"67fa342fa074e939e01c51b78cd053b7","bdweight":0,"googleweight":0,"bdincluded":779,"yqlj":true,"twgg":false,"mfhl":true,"wzjy":false,"lljh":false,"image_fmt":"\/upload\/avatar\/67fa342fa074e939e01c51b78cd053b7.png","catename":"\u4f11\u95f2\u5a31\u4e50","catename2":"\u6587\u5316\u827a\u672f"}],"statusCode":200};
+    $('.member-nav dl.zhgs dt a').addClass('curr').siblings().removeClass('curr');
+
+  </script>
+  <script type="text/javascript" src="/static/js/factory/public.js?v=20180903"></script>
+  <script type="text/javascript" src="/static/js/factory/directive.js"></script>
+  <script type="text/javascript" src="/static/js/factory/approve.js"></script>
+  <script type="text/javascript" src="/static/js/factory/upimg.js"></script>
+  <script type="text/javascript" src="/static/js/factory/complete_info.js"></script>
+  <!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/user.js?v=20180903"></script>
+{include file="footer"}
+</body>
+</html>

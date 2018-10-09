@@ -1,0 +1,330 @@
+{include file="account/header"}
+<!--右边内容start-->
+<div class="content-right" ng-controller = "ctrlArea">
+  
+  <div class="put_plan mt15">
+    <span>广告位共<i ng-bind = "count.total">8</i>个&nbsp;&nbsp;</span>
+    <span>其中：&nbsp;</span>
+    <span>流量出售<i ng-bind = "count.pay">3</i>个</span>
+    <span>免费交换<i ng-bind = "count.free">3</i>个</span>
+    <span>流量交换/出售<i ng-bind = "count.coex">3</i>个</span>
+  </div>
+  
+  <div class="bg-white pd20 mt15">
+    <div class="searchbar ">
+      <ul class="list-inline  pr0">
+        <li class="head-nav">
+          <div class="type-name pull-left " >类型：</div>
+          <div class="dropdown pull-left select_isdel" style="width: 100px;">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="dropdown-selected" >全部</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type" style="width: 100px;">
+              <li><a href="javascript:void(0)" ng-click = "getInfo('',false,'status')">全部</a></li>
+              <li><a href="javascript:void(0)" ng-click = "getInfo(2)">开启</a></li>
+              <li><a href="javascript:void(0)" ng-click = "getInfo(1)">暂停</a></li>
+            </ul>
+          </div>
+        </li>
+        <!-- * @apiParam {int} status 1暂停中，2交换中
+        * @apiParam {int} ispay 1流量出售/交换，2流量交换，3流量出售 -->
+        <li class="head-nav">
+          <div class="type-name pull-left " >广告位属性：</div>
+          <div class="dropdown pull-left select_isdel" style="width: 100px;">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-source-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="dropdown-selected" >全部</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu-source-type" style="width: 100px;">
+              <li><a href="javascript:void(0)"  ng-click = "getInfo(false,false,'ispay')">全部</a></li>
+              <li><a href="javascript:void(0)"  ng-click = "getInfo(false,3)">出售</a></li>
+              <li><a href="javascript:void(0)"  ng-click = "getInfo(false,2)">交换</a></li>
+              <li><a href="javascript:void(0)"  ng-click = "getInfo(false,1)">出售/交换</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="member-index clearfix">
+      <div class="head-type" style="border: none;">
+        <div class="changea  pull-right">
+          <a href="/member/trafficexchange/newadvert.htm">新增广告位</a>
+        </div>
+        
+      </div>
+    </div>
+    <div class="member-index-center clearfix">
+      <div class="clearboth"></div>
+      <div class="free-table adv_manage" infinite-scroll="loadMore()" infinite-scroll-distance='0' infinite-scroll-disabled="{{scrollDisabled}}" >
+        <table class="table">
+          <thead>
+          <tr>
+            <th width="12%">名称</th>
+            <th width="12%">网站</th>
+            <th width="12%">信息</th>
+            <th width="12%">广告位属性</th>
+            <th width="12%">状态</th>
+            <th width="12%">流量详情</th>
+            <th width="12%">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+              <tr ng-show="goods.length == 0">
+                  <td colspan="6" class="bbnone"><img src="/static/images/nodata/icon-no-adw.png" class="mt60"/></td>
+              </tr>
+            <tr ng-repeat="item in goods">
+              <td ng-bind = "item.adname">广告名称</td>
+              <td>
+                <p class="text-ellipsis" ng-bind="item.wname">锤子科技锤子科技锤子科技</p>
+                <p class="text-ellipsis"><a href="//{{item.url}}" target="_blank" ng-bind="item.url">www.weilai.com</a></p>
+              </td>
+              <td>
+                <p>
+                  <label>类型：</label>
+                  <span ng-bind="item.type"> 文字广告</span>
+                </p>
+                <p>
+                  <label>形式：</label>
+                  <span ng-bind="item.ad_type">2行*2列</span>
+                </p>
+                <p>
+                  <label>尺寸：</label>
+                  <span ng-bind="item.size">1200*50</span>
+                </p>
+              </td>
+              <td ng-bind = "item.ispay">流量出售</td>
+              <td><span class="text-green" ng-bind = "item.status">开启</span></td>
+              <td><a href="/member/trafficexchange/trafficeSee?id={{item.id}}">查看</a></td>
+              <td>
+                <!-- <a href="javascript:void(0)" ng-click="stop()">暂停</a> -->
+                <any ng-switch="item.status">
+                    <any ng-switch-when="开启">
+                        <a href="javascript:void(0)" class="suspend_btn" ng-click="stop(item)">暂停</a>
+                    </any>
+                    <any ng-switch-when="暂停">
+                        <a href="javascript:void(0)" class="suspend_btn" ng-click="openGoods(item)">开启</a>
+                        <a href="javascript:void(0)" class="suspend_btn" ng-click="del(item.id,$index)">删除</a>
+                        <a href="javascript:void(0)" class="suspend_btn" ng-click="edit(item,$index)">编辑</a>
+                    </any>
+                </any>
+                <a href="javascript:void(0)" ng-click="adv_code(item)">广告代码</a>
+              </td>
+            </tr>
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!--复制文字-->
+  <div class="modal fade copytextss" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:500px;height:310px">
+      <div class="modal-content acc-con" >
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>广告代码</h4>
+        </div>
+        <div class="modal-body">
+          <div class="copytext traffic_textarea" value="" style="height: 220px;">
+                        <textarea class="textarea-code" ng-model="codes" readonly = "readonly"></textarea>
+                        <span class="text-red code-ok" ng-show="copy_success">代码复制成功</span>
+                        <button class="copy_btn  copycode pull-right" id="btn" ng-click="copyCode()">复制代码</button>
+                    </div>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!--开启失败弹窗-->
+  <div class="modal fade open-failure" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content acc-con" style="width:470px;height:360px">
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>开启</h4>
+        </div>
+        <div class="modal-body" style="padding: 0px 40px;">
+          <h4 class="text-center text-red shibai">开启验证失败！</h4>
+          <div class="c1680">
+            暂无检测到您插入的代码，请先确认代码无误后，再次点击<i>【开启】</i>按钮进行验证，如无法验证成功请联系客服！
+          </div>
+        </div>
+        <div class="modal-footer footer-btn">
+          <button class="btns save" data-dismiss="modal">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 编辑弹窗 -->
+  <div class="modal fade edit" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content acc-con" style="width:700px;height:360px">
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>编辑</h4>
+          </div>
+          <div class="modal-body" style="padding: 0px 40px;">
+              <div class="member-index-change edit_adwei_modal">
+              <div class="list-group " style = "margin-top: 20px;">
+                  <label>广告位名称：</label>
+                  <input type="text" ng-model="adname" ng-blur="check_str(adname)" placeholder="" class="ng-pristine ng-valid">
+                  <span style = "margin-left: 90px;"  ng-class="{false:'has-icon-error text-red'}[!check_adname]" ng-show = "check_adname">6-20个字符，一个汉字为两个字符</span>
+      
+                </div>
+              <div class="list-group clearfix pd0">
+                  <label class="pull-left">广告位属性：</label>
+                  <div class="pl0 pr8 pull-left wd80">
+                    <label class="square mr30" >
+                      <input type="checkbox" name="traffic_sell" value="1" class="none" mark="1" >
+                      <b></b>流量出售（按点击的IP值计费）</label><br>
+                    <label class="square" >
+                      <input type="checkbox" name="traffic_change" value="2" class="none" mark="2" >
+                      <b></b>免费交换（有加入免费交换跟流量出售的广告位，有付费广告时优先展示付费广告  ）</label>
+                  </div>
+                </div>
+              </div>  
+            
+          </div>
+          <div class="modal-footer footer-btn">
+              <button class="btns cancel" data-dismiss="modal">取消</button>
+            <button class="btns save"  ng-click = "save()">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+<!--完善个人资料start-->
+<div class="modal fade person modal-blue" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog" style="width:600px;height:auto">
+        <div class="modal-content acc-con" >
+            <div class="modal-header ">
+                <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true" style = "font-size:24px;color:#cccccc;">x</span></button>
+                <h4 class = "modal-title">完善个人资料</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-info pd0">
+                    <!--有手机号的情况      其他显示隐藏的加上none类名              -->
+                    <div class="form-group "  ng-show = "complete_info.userInfo.phone != ''">
+                        <label for="" class="col-sm-2 control-label">手机号：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <span class="phone" ng-bind="complete_info.userInfo.phone">185*****1635</span>
+                        </div>
+                    </div>
+                    <!--没有手机号的情况-->
+                    <div class="form-group "  ng-show = "complete_info.userInfo.phone == ''">
+                        <label for="" class="col-sm-2 control-label">手机号：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input ng-model="complete_info.phone" ng-blur = "complete_info.check_str('phone',complete_info.phone)"   type="text"  class="form-control" />
+                        </div><span class="must-sign"></span>
+                    </div>
+                    <div  class="form-group text-center text-red" ng-show = "complete_info.isphone" >请输入正确的手机号</div>
+                    <div class="form-group" ng-show = "complete_info.userInfo.phone == ''">
+                        <label for="" class="col-sm-2 control-label">验证码：</label>
+                        <div class="col-sm-3 pl0 pr8">
+                            <!--<span class="phone">185*****1635</span>-->
+                            <input ng-model="complete_info.verify" type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-5"  >
+                            <!--<a href="javascript:void(0)" class="code">获取验证码</a>-->
+                            <div id="getCode" class="verifyCodeImg  send-code-btn"   ng-click = "complete_info.authCode()">
+                                <a href="javascript:void(0)" class="btn code">获取验证码</a>
+                            </div>
+                            <div id="timeCount" class="verifyCodeImg  resend-btn hidden " >
+                                <a href="javascript:void(0)" class="btn btn-lg "><i id="d-sec"  >60</i> &nbsp;秒后重新获取</a>
+                            </div>                  
+                        </div>
+                    
+                        
+                    </div>
+                        <div class="form-group text-center text-red" ></div>
+                    <div class="form-group" ng-show = "complete_info.userInfo.qq == ''">
+                        <label for="" class="col-sm-2 control-label">QQ：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input ng-model="complete_info.qq" ng-blur = "complete_info.check_str('qq',complete_info.qq)" type="text" class="form-control name">
+                        </div><span class="must-sign"></span>
+                    </div>
+                    <div  class="form-group text-center text-red" ng-show = "complete_info.isqq" >请输入正确的QQ号</div>
+                    <div class="form-group" ng-show ="complete_info.userInfo.email == ''">
+                        <label for="" class="col-sm-2 control-label">邮箱：</label>
+                        <div class="col-sm-9 pl0 pr8">
+                            <input type="text" ng-model="complete_info.email" ng-blur = "complete_info.check_str('email',complete_info.email)"  class="form-control url">
+                        </div>
+                    </div>
+                    <div id="tipMsg" class="form-group text-center text-red" ng-show = "complete_info.isemail" >请输入正确的邮箱</div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer footer-btn">
+                <button id="save" class="btn btns save btn-info"   ng-click ="complete_info.siveEdit()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--完善个人资料弹窗end-->
+  
+</div>
+<!--右边内容end-->
+<script type="text/javascript">
+  var free_change = null;
+  // $('.edit').modal('show')
+</script>
+  <script type="text/javascript" src="/static/js/factory/directive.js"></script>
+  <script type="text/javascript" src="/static/js/factory/approve.js"></script>
+  <script type="text/javascript" src="/static/js/factory/complete_info.js"></script>
+
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/trafficexchange_adverwei_manage.js?v=20180903"></script>
+{include file="account/footer"}
+</body>
+</html>

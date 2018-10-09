@@ -1,0 +1,30 @@
+<script type = "text/javascript" src = "/static/js/message.js?v=20180903"></script>
+<!--<a href="javascript:void(0)" class="gotop">返回</a>-->
+<script>
+  $(function(){
+    var mark = getParameter('act');    //获取URL中的参数
+    if(mark == 'sell'){                //是卖家的页面引入icon.css
+      var head = document.getElementsByTagName('head')[0];
+        var link = document.createElement('link');
+        link.href = '/css/icon.css';
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        head.appendChild(link);
+    }
+  })
+  
+// 获取链接的参数
+  function getParameter(name) { 
+    var reg = new RegExp(name +"=.*",'g'); 
+    var str = window.location.href.match(reg); 
+    
+      if (str) {
+        str = str[0].split('&');
+        str = str[0].split('=');
+        str = str[1];
+        return str;
+      } else {
+        return '';
+      }
+  }
+</script>

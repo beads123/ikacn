@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel="shortcut icon" href="/favicon8.ico"/>
+<link href="/static/css/style_dh.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">var sitepath = '/'; var rewrite = '{#$cfg.is_enabled_rewrite#}';</script>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+</head>
+<body>
+{include file="header"}
+<div class="wrapper">
+  <div class="clearfix sobox">
+      <a href="{#$site_url#}" class="logo" title="{$webname}"><h1>{$webname}</h1></a>
+    <div class="search">
+        <form name="sofrm" class="sofrm" method="get" action="" onSubmit="return rewrite_search()">
+        <input name="mod" type="hidden" id="mod" value="search" />
+        <input name="type" type="hidden" id="type" value="name" />
+        <div id="selopt">
+                  <div id="cursel">网站名称</div>
+          <ul id="options">
+                      <li><a href="javascript: void(0);" name="name">网站名称</a></li>
+            <li><a href="javascript: void(0);" name="url">网站地址</a></li>
+            <li><a href="javascript: void(0);" name="tags">TAG标签</a></li>
+            <li><a href="javascript: void(0);" name="intro">网站描述</a></li>
+          </ul>
+        </div>
+        <input name="query" type="text" class="sipt" id="query" onFocus="this.value='';" />
+        <input type="submit" class="sbtn" value="搜 索" />
+      </form>
+    </div>
+  </div>
+  <div class="navbox">
+    <ul class="navbar">
+      <li class="navcur"><a href="?mod=index"><span></span>网站首页</a></li>
+      <li class="navline"></li>
+      <li><a href="?mod=update">最新收录</a></li>
+      <li class="navline"></li>
+      <li><a href="?mod=archives">数据归档</a></li>
+      <li class="navline"></li>
+      <li><a href="?mod=top">TOP排行榜</a></li>
+      <li class="navline"></li>
+      <li><a href="?mod=feedback">意见反馈</a></li>
+            <li class="navline"></li>
+      <li><a href="https://www.duba.com/?un_454974_121402" target="_blank">网址导航</a></li>
+
+    </ul>
+  </div>
+</div>
+<div class="blank10"></div>
+<div class="wrapper">
+  <div class="homebox">
+    <div class="homebox-left">
+      <div class="bestbox">
+            <div class="linkbox-title"><span style="padding-left:48px;">温馨提示：添加{$webname}为友情链接，有人点入即可排在这里，给你的网站带来流量哦！</span></div>
+        <div class="bestbox-body">
+          <ul class="clearfix bestbox-list">
+            {volist name="top" id="vo"}
+              <li><img src="fav.php?url={$vo['web_url']}" width="15" height="15" alt="{$vo['web_name']#}"><a href="{$vo['web_url']}" rel="nofollow" target="_blank">{$vo['web_name']}</a></li>
+            {/volist}
+          </ul>            
+        </div>
+      </div>
+          <div class="blank10"></div>
+      <div class="coolbox">
+        <div class="coolbox-title"><span>名站导航</span></div>
+        <div class="coolbox-body">
+          <ul class="coolbox-list">
+          {volist name="categories" id="vo"}
+            <li class="clearfix"><strong><a href="{$vo['cate_link']}" title="{$vo['typename']}">{$vo['typename']}</a></strong><span>{volist name="vo['child']" id="vv"}
+              <a href="{$vv['web_link']}" title="{$vv['web_name']}">{$vv['web_name']}</a>
+            {/volist}
+            </span><em><a href="{$vo['cate_link']}" class="more">更多>></a></em></li>
+            {eq name="key%5" value="0"}<li class="sline"></li>{/eq}
+            {/volist}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="homebox-right">
+      <div class="quick"><a href="{:url('member/add')}">网站提交</a></div>
+      <div class="blank10"></div>
+      <div class="newsbox">
+        <div class="newsbox-title">数据统计</div>
+        <ul class="newsbox-list">
+          <li>主题分类：{$category}</li>
+          <li>已审站点：{$website}</li>
+          <li>待审站点：{$apply}</li>
+        </ul>
+      </div>
+      <div class="blank10"></div>
+      <div class="blank10"></div>
+      <!--广告位（1）-->
+      <script type="text/javascript">
+    /*250*250 创建于 2017/11/21_ch*/
+    var cpro_id = "u3142391";
+</script>
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js"></script>
+
+<script type="text/javascript">
+    /*250*250 创建于 2018/1/28*/
+    var cpro_id = "u3196709";
+</script>
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js"></script>
+
+      <!--end 广告位（1）-->
+      <div class="blank10"></div>
+            <div class="newbox">
+        <div class="newbox-title">最新收录</div>
+        <ul class="newbox-list">
+          {volist name="new" id="vo"}
+            <li><span>{$vo['web_ctime']}</span><a href="{$vo['web_link']}" title="{$vo['web_name']}">{$vo['web_name']}</a></li>
+          {/volist}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="blank10"></div>
+<div class="wrapper">
+  <div class="linkbox clearfix">
+    <div class="linkbox-title">友情链接</div>
+    <ul class="linkbox-list">
+      {volist name="flink" id="vo"}<li><img src="fav.php?url={$vo['url']}" width="13" height="13" alt="{$vo['name']}"><a href="{$vo['url']}" target="_blank">{$vo['name']}</a></li>{/volist}
+    </ul>
+  </div>
+</div>
+{include file="footer"}
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"  />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>{$title}</title>
+	<meta name="keywords" content="{$keywords}" />
+	<meta name="description" content="{$description}" />
+    <link rel="stylesheet" href="/static/touch/css/touch-slider.css" />
+    <link rel="stylesheet" href="/static/touch/css/touch-app.css" />
+    <link rel="apple-touch-startup-image" href="/static/touch/startup/320x460.png" />
+    <link rel="apple-touch-icon" apple-touch-icon-precomposed="false" sizes="57x57" href="/static/touch/startup/cover.png"/>
+    <script src="/static/touch/js/zepto.min.js"></script><!--http://zeptojs.com/ -->
+    <script src="/static/touch/js/cmstop.swipeslide.js"></script>
+    <script src="/static/touch/js/cmstop.touchapp.js"></script>
+	<script type="text/javascript" name="baidu-tc-cerfication" data-appid="5194138" src="http://apps.bdimg.com/cloudaapi/lightapp.js"></script>
+</head>
+<body>
+<div class="ui-container">
+    <header>
+        <div class="ui-header-bar">
+            <div class="ui-logo"></div>
+            <div class="ui-menu-trigger js-menubtn-top"></div>
+        </div>
+    </header>
+    {include file="m_header"}
+       <section class="ui-articles-container">
+        <!-- 幻灯片 -->
+        <div class="ui-section-block homebanner">
+                        <!-- swipe -->
+            <section class="category-gallery js-index-slider">
+                <ul>
+                	{volist name="huandeng" id="vo"}
+				        <li> <a href="{:url('m_detail/'.$vo['id'])}"> <img src="{$vo['litpic']}" alt="">
+		                        <p><span>{$vo['title']}</span></p>
+		                  </a> </li>
+				    {/volist}
+                </ul>
+                <div class="swipeslide-bullets"><span><var>1</var>/5</span></div>
+            </section>
+            <!--@end swipe -->
+                    </div>
+        <!--@end 幻灯片 -->
+        <script type="text/javascript">
+    /*20:5 创建于 2017/11/17*/
+    var cpro_id = "u3138485";
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/cm.js"></script>
+
+        	{volist name="list" id="vv"}
+        		<div class="ui-section-block">
+        			{neq name="vv['id']" value="1"}
+	        			<div class="ui-catgory">
+			                <h2 class="ui-category-title">{$vv['catname']}</h2>
+			            </div>
+			            {volist name="vv['data']" id="vo"}
+	                		{eq name="key" value="1"}<div class="ui-mod-lists ui-cate-list"><ul>{/eq}
+	                		{lt name="key" value="1"}
+					        <div class="ui-mod-picsummary ui-border-bottom-gray">
+				                <a href="{:url('m_detail/'.$vo['id'])}">
+				                    <img class="ui-pic" src="{$vo['litpic']}">
+				                    <h3 class="ui-title">{$vo['title']}</h3>
+				                    <div class="ui-summary">{$vo['description']}<div class="ui-comment-count">0评论</div>
+				                    </div>
+				                </a>
+				            </div>
+				            {else/}
+				            	<li> <a href="{:url('m_detail/'.$vo['id'])}">{$vo['title']}</a> </li>
+	                		{/lt}
+					    {/volist}
+					{else/}
+						{volist name="vv['data']" id="vo"}
+	                		{eq name="key" value="5"}<div class="ui-mod-lists ui-cate-list"><ul>{/eq}
+	                		{lt name="key" value="5"}
+					        <div class="ui-mod-picsummary ui-border-bottom-gray">
+				                <a href="{:url('m_detail/'.$vo['id'])}">
+				                    <img class="ui-pic" src="{$vo['litpic']}">
+				                    <h3 class="ui-title">{$vo['title']}</h3>
+				                    <div class="ui-summary">{$vo['description']}<div class="ui-comment-count">0评论</div>
+				                    </div>
+				                </a>
+				            </div>
+				            {else/}
+				            	<li> <a href="{:url('m_detail/'.$vo['id'])}">{$vo['title']}</a> </li>
+	                		{/lt}
+					    {/volist}
+	        		{/neq}
+                   </ul>
+                	<a href="{:url('m_list/'.$vv['id'])}" class="ui-more">查看更多{$vv['catname']}频道</a> </div>
+                </div>
+        	{/volist}
+            </section>
+</div>
+<!--<div class="download">
+    <a href="#" id="client-link">
+<img src="http://m.ikanchai.com/templates/ikanchai/touch/css/ui/download.png" alt="">
+</a>
+<script type="text/javascript">
+$(function(){
+    if (!!navigator.userAgent.match(/AppleWebKit.*Mobile.*/)||!!navigator.userAgent.match(/AppleWebKit/)) {
+        if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+            $("#client-link").attr('href', 'https://itunes.apple.com/cn/app/si-ta-xin-wen/id599473994?mt=8');
+        } else {
+            $("#client-link").attr('href', 'http://m.cmstop.com/download/CmsTop2.0.0.apk');
+        }  
+    } else {
+        $("#client-link").attr('href', 'https://itunes.apple.com/cn/app/si-ta-xin-wen/id599473994?mt=8');
+    }  
+});
+</script>
+
+<!--</div>-->
+{include file="m_footer"}
+</body>
+</html>
