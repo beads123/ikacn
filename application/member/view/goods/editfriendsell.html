@@ -1,0 +1,388 @@
+{include file="header"}
+    <!--右边内容start-->
+    <div class="content-right" ng-controller = "ctrlArea">
+      <div class="member-index bg-white pd20">
+        <div class="member-index-h5 clearfix">
+          <h5>修改友链出售</h5>
+        </div>
+        <div class="member-index-change">
+          <div class="list-group">
+            <label>网站名称：</label>
+            <div class="editname" >{$d['webname']}</div>
+          </div>
+          <div class="list-group">
+            <label>网站域名：</label>
+            <div class="editname" >{$d['weburl']}</div>
+          </div>
+          <div class="list-group clearfix">
+            <div class="pull-left wd250">
+              <label class="pull-left lh35">一级分类：</label>
+              <div class="dropdown pull-left select_isdel editdiv">{$d['cid2name']}</div>
+            </div>
+            <div class="pull-left ml27 wd250">
+              <label class="pull-left lh35">二级分类：</label>
+              <div class="dropdown pull-left select_isdel editdiv" >{$d['cid1name']}</div>
+            </div>
+          </div>
+          <div class="list-group clearfix" style="padding: 0px;">
+            <label class="pull-left">敏感词广告：</label>
+                    <div class="pl0 pr8 pull-left wd80 edit-i">
+                      <!--接受情况-->
+                      <!--<i >Arraysense</i>-->
+              <i>接受
+              </i>
+                      <span class="span-cue">（接受
+              灰色行业友链！）</span>
+                      <!--拒绝情况-->
+                      <!--<i>拒绝</i>
+                      <span class="span-cue">（拒绝灰色行业友链！）</span>-->
+                  </div>
+          </div>
+          <!--友链显示风格-->
+          <div class="list-group clearfix" style="padding: 0px;">
+            <label class="pull-left">友链显示风格：</label>
+                    <div class="pl0 pr8 pull-left wd80">
+                      
+                       <label  class="friendstyle mr30" ng-click="style(1)"><input type="radio" name="fenge" value="1"  class="none" checked="checked"/><b></b>直接显示</label>
+              <label  class="friendstyle mr30" ng-click="style(2)"><input type="radio" name="fenge" value= "2"   class="none" /><b></b>鼠标滑显</label> 
+              <label  class="friendstyle" ng-click="style(3)"><input type="radio" name="fenge" value= "3"   class="none" /><b></b>隐藏不显示</label> 
+                  </div>
+          </div>
+          <!--友链显示风格-->
+          
+          <!--自动接单-->
+          <div class="list-group clearfix" style="padding: 0px;">
+            <label class="pull-left">自动接单：</label>
+                    <div class="pl0 pr8 pull-left wd80">
+                      <label  class="autoorder mr30" ng-click='accept(2)'><input type="radio" name="order" value="1"  class="none"  /><b></b>不使用</label>
+                      <label  class="autoorder mr30" ng-click='accept(1)'><input type="radio" name="order" value= "2"   class="none"    checked="checked"/><b></b>续费订单，自动接单</label>  
+                      <span style="color: #b9b7b7;">（开启后，上链检测通过后订单直接开始服务）</span>
+                  </div>
+          </div>
+          <!--自动接单-->
+          
+          <!--价格-->
+          <div class="list-group clearfix friend-price" style="padding: 0px;">
+            <label class="pull-left">价格：</label>
+                    <div class="pl0 pr8 pull-left wd80">
+                      <div class="mb10" ng-repeat="(key,val) in priceArr">
+                        <span class="circle_checkbox">
+                          <span class="icon-checkbox" ng-class="{true:'checked',false:'other'}[val.isCheck]" ng-click="change(key)"></span>
+                          {{val.v}}
+                        </span>
+                        <input type="text"  placeholder="最低2元/月" onkeyup = "clearNoNum(this)" ng-model="val.p"><cite class="ymonth">元/月</cite>
+                      </div>
+                      
+                      
+                  </div>
+          </div>
+          <div class="list-group clearfix friend-price" style="width: 840px;">
+            <p style="color: #808080;margin-bottom: 10px;">参考价格</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <td>权重</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>参考价格（元）</td>
+                  <td>2-10</td>
+                  <td>5-20</td>
+                  <td>15-30</td>
+                  <td>20-50</td>
+                  <td>30-70</td>
+                  <td>50-100</td>
+                  <td>80-400</td>
+                  <td>200-500</td>
+                  <td>400-800</td>
+                  <td>600-2000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--价格-->
+          <!--<div class="list-group clearfix friend-price">
+            <label >价格：</label>
+            <input type="text"  placeholder="请输入数字" onkeyup = "clearNoNum(this)" ng-model="price" />
+            <span>（最低2元/月）</span>
+          </div>-->
+          <div class="change_foot">
+            <a href="/member/goods/friendgoods"  class="return_back">取消</a>
+            <a href="javascript:void(0)" ng-click="saveEdit()" class="next_btn" ng-class = "{true:'disabled'}[!can_save]">保存</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <!--网站认证弹窗start-->
+      <div class="modal fade checkwebsite" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:660px;height:auto">
+        <div class="modal-content acc-con" >
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>网站认证</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal form-info pd0">
+              <div class="authentication">
+                <p class="warning">为了您出售的网站友链、广告可以及时上架出售，请您先进行网站认证！</p>
+                <div class="mt50">
+                              <ul class="nav nav-pills h26">
+                                  <li class="active" mark="code"><a class="pt5 pb5 mr10" href="javascript:void(0)">代码验证</a><span class="glyphicon glyphicon-triangle-bottom yz-bot"></span></li>
+                                  <li mark="file"><a class="pt5 pb5" href="javascript:void(0)">文件验证</a><span class="glyphicon glyphicon-triangle-bottom yz-bot"></span></li>
+                              </ul>
+                          </div>
+                         <div class="style code">
+                              <form class="">
+                                  <div class="form-group clearfix mt20 pd010">
+                                      <label for="" class="col-999 mb15"></label>
+                                      <textarea class="form-control code-box get-code" placeholder="<script src='http://nnfa.fjat.com/s.php?id=1100'></script>"></textarea>
+                                      <a href="javascript:void(0)" class="pull-right mt10 copy-btn" id="btn">复制代码</a>
+                                  </div>
+                              </form>
+                          </div>
+                          <div class="style none file">
+                              <form class="form-inline col-md-12 bgg mt20">
+                                  <div class="form-group">
+                                      <label for="" class="col-999 rz-text">yyyuu.txt</label>
+                                      <a href="javascript:void(0)" class="dl-btn">下载</a>
+                                  </div>
+                              </form>
+                          </div>
+                          <div class="col-md-12 mb70">
+                                <h3 class="fs14 way-head">验证说明</h3>
+                                <ol class="pl15">
+                                    <li>请选择以上任意一种验证方式进行网站验证</li>
+                                    <li>代码验证：将网站验证代码添加到您的网站首页HTML的标签和标签之间，并点击网站验证按钮</br>文件验证：将网站验证文件添加到您的网站根目录下，并点击网站验证按钮</li>
+                                    <li>站长资源平台保证文件代码只用于网站验证功能，验证通过后您可以立即删除文件代码</li>
+                                </ol>
+                            </div>
+              </div>
+              
+            </form>
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns save" data-dismiss="modal">网站认证</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--网站认证弹窗end-->
+  
+  <!--认证成功弹窗start-->
+      <div class="modal fade authen_firend" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:500px;height:auto">
+        <div class="modal-content acc-con" >
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <div class="success-blue"></div>
+              <p class="wish">认证成功</p>
+              <h5 class="cueh5">您新增友链已上架出售</h5>
+            </div>
+            
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns cancel" data-dismiss="modal">关闭</button>
+            <a href="javascript:void(0)" class="btns save">继续出售</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--认证成功弹窗end-->
+  
+  <!--认证失败弹窗start-->
+      <div class="modal fade authen_lose" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:500px;height:auto">
+        <div class="modal-content acc-con" >
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center">
+              <div class="lose"></div>
+              <p class="wish"></p>
+              <h5 class="loseh5">认证失败！请重新认证一次！</h5>
+            </div>
+            
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns cancel" data-dismiss="modal">取消</button>
+            <button class="btns save" data-dismiss="modal">重新认证</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--认证失败弹窗end-->
+  <!--取消认证-->
+  <div class="modal fade cancel_modal" id="myModal-5" data-backdrop="static">
+    <div class="modal-dialog"  style="width:500px;height:auto">
+      <div class="modal-content acc-con">
+        <div class="modal-header headerbar">
+          <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+          <h4>提示</h4>
+        </div>
+        <div class="modal-body">
+          <div class="text-center sure-text c80">
+            取消认证后，网站可以添加成功，但出售的友链、图文广告需要平台审核后才能上架，确定放弃认证吗？
+          </div>
+          
+        </div>
+        <!-- back="selectsource" -->
+        <div class="modal-footer footer-btn">
+          <button class="btns cancel" data-dismiss="modal">取消</button>
+          <button class="btns save" data-dismiss="modal">继续认证</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--取消认证-->
+  
+  <!--友链已上架弹窗start-->
+      <div class="modal fade friend_sj" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:500px;height:auto">
+        <div class="modal-content acc-con" >
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>提示</h4>
+          </div>
+          <div class="modal-body">
+            <div class="text-center sure-text">
+              友链已上架出售！
+            </div>
+            
+          </div>
+          <!-- back="selectsource" -->
+          <div class="modal-footer footer-btn">
+            <button class="btns cancel" data-dismiss="modal">关闭</button>
+            <button class="btns save" data-dismiss="modal">继续出售</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--友链已上架弹窗end-->
+  <!--已添加的网站-->
+      <div class="modal fade chooseweb" id="myModal-5" data-backdrop="static">
+      <div class="modal-dialog" style="width:850px;height:auto">
+        <div class="modal-content acc-con" >
+          <div class="modal-header headerbar">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span aria-hidden="true"></span></button>
+            <h4>选择要添加的网站</h4>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive choosetab">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th width="1%"></th>
+                    <th width="16%">网站名称</th>
+                    <th width="16%">网站域名</th>
+                    <th width="16%">行业分类</th>
+                    <th width="15%">百度权重</th>
+                    <th width="16%">状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="icon-checkbox-blue select_single"></span></td>
+                    <td>站长资源平台</td>
+                    <td>www.2898.com</td>
+                    <td>网站网站</td>
+                    <td>2</td>
+                    <td>已认证</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-red">注：已认证的网站添加的友链才能上架！</p>
+          </div>
+          <div class="modal-footer footer-btn">
+            <button class="btns cancel" data-dismiss="modal">取消</button>
+            <button class="btns save" data-dismiss="modal">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--已添加的网站-->
+  
+
+
+
+
+    </div>
+    <!--右边内容end-->
+  <script>
+  var userInfo = {$list};
+    $('.nav-right ul li a[mark="seller"]').addClass('active').siblings().removeClass('active');
+  
+  </script>
+<!-- 小型模态框 -->
+<div class="modal modal-tips" style="z-index: 1100;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-header headerbar">
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue" ></p>
+                </div>
+            </div>
+            <div class="modal-footer footer-btn new-footer">
+                <button class="btns cancel return-btn" data-dismiss="modal">取消</button>
+                <button class="btns save save-btn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-msg" style="z-index: 1101;" data-backdrop="static">
+    <div class="modal-dialog" style="width: 385px;">
+        <div class="modal-content acc-con">
+            <div class="modal-body new-body">
+                <div class="text-center">
+                    <p class="text-info fs18 c-blue text-cue"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal_alert()-->
+<div class="modal fade modal-blue modal_loading" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" style="z-index: 9999;">
+    <div class="modal-dialog modal-sm" role="document" style="margin-top: 300px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel-body text-blue text-center">
+                    <h4 style="line-height: 1.8;color: #808080;font-size: 16px;" class="modal_time_text">网站认证中...</h4>
+                    <img src="/static/images/tool/loading.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/goods_editfriendsell.js?v=20181009"></script>
+{include file="footer"}
+</body>
+</html>

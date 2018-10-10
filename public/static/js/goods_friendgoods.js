@@ -203,7 +203,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
     // 修改商品
     var goodsInfo = ''
     $scope.editGoods = function (item) {
-        location.href = memberUrl("/goods/editfriendsell",{gid:item.gid});
+        location.href = memberUrl("goods/editfriendsell",{gid:item.gid});
     }
 
 
@@ -309,7 +309,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
             $http.post('/goods/savedata', { phone: $scope.phone, qq: $scope.qq, email: $scope.email, verify: $scope.verify }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
-                    location.href = memberUrl('/goods/friendsell')
+                    location.href = memberUrl('goods/friendsell')
                 } else {
                     modal_alert(data.message)
                 }
@@ -318,7 +318,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
             $http.post('/goods/savedata', { qq: $scope.qq, email: $scope.email }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
-                    location.href = memberUrl('/goods/friendsell')
+                    location.href = memberUrl('goods/friendsell')
                 } else {
                     modal_alert(data.message)
                 }
@@ -327,7 +327,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
             $http.post('/goods/savedata', { phone: $scope.phone, email: $scope.email, verify: $scope.verify }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
-                    location.href = memberUrl('/goods/friendsell')
+                    location.href = memberUrl('goods/friendsell')
                 } else {
                     modal_alert(data.message)
                 }
@@ -337,7 +337,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
             $http.post('/goods/savedata', { phone: $scope.phone, qq: $scope.qq, verify: $scope.verify }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
-                    location.href = memberUrl('/goods/friendsell')
+                    location.href = memberUrl('goods/friendsell')
                 } else {
                     modal_alert(data.message)
                 }
@@ -346,7 +346,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
             $http.post('/goods/savedata', { qq: $scope.qq }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
-                    location.href = memberUrl('/goods/friendsell')
+                    location.href = memberUrl('goods/friendsell')
                 } else {
                     modal_alert(data.message)
                 }
@@ -355,7 +355,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
             $http.post('/goods/savedata', { phone: $scope.phone, verify: $scope.verify }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
-                    location.href = memberUrl('/goods/friendsell')
+                    location.href = memberUrl('goods/friendsell')
                 } else {
                     modal_alert(data.message)
                 }
