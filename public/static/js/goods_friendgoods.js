@@ -1,5 +1,5 @@
 
-// /member/goods/friendgoods	出售友链首页
+// /goods/friendgoods	出售友链首页
 app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
 
     $scope.approve = approve
@@ -11,7 +11,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
     $scope.list = dataArr
     $scope.dataList = function () {
         $http({
-            url: '/member/goods/friendgoods',
+            url: '/goods/friendgoods',
             data: { px: $scope.pageNumber, pz: $scope.pageSize ,status:$scope.status,search:$.trim($scope.webString)},
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -112,7 +112,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
             $scope.type = "上架"
             if (status == "下架") {
                 $http({
-                    url: '/member/goods/upDownState',
+                    url: '/goods/upDownState',
                     data: { gid: id, state: $scope.type },
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -153,7 +153,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
     // 确定商品下架
     $scope.sureDown = function () {
         $http({
-            url: '/member/goods/upDownState',
+            url: '/goods/upDownState',
             data: { gid: $scope.goodsId, state: '下架' },
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -186,7 +186,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
   
 
     $scope.sureDown2 = function(){
-        $http.post("/member/goods/upDownState",{ gid: $scope.goodsId, state: '下架' ,fit:1}).success(function(data){
+        $http.post("/goods/upDownState",{ gid: $scope.goodsId, state: '下架' ,fit:1}).success(function(data){
             // modal_alert(data.message)
             if(data.statusCode == 200){
                 findGoods.sellstatus = "下架"
@@ -210,7 +210,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
     // 出售友链（新增友链）
 
     $scope.sellUrl = function () {
-        $scope.complete_info.check_user(memberUrl("/goods/friendsell")) //检测用户信息是否完善
+        $scope.complete_info.check_user(memberUrl("goods/friendsell")) //检测用户信息是否完善
     }
 
 
@@ -222,7 +222,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
         if (!$scope.phone) {
             $scope.tipMsg = ""
         }
-        $http.post("/member/goods/checkPhone", { phone: $scope.phone }).success(function (data) {
+        $http.post("/goods/checkPhone", { phone: $scope.phone }).success(function (data) {
             if (data.statusCode == 200) {
                 // $scope.btnDisabled = false
                 $scope.tipMsg = ''
@@ -241,7 +241,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
         $scope.timeNum = 59
         if ((preg.mobile.test($scope.phone)) || $scope.userInfo.phone != "") {
             if ($scope.userInfo.phone == "") {
-                $http.post("/member/Sms/add", { mobile: $scope.phone, type: 1 }).success(function (data) {        
+                $http.post("/Sms/add", { mobile: $scope.phone, type: 1 }).success(function (data) {        
                     if (data.statusCode == 200) {
                         $("#timeCount").removeClass("hidden")
                         $("#getCode").addClass("hidden")
@@ -268,7 +268,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
                 })
             } else {
 
-                $http.post("/member/Sms/add", { mobile: $scope.userInfo.phone, type: 1 }).success(function (data) {
+                $http.post("/Sms/add", { mobile: $scope.userInfo.phone, type: 1 }).success(function (data) {
                     if (data.statusCode == 200) {
                         $("#timeCount").removeClass("hidden")
                         $("#getCode").addClass("hidden")
@@ -306,7 +306,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
     $scope.siveEdit = function () {
       
         if ($scope.userInfo.phone == "" && $scope.userInfo.qq == "" && $scope.userInfo.email == "") {
-            $http.post('/member/goods/savedata', { phone: $scope.phone, qq: $scope.qq, email: $scope.email, verify: $scope.verify }).success(function (data) {
+            $http.post('/goods/savedata', { phone: $scope.phone, qq: $scope.qq, email: $scope.email, verify: $scope.verify }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
                     location.href = memberUrl('/goods/friendsell')
@@ -315,7 +315,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
                 }
             })
         } else if ($scope.userInfo.phone != "" && $scope.userInfo.qq == "" && $scope.userInfo.email == "") {
-            $http.post('/member/goods/savedata', { qq: $scope.qq, email: $scope.email }).success(function (data) {
+            $http.post('/goods/savedata', { qq: $scope.qq, email: $scope.email }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
                     location.href = memberUrl('/goods/friendsell')
@@ -324,7 +324,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
                 }
             })
         } else if ($scope.userInfo.phone == "" && $scope.userInfo.qq != "" && $scope.userInfo.email == "") {
-            $http.post('/member/goods/savedata', { phone: $scope.phone, email: $scope.email, verify: $scope.verify }).success(function (data) {
+            $http.post('/goods/savedata', { phone: $scope.phone, email: $scope.email, verify: $scope.verify }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
                     location.href = memberUrl('/goods/friendsell')
@@ -334,7 +334,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
             })
 
         } else if ($scope.userInfo.phone == "" && $scope.userInfo.qq == "" && $scope.userInfo.email != "") {
-            $http.post('/member/goods/savedata', { phone: $scope.phone, qq: $scope.qq, verify: $scope.verify }).success(function (data) {
+            $http.post('/goods/savedata', { phone: $scope.phone, qq: $scope.qq, verify: $scope.verify }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
                     location.href = memberUrl('/goods/friendsell')
@@ -343,7 +343,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
                 }
             })
         } else if ($scope.userInfo.phone != "" && $scope.userInfo.qq == "" && $scope.userInfo.email != "") {
-            $http.post('/member/goods/savedata', { qq: $scope.qq }).success(function (data) {
+            $http.post('/goods/savedata', { qq: $scope.qq }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
                     location.href = memberUrl('/goods/friendsell')
@@ -352,7 +352,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
                 }
             })
         } else if ($scope.userInfo.phone == "" && $scope.userInfo.qq != "" && $scope.userInfo.email != "") {
-            $http.post('/member/goods/savedata', { phone: $scope.phone, verify: $scope.verify }).success(function (data) {
+            $http.post('/goods/savedata', { phone: $scope.phone, verify: $scope.verify }).success(function (data) {
                 if (data.statusCode == 200) {
                     modal_alert(data.message)
                     location.href = memberUrl('/goods/friendsell')
@@ -407,7 +407,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
     	if(type == 3){
     		$scope.format = 'html';
     	}
-    	$http.post("/member/Autochain/GetAutoChain", {id:$scope.id}).success(function (data) {
+    	$http.post("/Autochain/GetAutoChain", {id:$scope.id}).success(function (data) {
             if (data.statusCode == 200) {
                 $scope.chaincode = data.data.url+$scope.format;
               
@@ -426,7 +426,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
     	if(type == 2){
     		$scope.test = 'true';
     	}
-    	$http.post("/member/Autochain/GetAutoChain", {id:$scope.id}).success(function (data) {
+    	$http.post("/Autochain/GetAutoChain", {id:$scope.id}).success(function (data) {
             if (data.statusCode == 200) {
                 $scope.chaincode = data.data.url+$scope.format+"&text="+$scope.test;
               
@@ -452,7 +452,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
 //		@apiParam {int} id 网站id
 //   	* @apiParam {int} chain 1{否}2{是}
 
-			$http.post("/member/Autochain/JoinAutoChain", {id:webId,chain:$scope.chain}).success(function (data) {
+			$http.post("/Autochain/JoinAutoChain", {id:webId,chain:$scope.chain}).success(function (data) {
 	            if (data.statusCode == 200) {
 				
 //	                modal_alert(data.message)
@@ -461,7 +461,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
 	     	
 //上链设置	
 												
-	     	$http.post("/member/Autochain/GetAutoChain", {id:webId}).success(function (data) {
+	     	$http.post("/Autochain/GetAutoChain", {id:webId}).success(function (data) {
 	            if (data.statusCode == 200) {
 	                $scope.chaincode = data.data.url+$scope.format+"&text=false";
 					$scope.sign = data.data.sign;
@@ -477,7 +477,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
 		    	$scope.list[index].autochain = 1
 		    	$('.chain-set').modal('hide'); 
 		    	$scope.chain = 1;
-		    	$http.post("/member/Autochain/JoinAutoChain", {id:webId,chain:$scope.chain}).success(function (data) {
+		    	$http.post("/Autochain/JoinAutoChain", {id:webId,chain:$scope.chain}).success(function (data) {
 		            if (data.statusCode == 200) {
 		                modal_alert(data.message)
 		            }else{
@@ -497,7 +497,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
     }
 
 	$scope.codetest = function(){
-		$http.post("/member/Autochain/CheckAutoChain", {sign:$scope.sign,url:$scope.wurl}).success(function (data) {
+		$http.post("/Autochain/CheckAutoChain", {sign:$scope.sign,url:$scope.wurl}).success(function (data) {
             if (data.statusCode == 200) {
                $scope.returndata = data.message
             }else{
@@ -514,7 +514,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
 		var jid =  $('.kname').attr('kid');
 
 		$scope.chain = 1;
-    	$http.post("/member/Autochain/JoinAutoChain", {id:jid,chain:$scope.chain}).success(function (data) {
+    	$http.post("/Autochain/JoinAutoChain", {id:jid,chain:$scope.chain}).success(function (data) {
             if (data.statusCode == 200) {
             
                 window.location.reload();
@@ -532,7 +532,7 @@ app.controller('ctrlArea', function ($http, $scope,approve,complete_info) {
     
      }
      $scope.sure_delete = function(){
-            $http.post('/member/goods/goodsdel',{gid:$scope.delete_gid}).success(function(data){
+            $http.post('/goods/goodsdel',{gid:$scope.delete_gid}).success(function(data){
                 if(data.statusCode == 200){
                     $scope.list.splice($scope.delete_index,1)
                 }else{

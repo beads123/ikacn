@@ -6,7 +6,7 @@ app.factory('complete_info', function ($http) {
         if(go_urlStr){
             obj.url = go_urlStr
         }
-        $http.post("/member/goods/checkData").success(function (data) {
+        $http.post("/goods/checkData").success(function (data) {
             if (data.statusCode == 200) {
                 obj.userInfo = data.data
                 if (obj.userInfo.qq == "" || obj.userInfo.phone == "") {

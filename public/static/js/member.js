@@ -612,15 +612,15 @@ var guideimg = "<img src='/static/images/guide/new.png' class='guide_new'>";
 var guidePath = JSON.parse($.cookie('newGuide')) || [
 
 	{
-	path:'/member/websitetrade/sellwebsite',
+	path:'/websitetrade/sellwebsite',
  isNew:'true'
 	},
 	{
-	path:'/member/goods/friendgoods',
+	path:'/goods/friendgoods',
  isNew:'true'
 	},
 	{
-	path:'/member/order/indexsell',
+	path:'/order/indexsell',
  isNew:'true'
 	},
 	{
@@ -640,15 +640,15 @@ var guidePath = JSON.parse($.cookie('newGuide')) || [
 				console.log(guidePath[i].path)
 				guidePath[i].isNew = false;
 				switch (guidePath[i].path){
-					case '/member/websitetrade/sellwebsite':
+					case '/websitetrade/sellwebsite':
 					$('.wzjy').find('dd').find('img').remove();
 					$('.guide_wzjy').hide();
 					break;
-					case '/member/goods/friendgoods':
+					case '/goods/friendgoods':
 					$('.csyl').find('dt').find('img').remove();
 					$('.guide_csyl').hide();
 					break;
-					case '/member/order/indexsell':
+					case '/order/indexsell':
 					$('.ddgl').find('dd').find('img').remove();
 					$('.guide_ddgl').hide();
 					break;
@@ -680,15 +680,15 @@ var guidePath = JSON.parse($.cookie('newGuide')) || [
 				
 				if(	guides[i].isNew ){
 					  switch (guides[i].path){
-								case '/member/websitetrade/sellwebsite':
+								case '/websitetrade/sellwebsite':
 								$('.wzjy').find('dd').eq(0).append(guideimg);
 								$('.guide_wzjy').show();
 								break;
-								case '/member/goods/friendgoods':
+								case '/goods/friendgoods':
 								$('.csyl').find('dt').append(guideimg);
 								$('.guide_csyl').show();
 								break;
-								case '/member/order/indexsell':
+								case '/order/indexsell':
 								$('.ddgl').find('dd').eq(1).append(guideimg);
 								$('.guide_ddgl').show();
 								break;
@@ -699,15 +699,15 @@ var guidePath = JSON.parse($.cookie('newGuide')) || [
 						}
 				}else{
 					switch (guides[i].path){
-						case '/member/websitetrade/sellwebsite':
+						case '/websitetrade/sellwebsite':
 						$('.wzjy').find('dd').find('img').remove();
 						 $('.guide_wzjy').hide();
 						break;
-						case '/member/goods/friendgoods':
+						case '/goods/friendgoods':
 						$('.csyl').find('dt').find('img').remove();
 						$('.guide_csyl').hide();
 						break;
-						case '/member/order/indexsell':
+						case '/order/indexsell':
 						$('.ddgl').find('dd').find('img').remove();
 						$('.guide_ddgl').hide();
 						break;
