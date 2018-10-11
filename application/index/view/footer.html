@@ -211,13 +211,21 @@
         <li ng-repeat="(key1,val1) in val.data">
           <div class="web_title">
             <span class="label-box" ng-bind="val1.catename"></span>
-            <h3  class="con-title" ng-bind="val1.webname" ng-show="val.title=='友情链接' || val.title=='图文广告'" title="{{val1.webname}}"></h3>
+            <h3  class="con-title" ng-bind="val1.webname" ng-show="val.title=='友情链接' || val.title=='图文广告' || val.title=='软文交易'" title="{{val1.webname}}"></h3>
             <h3 ng-show="val.title=='网站交易'" class="con-title" ng-bind="val1.point" title="{{val1.point}}"></h3>
           </div>
           <span class="con-text" >
             网站地址：
             <span class="web_url" ng-bind="val1.goodsurl" title="{{val1.goodsurl}}"></span>
           </span>
+          <span class="con-text" ng-show="val.title=='软文交易'">
+              入口：
+            <span class="web_url" ng-bind="val1.entrance"></span>
+          </span>
+          <p class="con-text" ng-show="val.title=='软文交易'">
+              链接类型：
+            <span class="web_url" ng-bind="val1.link_type"></span>
+          </p>
           <p class="web_weight">
             权重：
             <span class="tuwen bai_du" style="margin-right: 36px" ng-bind="val1.bdweight"></span>
@@ -225,14 +233,14 @@
             <span class="tuwen pr"  ng-bind="val1.pr"></span>
           </p>
           <p>
-            IP值：<xfan ng-bind="val1.ip"></xfan>
+            IP值：<xfan ng-bind="val1.ip" ng-show = "val1.ip"></xfan><xfan ng-show = "!val1.ip">-</xfan>
             <xfan ng-show="val.title=='友情链接'" style="margin-left: 20%;">
               位置：
               <span ng-bind="{true:'全站',false:'首页'}[val1.is_qz == 1]">全站</span>             
             </xfan>
           </p>
           <div class="clearfix">
-            <span class="con-price">￥<span ng-bind="val1.price"></span><ss ng-hide="val.title=='网站交易'">/月</ss></span>
+            <span class="con-price">￥<span ng-bind="val1.price"></span><ss ng-hide="val.title=='网站交易' || val.title=='软文交易'">/月</ss></span>
             <span class="con-btn" ng-click="common.delItem(val1.gid)">删除</span>
           </div>
         </li>
@@ -244,10 +252,10 @@
         <p>购物车空空，快去选购一下哦！</p>
       </div>
     </div>
-    <div class="menu-right-footer">
+    <div class="menu-right-footer clearfix">
       <div class="clearfix ">
-        <span class="footer-left">已选 <span class="text-yellow" ng-bind="common.itemNum"></span> 个网站</span>
-        <span class="footer-right">共计： <span class="text-yellow" ng-bind="common.itemPrice"></span></span>
+        <span>已选 <span class="text-yellow" ng-bind="common.itemNum"></span> 个网站</span>
+        <span style = "margin-bottom: 4px;margin-top: 4px;display: inline-block;">共计： <span class="text-yellow" ng-bind="'¥ ' +common.itemPrice"></span></span>
       </div>
       <a href="/index/goods/submit_order" ng-show="common.itemNum>0">
         <span class="btn btn-info center-block">去购买</span>

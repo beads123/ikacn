@@ -1,15 +1,7 @@
 <?php
 namespace app\member\controller;
-use app\common\controller\Base;
-class Index extends Base
+class Index extends Common
 {
-    public function _initialize()
-    {
-        parent::_initialize();
-        if(!cookie('sys_key')){
-            $this->redirect(url('user/login','',true,'www'));
-        }
-    }
     public function index() {
         return $this->fetch();
     }
@@ -78,9 +70,9 @@ class Index extends Base
         $search = input('post.search');
         $where = [];
         if(!empty($search)){
-            $where['w.cname'] = ['like','%'.$search.'%'];
+            $where['w.name'] = ['like','%'.$search.'%'];
         }
-        $web = model('Web')->alias('w')->join('__WEB___ext we','w.id = we.webid','LEFT')->field('w.*,w.id as url_id,"" as adver,0 as autochain,image as image_fmt,false as yqlj,false as twgg,false as mfhl,false as wzjy,false as lljh,c1.cname as catename2,c2.cname as catename')->join('__CATEGORY__ c1','c1.id = w.cid','LEFT')->join('__CATEGORY__ c2','c2.id = c1.pid','LEFT')->where($where)->limit(($p-1)*$size,$size)->select();
+        $web = model('Web')->alias('w')->join('__WEB___ext we','w.id = we.webid','LEFT')->field('w.*,w.id as url_id,if(adver=0,"","拒绝") as adver,0 as autochain,image as image_fmt,false as yqlj,false as twgg,false as mfhl,false as wzjy,false as lljh,c1.cname as catename2,c2.cname as catename,bdweight,bdincluded,googleweight,if(isdel=0,"启用","") as isdel')->join('__CATEGORY__ c1','c1.id = w.cid','LEFT')->join('__CATEGORY__ c2','c2.id = c1.pid','LEFT')->where($where)->limit(($p-1)*$size,$size)->select();
 
         return json(['data'=>$web,'page'=>["num_rows"=>$size,"px"=>$p,"pz"=>$size,"num_page"=>$p],'statusCode'=>200]);
     }

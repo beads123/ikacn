@@ -23,35 +23,112 @@
     </div>
 
     <div class="container">
+      {empty name="user"}
+        <div class="banner-login" ng-keyup="enterUp($event)">
+          <div class="login-box">
 
-            <div class="banner-login">
-        <div class="banner-login-user clearfix">
-          <img onerror="this.src='static/images/headimg.png';" src="static/images/headimg.png" class="banner-login-img">
-          <div class="banner-login-name">
-            <h3>新进站长_3549</h3>
-            <p>账户余额：<span>￥0.28</span></p>
+            <!-- 登录标题 -->
+            <div class="login-title">
+              <h3>登录</h3>
+              <!-- 密码登录 默认隐藏 -->
+              <div class="login-type" ng-class="{true:'type-desk',false:'type-desk hidden'}[isLoginType=='qrcode']" ng-click="isLoginTypeFun('password')">
+                <div class="login-msg"></div>
+              </div>
+              <!-- 扫码登录 默认显示 -->
+              <div class="login-type" ng-class="{true:'type-phone',false:'type-phone hidden'}[isLoginType=='password']" ng-click="isLoginTypeFun('qrcode')">
+                <div class="login-msg"></div>
+              </div>
+            </div>
+
+            <!-- 登录内容 -->
+            <!-- 扫码登录 二维码 默认隐藏 -->
+            <div class="hidden" ng-class="{true:'login-container container-phone',false:'login-container container-phone hidden'}[isLoginType=='qrcode']">
+              <div class="login_code" >
+                <div class="login_msg" ng-show="qrLogin.isMessage(qrLogin.data.act)" style="display: none">
+                  <i></i>
+                  <span ng-class="{'timeout':'timeout','success':'success','scanned':'scanned'}[qrLogin.data.act]" >
+                    <b></b>
+                    <xfan ng-click="qrLogin.reCode()"  ng-bind="qrLogin.isMessage(qrLogin.data.act)"></xfan>
+                  </span>
+                </div>
+                <img  ng-click="qrLogin.reCode()" onerror="this.style.display='block';this.src='/images/qrcode_undefind.png'" style="display: none;" ng-src="{{qrLogin.data.qrcode}}" alt="扫码登录">
+               </div>
+              <p ng-show="qrLogin.data.act!='outlink'" ng-click="qrLogin.reCode()">1分钟有效，<a class="text-blue home_re">刷新</a></p>
+              <p ng-show="qrLogin.data.act=='outlink'" ng-click="isLoginTypeFun('qrcode')"><a class="text-blue">重新连接</a></p>
+              <p ><a href="/appdown.htm" class="text-blue">下载最新版APP</a>扫一扫登录</p>
+            </div>
+
+            <!--账号密码登录-->
+            <div ng-class="{true:'login-container container-desk',false:'login-container container-desk hidden'}[isLoginType=='password']">
+              <div class="banner-login-input">
+                <span class="icon-person"></span>
+                <input type="text" ng-model="account" placeholder="用户名、邮箱、手机号码">
+              </div>
+              <div class="banner-login-tips" ng-bind="accountError"></div>
+              <div class="banner-login-input">
+                <span class="icon-lock"></span>
+                <input type="password" ng-model="password" placeholder="请输入您的密码">
+              </div>
+              <div class="banner-login-tips" ng-bind="passwordError"></div>
+              <div class="clearfix banner-login-input-wrap" style="width:267px;height: 44px;border: 1px solid #ccc;border-radius: 3px;">
+                <div id="embed-captcha" style="margin: -1px 0 0 -1px;"></div>
+                <p id="wait" class="show" style="text-align:center;line-height: 42px;">正在加载验证码......</p>
+              </div>
+              <div id="notice" class="hidden">请先验证成功</div>
+              <div id="notice1" class="banner-login-tips" style="margin-bottom: 0px;" ng-bind="checkError"></div>
+              <div class="banner-login-btn" id="embed-submit" ng-click="beginLogin()" style="margin-bottom: 5px;">登录</div>
+              <div class="clearfix banner-login-footer">
+                <span ng-class="{true:'icon-checkbox checked',false:'icon-checkbox'}[autoLogin]" ng-click="autoFun()"></span>
+            <span class="text-left" ng-click="autoFun()">
+              保持7天登录状态
+            </span>
+
+                <a class="text-right" href="/member/user/forget_password.htm" >忘记密码？</a>
+              </div>
+          </div>
+
+            <div class="clearfix banner-login-footer" style="padding-left: 3px">
+            <span class="text-left">
+              第三方登录：
+            </span>
+              <a class="login-qq icon-qq" href="/member/user/qq_login.htm"></a>
+              <a class="login-wx icon-wx" href="/member/user/wechat_login.htm"></a>
+              <a class="text-right" href="/member/user/register.htm" >立即注册</a>
+            </div>
           </div>
         </div>
-        <div class="banner-login-data clearfix">
-                    <a href="/member/order/indexsell.htm?status=2" target="_blank" class="box1">
-            <span class="num ">0</span>
-            <span class="text">待接单</span>
-          </a>
-                    <a href="/member/order/indexsell.htm?status=4" target="_blank" class="box2">
-            <span class="num ">4</span>
-            <span class="text">服务中</span>
-          </a>
-                    <a href="/member/order/indexsell.htm?status=100" target="_blank" class="box3">
-            <span class="num ">0</span>
-            <span class="text">将到期</span>
-          </a>
-                    <a href="/member/order/indexsell.htm?status=3" target="_blank" class="box4">
-            <span class="num ">0</span>
-            <span class="text">待上链</span>
-          </a>
-                  </div>
-        <a href="/member/account/member.htm" class="banner-login-btn" target="_blank">前往会员中心</a>
-      </div>
+      {else/}
+        <div class="banner-login">
+          <div class="banner-login-user clearfix">
+            <img onerror="this.src='{$user['userhead']}';" src="{$user['userhead']}" class="banner-login-img">
+            <div class="banner-login-name">
+              <h3>{$user['grade']}_3549</h3>
+              <p>账户余额：<span>￥0.28</span></p>
+            </div>
+          </div>
+          <div class="banner-login-data clearfix">
+                      <a href="/member/order/indexsell.htm?status=2" target="_blank" class="box1">
+              <span class="num ">0</span>
+              <span class="text">待接单</span>
+            </a>
+                      <a href="/member/order/indexsell.htm?status=4" target="_blank" class="box2">
+              <span class="num ">4</span>
+              <span class="text">服务中</span>
+            </a>
+                      <a href="/member/order/indexsell.htm?status=100" target="_blank" class="box3">
+              <span class="num ">0</span>
+              <span class="text">将到期</span>
+            </a>
+                      <a href="/member/order/indexsell.htm?status=3" target="_blank" class="box4">
+              <span class="num ">0</span>
+              <span class="text">待上链</span>
+            </a>
+                    </div>
+          <a href="/member/account/member.htm" class="banner-login-btn" target="_blank">前往会员中心</a>
+        </div>
+      {/empty}
+
+            
           </div>
 
     <div class="banner-bottom">
@@ -1847,253 +1924,50 @@
 
       </div>
     </div>
-
     <div class="article-block">
       <div class="block-title clearfix">
         <span class="block-title-left">站长资讯</span>
         <a class="block-title-right" ng-href="/{{zzzx_more_url}}/">更多></a>
       </div>
 
-      <div class="article-block-list clearfix " ng-show="zxzx">
+      <div class="article-block-list clearfix ">
         <div class="article-block-left">
           <div class="article-block-btns">
-            <span class="btn btn-info hover" ng-click="articleClick(1)">热点资讯</span>
-            <span class="btn btn-info " ng-click="articleClick(2)">电商</span>
-            <span class="btn btn-info " ng-click="articleClick(3)">建站</span>
-            <span class="btn btn-info " ng-click="articleClick(4)">创业</span>
+            {volist name="news" id="vo"}
+              <span class="btn btn-info {eq name='key' value='0'}hover{/eq}" ng-click="articleClick({$key})">{$vo['typname']}</span>
+            {/volist}
           </div>
-          
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="/news/wzgg/22621.htm" class="article-title">延时喷剂有副作用吗，延时喷剂哪个牌子好</a>
-              <a target="_blank" href="/news/wzgg/22621.htm" class="article-con">
-                　　男人女人都需要的秘密武器！对她来说-时间很重要！来自中国性学会不完统计调研、79%的女性对男性持续时间不满意。你离征服她，只差一瓶耐美尔延时喷剂！尽情尽兴，告别快男，一喷即可！　　1高效延时　　耐…              </a>
-            </div>
-          </div>
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="/news/waiwen/22618.htm" class="article-title">华为与微软商谈AI芯片领域合作</a>
-              <a target="_blank" href="/news/waiwen/22618.htm" class="article-con">
-                　　据媒体报道，华为正在与微软商谈合作，微软中国数据中心采用华为人工智能（AI）芯片技术。虽然尚不确定双方是否会达成协议，但与微软的交易将是华为向占主导地位的人工智能芯片制造商英伟达发起挑战的第一步。…              </a>
-            </div>
-          </div>
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="/news/waiwen/22605.htm" class="article-title">大空头对特斯拉及马斯克提起集体诉讼</a>
-              <a target="_blank" href="/news/waiwen/22605.htm" class="article-con">
-                　　大空头对特斯拉及马斯克提起集体诉讼。香橼研究（Citron Research）主编、著名的特斯拉空头Andrew Left周四正式提起集体诉讼，起诉电动汽车公司特斯拉及其CEO马斯克涉嫌证券欺诈。…              </a>
-            </div>
-          </div>
+          {volist name="news" id="vo"}
+              <div ng-show="zxzx{$key}">
+              {volist name="vo['new']" id="vv"}
+                <div class="article-block-item clearfix">
+                  <div class="left">
+                    <div class="date-lg">09/07</div>
+                    <div class="date-sm">2018</div>
                   </div>
-
-        <div class="article-block-right">
-                    <a target="_blank" href="/news/kjpl/22601.htm" class="article-img">
-            <img src="//cdn.2898.com/upload/avatar/51605c5af6fff4f997d654fd82a298e2.jpg@w400_h235" alt="减肥不易还总是反弹？或许可以交给AI“搞定”">
-            <span class="banner-bottom">
-              <span class="text">减肥不易还总是反弹？或许可以交给AI“搞定”</span>
-            </span>
-          </a>
-                    <a target="_blank" href="/news/dongtai/22597.htm" class="article-img">
-            <img src="//cdn.2898.com/upload/avatar/b4ae0905dd84a726447c9011ee3d4dfe.jpg@w400_h235" alt="作家六六连发四条微博斥百度骗子企业，百度已出面致歉">
-            <span class="banner-bottom">
-              <span class="text">作家六六连发四条微博斥百度骗子企业，百度已出面致歉</span>
-            </span>
-          </a>
+                  <div class="right">
+                    <a target="_blank" href="{$vv['uri']}" class="article-title">{$vv['title']}</a>
+                    <a target="_blank" href="{$vv['uri']}" class="article-con">
+                      　　{$vv['description']}</a>
                   </div>
+                </div>
+              {/volist}
+            </div>
+          {/volist}
+        </div>
+        {volist name="news" id="vo"}
+          <div class="article-block-right" ng-show="zxzx{$key}">
+            {volist name="vo['tui']" id="vv"}
+              <a target="_blank" href="{$vv['uri']}" class="article-img">
+                <img src="{$vv['litpic']}" alt="{$vv['title']}">
+                <span class="banner-bottom">
+                  <span class="text">{$vv['title']}</span>
+                </span>
+              </a>
+            {/volist}
+          </div>
+        {/volist}
       </div>
-
-      <div class="article-block-list clearfix  " ng-show="dsds">
-        <div class="article-block-left">
-          <div class="article-block-btns">
-            <span class="btn btn-info " ng-click="articleClick(1)">热点资讯</span>
-            <span class="btn btn-info hover" ng-click="articleClick(2)">电商</span>
-            <span class="btn btn-info " ng-click="articleClick(3)">建站</span>
-            <span class="btn btn-info " ng-click="articleClick(4)">创业</span>
-          </div>
-          
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="/news/dsxw/22620.htm" class="article-title">电商巨头比拼付费会员“跨界权益”</a>
-              <a target="_blank" href="/news/dsxw/22620.htm" class="article-con">
-                　　电商巨头比拼付费会员“跨界权益”。付费会员的成效挑动着阿里与京东两大电商巨头的神经，两者仰仗着各自的资源在扩大着竞争力。京东与阿里在付费会员方面的侧重点各有不同，差异性让两大电商巨头吸纳着不同的盟…              </a>
-            </div>
-          </div>
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="/news/dsxw/22609.htm" class="article-title">刘强东涉嫌“性侵门”事件发酵：警方正进行刑事调查</a>
-              <a target="_blank" href="/news/dsxw/22609.htm" class="article-con">
-                　　刘强东涉嫌“性侵门”事件发酵：警方正进行刑事调查。京东集团创始人刘强东在美涉嫌“性侵”一事有了更多细节，其涉嫌罪行等级为“一级重罪”，涉嫌罪行为“犯罪性行为-强暴-既遂”。　　当地警方仍在进行刑事…              </a>
-            </div>
-          </div>
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="/news/dsxw/22604.htm" class="article-title">京东股价收涨3.61%，此前两个交易日跌16%</a>
-              <a target="_blank" href="/news/dsxw/22604.htm" class="article-con">
-                　　京东股价收涨3.61%，此前两个交易日跌16%。截至周四美股收盘，京东股价报27.25美元，涨幅为3.61%，而在此前的两个交易日，京东股价因刘强东事件累计下跌近16%，市值蒸发72亿美元。　　此…              </a>
-            </div>
-          </div>
-                  </div>
-
-        <div class="article-block-right">
-                    <a target="_blank" href="/news/dsxw/22581.htm" class="article-img">
-            <img src="//cdn.2898.com/upload/avatar/dd06073eaa5dfb1b4f810a911f81f5d2.jpg" alt="京东首次公布PLUS会员数量，在籍会员超过一千万">
-            <span class="banner-bottom">
-              <span class="text">京东首次公布PLUS会员数量，在籍会员超过一千万</span>
-            </span>
-          </a>
-                    <a target="_blank" href="/news/dsxw/22572.htm" class="article-img">
-            <img src="//cdn.2898.com/upload/avatar/29c2f61ccbf1943329716cf5f623e138.jpg" alt="京东超市在婴幼儿奶粉等品类的线上市场份额占比超五成">
-            <span class="banner-bottom">
-              <span class="text">京东超市在婴幼儿奶粉等品类的线上市场份额占比超五成</span>
-            </span>
-          </a>
-                  </div>
-      </div>
-
-      <div class="article-block-list clearfix  " ng-show="jzjz">
-        <div class="article-block-left">
-          <div class="article-block-btns">
-            <span class="btn btn-info " ng-click="articleClick(1)">热点资讯</span>
-            <span class="btn btn-info " ng-click="articleClick(2)">电商</span>
-            <span class="btn btn-info hover" ng-click="articleClick(3)">建站</span>
-            <span class="btn btn-info " ng-click="articleClick(4)">创业</span>
-          </div>
-          
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="/news/wzjs/22591.htm" class="article-title">拒绝SEO黑帽技术，稳定提升网站排名</a>
-              <a target="_blank" href="/news/wzjs/22591.htm" class="article-con">
-                　　许多站长喜欢使用SEO黑帽手法快速提升排名，但是这些总归还是属于作弊行为，一旦被搜索引擎察觉，网站就要被惩罚。个人认为我们需要增加自己对SEO黑帽的认知，适时避开这些黑帽手法，避免网站受到搜索引擎…              </a>
-            </div>
-          </div>
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="/news/wzjs/22586.htm" class="article-title">交换友情链接对网站优化是否真的有用？</a>
-              <a target="_blank" href="/news/wzjs/22586.htm" class="article-con">
-                　　站长在进行SEO优化中，时常与其它网站交换友情链接，想通过友情链接获得搜索引擎对网站的好评。那么交换友情链接对网站优化是否真的有用？友情链接总的来说有利也有弊，今天就为大家全面分析下友情链接的作用…              </a>
-            </div>
-          </div>
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/06</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="/news/wzjs/22550.htm" class="article-title">网站优化过程中，企业该如何有效提升网站流量？</a>
-              <a target="_blank" href="/news/wzjs/22550.htm" class="article-con">
-                　　网站排名与网站流量是有很大关系的，企业提升网站排名不过就是为了增加品牌曝光度，从而促进转化。如果一个网站排名很靠前，但是却没有流量，那么就需要思考下是否是搜索引擎上的优化没有做好，还是网站本身存在…              </a>
-            </div>
-          </div>
-                  </div>
-
-        <div class="article-block-right">
-                    <a target="_blank" href="/news/wzjs/22543.htm" class="article-img">
-            <img src="//cdn.2898.com/upload/avatar/c83fbc45739684d5763bbb2cb015a669.jpg" alt="网站优化推广过程中，如何做好站内优化与站外优化？">
-            <span class="banner-bottom">
-              <span class="text">网站优化推广过程中，如何做好站内优化与站外优化？</span>
-            </span>
-          </a>
-                    <a target="_blank" href="/news/wzjs/22517.htm" class="article-img">
-            <img src="//cdn.2898.com/upload/avatar/1636c0b9b974151394a6d41aa5302845.jpg" alt="网站没流量？6个技巧教你轻松提升网站流量！">
-            <span class="banner-bottom">
-              <span class="text">网站没流量？6个技巧教你轻松提升网站流量！</span>
-            </span>
-          </a>
-                  </div>
-      </div>
-
-      <div class="article-block-list clearfix " ng-show="cycy">
-        <div class="article-block-left">
-          <div class="article-block-btns">
-            <span class="btn btn-info " ng-click="articleClick(1)">热点资讯</span>
-            <span class="btn btn-info " ng-click="articleClick(2)">电商</span>
-            <span class="btn btn-info " ng-click="articleClick(3)">建站</span>
-            <span class="btn btn-info hover" ng-click="articleClick(4)">创业</span>
-          </div>
-          
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank"  href="/news/dianping/22619.htm" class="article-title">绞杀视频行业乱象，爱奇艺哪里来的勇气？</a>
-              <a target="_blank" href="/news/dianping/22619.htm" class="article-con">
-                　　绞杀视频行业乱象，爱奇艺哪里来的勇气？9月4日午间，爱奇艺突然发布声明，宣布正式关闭全站前台播放量显示，取而代之的是以综合用户讨论度、互动量、多维度播放类指标的“内容热度”，并且还痛斥了一番“唯播…              </a>
-            </div>
-          </div>
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank"  href="/news/cydt/22617.htm" class="article-title">价格战落幕，互联网电视竞争进入下半场</a>
-              <a target="_blank" href="/news/cydt/22617.htm" class="article-con">
-                　　价格战落幕，互联网电视竞争进入下半场。9月5日，欧洲最大的电子消费品展——柏林国际电子消费品展览会（以下简称“IFA”）落下帷幕。中外彩电厂商也是“八仙过海”，纷纷展示自己最新的电视产品，折射出互…              </a>
-            </div>
-          </div>
-                    <div class="article-block-item clearfix">
-            <div class="left">
-              <div class="date-lg">09/07</div>
-              <div class="date-sm">2018</div>
-            </div>
-            <div class="right">
-              <a target="_blank"  href="/news/cydt/22616.htm" class="article-title">美团挂牌时间确定！拟在全球发售约4 .8亿股</a>
-              <a target="_blank" href="/news/cydt/22616.htm" class="article-con">
-                　　美团挂牌时间确定！拟在全球发售约4 .8亿股。美团点评招股大幕徐徐揭开—昨天下午在港召开的全球发售新闻发布会披露，其将于9月7日上午9时开始正式公开发售，预计于9月12日中午结束，挂牌上市时间也正…              </a>
-            </div>
-          </div>
-                  </div>
-
-        <div class="article-block-right">
-                    <a target="_blank" href="/news/cydt/22615.htm" class="article-img">
-            <img src="//cdn.2898.com/upload/avatar/70ad4eee7de13f6f232eafbb2e49d35b.jpg" alt="滴滴2018上半年巨亏40亿，补贴高达百亿">
-            <span class="banner-bottom">
-              <span class="text">滴滴2018上半年巨亏40亿，补贴高达百亿</span>
-            </span>
-          </a>
-                    <a target="_blank" href="/news/cydt/22614.htm" class="article-img">
-            <img src="//cdn.2898.com/upload/avatar/3b4b00a7f81da8eb886d69aa68e56447.jpg" alt="联手360与百度，比亚迪开放者大会“放大招”？">
-            <span class="banner-bottom">
-              <span class="text">联手360与百度，比亚迪开放者大会“放大招”？</span>
-            </span>
-          </a>
-                  </div>
-      </div>
-
     </div>
     
     <div ng-hide="imgcode==false" style="margin-bottom: 10px;position: relative;">
@@ -2110,72 +1984,20 @@
       </div>
       <div class="link-block-list">
         <div class="list-con clearfix">
-                    <a target="_blank" title="zd423" href="http://www.zdfans.com/">zd423</a>
-                    <a target="_blank" title="文芳阁" href="http://www.wenfangge.cn/">文芳阁</a>
-                    <a target="_blank" title="公司转让" href="http://www.gongsijiaoyi.com/">公司转让</a>
-                    <a target="_blank" title="景安云服务器" href="http://server.zzidc.com">景安云服务器</a>
-                    <a target="_blank" title="文案策划" href="http://www.ruanwenclass.com/">文案策划</a>
-                    <a target="_blank" title="公司转让" href="http://www.51kuaizhuan.com/">公司转让</a>
-                    <a target="_blank" title="400电话" href="http://www.vc400.cn/">400电话</a>
-                    <a target="_blank" title="服务器租用" href="http://www.enkj.com/">服务器租用</a>
-                    <a target="_blank" title="办公用品" href="http://www.wjyh.com/">办公用品</a>
-                    <a target="_blank" title="网贷技术论坛" href="https://www.kashen.cm/">网贷技术论坛</a>
-                    <a target="_blank" title="淘宝优惠券" href="https://www.haoshsh.com/">淘宝优惠券</a>
-                    <a target="_blank" title="seo" href="http://www.yunkeseo.com/">seo</a>
-                    <a target="_blank" title="虫虫新闻网" href="http://www.ccxinwen.com/">虫虫新闻网</a>
-                    <a target="_blank" title="深圳公司注册" href="http://www.0755haoyu.com/">深圳公司注册</a>
-                    <a target="_blank" title="商标注册" href="https://www.quandashi.com/">商标注册</a>
-                    <a target="_blank" title="代理记账" href="https://www.huisuanzhang.com/">代理记账</a>
-                    <a target="_blank" title="免费视频制作软件" href="http://www.vegaschina.cn/">免费视频制作软件</a>
-                    <a target="_blank" title="代写毕业论文" href="http://www.fylunwen.com/">代写毕业论文</a>
-                    <a target="_blank" title="健康无忧网" href="http://www.jk51.com/">健康无忧网</a>
-                    <a target="_blank" title="香烟价格" href="http://www.cnxiangyan.com/">香烟价格</a>
-                    <a target="_blank" title="国外网站大全" href="http://www.2hzz.com/">国外网站大全</a>
-                    <a target="_blank" title="苹果手机找回方法" href="http://www.zhaoiphone.com/">苹果手机找回方法</a>
-                    <a target="_blank" title="400电话" href="http://www.trust400.com/">400电话</a>
-                    <a target="_blank" title="阿里云服务器" href="https://www.edns.com/">阿里云服务器</a>
-                    <a target="_blank" title="开业贺词" href="http://www.shizheba.com/ ">开业贺词</a>
-                    <a target="_blank" title="交易平台" href="http://www.huzhan.com/">交易平台</a>
-                    <a target="_blank" title="微信小程序" href="http://www.91ud.com/">微信小程序</a>
-                    <a target="_blank" title="印度人看中国" href="http://www.hushinm.com/">印度人看中国</a>
-                    <a target="_blank" title="百度云论坛" href="http://www.lthack.com/">百度云论坛</a>
-                    <a target="_blank" title="短信群发平台" href="http://www.lexinchina.com/">短信群发平台</a>
-                    <a target="_blank" title="b2b网站大全" href="http://www.diqiuw.com/">b2b网站大全</a>
-                    <a target="_blank" title="pdf转word" href="http://pdftoword.55.la/">pdf转word</a>
-                    <a target="_blank" title="汽车票网上订票" href="https://www.changtu.com/">汽车票网上订票</a>
-                    <a target="_blank" title="ASO" href="https://aso114.com/">ASO</a>
-                    <a target="_blank" title="网赚兼职" href="http://www.jiankeba.com/">网赚兼职</a>
-                    <a target="_blank" title="装机" href="http://www.zhuangjiyuan.com/">装机</a>
-                    <a target="_blank" title="ghost win7" href="http://www.pgygho.com/">ghost win7</a>
-                    <a target="_blank" title="防伪查询" href="http://www.315fangwei.com/">防伪查询</a>
-                    <a target="_blank" title="400电话" href="http://www.0755400.com/">400电话</a>
-                    <a target="_blank" title="电脑技术" href="http://www.jsgho.net/">电脑技术</a>
-                    <a target="_blank" title="国外服务器" href="http://www.usa-idc.com/">国外服务器</a>
-                    <a target="_blank" title="深圳网站建设" href="http://www.yibaixun.com">深圳网站建设</a>
-                    <a target="_blank" title="山东教师考试网" href="http://www.jsbexam.com/ ">山东教师考试网</a>
-                    <a target="_blank" title="营销推广" href="http://www.ruanwenclass.com/">营销推广</a>
-                    <a target="_blank" title="网站建设" href="http://www.ttn8.com/">网站建设</a>
-                    <a target="_blank" title="一团网" href="http://www.etuan.com/">一团网</a>
-                    <a target="_blank" title="二维码生成器" href="http://www.wwei.cn/ ">二维码生成器</a>
-                    <a target="_blank" title="源码" href="http://www.suibianlu.com/">源码</a>
-                    <a target="_blank" title="外链代发" href="http://www.6ke.com.cn/">外链代发</a>
-                    <a target="_blank" title="未来网址导航" href="http://www.ggk.cn/">未来网址导航</a>
-                    <a target="_blank" title="广告联盟" href="http://www.lianmeng.la/">广告联盟</a>
-                    <a target="_blank" title="外贸网站建设" href="http://www.sun.sh.cn/">外贸网站建设</a>
-                    <a target="_blank" title="QQ群发器 " href="http://www.100qunfa.com/">QQ群发器 </a>
-                    <a target="_blank" title="软文街" href="https://www.ruanwen.la/">软文街</a>
-                    <a target="_blank" title="大牛论坛" href="http://www.4330.cn">大牛论坛</a>
-                  </div>
+          {volist name="flink" id="vo"}
+            <a target="_blank" title="{$vo['name']}" href="{$vo['url']}">{$vo['name']}</a>
+          {/volist}
+        </div>
       </div>
     </div>
     
   </div>
 </div>
-<script type="text/javascript" src="//cdn.2898.com/js/gt.js"></script>
-<script type="text/javascript" src="//cdn.2898.com/js/factory/qrcode_login.js?v=20180903"></script>
-<script type="text/javascript" src="//cdn.2898.com/js/factory/directive.js?v=20180903"></script>
+<script type="text/javascript" src="/static/js/gt.js"></script>
+<script type="text/javascript" src="/static/js/factory/qrcode_login.js?v=20180903"></script>
+<script type="text/javascript" src="/static/js/factory/directive.js?v=20180903"></script>
 {include file="footer"}
-<script type="text/javascript" src="static/js/index.js?v=20180903"></script>
-<script type = "text/javascript" src = "static/js/index_message.js?v=20180903"></script>
+<script type="text/javascript" src="/static/js/index.js?v=20180903"></script>
+<script type = "text/javascript" src = "/static/js/index_message.js?v=20180903"></script>
 </body>
 </html>

@@ -1,9 +1,10 @@
 app.controller('articleControl',function($scope,$http,common,$rootScope,qrcodeLogin) {
   $scope.isLoginType = 'password'; //登录方式：qrcode二维码，password密码登录
-  $scope.zxzx = true;
-  $scope.dsds = false;
-  $scope.jzjz = false;
-  $scope.cycy = false;
+  $scope.zxzx0 = true;
+  $scope.zxzx1 = false;
+  $scope.zxzx2 = false;
+  $scope.zxzx3 = false;
+  $scope.zxzx4 = false;
   $scope.qrLogin = qrcodeLogin;
 
   $scope.isLoginTypeFun = function(key){
@@ -29,25 +30,30 @@ app.controller('articleControl',function($scope,$http,common,$rootScope,qrcodeLo
   }
 
   $scope.articleClick = function(index){
-    $scope.zxzx = false;
-    $scope.dsds = false;
-    $scope.jzjz = false;
-    $scope.cycy = false;
+    $scope.zxzx0 = false;
+    $scope.zxzx1 = false;
+    $scope.zxzx2 = false;
+    $scope.zxzx3 = false;
+    $scope.zxzx4 = false;
   
-    if(index == 1) {
-      $scope.zxzx = true;
+    if(index == 0) {
+      $scope.zxzx0 = true;
       $scope.zzzx_more_url = 'news';
     }
-    if(index == 2) {
-      $scope.dsds = true;
+    if(index == 1) {
+      $scope.zxzx1 = true;
       $scope.zzzx_more_url = 'bizs';
     }
-    if(index == 3) {
-      $scope.jzjz = true;
+    if(index == 2) {
+      $scope.zxzx2 = true;
       $scope.zzzx_more_url = 'web';
     }
+    if(index == 3) {
+      $scope.zxzx3 = true;
+      $scope.zzzx_more_url = 'start';
+    }
     if(index == 4) {
-      $scope.cycy = true;
+      $scope.zxzx4 = true;
       $scope.zzzx_more_url = 'start';
     }
   }
