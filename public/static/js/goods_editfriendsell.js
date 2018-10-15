@@ -57,9 +57,9 @@ app.controller("ctrlArea",function($http,$scope){
     		}
     	}
     	$scope.can_save = false
-        $http.post("/member/goods/upFriend",{gid:userInfo[0].gid,price:$scope.priceArr.price.p,price_qz:$scope.priceArr.price_qz.p,show_style:$scope.show_style,auto_accept:$scope.auto_accept}).success(function(data){	
+        $http.post("/goods/upFriend",{gid:userInfo[0].gid,price:$scope.priceArr.price.p,price_qz:$scope.priceArr.price_qz.p,show_style:$scope.show_style,auto_accept:$scope.auto_accept}).success(function(data){	
 			modal_confirm(data.message,function(){
-				window.location.href = memberUrl("/goods/friendgoods")
+				window.location.href = memberUrl("goods/friendgoods")
 			},function(){
 			},{no:'hide'})	
         })

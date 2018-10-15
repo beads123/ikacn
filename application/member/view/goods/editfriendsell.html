@@ -54,8 +54,8 @@
           <div class="list-group clearfix" style="padding: 0px;">
             <label class="pull-left">自动接单：</label>
                     <div class="pl0 pr8 pull-left wd80">
-                      <label  class="autoorder mr30" ng-click='accept(2)'><input type="radio" name="order" value="1"  class="none"  /><b></b>不使用</label>
-                      <label  class="autoorder mr30" ng-click='accept(1)'><input type="radio" name="order" value= "2"   class="none"    checked="checked"/><b></b>续费订单，自动接单</label>  
+                      <label  class="autoorder mr30" ng-click='accept(2)'><input type="radio" name="order" value="1"  class="none" {eq name="d['auto_accept']" value="2" }   checked="checked"{/eq} /><b></b>不使用</label>
+                      <label  class="autoorder mr30" ng-click='accept(1)'><input type="radio" name="order" value= "2"   class="none" {eq name="d['auto_accept']" value="1" }   checked="checked"{/eq}/><b></b>续费订单，自动接单</label>  
                       <span style="color: #b9b7b7;">（开启后，上链检测通过后订单直接开始服务）</span>
                   </div>
           </div>
