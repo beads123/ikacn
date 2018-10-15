@@ -14,7 +14,7 @@
     <link type="text/css" rel="stylesheet" href="/static/css/jquery.page.css" />
     <link type="text/css" rel="stylesheet" href="/static/js/fontAwesome/css/font-awesome.min.css" />
     <link type="text/css" rel="stylesheet" href="/static/css/bootcommon.css?v=20180903" />
-    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <!--script type="text/javascript" src="/static/js/jquery.js"></script>
         <script  type="text/javascript" src="/static/js/angular1.0.js"></script>
     <script type="text/javascript" src="/static/js/ng-infinite-scroll.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap/js/bootstrap.min.js"></script>
@@ -22,7 +22,8 @@
     <script type="text/javascript" src="/static/js/config.js?v=20180903"></script>
     <script type="text/javascript" src="/static/js/highcharts.js"></script>
         <script type="text/javascript" src="/static/js/angular-websocket.min.js"></script>
-    <script type="text/javascript" src="/static/js/jquery-cookie.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-cookie.js"></script-->
+    <script type = "text/javascript" src = "/static/js/base/baseHome.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -98,61 +99,68 @@
     </ul>
 
       <ul class="nav navbar-nav navbar-right" style="margin-right: 0px;">
-                    <li>
+        {empty name="user"}
+          <li class="navbar-more">
+            <a href="/user/login.html" class="header_top_login">登录</a> | <a href="/user/register.html">注册</a>
+          </li>
+          {else/}
+            <li>
               <a href="/index/integral/invite_friends.htm">
                   <span class="head_invite">邀请好友</span>
               </a>
+            </li>
+            <li>
+                <a href="/index/integral/index.htm">
+                    <span class="head_sign">签到</span>
+                </a>
+            </li>
+            <li class="dropdown navbar-more-login">
+            <a href="{:url('/','',true,'my')}" class="dropdown-toggle" target="_blank">
+              {$user['grade']}_3549<span class="navbar-more-level0">
+               <img src="/static/images/jf/space{$user['grades']}.png" width="26px" height="12px" style = "margin-bottom: 8px;">
+                  </span>
+              <span  style="margin-left: 25px"  class="navbar-more-down"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="clearfix pd105">
+                <img ng-src="{$user['userhead']}" onerror="this.src='{$user['userhead']}';" class="user-img">
+                <div class="user-info">
+                  <div class="user-login">
+                    <a href="{:url('/','',true,'my')}" target="_blank">个人信息</a>
+                    <span class="line-separate">|</span>
+                    <a href="{:url('Index/login_out','',true,'my')}">退出</a>
+                  </div>
+                    <a href="/index/integral/growth_process.htm">
+                        <div class="user-level0">
+                            <img src="/static/images/jf/vip{$user['grades']}.png"/>
+                        </div>
+                    </a>
+                    <a href="{:url('Index/personal','',true,'my')}">
+                        <div class="user-money">
+                            账户余额：<span class="text-red">0.28</span>元
+                        </div>
+                    </a>
+                    <a href="{:url('Index/integral_detail','',true,'my')}">
+                        <div class="user-money" style="margin-top: 8px">
+                            积分：<span class="text-red">{$user['point']}</span>积分
+                        </div>
+                    </a>
+                </div>
+              </li>
+            </ul>
+            <div class="line-border"></div>
           </li>
           <li>
-              <a href="/index/integral/index.htm">
-                  <span class="head_sign">签到</span>
-              </a>
+            <a href="/index/goods/submit_order.htm">
+                <!--<span class="glyphicon glyphicon-shopping-cart mr5"></span>-->
+               <!--<span class="shop_cart">购物车(0)</span>-->
+                <span class="shop_cart">购物车(<xfan ng-bind="common.itemNum"></xfan>)</span>
+            </a>
+            <div class="line-border"></div>
           </li>
-                  <li class="dropdown navbar-more-login">
-          <a href="/member/account/member.htm" class="dropdown-toggle"   target="_blank">
-            新进站长_3549                <span class="navbar-more-level0">
-                    <img src="/static/images/jf/space1.png" width="26px" height="12px" style = "margin-bottom: 8px;">
-                </span>
-            <span  style="margin-left: 25px"  class="navbar-more-down"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li class="clearfix pd105">
-              <img ng-src="/static/images/headimg.png" onerror="this.src='/static/images/headimg.png';" class="user-img">
-              <div class="user-info">
-                <div class="user-login">
-                  <a href="/member/account/member.htm" target="_blank">个人信息</a>
-                  <span class="line-separate">|</span>
-                  <a href="/member/account/login_out.htm">退出</a>
-                </div>
-                  <a href="/index/integral/growth_process.htm">
-                      <div class="user-level0">
-                          <img src="/static/images/jf/vip1.png"/>
-                      </div>
-                  </a>
-                  <a href="/member/account/personal.htm">
-                      <div class="user-money">
-                          账户余额：<span class="text-red">0.28</span>元
-                      </div>
-                  </a>
-                  <a href="/member/account/integral_detail.htm">
-                      <div class="user-money" style="margin-top: 8px">
-                          积分：<span class="text-red">74</span>积分
-                      </div>
-                  </a>
-              </div>
-            </li>
-          </ul>
-          <div class="line-border"></div>
-        </li>
-        <li>
-          <a href="/index/goods/submit_order.htm">
-              <!--<span class="glyphicon glyphicon-shopping-cart mr5"></span>-->
-             <!--<span class="shop_cart">购物车(0)</span>-->
-              <span class="shop_cart">购物车(<xfan ng-bind="common.itemNum"></xfan>)</span>
-          </a>
-          <div class="line-border"></div>
-        </li>
-        <li><a href="javascript:void(0)" class="messbtn" ng-click = "checkAll()">消息(9)</a></li>
+          <li><a href="javascript:void(0)" class="messbtn" ng-click = "checkAll()">消息(9)</a></li>
+        {/empty}
+                    
                 <li class="dropdown navbar-more-dropdown">
           <a style="padding-right: 0;" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">帮助中心 <span class="navbar-more-down" ></span></a>
           <ul class="dropdown-menu">
@@ -165,6 +173,14 @@
             <li><a href="/changenotices.htm">流量交换指引？</a></li>
           </ul>
           <div class="line-border"></div>
+        </li>
+        <li class="dropdown navbar-more-login">
+            <a href="/html5/mobile.html" >手机版本</a>
+            <ul class="dropdown-menu code_img" >
+                <li class="clearfix ">
+                    <img src="/images/app/h5_code.png" alt="">
+                </li>
+            </ul>
         </li>
       </ul>
 
@@ -182,10 +198,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>-->
-
-      <a class="navbar-brand" href="/">
-        <img alt="2898" src="/static/images/2898logo.png">    
-      </a>
+      <h1 class="mt_0">
+          <a class="navbar-brand" href="/" title="站长资讯-友情链接-资源互换-站长交易平台">
+              <img alt="2898站长资源平台" src="/static/images/2898logo.png">
+          </a>
+      </h1>
     </div>
 
     <div class="clearfix navmenu" style="margin-left: 10px;position: relative">   <!-- class="collapse navbar-collapse" id="navbar-collapse-menu"-->
@@ -221,7 +238,15 @@
             <li><a href="/friendmeal.html">友链套餐</a></li>
           </ul>
         </li>
-        <li class=""><a href="/web_exchange.html">网站交易</a></li>
+        <li class="dropdown nav-more ">
+          <a href="/web_exchange.htm" class="dropdown-toggle icon-rednew">网站交易</a>
+          <ul class="dropdown-menu" >
+              <li><a class="man " href="/web_exchange.htm">网站交易</a></li>
+              <li><a href="/web_exchange.htm">购买网站</a></li>
+              <li><a href="/buy_web.htm">网站求购</a></li>
+            </ul>
+        </li>
+        <li class="icon-rednew "><a href="/softtext.htm">软文交易</a></li>
         <li class=""><a href="/friendchange.html">免费换链</a></li>
           <li  class="dropdown nav-more ">
           <a href="/flowad.htm" class="dropdown-toggle icon-rednew">
@@ -246,6 +271,7 @@
               <li><a href="/member/freechange/release.htm">免费换链</a></li>
               <li><a href="/member/trafficexchange/index.htm">流量交换</a></li>
               <li><a href="/member/websitetrade/sellwebsite.htm">网站交易</a></li>
+              <li><a href="/member/softtext/softtext.htm">出售软文</a></li>
             </ul>
           </div>
         </li>

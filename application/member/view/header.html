@@ -187,69 +187,16 @@
     <!--卖家左边菜单栏-->
 <div class="left-menu" >
   <div class="member-nav">
-        <dl class="zhgs" style="position: relative;">
-      <dt><a class = "curr" href="/">帐户概述</a>  
-            </dt>
-            
-    </dl>
-        <dl class="ddgl" style="position: relative;">
-      <dt><a href="javascript:void(0)" class="arrup">订单管理<i ></i></a> 
-            </dt>
-              <dd style=""><a class="" href="/order/index.html">购买的订单</a></dd>
-                <dd style=""><a class="" href="/order/indexsell.html">卖出的订单</a></dd>
-              
-    </dl>
-        <dl class="csyl" style="position: relative;">
-      <dt><a  href="/goods/friendgoods.html">出售友链</a> 
-            </dt>
-            
-    </dl>
-        <dl class="csgg" style="position: relative;">
-      <dt><a  href="/twgoods/twgoods.html">出售广告</a> 
-            </dt>
-            
-    </dl>
-        <dl class="csrw" style="position: relative;">
-      <dt><a class = "curr" href="/softtext/softtext.html">出售软文</a> 
-            </dt>
-            
-    </dl>
-        <dl class="wzjy" style="position: relative;">
-      <dt><a href="javascript:void(0)" class="arrup">网站交易<i ></i></a> 
-            </dt>
-              <dd style=""><a class="" href="/websitetrade/sellwebsite.html">出售的网站</a></dd>
-                <dd style=""><a class="" href="/websitetrade/buywebsite.html">购买的网站</a></dd>
-              
-    </dl>
-        <dl class="mfhl" style="position: relative;">
-      <dt><a href="javascript:void(0)" class="arrup">免费换链<i ></i></a> 
-            </dt>
-              <dd style=""><a class="" href="/freechange/release.html">我发布的</a></dd>
-                <dd style=""><a class="" href="/freechange/changelist.html">交换列表</a></dd>
-              
-    </dl>
-        <dl class="lljh" style="position: relative;">
-      <dt><a href="javascript:void(0)" class="arrup">流量交换<i ></i></a> 
-       
-        <img src="/static/images/guide/new.png" class="traffic_guide_new">
-        <div class="guide-mask one_step"></div>
-        <img src="/static/images/guide/traffic_guide.png" alt="two" class="stepone one_step"/>
-        
-            </dt>
-              <dd style=""><a class="" href="/trafficexchange/index.html">免费交换</a></dd>
-                <dd style=""><a class="" href="/trafficexchange/salesindex.html">流量买卖</a></dd>
-                <dd style=""><a class="" href="/trafficexchange/adverwei_manage.html">广告位管理</a></dd>
-                <dd style=""><a class="" href="/trafficexchange/adver_manage.html">广告管理</a></dd>
-              
-    </dl>
-        <dl class="tggl" style="position: relative;">
-      <dt><a href="javascript:void(0)" class="arrup">推广管理<i ></i></a> 
-            </dt>
-              <dd style=""><a class="" href="/tggl/index.html">广告链接管理</a></dd>
-                <dd style=""><a class="" href="/tggl/softmanage.html">软文管理</a></dd>
-              
-    </dl>
-
+    {volist name="left" id="vo"}
+      <dl class="{$vo['class']}" style="position: relative;">
+        <dt><a {empty name="vo['child']"}{eq name="vo['url']" value="$path"}class = "curr"{/eq} href="{$vo['url']}"{else/} href="javascript:void(0)" class="arrup"{/empty}>{$vo['name']}{notempty name="vo['child']"}<i ></i>{/notempty}</a>{eq name="vo['isnew']" value="1"}<img src="/static/images/guide/new.png" class="traffic_guide_new" style="display: block;">{/eq}</dt>
+        {notempty name="vo['child']"}
+          {volist name="vo['child']" id="vv"}
+            <dd style=""><a class="" href="{$vv['url']}">{$vv['name']}</a></dd>
+          {/volist}
+        {/notempty}
+      </dl>
+    {/volist}
       </div>
 </div>
 

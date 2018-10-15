@@ -1,12 +1,13 @@
 <?php
 namespace app\index\controller;
-use think\Controller;
-class Index extends Controller
+use app\common\controller\Base;
+class Index extends Base
 {
+    private $fid = 9;
 	public function _initialize()
     {
-        /*parent::_initialize();
-        $this->assign('keywords','华乐网,今日新闻头条,今日头条新闻,商业评论,科技资讯,互联网金融,科技新闻,移动互联网,网络游戏,手游,行业分析,新兴行业,科技前沿,科技媒体,商业分析,商业创新,科技创新');
+        parent::_initialize();
+        /*$this->assign('keywords','华乐网,今日新闻头条,今日头条新闻,商业评论,科技资讯,互联网金融,科技新闻,移动互联网,网络游戏,手游,行业分析,新兴行业,科技前沿,科技媒体,商业分析,商业创新,科技创新');
         $this->assign('description','华乐网集信息交流融合、IT技术信息、新媒体于一身的媒体平台。分析你的兴趣爱好,为你推荐喜欢的内容,并且越用越懂你.就要你好看,用专业的精神剖析时代，孜孜不倦探索科技与商业的未来。');
         $this->assign('webname','华乐网');
         $this->assign('nav',$this->topcat);*/
@@ -16,6 +17,22 @@ class Index extends Controller
      * 网站入口
      */
     public function index() {
+        $data = cache('cache_data_link'.$this->fid); 
+        //$data = false;
+        if ($data === false) { 
+            $data = @file_get_contents('http://api.hahacn.com/other/link/type/'.$this->fid);
+            cache('cache_data_link'.$this->fid, $data, 60*60); 
+        }
+        $flink = json_decode($data,true);
+        $news = cache('cache_data_news'); 
+        //$news = false;
+        if ($news === false) { 
+            $news = @file_get_contents('http://www.hahacn.com/index/zz_news.html');
+            cache('cache_data_news', $news, 60*60); 
+        }
+        $mnews = json_decode($news,true);
+        $this->assign('news', $mnews);
+        $this->assign('flink', $flink);
         return $this->fetch();
     }
     public function detail(){

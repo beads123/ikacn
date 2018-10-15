@@ -4,6 +4,17 @@ use think\Controller;
 use service\geetestlib;
 class User extends Controller
 {
+    protected $allow_origin = array(  
+            'http://joke.hahacn.com',  
+            'http://mm.hahacn.com',
+            'http://mw.hahacn.com',
+            'http://jk.hahacn.com',
+            'http://mall.hahacn.com',
+            'http://v.hahacn.com',
+            'http://ch.hahacn.com',
+            'http://yx.hahacn.com',
+            'http://my.ikacn.com' 
+        );
     /**
      * 网站入口
      */
@@ -11,8 +22,14 @@ class User extends Controller
         return $this->fetch();
     }
     public function login(){
+        $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+        if(in_array($origin, $this->allow_origin)){  
+            header('Access-Control-Allow-Origin:'.$origin);  
+            header('Access-Control-Allow-Methods:POST');  
+            header('Access-Control-Allow-Headers:x-requested-with,content-type');  
+        }
+
         session_start();
-        var_dump($_SESSION);
         $ref = !isset($_SERVER['HTTP_REFERER'])?'':$_SERVER['HTTP_REFERER'];
         if(empty($ref)){
             $ref = url('/','','','my');
